@@ -1,0 +1,109 @@
+
+
+
+"#progressbar": {
+    height: 110,
+    width: 110,
+    progressTintColor: '#d9e153',
+    trackTintColor: '#f5f5f5',
+    progressOpacity: 1,
+    trackOpacity: 0.8,
+    roundedCorners: true,
+    animatedProgress: true,
+    thicknessRatio: 0.15,
+    progress: 1,
+    textColor: '#d9e153',
+    textOpacity: 1,
+    textFont: {
+        fontFamily: 'Helvetica',
+        fontSize: 60,
+        fontStyle: 'normal',
+        fontWeight: 'bold'
+    },
+    text : ''
+}
+
+
+".preview_container": {
+    backgroundColor:"#fff",
+    bottom:0,
+    width:"56%",
+    height:Ti.UI.SIZE,
+    layout:'horizontal',
+    // borderWidth:1,
+    // borderColor:'red'
+}
+
+"#gifImage": {
+  image: "images/thumbs/v1.gif",
+  width: 196,
+  height: 110,
+  backgroundColor:'pink',
+    borderWidth:1,
+    borderColor:"#d9e153",  
+
+}
+
+
+"#preview_thumb":{
+	width:Ti.UI.SIZE,
+	height:Ti.UI.SIZE,
+    width:165,
+    height:110,
+    right:0,
+	image:"images/v5.png",
+    backgroundImage:undefined
+    // visible:false
+}
+
+"#preview_title" : {
+    color: 'black',
+    font: { fontFamily:'Arial', fontSize: '20', fontWeight:'bold' },
+    height:Ti.UI.SIZE,
+    width:220,
+    textAlign:Ti.UI.TEXT_ALIGNMENT_LEFT
+}
+"#preview_description" : {
+    color: '#858585',
+    font: { fontFamily:'Arial', fontSize: '18', fontWeight:'bold' },
+    width:220,
+    height:Ti.UI.SIZE,
+    textAlign:Ti.UI.TEXT_ALIGNMENT_LEFT
+}
+
+"#preview_text":{
+	left:10,
+	right:10,
+	width:246,
+	// backgroundColor:"#aaa",
+	height:Ti.UI.SIZE,
+	layout:"vertical",
+}
+
+"#preview_video":{
+	url:"videos/CF-App-3PointJumpSquatsAlternatingSides.mp4",
+	width:300,
+	height:170,
+	backgroundColor:"#fff",
+	autoplay:true,
+	mediaControlStyle: Titanium.Media.VIDEO_CONTROL_NONE,
+}
+
+
+"#full_video":{
+    url:"videos/CF-App-3PointJumpSquatsAlternatingSides.mp4",
+    // width:"70%",
+    height:"70%",
+
+    backgroundColor:"#fff",
+    autoplay:true,
+    mediaControlStyle: Titanium.Media.VIDEO_CONTROL_NONE,
+    autoplay:false  
+}
+
+"#full_video_wrapper":{
+    top:0,
+    width:Ti.UI.SIZE,
+    height:Ti.UI.SIZE
+}
+

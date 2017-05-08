@@ -1,0 +1,10 @@
+version: 2.1.0
+description: Super awesome HTTP Client for Appcelerator Titanium
+author: Raul Riera & Rene Pot
+license: MIT
+copyright: Copyright © 2016 Raul Riera & Rene Pot
+name: XHR.js
+moduleid: xhr
+guid: 5AC8E620-7F6F-44C9-8BA6-911D23B40881
+platform: commonjs
+minsdk: 3.5.1.GA

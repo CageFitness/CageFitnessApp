@@ -1,0 +1,23 @@
+{
+  "global": {
+    "api_url":"https://cagefitness.com",
+    "login_path":"/wp-json/jwt-auth/v1/token",
+    "config_path":"/wp-json/acf/v3/options/options",
+    "validate_path":"/wp-json/jwt-auth/v1/token/validate",
+    "workout_path":"/wp-json/wp/v2/workout",
+    "exercise_path":"/wp-json/wp/v2/exercise",
+    "workout_test_path":"/wp-json/wp/v2/workout/13035"
+  },
+  "env:development": {},
+  "env:test": {},
+  "env:production": {},
+  "os:android": {},
+  "os:blackberry": {},
+  "os:ios": {},
+  "os:mobileweb": {},
+  "os:windows": {},
+  "dependencies": {
+    "de.manumaticx.circularprogress": "*",
+    "com.boxoutthinkers.animatedgif": "*"
+  }
+}

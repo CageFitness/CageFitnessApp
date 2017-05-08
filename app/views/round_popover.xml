@@ -1,0 +1,23 @@
+<Alloy>
+    <Popover id="popover_ob" class="popover">
+        <ContentView>
+            <NavigationWindow height="350" width="250">
+                <Window title="Workout Type">
+                    <!-- <RightNavButton title="Robin" /> -->
+                    <!-- <Label>It's not easy being green.</Label> -->
+                    <View id="popover_view">
+                        <ListView id="pover" top="0" >
+                            <ListSection>
+                                <ListItem class="checked" title="Warm Up"></ListItem>
+                                <ListItem class="checked" title="Upper Body"></ListItem>
+                                <ListItem class="checked" title="Lower Body"></ListItem>
+                                <ListItem class="checked" title="Combo"></ListItem>
+                                <ListItem class="checked" title="Core / Cool-down"></ListItem>
+                            </ListSection>                            
+                        </ListView>                        
+                    </View>
+                </Window>
+            </NavigationWindow>
+        </ContentView>
+    </Popover>
+</Alloy>

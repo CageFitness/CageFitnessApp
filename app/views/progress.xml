@@ -1,0 +1,36 @@
+<Alloy>
+    <Window id="progressWin">
+        <View id="preview_container" class="container">
+            <View id="full_video_wrapper">
+                <!-- <VideoPlayer id="full_video" ns="Ti.Media" autoplay="true" onDurationAvailable="checkDuration" /> -->
+            </View>
+            <View top="150" id="intro">
+                <Label id="progress_title">Round 1</Label>
+                <Label top="60" id="progress_subtitle">Warm Up!</Label>
+                <Label top="120" id="number_counter" layout="vertical">10</Label>
+            </View>
+            <View id="prevs">
+                <!-- <Require autoStyle="true" onClick="shouldWork" id="preview" type="view" src="preview" data_video="uno.mp4" data_title="Up Next..." data_description="" data_duration="90" /> -->
+            </View>
+            <ImageView id="video_control"></ImageView>
+            <View id="header">
+                <View id="head" class="bar"></View>
+                <Label top="0" id="main_title" text="CAGE FITNESS" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER" />
+                <View id="main_line" class="bar"></View>
+                <View class="end_btn" onClick="closeWindow">
+                    <ImageView id="clock_icon" image="images/clock_icon.png"></ImageView>
+                    <Label id="clock_title" text="END" textAlign="Ti.UI.TEXT_ALIGNMENT_LEFT" />
+                </View>
+                <Label id="round_counter">00:00</Label>
+                <Label id="current_video_title"></Label>
+
+            </View>
+
+            
+
+
+
+            <!-- <Button height="30" backgroundColor="gray" width="100" color="white" left="20" top="28" onClick="closeWindow">CLOSE</Button> -->
+        </View>
+    </Window>
+</Alloy>

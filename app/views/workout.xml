@@ -1,0 +1,40 @@
+<Alloy>
+    <Window id="workoutWin" class="container">
+        <View id="step8" class="step">
+            <Label autoStyle="true" hide="true" id="step_8_title" text="Round 1: Warm Up" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER" />
+            <Label id="step_8_title_right" />
+            <View id="preview">
+                <Label id="step_8_UpNext" text="Up Next..." textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER" />
+                <Label id="step_8_Desc1" text="Medicine Ball" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER" />
+                <Label id="step_8_Desc2" text="Alternating Lunge with Posterior Reach" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER" />
+                <View class="contador">
+                    <Require id="prog" type="widget" src="de.manumaticx.circularprogress" />
+                    <View id="whiteCircle">
+                        <Label id="ccount">12</Label>
+                    </View>
+                </View>
+                <ImageView id="videoThumb" image="/images/v5.png"></ImageView>
+            </View>
+            <View id="counter">
+                <!-- <Require id="prog1" type="widget" src="de.manumaticx.circularprogress" /> -->
+                <Label color="#dfe763" top="250" id="counter_number" text="" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER" />
+            </View>
+        </View>
+
+        
+
+        <View id="head" class="bar"></View>
+        <Label id="main_title" text="CAGE FITNESS" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER" />
+        <View id="main_line" class="bar"></View>
+        <View class="controls">
+            <ImageView id="video_control"></ImageView>
+        </View>
+
+        
+        <!-- <Button id="close_btn" class="step_btn" onClick="closeWindow" title="CLOSE"></Button> -->
+        <View right="30" with="Ti.UI.SIZE" class="end_btn" layout="horizontal" onClick="closeWindow">
+            <ImageView id="clock_icon" image="images/clock_icon.png"></ImageView>
+            <Label id="step_8_title_left" text="END" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER" />
+        </View>
+    </Window>
+</Alloy>

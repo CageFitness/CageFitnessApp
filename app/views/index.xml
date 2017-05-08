@@ -1,0 +1,228 @@
+<Alloy>
+    <Window id="steps" class="container">
+        <ScrollableView  id="scrollableView" showPagingControl="false">
+            <View id="home" class="step">
+                <!-- <Button id="home_btn" onClick="stepClick"></Button> -->
+                <Button id="home_btn" onClick="doProgress"></Button>
+                <!-- <Button id="home_btn" onClick="doWorkout"></Button> -->
+            </View>
+            <View id="login" class="step">
+
+                <ImageView id="login_box" onClick="stepClick">
+                    <Label id="login_field">ENTER EMAIL</Label>
+                </ImageView>
+          
+                <ScrollView id="login_panel">            
+                    <View class="container">
+                        <ImageView id="logo"/>
+                        <TextField id="username"/>
+                        <TextField id="password"/>
+                        <Button id="loginButton" onClick="cageAuthenticate">Login</Button>
+                    </View>
+                </ScrollView>
+
+            </View>
+            <View id="step1" class="step">
+                <View class="list_wrapper">
+                    <View class="list" top="0">
+                        <ListView id="list1">
+                            <ListSection>
+                                <ListItem height="60" class="checked" title="Strength & Toning"></ListItem>
+                                <ListItem height="60" class="checked" title="Endurance & Cardio"></ListItem>
+                                <ListItem height="60" class="checked" title="Full Body Combo"></ListItem>
+                                <ListItem height="60" class="checked" title="Butts and Guts"></ListItem>
+                                <ListItem height="60" class="checked" title="Next Level Athlete"></ListItem>
+                            </ListSection>
+                        </ListView>
+                    </View>
+                </View>
+            </View>
+            <View id="step2" class="step">
+                <View class="list_wrapper">
+                    <View id="list2" class="list" top="0">
+                        
+                        <View id="button_matrix">
+                            <Button id="btn1" left="16" class="big_btn row1" title="1"></Button>
+                            <Button id="btn2" left="116" class="big_btn row1" title="2"></Button>
+                            <Button id="btn3" left="216" class="big_btn row1" title="3"></Button>
+                            <Button id="btn4" left="316" class="big_btn row1" title="4"></Button>
+                            <Button id="btn5" onClick="stepClick" left="416" class="big_btn row1" title="5"></Button>
+                            <Button id="btn6" left="16" class="big_btn row2" title="6"></Button>
+                            <Button id="btn7" left="116" class="big_btn row2" title="7"></Button>
+                            <Button id="btn8" left="216" class="big_btn row2" title="8"></Button>
+                            <Button id="btn9" left="316" class="big_btn row2" title="9"></Button>
+                            <Button id="btn10" left="416" class="big_btn row2" title="10"></Button>
+                        </View>
+
+                    </View>
+                </View>
+            </View>
+            <View id="step3" class="step">
+                <View class="list_wrapper">
+                    <View id="list3" class="list" top="0">
+                        <ListView id="listview_step3" defaultItemTemplate="roundType" top="80">
+                            <Templates>
+                                <ItemTemplate name="roundType">
+                                    <View class="padder">
+                                        <View class="list_item_bg">
+                                            <Label bindId="info" id="title" height="Ti.UI.SIZE" />
+                                            <View class="btn_item_wrapper" height="Ti.UI.SIZE">
+                                                <Button width="140" height="Ti.UI.SIZE" class="dropdown_btn" bindId="selector" id="select" onClick="handleClickPopOver"></Button>
+                                            </View>
+                                        </View>
+                                    </View>
+                                </ItemTemplate>
+                            </Templates>
+                            <ListSection height="Ti.UI.SIZE">
+                                <ListItem height="60" info:text="Round 1"></ListItem>
+                                <ListItem height="60" info:text="Round 2"></ListItem>
+                                <ListItem height="60" info:text="Round 3"></ListItem>
+                                <ListItem height="60" info:text="Round 4"></ListItem>
+                                <ListItem height="60" info:text="Round 5"></ListItem>
+                            </ListSection>
+                        </ListView>
+                        <Label text="5 Rounds" class="winTitle"></Label>
+                        <Label top="24" text="ASSIGN A WORKOUT TYPE TO EACH ROUND" class="winTitle center" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER"></Label>
+                    </View>
+                </View>
+                <View id="blinder_3" class="blinder"></View>
+                <Button id="step3_btn" class="step_btn" onClick="stepClick" title="NEXT"></Button>
+            </View>
+            <!-- <View id="step3_5" class="step">
+                <View id="list3_5" class="list" top="0">
+                                        
+                </View>
+                <View id="blinder_3_5" class="blinder"></View>
+                <Button id="step3_5_btn" class="step_btn" onClick="stepClick" title="NEXT"></Button>
+            </View> -->
+            <View id="step4" class="step">
+                <View class="list_wrapper">
+                    <View id="list4" class="list" top="0">
+                        <ListView id="listview_step4" defaultItemTemplate="numberOfExercises">
+                            <Templates>
+                                <ItemTemplate name="numberOfExercises">
+                                    <View class="padder">
+
+                                        <View class="list_item_bg">
+                                            <Label bindId="info" id="title" height="Ti.UI.SIZE" />
+                                            <View bindId="theparent" right="0" layout="horizontal" class="btn_item_wrapper" width="Ti.UI.SIZE" height="Ti.UI.SIZE">
+                                                <Button backgroundColor="#ffffff" onClick="ToggleMe" width="60" right="0" title="7" height="Ti.UI.SIZE" class="dropdown_btn" bindId="selectorLeft" autoStyle="true"></Button>
+                                                <View width="8"></View>
+                                                <Button backgroundColor="#ffffff" width="60" right="10" onClick="ToggleMe" title="10" height="Ti.UI.SIZE" class="dropdown_btn" bindId="selectorRight" autoStyle="true"></Button>
+                                            </View>
+                                        </View>
+                                    </View>
+                                </ItemTemplate>
+                            </Templates>
+                            <ListSection height="Ti.UI.SIZE" top="80">
+                                <ListItem height="70" info:text="Round 1"></ListItem>
+                                <ListItem height="70" info:text="Round 2"></ListItem>
+                                <ListItem height="70" info:text="Round 3"></ListItem>
+                                <ListItem height="70" info:text="Round 4"></ListItem>
+                                <ListItem height="70" info:text="Round 5"></ListItem>
+                            </ListSection>
+                        </ListView>
+                        
+                        <Label text="DESCRIPTION" class="winTitle xleft" textAlign="Ti.UI.TEXT_ALIGNMENT_LEFT"></Label>
+                        <Label text="NUMBER OF EXERCISES" class="winTitle xright" textAlign="Ti.UI.TEXT_ALIGNMENT_RIGHT"></Label>                        
+                    </View>
+                </View>
+                <View id="blinder_4" class="blinder"></View>
+                <Button id="step4_btn" class="step_btn" onClick="stepClick" title="NEXT"></Button>
+            </View>
+            <View id="step5" class="step">
+                <View class="list_wrapper">
+                    <View id="list5" class="list" top="0">
+                        <ListView id="listview_step5" defaultItemTemplate="template_equipment">
+                            <Templates>
+                                <ItemTemplate name="template_equipment">
+                                    <View class="listitem_wrapper">
+                                        <ImageView bindId="pic" id="icon" />
+                                        <Label left="60" bindId="info" id="title" />
+                                        <!-- <ImageView class="check" bindId="accesory" id="check"></ImageView> -->
+                                    </View>
+                                </ItemTemplate>
+                            </Templates>
+                            <ListSection>
+                                <ListItem height="84" info:text="Body Weight"       pic:image="images/icons/01.png" class="checked"></ListItem>
+                                <ListItem height="84" info:text="Cage Fitness Bags" pic:image="images/icons/02.png" class="checked"></ListItem>
+                                <ListItem height="84" info:text="Bands"             pic:image="images/icons/03.png" class="checked"></ListItem>
+                                <ListItem height="84" info:text="Medicine Balls"    pic:image="images/icons/04.png" class="checked"></ListItem>
+                            </ListSection>
+                        </ListView>
+                    </View>
+                </View>
+            </View>
+            <View id="step6" class="step">
+                <View class="list_wrapper">
+                    <View id="list6" class="list" top="0">
+                        <ListView id="listview_step6" onItemClick="handleClickBuildWorkout">
+                            <ListSection>
+                                <ListItem height="70" class="checked" title="Auto-Generate (Workout is created for you)"></ListItem>
+                                <ListItem height="70" class="checked" title="Customize (Create your own class)"></ListItem>
+                            </ListSection>
+                        </ListView>
+                    </View>
+                </View>
+            </View>
+            <View id="step7" class="step">
+                <View class="list_wrapper">
+                    <View id="list7" class="list" top="0">
+                        <ListView id="listview_step7" defaultItemTemplate="template_begin_workout" onItemClick="handleClickBeginWorkout">
+                            <Templates>
+                                <ItemTemplate name="template_begin_workout">
+                                    <View class="listitem_wrapper">
+                                        <Label left="10" top="10" bindId="info" id="title" layout="vertical" />
+                                        <Label class="sub" left="10" top="30" text="" color="#7e7e7e" bindId="sub"></Label>
+                                        <ImageView height="20" width="20" class="check" bindId="accesory" id="check" image="images/check.png"></ImageView>
+                                    </View>
+                                </ItemTemplate>
+                            </Templates>
+                            <ListSection>
+
+                                <ListItem height="60" info:text="Workout Theme" sub:text="Strength and Toning"></ListItem>
+                                <ListItem height="60" info:text="Number of Rounds" sub:text="5 Rounds"></ListItem>
+                                <ListItem height="60" info:text="Round Types"            sub:text="Warm Up, Upper Body, Lower Body, Combo, Core / Cool-Down"></ListItem>
+                                <ListItem height="60" info:text="Number of Exercises"  sub:text="Round 1: 7, Round 2: 7, Round 3: 10, Round 4: 10, Round 5: 10"></ListItem>
+                                <ListItem height="60" info:text="Equipment" sub:text="Medicine Ball"></ListItem>
+
+                            </ListSection>
+                        </ListView>                        
+                    </View>
+                </View>
+                <View id="blinder_6" class="blinder"></View>
+                <Button id="step7_btn" class="step_btn" onClick="doWorkout" title="BEGIN WORKOUT"></Button>
+            </View>
+        </ScrollableView>
+        
+        <View id="head" class="bar"></View>
+        <Label id="main_title" text="CAGE FITNESS" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER" />
+        <View id="main_line" class="bar"></View>
+        <View id="step_line" class="bar">
+            <View class="step_track_line"></View>
+            <View id="step_track">
+                <View id="s2" left="0" onClick="stepClickHandler" autoStyle="true" class="step_ball">
+                    <Label class="step_label" text="1" autoStyle="true"></Label>
+                </View>
+                <View id="s3"  left="84" onClick="stepClickHandler" autoStyle="true" class="step_ball">
+                    <Label class="step_label" autoStyle="true" text="2"></Label>
+                </View>
+                <View id="s4" left="165" onClick="stepClickHandler" autoStyle="true" class="step_ball">
+                    <Label class="step_label" text="3" autoStyle="true"></Label>
+                </View>
+                <View id="s5" onClick="stepClickHandler" autoStyle="true" class="step_ball">
+                    <Label class="step_label" text="4" autoStyle="true"></Label>
+                </View>
+                <View id="s6" left="333" onClick="stepClickHandler" autoStyle="true" class="step_ball">
+                    <Label class="step_label" text="5" autoStyle="true"></Label>
+                </View>
+                <View id="s7" left="414" onClick="stepClickHandler" autoStyle="true" class="step_ball">
+                    <Label class="step_label" text="6" autoStyle="true"></Label>
+                </View>
+                <View id="s8" right="0" onClick="stepClickHandler" autoStyle="true" class="step_ball">
+                    <Label class="step_label" text="7" autoStyle="true"></Label>
+                </View>
+            </View>
+        </View>
+    </Window>
+</Alloy>

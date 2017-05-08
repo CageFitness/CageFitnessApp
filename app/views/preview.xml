@@ -1,0 +1,15 @@
+<Alloy>
+    <View class="preview_container">
+        <!-- <Require id="circularProgress" type="widget" src="de.manumaticx.circularprogress" /> -->
+        <Module id="progressbar" module="br.com.arlsoft.progressbar" method="createCircularView" />
+        <View class="pad">
+            <View id="preview_text">
+                <Label id="preview_title" textAlign="Ti.UI.TEXT_ALIGNMENT_LEFT"></Label>
+                <Label id="preview_description"></Label>
+            </View>
+        </View>
+
+        <!-- <ImageView id="preview_thumb"></ImageView> -->
+        <Require id="gifImage" type="widget" backgroundColor="pink" src="com.boxoutthinkers.animatedgif" />
+    </View>
+</Alloy>

@@ -1,0 +1,431 @@
+"ImageView" : {
+   defaultImage : 'images/transparent.png'
+}
+"VideoPlayer" : {
+   defaultImage : 'images/transparent.png'
+}
+
+".pad":{
+	width:Ti.UI.SIZE,
+	height:Ti.UI.SIZE
+}
+
+
+".sub":{
+	font:{fontSize:15}
+}
+
+".xright":{
+	right:14,
+	font:{fontSize:11}
+}
+
+".xleft":{
+	left:14,
+	font:{fontSize:11}
+}
+".center":{
+	font:{fontSize:11},
+}
+".checked": {
+
+	accessoryType: Titanium.UI.LIST_ACCESSORY_TYPE_DISCLOSURE
+}
+"ListView":{
+	separatorColor:"#eaebdb",
+	height:Ti.UI.SIZE,
+	top:50,
+}
+"ListItem":{
+	// selectedBackgroundColor:"rgba(255,0,0,0)",
+	// selectionStyle:Titanium.UI.iPhone.ListViewCellSelectionStyle.NONE
+	selectionStyle:Titanium.UI.iOS.ListViewCellSelectionStyle.NONE
+ // backgroundSelectedColor: '#fff', 
+ // backgroundFocusedColor: '#fff', 	
+}
+
+".winTitle":{
+	text:"Window Title",
+	top:"0",
+	width:"80%",
+	height:"60",
+	// backgroundColor:"white",
+	textAlign:Ti.UI.TEXT_ALIGNMENT_CENTER,
+}
+
+"#home_btn":{
+	width:177,
+	height:177
+}
+"#login_box":{
+	image:"images/login_foreground.png",
+	width:432,
+	height:304
+}
+
+
+"#login_field":{
+	color:"#999999",
+	font:{fontSize:12},
+	bottom:20,
+	left:20
+}
+
+"#login_panel":{
+	backgroundColor:"#99bd6b",
+	width:432,
+	height:304
+}
+
+
+
+"TextField": {
+	width: 200,
+	autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE,
+	borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED
+}
+
+"#username": {
+	top: 130,
+	hintText: 'username',
+	returnKeyType: Ti.UI.RETURNKEY_NEXT,
+	autocapitalization: false,
+	autocorrect: false
+}
+
+"#password": {
+	top: '170dp',
+	hintText: 'password',
+	passwordMask: true,
+	returnKeyType: Ti.UI.RETURNKEY_DONE
+}
+
+
+"#loginButton": {
+	top: '210dp',
+	height: '40dp',
+	width: '100dp',
+	color: '#fff',
+	backgroundColor: "#0000DD",
+	backgroundSelectedColor: "blue"
+}
+
+"#main_title":{
+	top:30,
+	fontSize:24,
+	color:"#242424",
+
+}
+
+"#btn5":{
+	borderColor:"#c4cb48"
+}
+
+
+"#step7_btn":{
+	// bottom:26,
+	width:242,
+	height:46,
+	color:"#fff",
+	backgroundColor:"#99bd6b",
+	borderColor:"#b4b4b4",
+	borderWidth:0,
+	borderRadius:6,
+	// backgroundSelectedColor:"green",
+	// backgroundSelectedColor:"red",
+	font:{
+		fontSize: 16,
+		fontFamily:'Helvetica Neue'
+	}
+}
+"#button_matrix":{
+	height:Ti.UI.SIZE,
+	top:0
+}
+".blinder":{
+	bottom:70,
+	height:68,
+	// backgroundColor:"#fff",
+	width:260
+}
+
+".step_btn":{
+	bottom:56,
+	width:242,
+	height:46,
+	color:"#fff",
+	backgroundColor:"#c4c4c4",
+	borderColor:"#b4b4b4",
+	borderWidth:0,
+	borderRadius:6,
+	// backgroundSelectedColor:"green",
+	
+	backgroundSelectedColor:"red",
+	font:{
+		fontSize: 16,
+		fontWeight: 'bold',
+		fontFamily:'Helvetica Neue'
+	}
+}
+
+
+"#main_line":{
+	backgroundColor:"#d9e153",
+	height:6,
+	top:73
+}
+
+"#step_line":{
+	// backgroundColor:"green",
+	backgroundColor:"#f1f1f1",
+	height:54,
+	top:190
+	
+}
+".check":{
+	right:0,
+	height:30,
+	width:30
+}
+".step_track_line":{
+	backgroundColor:"#d9e153",
+	// backgroundColor:"#f1f1f1",
+	height:6,
+	top:26,
+	width:514
+	// width:"50%"
+
+}
+"#step_track":{
+	// backgroundColor:"green",
+	// backgroundColor:"#f1f1f1",
+	height:54,
+	top:16,
+	width:514
+
+}
+".step_ball":{
+	autoStyle:true,
+	width:24,
+	height:24,
+	backgroundColor:"#d9e153",
+	top:0,
+	borderRadius:12,
+
+	borderWidth:1,
+	borderColor:"#d9e153",	
+
+
+}
+".step_label":{
+    font:{
+    	fontSize:13,
+    	fontFamily:'Helvetica Neue',
+    	fontWeight:'bold'
+    },
+    color:"#fff",
+
+
+
+}
+
+".step_ball_active":{
+	backgroundColor:"#fff",
+	borderWidth:1,
+	borderColor:"#d9e153",
+}
+
+".step_label_active":{
+	color:"#777a57"
+}
+
+".step":{
+
+	width: Ti.UI.FILL,
+	height: Ti.UI.FILL,
+	backgroundColor:"#f5f5f5"
+}
+
+".bar":{
+	height:74,
+	backgroundColor:"#fff",
+	top:0,
+	width:Ti.UI.FILL
+}
+
+
+".list_wrapper":{
+	width:"58%",
+	// backgroundColor:"pink",
+	backgroundColor:"#fff",
+	top:254,
+	// bottom:0,
+	// height:Ti.UI.SIZE,
+	height:478,
+	borderRadius:6,
+
+	
+}
+
+".list":{
+	width:Ti.UI.FILL,
+	// backgroundColor:"#ddd",
+	// backgroundColor:"#ddd",
+	// top:246,
+	// bottom:0,
+	// height:460,
+	// borderRadius:6,
+	left:20,
+	right:20,
+	height:Ti.UI.SIZE
+
+
+	
+}
+
+
+".big_btn":{
+	width:80,
+	height:80,
+	color:"#9b9b9b",
+	backgroundColor:"#fdfdfd",
+	borderColor:"#b4b4b4",
+	borderWidth:2,
+	borderRadius:12,
+	font:{
+		fontSize: 54,
+		fontFamily:'Helvetica Neue',
+		fontWeight:'normal'
+	}
+}
+".row1":{
+	top:60
+}
+".row2":{
+	top:180
+}
+
+
+"#list6":{
+	// backgroundColor:"red"
+}
+
+"#home":{
+    backgroundImage:"images/home.png"
+}
+"#login":{
+    backgroundImage:"images/login_bg.png"
+}
+
+"#step1":{
+    backgroundImage:"images/STEP1.png"
+}
+"#step2":{
+    backgroundImage:"images/STEP2.png"
+}
+"#step3":{
+    backgroundImage:"images/STEP3.png"
+}
+"#step3_5":{
+    backgroundImage:"images/STEP3.5.png"
+}
+"#step4":{
+    backgroundImage:"images/STEP4.png"
+}
+"#step5":{
+    backgroundImage:"images/STEP5.png"
+}
+"#step6":{
+    backgroundImage:"images/STEP6.png"
+}
+"#step7":{
+    backgroundImage:"images/STEP7.png"
+}
+
+
+".container": {
+	backgroundColor:"white"
+}
+
+"#ds":{
+	backgroundColor:"red"
+}
+
+"Label": {
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	color: "#000"
+}
+
+"#label": {
+	font: {
+		fontSize: 12,
+		fontFamily:'Helvetica Neue'
+	}
+}
+".btn_item_wrapper":{
+	top:6,
+	bottom:6
+}
+".list_item_bg":{
+	backgroundColor:"#f5f5f5",
+	font: {
+		fontSize: 12,
+		fontFamily:'Helvetica Neue'
+	},
+	borderRadius:6,
+	top:10,
+	bottom:10,
+	left:10,
+	height:Ti.UI.SIZE
+
+}
+".itemlist_with_icon_label":{
+	backgroundColor:undefined,
+
+}
+".listitem_wrapper":{
+	backgroundColor:"#fff",
+	// top:10,
+	// bottom:10,
+	// width:200
+}
+".padder":{
+	height:Ti.UI.SIZE,
+	// top:10,
+	// bottom:10
+	right:10
+}
+// ListView Templates
+".select":{
+	title:"Select"
+}
+".dropdown_btn":{
+	title:"Select",
+	backgroundColor:"#d9e153",
+	right:6,
+	color:"#000",
+	width:100,
+	borderRadius:6,
+	// height:30
+}
+".listview":{
+	width:"90%"
+}
+"#icon" : {
+    width: '50dp', height: '50dp', left: 0
+}
+"#title" : {
+    color: 'black',
+    font: { fontFamily:'Arial', fontSize: '16', fontWeight:'bold' },
+    left: 10,
+    // top: 0,
+    height:Ti.UI.SIZE,
+    // backgroundColor:"pink",
+
+
+}
+
+".popover":{
+	backgroundColor:"#fff"
+}

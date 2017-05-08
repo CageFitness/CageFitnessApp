@@ -1,0 +1,134 @@
+
+"#step8" : {
+  backgroundColor:"#fff"
+}
+
+
+"#video_control":{
+	image:"images/video_control.png",
+	bottom:0,,
+	width:Ti.UI.FILL
+}
+
+"#close_btn":{
+	top:21,
+	left:30,
+	width:undefined,
+	color:"#000",
+	backgroundColor:undefined
+}
+
+"#player":{
+	width:850,
+	// width:Ti.UI.FILL,
+	// height:Ti.UI.FILL,
+	backgroundColor:"#fff",
+	top:2,
+	mediaControlStyle : Titanium.Media.VIDEO_CONTROL_NONE,
+	keepScreenOn:true
+	
+}
+
+
+
+
+"#thumb":{
+	height:200,
+	width:270,
+	backgroundColor:"#fff",
+	bottom:10,
+	right:10
+}
+
+"#prog":{
+	bottom:60,
+	left:280
+}
+
+"#whiteCircle":{
+	 borderRadius:40,
+	 width:80,
+	 height:80,
+	 backgroundColor:"#fff",
+	 bottom:70,
+	 left:290
+}
+"#ccount":{
+	color:"#dfe763",
+	font:{fontWeight:'bold', fontSize:45}
+
+}
+
+"#videoThumb":{
+	width:180,
+	height:120,
+	bottom:60,
+	right:200,
+	backgroundColor:"#ccc",
+	image:"images/v5.png",
+}
+
+// clock title
+"#step_8_title_left":{
+	top:120,
+	left:6,
+	color:"#9c9c9c"
+}
+
+"#step_8_title_right":{
+	top:120,
+	right:30
+}
+
+
+"#clock_icon": {
+	image:"images/clock_icon.png",
+	top:114,
+	left:30
+}
+
+"#step_8_UpNext":{
+	bottom:130,
+	font:{
+		fontSize: 18,
+		fontWeight: 'bold',
+		fontFamily:'Helvetica Neue'
+	}
+	
+}
+"#step_8_Desc1":{
+	bottom:100,
+
+}
+"#step_8_Desc2":{
+	bottom:60,
+	width:200,
+	height:80
+	
+}
+
+
+"#step_8_title":{
+    color:"#000",
+    shadowColor:"#aaa",
+    textAlign:Ti.UI.TEXT_ALIGNMENT_CENTER,
+    top:110,
+    width:Ti.UI.SIZE,
+    height:Ti.UI.SIZE,
+    font:{
+    	fontSize:28,
+    	fontFamily:'Helvetica Neue'
+    }
+}
+
+
+
+"#counter_number":{
+	color:"#99bd6b",
+	font:{fontFamily:'Helvetica Neue', fontSize:88, fontWeight:'bold'}
+}
+
+
+
+
+
