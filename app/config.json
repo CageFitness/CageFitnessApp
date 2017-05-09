@@ -1,12 +1,13 @@
 {
   "global": {
-    "api_url":"https://cagefitness.com",
-    "login_path":"/wp-json/jwt-auth/v1/token",
-    "config_path":"/wp-json/acf/v3/options/options",
-    "validate_path":"/wp-json/jwt-auth/v1/token/validate",
-    "workout_path":"/wp-json/wp/v2/workout",
-    "exercise_path":"/wp-json/wp/v2/exercise",
-    "workout_test_path":"/wp-json/wp/v2/workout/13035"
+    "api_url": "https://cagefitness.com",
+    "login_path": "/wp-json/jwt-auth/v1/token",
+    "config_path": "/wp-json/acf/v3/options/options",
+    "validate_path": "/wp-json/jwt-auth/v1/token/validate",
+    "workout_path": "/wp-json/wp/v2/workout",
+    "exercise_path": "/wp-json/wp/v2/exercise",
+    "workout_test_path": "/wp-json/acf/v3/workout/13035",
+    "user_path": "/wp-json/wp/v2/users/me"
   },
   "env:development": {},
   "env:test": {},
@@ -18,6 +19,9 @@
   "os:windows": {},
   "dependencies": {
     "de.manumaticx.circularprogress": "*",
-    "com.boxoutthinkers.animatedgif": "*"
+    "com.boxoutthinkers.animatedgif": "*",
+    "com.appcelerator.components": "1.0",
+    "com.appcelerator.components.login": "*",
+    "com.caffeinalab.titanium.loader": "*"
   }
 }

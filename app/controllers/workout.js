@@ -2,6 +2,8 @@
 var args = $.args;
 var animation = require('alloy/animation');
 
+
+
 var videos = [
     { thumb: "images/v5.png", type: "Medicine Ball", duration:24, title: "Squat Clean With Press Alternating", id: "v1", video: "videos/CF-App-MedicineBall-SquatCleanWithPressAlternating.mp4" },
     { thumb: "images/v2.png", type: "Medicine Ball", duration:12, title: "Muffin Busters", id: "v2", video: "videos/CF-App-MedicineBall-MuffinBusters.mp4" },

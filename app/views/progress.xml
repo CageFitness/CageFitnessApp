@@ -1,6 +1,7 @@
 <Alloy>
     <Window id="progressWin">
         <View id="preview_container" class="container">
+            <Widget src="com.caffeinalab.titanium.loader" id="workout_loader"></Widget>
             <View id="full_video_wrapper">
                 <!-- <VideoPlayer id="full_video" ns="Ti.Media" autoplay="true" onDurationAvailable="checkDuration" /> -->
             </View>

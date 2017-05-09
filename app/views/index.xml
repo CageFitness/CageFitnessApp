@@ -9,7 +9,11 @@
             <View id="login" class="step">
 
                 <ImageView id="login_box" onClick="stepClick">
-                    <Label id="login_field">ENTER EMAIL</Label>
+                    <Label id="login_field">ENTER USERNAME</Label>
+                    <Widget src="com.appcelerator.components" name="textfield" id="username" icon="icon-user"/>
+                    <Widget src="com.appcelerator.components" name="textfield" classes="password" icon="icon-lock" id="password"/>
+                    <Widget src="com.appcelerator.components" name="textfield" icon="icon-plane" id="login_btn"/>
+                    
                 </ImageView>
           
                 <ScrollView id="login_panel">            
@@ -20,6 +24,8 @@
                         <Button id="loginButton" onClick="cageAuthenticate">Login</Button>
                     </View>
                 </ScrollView>
+
+                <!-- <Widget src="com.appcelerator.components.login" /> -->
 
             </View>
             <View id="step1" class="step">

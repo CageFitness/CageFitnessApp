@@ -1,8 +1,38 @@
 // Arguments passed into this controller can be accessed via the `$.args` object directly or:
 var args = arguments[0] || {};
 var animation = require('alloy/animation');
-var DownloadManager = require('download-manager');
 Alloy.Globals.progressWin = $.progressWin;
+
+var xhr = new Alloy.Globals.XHR();
+var workout_url = Alloy.CFG.api_url + Alloy.CFG.workout_test_path;
+xhr.GET(workout_url, onSuccessWorkoutCallback, onErrorWorkoutCallback, Alloy.Globals.XHROptions);
+var videos2 = [];
+
+function onSuccessWorkoutCallback(e){
+    Ti.API.info('VIDEO:', e.data.acf.round_selector[0].customizer[0].acf.video.url);
+    Ti.API.info('GIF:', e.data.acf.round_selector[0].customizer[0].acf.video_animated_thumbnail.url);
+    Ti.API.info('THUMB:', e.data.acf.round_selector[0].customizer[0].acf.video_featured.url);
+
+
+	var iterator = e.data.acf.round_selector[0].customizer;
+
+	for (i in iterator ){
+		var ob = {};
+		ob.thumb = iterator[i].acf.video_animated_thumbnail.url;
+		ob.type = "";
+		ob.title = iterator[i].post_title;
+		ob.id = "v"+iterator[i].id;
+		ob.video = iterator[i].acf.video.url;
+		videos2.push(ob);
+	}
+	videos = videos2;
+
+    startWorkout();
+}
+
+function onErrorWorkoutCallback(e){
+	Ti.API.info(e.data);
+}
 
 
 var videos = [
@@ -19,6 +49,7 @@ var videos = [
     // { thumb: "images/thumbs/v1.gif", type: "Medicine Ball", duration:20, title: "Squat and Press with 90 Degree Hop", id: "v5", video: "videos/CF-App-MedicineBall-SquatAndPressWith90DegreeHop.mp4" },
     // { thumb: "images/thumbs/v1.gif", type: "Medicine Ball", duration:17, title: "Alternating Lunges with Posterior Reach", id: "v6", video: "videos/CF-App-MedicineBall-AlternatingLungeWithPosteriorReach.mp4" },
 ];
+
 
 
 var previewInterval;
@@ -86,8 +117,6 @@ function addPreview(val){
 function loadNextVideo(val){
 	
 	var vid = val;
-	// !(vid in videos)
-	//  
 	if( vid in videos ) {
 
 		// creates video player
@@ -148,14 +177,21 @@ cTDown = cTDown.scale(1);
 var a = Ti.UI.createAnimation({duration: 300, opacity: 1, transform: cT});
 var b = Ti.UI.createAnimation({duration: 700, opacity: 0.9, transform: cTDown});
 
-animation.chainAnimate($.intro,[ a,b, a,b, a,b, a,b, a,b, a,b, a,b, a,b, a,b, a,b ], function(){
-	animation.fadeAndRemove($.intro, 500, $.preview_container,function(){
-		Ti.API.info('ENDED');
+Ti.API.info('WAIT FOR VIDEOS FIRST...');
 
-		loadNextVideo(Alloy.Globals.current_video);
 
-	});
-});
+function startWorkout(){
+	animation.chainAnimate($.intro,[ a,b, a,b, a,b, a,b, a,b, a,b, a,b, a,b, a,b, a,b ], function(){
+		animation.fadeAndRemove($.intro, 500, $.preview_container,function(){
+			Ti.API.info('ENDED');
+
+			loadNextVideo(Alloy.Globals.current_video);
+
+		});
+	});	
+}
+
+// startWorkout();
 
 var introIntervalCounter=10;
 a.addEventListener('start',pulseCounter);

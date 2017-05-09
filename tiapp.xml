@@ -51,11 +51,12 @@
         <theme>default</theme>
     </mobileweb>
     <modules>
-        <module platform="commonjs">ti.cloud</module>
-        <module platform="iphone">de.marcelpociot.circularprogress</module>
-        <module platform="iphone">br.com.arlsoft.progressbar</module>
-        <module platform="iphone">de.marcelpociot.imagefromgif</module>
-    </modules>
+    <module platform="commonjs">ti.cloud</module>
+    <module platform="iphone">de.marcelpociot.circularprogress</module>
+    <module platform="iphone">br.com.arlsoft.progressbar</module>
+    <module platform="iphone">de.marcelpociot.imagefromgif</module>
+    <module platform="iphone">dk.napp.downloadmanager</module>
+  </modules>
     <deployment-targets>
         <target device="android">true</target>
         <target device="ipad">true</target>

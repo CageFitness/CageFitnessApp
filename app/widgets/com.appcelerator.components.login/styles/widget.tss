@@ -1,0 +1,19 @@
+"#login_widget":{
+	width:400,
+	height:300	
+}
+
+".container": {
+	backgroundColor: "#ccc",
+	layout:"vertical"
+}
+
+".form": {
+	layout: "vertical",
+	top: "15"
+}
+
+".button-bar":{
+	layout:"horizontal",
+	left: "10%"
+}

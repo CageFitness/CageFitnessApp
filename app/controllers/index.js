@@ -1,15 +1,29 @@
 // Arguments passed into this controller can be accessed via the `$.args` object directly or:
 var args = $.args;
 // Ti.UI.orientation = Ti.UI.LANDSCAPE_LEFT;
+
 var animation = require('alloy/animation');
-var XHR = require('/xhr');
-// var xhr = require('/scule');
-var xhr = new XHR();
-var api_url = 'https://cagefitness.com';
+Alloy.Globals.DLManager = require('dk.napp.downloadmanager');
+Alloy.Globals.XHR = require('/xhr');
+Alloy.Globals.XHROptions = {
+    // shouldAuthenticate:false,
+    parseJSON:true,
+    debug:true,
+};
+
+var xhr = new Alloy.Globals.XHR();
+
+
+function onSuccessUserCallback(e){
+    // big lenght
+    Ti.API.info('USER:', e.data);
+}
+
+
 
 function onSuccessOptionsCallback(e){
     // Ti.API.info('SUCCESS:', e.data);
-    Ti.App.Properties.setString('config', e.data);
+    Ti.App.Properties.setString('config', e.data );
     var config = JSON.parse( Ti.App.Properties.getString('config') );
     Ti.API.info( 'DURATION BREAK:', config.acf['round_configs'].length );
 }
@@ -41,14 +55,15 @@ var opts = {
 
 
 function cageAuthenticate(){
-    xhr.POST(api_url+'/wp-json/jwt-auth/v1/token', data, onSuccessCallback, onErrorCallback,opts);
+    xhr.POST(Alloy.CFG.api_url +'/wp-json/jwt-auth/v1/token', data, onSuccessCallback, onErrorCallback,opts);
 }
 
 function callOptions(tkn){
     Ti.API.info('TOKEN: ', tkn);
     var data = {};
-    var endpoint = Alloy.CFG.api_url + Alloy.CFG.config_path;
     var validate_url = Alloy.CFG.api_url + Alloy.CFG.validate_url;
+    var config_url = Alloy.CFG.api_url + Alloy.CFG.config_path;
+
     xhr.setStaticOptions({
             requestHeaders: [
                 {
@@ -56,10 +71,11 @@ function callOptions(tkn){
                     value: 'Bearer '+tkn
                 }
             ],
-            debug: true
+            debug: true    
         });
     xhr.POST(validate_url);
-    xhr.GET(endpoint, onSuccessOptionsCallback, onErrorCallback);
+    xhr.GET(config_url, onSuccessOptionsCallback, onErrorCallback);
+    // xhr.GET(user_url, onSuccessUserCallback, onErrorCallback, opts);
 
 
 }
