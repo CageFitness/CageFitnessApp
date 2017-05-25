@@ -1,0 +1,16 @@
+"#round_intro":{
+	height:300,
+	bottom:0
+}
+"round_title" : {
+    color: 'black',
+    font: { fontFamily:'Arial', fontSize: '16', fontWeight:'bold' },
+    // left: 10,
+    height:Ti.UI.SIZE,
+}
+"#subtitle":{
+	font:{
+		fontSize:30
+	},
+	height:Ti.UI.SIZE,
+}

@@ -10,10 +10,9 @@
 
                 <ImageView id="login_box" onClick="stepClick">
                     <Label id="login_field">ENTER USERNAME</Label>
-                    <Widget src="com.appcelerator.components" name="textfield" id="username" icon="icon-user"/>
-                    <Widget src="com.appcelerator.components" name="textfield" classes="password" icon="icon-lock" id="password"/>
-                    <Widget src="com.appcelerator.components" name="textfield" icon="icon-plane" id="login_btn"/>
-                    
+                    <!-- <Widget src="com.appcelerator.components" name="textfield" id="username" icon="icon-user"/> -->
+                    <!-- <Widget src="com.appcelerator.components" name="textfield" classes="password" icon="icon-lock" id="password"/> -->
+                    <!-- <Widget src="com.appcelerator.components" name="textfield" icon="icon-plane" id="login_btn"/> -->
                 </ImageView>
           
                 <ScrollView id="login_panel">            
@@ -28,7 +27,8 @@
                 <!-- <Widget src="com.appcelerator.components.login" /> -->
 
             </View>
-            <View id="step1" class="step">
+            
+            <!-- <View id="step1" class="step">
                 <View class="list_wrapper">
                     <View class="list" top="0">
                         <ListView id="list1">
@@ -42,12 +42,49 @@
                         </ListView>
                     </View>
                 </View>
-            </View>
+            </View> -->
+
             <View id="step2" class="step">
                 <View class="list_wrapper">
                     <View id="list2" class="list" top="0">
+                    
+
+                    <!-- <ListView id="roundQuantityList" defaultItemTemplate="roundQuantityTemplate">
+                        <Templates>
+                            <ItemTemplate name="roundQuantityTemplate">
+                                <Button bindId="btn" id="btn1" class="big_btn row1" title="1"></Button>
+                            </ItemTemplate>
+                        </Templates>
+                        <ListSection>
+                            
+                        </ListSection>
+                    </ListView> -->
+
+                    <!-- <ListView id="elementsList" defaultItemTemplate="elementTemplate">
+                        <Templates>
+                            <ItemTemplate name="elementTemplate">
+                                <Label bindId="symbol" id="symbol" />
+                                <View id="atomProperties">
+                                    <Label bindId="name" id="name" />
+                                    <View id="secondLine">
+                                        <Label class="line2 fieldLabel" text="Number: " />
+                                        <Label class="line2" bindId="number" id="number" />
+                                        <Label class="line2 fieldLabel" text="Atomic Mass: " />
+                                        <Label class="line2" bindId="mass" id="mass" />
+                                    </View>
+                                </View>
+                                <ImageView bindId="image" id="image" />
+                            </ItemTemplate>
+                        </Templates>
+                        <ListSection>
+                            <ListItem symbol:text="H" symbol:color="#090" name:text="Hydrogen" number:text="1" mass:text="1.00794"/>
+                            <ListItem symbol:text="He" symbol:color="#090" name:text="Helium" number:text="2" mass:text="4.002602"/>
+                            <ListItem symbol:text="Li" name:text="Lithium" number:text="3" mass:text="6.941"/>
+                        </ListSection>
+                    </ListView> -->     
                         
                         <View id="button_matrix">
+                            <Require type="widget" src="com.prodz.tiflexigrid" id="fg"/>
                             <Button id="btn1" left="16" class="big_btn row1" title="1"></Button>
                             <Button id="btn2" left="116" class="big_btn row1" title="2"></Button>
                             <Button id="btn3" left="216" class="big_btn row1" title="3"></Button>

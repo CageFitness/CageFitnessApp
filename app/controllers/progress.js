@@ -1,9 +1,39 @@
 // Arguments passed into this controller can be accessed via the `$.args` object directly or:
 var args = arguments[0] || {};
 var animation = require('alloy/animation');
+
+
+
+var round_intro = Alloy.createController('round_intro',{
+	round_title: 'Uno',
+	round_subtitle: 'Dos',
+	round_counter:'9'
+});
+$.progressWin.add(round_intro.getView());
+
+
+
+var seconds=10;
+var onStart=function(e){
+	Ti.API.info('STARTED')
+};
+var onInterval=function(e){
+	Ti.API.info(e)
+};
+var onComplete=function(e){
+	Ti.API.info('COMPLETED')
+};
+var onKill=function(e){
+	Ti.API.info('KILLED')
+};
+var wktimer = new Timer.countdownTimer(seconds,onStart,onInterval,onComplete,onKill);
+	wktimer.start();
+
+
+
 Alloy.Globals.progressWin = $.progressWin;
 
-var xhr = new Alloy.Globals.XHR();
+var xhr = new XHR();
 var workout_url = Alloy.CFG.api_url + Alloy.CFG.workout_test_path;
 xhr.GET(workout_url, onSuccessWorkoutCallback, onErrorWorkoutCallback, Alloy.Globals.XHROptions);
 var videos2 = [];
@@ -14,7 +44,7 @@ function onSuccessWorkoutCallback(e){
     Ti.API.info('THUMB:', e.data.acf.round_selector[0].customizer[0].acf.video_featured.url);
 
 
-	var iterator = e.data.acf.round_selector[0].customizer;
+	var iterator = e.data.acf.round_selector[1].customizer;
 
 	for (i in iterator ){
 		var ob = {};
@@ -36,6 +66,7 @@ function onErrorWorkoutCallback(e){
 
 
 var videos = [
+
     { thumb: "images/thumbs/v1.gif", type: "", duration:17, title: "3 ONE Points Jump Squats Alternating Sides", id: "v7", video: "videos/CF-App-3PointJumpSquatsAlternatingSides.mp4" },
     { thumb: "images/thumbs/v1.gif", type: "", duration:29, title: "3 TWO Points Squats Alternating Sides", id: "v8", video: "videos/CF-App-3PointSquatsAlternatingSides.mp4" },
     // { thumb: "images/thumbs/v1.gif", type: "", duration:16, title: "Sumo Squats", id: "v9", video: "videos/CF-App-SumoSquats.mp4" },

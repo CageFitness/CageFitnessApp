@@ -1,0 +1,7 @@
+<Alloy>
+	<View layout="vertical" id="round_intro">
+		<Label id="round_title"></Label>
+		<Label id="round_subtitle"></Label>
+		<Label id="round_counter"></Label>
+	</View>
+</Alloy>

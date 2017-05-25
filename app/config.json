@@ -22,6 +22,7 @@
     "com.boxoutthinkers.animatedgif": "*",
     "com.appcelerator.components": "1.0",
     "com.appcelerator.components.login": "*",
-    "com.caffeinalab.titanium.loader": "*"
+    "com.caffeinalab.titanium.loader": "*",
+    "com.prodz.tiflexigrid": "*"
   }
 }
