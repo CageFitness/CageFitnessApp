@@ -1,0 +1,8 @@
+<Alloy>
+	<View id="exerciseView" class="container">
+		<View id="menuTopBar"/>
+		<View class="exercise_grid">
+			<Require type="widget" src="com.prodz.tiflexigrid" id="fg"/>
+		</View>
+	</View>
+</Alloy>

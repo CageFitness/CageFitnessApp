@@ -23,6 +23,7 @@
     "com.appcelerator.components": "1.0",
     "com.appcelerator.components.login": "*",
     "com.caffeinalab.titanium.loader": "*",
-    "com.prodz.tiflexigrid": "*"
+    "com.prodz.tiflexigrid": "*",
+    "com.alcoapps.drawermenu": "*"
   }
 }
