@@ -1,3 +1,15 @@
 "#mainView":{
 	// width:100,
+	borderColor:"#b4b4b4",
+	borderWidth:1,
+	// borderRadius:6,	
+}
+"#thumb_title":{
+	bottom:0,
+	backgroundColor:'#b4b4b4',
+	font:{
+		fontSize:12
+	},
+	width:Ti.UI.FILL,
+	textAlign:Ti.UI.TEXT_ALIGNMENT_CENTER,
 }

@@ -1,0 +1,25 @@
+"#mainView":{
+	layout: 'vertical',
+	backgroundColor: '#fff'
+},
+"#mainTopBar":{
+	width: Ti.UI.FILL,
+	height: "60dp",
+	backgroundColor: '#5B96B2',
+	layout: 'horizontal'
+},
+"#menuButton":{
+	width: "60dp",
+	height: "60dp"
+}
+"#exercise_header":{
+	// width: Ti.UI.SIZE,
+	layout:'horizontal',
+	left:0,
+	// right:20,
+	top:20,
+	// bottom:5,
+	height: Ti.UI.SIZE,
+	// backgroundColor:'#d9e153',
+	textAlign:Ti.UI.TEXT_ALIGNMENT_CENTER,
+}

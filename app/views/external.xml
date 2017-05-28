@@ -1,0 +1,8 @@
+<Alloy>
+	<View id="mainView">
+        <View id="mainTopBar">
+            <View id="menuButton"/>
+        </View>
+		<WebView id="external_view" onBeforeload="onBeforeLoad" onLoad="onLoad" />
+	</View>
+</Alloy>

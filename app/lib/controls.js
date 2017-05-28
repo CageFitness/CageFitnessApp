@@ -1,11 +1,27 @@
 var Alloy=require('alloy');
 
 exports.getMainView=function(){
-	return Alloy.createController('mainview');;
+	return Alloy.createController('class_builder');;
 };
 
 exports.getMenuView=function(){
 	return Alloy.createController('menuview');	
+};
+
+exports.getConfigView=function(){
+    return Alloy.createController('config');
+};
+
+exports.getExerciseView=function(){
+    return Alloy.createController('exercise');
+};
+
+exports.getHelpView=function(){
+    return Alloy.createController('external');
+};
+
+exports.getProfileView=function(){
+    return Alloy.createController('profile');
 };
 
 exports.getMenuButton=function(args){
@@ -24,9 +40,4 @@ exports.getMenuButton=function(args){
 	v.add(b);
 	
 	return v;
-};
-
-//Get the Configuration Controller
-exports.getConfigView=function(){
-    return Alloy.createController('config');
 };

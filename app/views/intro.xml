@@ -1,0 +1,7 @@
+<Alloy>
+	<View class="container">
+		<View class="grid_wrapper">
+			<Require type="widget" src="com.prodz.tiflexigrid" id="intro_grid"/>
+		</View>
+	</View>
+</Alloy>

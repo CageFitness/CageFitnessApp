@@ -11,7 +11,8 @@
 		        <!-- <Button id="home_btn" onClick="doWorkout"></Button> -->
 		    </View>
 		    <View id="login" class="step">
-		
+				
+
 		        <ImageView id="login_box" onClick="stepClick">
 		            <Label id="login_field">ENTER USERNAME</Label>
 		            <!-- <Widget src="com.appcelerator.components" name="textfield" id="username" icon="icon-user"/> -->
@@ -19,14 +20,14 @@
 		            <!-- <Widget src="com.appcelerator.components" name="textfield" icon="icon-plane" id="login_btn"/> -->
 		        </ImageView>
 		  
-		        <ScrollView id="login_panel">            
+					<!--<ScrollView id="login_panel">            
 		            <View class="container">
 		                <ImageView id="logo"/>
 		                <TextField id="username"/>
 		                <TextField id="password"/>
 		                <Button id="loginButton" onClick="cageAuthenticate">Login</Button>
 		            </View>
-		        </ScrollView>
+		        </ScrollView> -->
 		
 		        <!-- <Widget src="com.appcelerator.components.login" /> -->
 		
@@ -50,6 +51,9 @@
 		    </View> -->
 		
 		    <View id="step2" class="step">
+
+		    	<Require type="view" src="header" customTitle="Number of Rounds" customImage="images/layout/workout_theme.png" /> 
+		        
 		        <View class="list_wrapper">
 		            <View id="list2" class="list" top="0">
 		            
@@ -106,7 +110,11 @@
 		        </View>
 		    </View>
 		    <View id="step3" class="step">
+		    	<Require type="view" src="header" customTitle="Choose Round Type" customImage="images/layout/round_type.png" /> 
 		        <View class="list_wrapper">
+
+		        	
+		            
 		            <View id="list3" class="list" top="0">
 		                <ListView id="listview_step3" defaultItemTemplate="roundType" top="80">
 		                    <Templates>
@@ -144,6 +152,7 @@
 		        <Button id="step3_5_btn" class="step_btn" onClick="stepClick" title="NEXT"></Button>
 		    </View> -->
 		    <View id="step4" class="step">
+		    	<Require type="view" src="header" customTitle="Number of Exercises" customImage="images/layout/number_exercises.png" /> 
 		        <View class="list_wrapper">
 		            <View id="list4" class="list" top="0">
 		                <ListView id="listview_step4" defaultItemTemplate="numberOfExercises">
@@ -179,6 +188,7 @@
 		        <Button id="step4_btn" class="step_btn" onClick="stepClick" title="NEXT"></Button>
 		    </View>
 		    <View id="step5" class="step">
+		    	<Require type="view" src="header" customTitle="Equipment" customImage="images/layout/equipment.png" /> 
 		        <View class="list_wrapper">
 		            <View id="list5" class="list" top="0">
 		                <ListView id="listview_step5" defaultItemTemplate="template_equipment">
@@ -202,6 +212,7 @@
 		        </View>
 		    </View>
 		    <View id="step6" class="step">
+		    	<Require type="view" src="header" customTitle="Build Workout" customImage="images/layout/build_workout.png" /> 
 		        <View class="list_wrapper">
 		            <View id="list6" class="list" top="0">
 		                <ListView id="listview_step6" onItemClick="handleClickBuildWorkout">
@@ -214,6 +225,7 @@
 		        </View>
 		    </View>
 		    <View id="step7" class="step">
+		    	<Require type="view" src="header" customTitle="Review" customImage="images/layout/review.png" /> 
 		        <View class="list_wrapper">
 		            <View id="list7" class="list" top="0">
 		                <ListView id="listview_step7" defaultItemTemplate="template_begin_workout" onItemClick="handleClickBeginWorkout">
@@ -244,8 +256,11 @@
 		</ScrollableView>
 		
 		<View id="head" class="bar"></View>
+		
 		<Label id="main_title" text="CAGE FITNESS" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER" />
+		
 		<View id="main_line" class="bar"></View>
+		
 		<View id="step_line" class="bar">
 		    <View class="step_track_line"></View>
 		    <View id="step_track">
@@ -267,9 +282,9 @@
 		        <View id="s7" left="414" onClick="stepClickHandler" autoStyle="true" class="step_ball">
 		            <Label class="step_label" text="6" autoStyle="true"></Label>
 		        </View>
-		        <View id="s8" right="0" onClick="stepClickHandler" autoStyle="true" class="step_ball">
+		        <!-- <View id="s8" right="0" onClick="stepClickHandler" autoStyle="true" class="step_ball">
 		            <Label class="step_label" text="7" autoStyle="true"></Label>
-		        </View>
+		        </View> -->
 		    </View>
 		</View>
 

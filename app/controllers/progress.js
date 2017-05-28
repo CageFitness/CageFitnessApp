@@ -44,7 +44,7 @@ function onSuccessWorkoutCallback(e){
     Ti.API.info('THUMB:', e.data.acf.round_selector[0].customizer[0].acf.video_featured.url);
 
 
-	var iterator = e.data.acf.round_selector[1].customizer;
+	var iterator = e.data.acf.round_selector[0].customizer;
 
 	for (i in iterator ){
 		var ob = {};

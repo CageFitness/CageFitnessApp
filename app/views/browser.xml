@@ -1,0 +1,3 @@
+<Alloy>
+    <WebView url="https://cagefitness.com/app/help/terms-of-service" onBeforeload="onBeforeLoad" onLoad="onLoad" />
+</Alloy>

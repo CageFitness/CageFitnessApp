@@ -1,5 +1,82 @@
 // Arguments passed into this controller can be accessed via the `$.args` object directly or:
 var args = $.args;
+var exercises =[];
+
+var xhr = new XHR();
+var workout_url = Alloy.CFG.api_url + Alloy.CFG.workout_test_path;
+
+function loadExercises(){
+	xhr.GET(workout_url, onSuccessWorkoutCallback, onErrorWorkoutCallback, Alloy.Globals.XHROptions);
+}
+
+
+function proccessWorkout(n){
+
+	var round_iterator = n;
+
+	for (round in round_iterator){
+		// Generates round intro slide here...
+		var iterator = round_iterator[round].customizer;
+
+		for (i in iterator ){
+			var ob = {};
+			ob.thumb = iterator[i].acf.video_animated_thumbnail.url;
+			ob.type = "";
+			ob.title = iterator[i].post_title;
+			ob.id = "v"+iterator[i].id;
+			ob.video = iterator[i].acf.video.url;
+			exercises.push(ob);
+		}
+
+
+	}
+
+}
+
+function onSuccessWorkoutCallback(e){
+
+    Ti.API.info('VIDEO:', e.data.acf.round_selector[0].customizer[0].acf.video.url);
+    Ti.API.info('GIF:', e.data.acf.round_selector[0].customizer[0].acf.video_animated_thumbnail.url);
+    Ti.API.info('THUMB:', e.data.acf.round_selector[0].customizer[0].acf.video_featured.url);
+
+	exercises = [];
+
+	var data = e.data.acf.round_selector;
+	proccessWorkout(data);
+
+
+
+
+	createSampleData(exercises);
+}
+
+function onErrorWorkoutCallback(e){
+	Ti.API.info(e.data);
+}
+
+
+
+
+
+loadExercises();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -8,15 +85,15 @@ var items = [];
 
 //CUSTOM FUNCTION TO DEFINE WHAT HAPPENS WHEN AN ITEM IN THE GRID IS CLICKED
 var showGridItemInfo = function(e){
-    alert('Title is: ' + e.source.data.title + '. Image is: ' + e.source.data.image);
+    alert(e.source.data);
 };
 
 //INITIALIZE TIFLEXIGRID
 $.fg.init({
-    columns:3,
-    space:5,
+    columns:4,
+    space:20,
     gridBackgroundColor:'#fff',
-    itemHeightDelta: 0,
+    itemHeightDelta: -90,
     itemBackgroundColor:'#eee',
     itemBorderColor:'transparent',
     itemBorderWidth:0,
@@ -25,43 +102,24 @@ $.fg.init({
 });
 
 //CUSTOM FUNCTION TO CREATE THE ITEMS FOR THE GRID
-function createSampleData(){
+function createSampleData(data){
     
     items = [];
-    
-    //SOME DATA FOR A GALLERY LAYOUT SAMPLE
-    var sample_data = [
-        {title:'sample 1', image:'http://www.lorempixel.com/700/600/'},
-        {title:'sample 2', image:'http://www.lorempixel.com/900/1200/'},
-        {title:'sample 3', image:'http://www.lorempixel.com/400/300/'},
-        {title:'sample 4', image:'http://www.lorempixel.com/600/600/'},
-        {title:'sample 5', image:'http://www.lorempixel.com/400/310/'},
-        {title:'sample 6', image:'http://www.lorempixel.com/410/300/'},
-        {title:'sample 7', image:'http://www.lorempixel.com/500/300/'},
-        {title:'sample 8', image:'http://www.lorempixel.com/300/300/'},
-        {title:'sample 9', image:'http://www.lorempixel.com/450/320/'},
-        {title:'sample 10', image:'http://www.lorempixel.com/523/424/'},
-        {title:'sample 11', image:'http://www.lorempixel.com/610/320/'},
-        {title:'sample 12', image:'http://www.lorempixel.com/450/450/'},
-        {title:'sample 13', image:'http://www.lorempixel.com/620/420/'},
-        {title:'sample 14', image:'http://www.lorempixel.com/710/410/'},
-        {title:'sample 15', image:'http://www.lorempixel.com/500/500/'}
-    ];
-
-    
-    for (var x=0;x<sample_data.length;x++){
+    for (var x=0;x<data.length;x++){
     
         //CREATES A VIEW WITH OUR CUSTOM LAYOUT
         var view = Alloy.createController('item_gallery',{
-            image:sample_data[x].image,
+            image:data[x].thumb,
+            title:data[x].title,
             width:$.fg.getItemWidth(),
             height:$.fg.getItemHeight()
         }).getView();
         
         //THIS IS THE DATA THAT WE WANT AVAILABLE FOR THIS ITEM WHEN onItemClick OCCURS
         var values = {
-            title: sample_data[x].title,
-            image: sample_data[x].image
+            title: data[x].title,
+            image: data[x].thumb,
+            video: data[x].video
         };
         
         //NOW WE PUSH TO THE ARRAY THE VIEW AND THE DATA
@@ -75,6 +133,6 @@ function createSampleData(){
     $.fg.addGridItems(items);
     
 };
-createSampleData();
+
 
 

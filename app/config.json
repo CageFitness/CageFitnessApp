@@ -7,7 +7,10 @@
     "workout_path": "/wp-json/wp/v2/workout",
     "exercise_path": "/wp-json/wp/v2/exercise",
     "workout_test_path": "/wp-json/acf/v3/workout/13035",
-    "user_path": "/wp-json/wp/v2/users/me"
+    "user_path": "/wp-json/wp/v2/users/me",
+    "styles":{
+    	"brandColor":"#d9e153"
+    }
   },
   "env:development": {},
   "env:test": {},

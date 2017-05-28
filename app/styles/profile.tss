@@ -1,0 +1,21 @@
+"#mainView":{
+	layout: 'vertical',
+	backgroundColor: '#fff'
+},
+"#mainTopBar":{
+	width: Ti.UI.FILL,
+	height: "60dp",
+	backgroundColor: '#5B96B2',
+	layout: 'horizontal'
+},
+"#menuButton":{
+	width: "60dp",
+	height: "60dp"
+}
+
+".profile_picture":{
+	backgroundColor:'blue',
+}
+".workout_list":{
+	backgroundColor:'red',
+}

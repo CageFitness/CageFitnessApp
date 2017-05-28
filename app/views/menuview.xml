@@ -2,27 +2,41 @@
 	<View id="menuView">
 		<View id="menuTopBar"/>
 		<TableView class="menuTable" id="menuTable">
-			<TableViewRow class="tableRow" id="row1">
+			<TableViewRow class="tableRow" id="menu_builder">
 				<View id="rowContainer">
-					<View id="rowSkull" class="rowIcon"/><Label id="rowLabel" class="rowLabel">Class Builder</Label>
+					<View id="rowSkull" class="rowIcon"/>
+					<Label id="rowLabel" class="rowLabel">Class Builder</Label>
 				</View>
 			</TableViewRow>
-			<TableViewRow class="tableRow" id="row2">
+			<TableViewRow class="tableRow" id="menu_exercises">
 				<View id="rowContainer">
-					<View id="rowGear" class="rowIcon"/><Label id="rowLabel" class="rowLabel">Workouts</Label>
-				</View>
-				
-			</TableViewRow>
-			<TableViewRow class="tableRow" id="row3">
-				<View id="rowContainer">
-					<View id="rowGear" class="rowIcon"/><Label id="rowLabel" class="rowLabel">Exercises</Label>
+					<View id="rowExercises" class="rowIcon"/>
+					<Label id="rowLabel" class="rowLabel">Exercises</Label>
 				</View>
 			</TableViewRow>
-			<TableViewRow class="tableRow" id="row4">
+			<TableViewRow class="tableRow" id="menu_workouts">
 				<View id="rowContainer">
-					<View id="rowGear" class="rowIcon"/><Label id="rowLabel" class="rowLabel">Profile</Label>
+					<View id="rowWorkouts" class="rowIcon"/>
+					<Label id="rowLabel" class="rowLabel">Workouts</Label>
 				</View>
-			</TableViewRow>		
+			</TableViewRow> 
+			<TableViewRow class="tableRow" id="menu_help">
+				<View id="rowContainer">
+					<View id="rowHelp" class="rowIcon"/>
+					<Label id="rowLabel" class="rowLabel">Help</Label>
+				</View>
+			</TableViewRow>	
+			<TableViewRow class="tableRow" id="menu_profile">
+				<View id="rowContainer">
+					<View id="rowProfile" class="rowIcon"/>
+					<Label id="rowLabel" class="rowLabel">Profile</Label>
+				</View>
+			</TableViewRow>
+			<!-- <TableViewRow class="tableRow" id="menu_configuration">
+				<View id="rowContainer">
+					<View id="rowGear" class="rowIcon"/><Label id="rowLabel" class="rowLabel">Configuration</Label>
+				</View>
+			</TableViewRow> -->						
 		</TableView>
 	</View>
 </Alloy>

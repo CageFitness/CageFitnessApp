@@ -1,6 +1,6 @@
 "#mainView":{
 	layout: 'vertical',
-	backgroundColor: '#cacaca'
+	backgroundColor: '#fff'
 },
 "#mainTopBar":{
 	width: Ti.UI.FILL,

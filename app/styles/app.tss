@@ -1,17 +1,14 @@
-".container[platform=ios]": {
-	top: 20,
-	backgroundColor:"white",
-	statusBarStyle:Titanium.UI.iPhone.StatusBar.LIGHT_CONTENT,
-	orientationModes: [Ti.UI.PORTRAIT,Ti.UI.LANDSCAPE_LEFT,Ti.UI.LANDSCAPE_RIGHT,Ti.UI.UPSIDE_PORTRAIT],
-	navBarHidden: true,
+
+".uniq":{
+	backgroundColor:"black"
 }
 
-".container[platform=android]": {
-	top: 20,
+".container": {
+	top: 50,
 	backgroundColor:"white",
-	orientationModes: [Ti.UI.PORTRAIT,Ti.UI.LANDSCAPE_LEFT,Ti.UI.LANDSCAPE_RIGHT],
+	statusBarStyle:Titanium.UI.iPhone.StatusBar.LIGHT_CONTENT,
+	// orientationModes: [Ti.UI.PORTRAIT,Ti.UI.LANDSCAPE_LEFT,Ti.UI.LANDSCAPE_RIGHT,Ti.UI.UPSIDE_PORTRAIT],
 	navBarHidden: true,
-	exitOnClose: true
 }
 
 
@@ -194,10 +191,10 @@
 }
 
 "#step_line":{
-	// backgroundColor:"green",
-	backgroundColor:"#f1f1f1",
+	backgroundColor:"red",
+	// backgroundColor:"#f1f1f1",
 	height:54,
-	top:190
+	top:190,
 	
 }
 ".check":{
@@ -336,28 +333,28 @@
 }
 
 "#step1":{
-    backgroundImage:"images/STEP1.png"
+    // backgroundImage:"images/STEP1.png"
 }
 "#step2":{
-    backgroundImage:"images/STEP2.png"
+    // backgroundImage:"images/STEP2.png"
 }
 "#step3":{
-    backgroundImage:"images/STEP3.png"
+    // backgroundImage:"images/STEP3.png"
 }
 "#step3_5":{
-    backgroundImage:"images/STEP3.5.png"
+    // backgroundImage:"images/STEP3.5.png"
 }
 "#step4":{
-    backgroundImage:"images/STEP4.png"
+    // backgroundImage:"images/STEP4.png"
 }
 "#step5":{
-    backgroundImage:"images/STEP5.png"
+    // backgroundImage:"images/STEP5.png"
 }
 "#step6":{
-    backgroundImage:"images/STEP6.png"
+    // backgroundImage:"images/STEP6.png"
 }
 "#step7":{
-    backgroundImage:"images/STEP7.png"
+    // backgroundImage:"images/STEP7.png"
 }
 
 

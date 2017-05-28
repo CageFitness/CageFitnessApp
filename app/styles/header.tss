@@ -1,0 +1,42 @@
+
+".container" : {
+  
+}
+
+".header_bg":{
+	top:0,
+	width: Ti.UI.FILL,
+	// height: Ti.UI.FILL,
+	height: 120,
+	// backgroundColor:"#f5f5f5",
+	backgroundColor:"red"
+}
+"#header_overlay":{
+	width: Ti.UI.FILL,
+	height: Ti.UI.FILL,
+	// backgroundColor:"red",
+	opacity:0.5,
+    backgroundGradient: {
+            type: "linear",
+            startPoint: { x: "0%", y:"0%"},
+            endPoint:   { x: "0%", y:"100%"},
+            colors: [
+                { color: "#3C3C3C", offset: 0.0 },//302E2E
+                { color: "#696969", offset: 1.0 }
+            ]
+        }	
+}
+"#header_title":{
+	color:"white",
+    font: {
+        fontWeight: "normal",
+        fontSize:20
+    },
+
+}
+"#line":{
+	top:0,
+	width:Ti.UI.FILL,
+	height:8,
+	backgroundColor:'#d9e153'
+}

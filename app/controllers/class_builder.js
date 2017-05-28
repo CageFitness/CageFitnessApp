@@ -108,7 +108,7 @@ function updateSteps(page){
     var par = $.step_track;
 
     for(istep in $.step_track.children){
-        // Ti.API.info( JSON.stringify(par.children[istep]) );
+        Ti.API.info( JSON.stringify(par.children[istep]) );
         var item = par.children[istep];
         item.backgroundColor="#d9e153";
         item.children[0].color = "#fff";
@@ -340,77 +340,3 @@ Alloy.Globals.scrollableView = $.scrollableView;
 // stepClickHandler();
 $.scrollableView.scrollToView(0);
 
-
-// var items = [
-// {data: {title : "1"}},
-// {data: {title : "1"}},
-// {data: {title : "1"}},
-// {data: {title : "1"}},
-// {data: {title : "1"}},
-// {data: {title : "1"}},
-// {data: {title : "1"}},
-// {data: {title : "1"}},
-// {data: {title : "1"}},
-// {data: {title : "1"}},
-//     ];
-
-// var grid = Alloy.createWidget('com.prodz.tiflexigrid');
-// grid.init({
-//     width:$.button_matrix.getWidth(),
-//     // itemHeightDelta:100,
-//     data:items,
-//     columns:5,
-//     space:5,
-//     itemBorderColor:'#f90f90',
-//     itemBorderWidth:1,
-//     itemBackgroundColor:"#666666",
-//     itemBorderRadius:6,
-// });
-// grid.setOnItemClick(function(e){
-//     Ti.API.info('DATA',e);
-// });
-// $.step2.add( grid.getView() );
-
-
-
-
-
-// var items = [
-//         {
-//             mass : {text : "1.00794"}, 
-//             name : {text : "Hydrogen"},
-//             number : { text : "1"},
-//             symbol : { color : "#090", text : "H"}
-//         },
-//         {
-//             mass : {text : "4.002602"}, 
-//             name : {text : "Helium"},
-//             number : { text : "2"},
-//             symbol : { color : "#090", text : "He"}
-//         },
-//         {
-//             mass : {text : "6.941"}, 
-//             name : {text : "Lithium"},
-//             number : { text : "3"},
-//             symbol : { color : "#090", text : "Li"}
-//         },
-//         {
-//             mass : {text : "1.00794"}, 
-//             name : {text : "Hydrogen"},
-//             number : { text : "1"},
-//             symbol : { color : "#090", text : "H"}
-//         },
-//         {
-//             mass : {text : "4.002602"}, 
-//             name : {text : "Helium"},
-//             number : { text : "2"},
-//             symbol : { color : "#090", text : "He"}
-//         },
-//         {
-//             mass : {text : "6.941"}, 
-//             name : {text : "Lithium"},
-//             number : { text : "3"},
-//             symbol : { color : "#090", text : "Li"}
-//         }        
-//     ];
-// $.elementsList.sections[0].setItems(items);

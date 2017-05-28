@@ -1,0 +1,13 @@
+<Alloy>
+	<View id="mainView">
+        <View id="mainTopBar">
+            <View id="menuButton"/>
+        </View>		
+		<View class="profile_picture">
+			<ImageView class="pic"></ImageView>
+		</View>
+		<View class="workout_list">
+			<Label>Testing</Label>
+		</View>
+	</View>
+</Alloy>

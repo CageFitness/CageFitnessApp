@@ -1,0 +1,12 @@
+<Alloy>
+    <View class="wrapper">
+    	<TabbedBar onClick="tabbedBarSelectedIndex" class="tabbed_bar">
+    	    <Labels>
+    	        <Label slug="body-weight">Body Weight</Label>
+    	        <Label slug="bags">CageFitness Bags</Label>
+    	        <Label slug="body-weight">Body Weight</Label>
+    	        <Label slug="body-weight">Body Weight</Label>
+    	    </Labels>
+    	</TabbedBar>
+    </View>
+</Alloy>

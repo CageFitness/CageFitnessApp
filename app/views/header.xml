@@ -1,0 +1,7 @@
+<Alloy>
+	<View id="header_background" class="header_bg">
+		<View id="header_overlay"></View>
+		<View id="line"></View>
+		<Label id="header_title"></Label>
+	</View>
+</Alloy>

@@ -1,0 +1,13 @@
+".tabbed_bar": {
+	left:20,
+	tintColor: 'red',
+	width: Ti.UI.SIZE,
+	index: 1,
+	backgroundColor:'gray',
+	height:45
+}
+".wrapper":{
+	// left:20,
+	width:Ti.UI.SIZE,
+	height:Ti.UI.SIZE
+}

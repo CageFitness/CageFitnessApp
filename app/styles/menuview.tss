@@ -18,17 +18,29 @@
 ".rowIcon":{
 	left: 5,
 	top: 7,
-	width: "20dp",
-	height: "20dp"
+	width: 22,
+	height: 24
 },
 "#rowSkull":{
-	backgroundImage: '/21-skull.png'
+	backgroundImage: 'images/icons/builder.png'
 },
 "#rowGear":{
-	backgroundImage: '/19-gear.png'
+	backgroundImage: 'images/icons/builder.png'
+},
+"#rowHelp":{
+	backgroundImage: 'images/icons/help.png'
+},
+"#rowProfile":{
+	backgroundImage: 'images/icons/profile.png'
+},
+"#rowExercises":{
+	backgroundImage: 'images/icons/exercises.png'
+},
+"#rowWorkouts":{
+	backgroundImage: 'images/icons/workouts.png'
 },
 "#rowPicFrame":{
-	backgroundImage: '/41-picture-frame.png'
+	backgroundImage: 'images/icons/profile.png'
 },
 ".rowLabel":{
 	top: 7,
