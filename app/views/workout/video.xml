@@ -1,0 +1,35 @@
+<Alloy>
+    <View id="vid" class="video_container">
+        <View class="verticals">
+            <View id="video_wrapper">
+                <View id="video_player">
+                    <Label>[VIDEO_PLACEHOLDER]</Label>
+                    
+                    <View id="full_video_wrapper">
+                    	<!-- [VIDEO.INSERTED.HERE] -->
+                    </View>
+                    <!-- <ImageView id="video_player_thumb"></ImageView> -->
+                </View>
+            </View>
+            <View id="controls_wrapper">
+                <View id="controls">
+                    <View class="control_element">
+                        <Label>[COUNTER]</Label>
+                    </View>
+                    <View class="control_element">
+                        <Label>[COMING_UP]</Label>
+                    </View>
+                    <View class="control_element">
+                        <Label>[ANIMATED_GIF]</Label>
+                    </View>
+                </View>
+            </View>
+        </View>
+        <View class="titles">
+            <Label id="title"></Label>
+            <Label id="subtitle"></Label>
+            <Label id="counter"></Label>
+        </View>
+    </View>
+</Alloy>
+

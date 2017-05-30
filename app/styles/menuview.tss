@@ -4,10 +4,19 @@
 },
 "#menuTopBar":{
 	width: Ti.UI.FILL,
-	height: "60dp",
-	backgroundColor: '#3D3D3D',
+	height: "70dp",
+	// backgroundColor: '#3D3D3D',
+	backgroundColor: '#e2e2e2',
 	layout: 'horizontal'
 },
+
+"#main_line":{
+	top:0,
+	width: Ti.UI.FILL,
+	height: "4dp",
+	backgroundColor: Alloy.CFG.styles.brandColor,
+},
+
 ".tableRow":{
 	height: '50dp'
 },
@@ -16,7 +25,7 @@
 	layout:'horizontal'
 },
 ".rowIcon":{
-	left: 5,
+	left: 10,
 	top: 7,
 	width: 22,
 	height: 24
@@ -43,11 +52,12 @@
 	backgroundImage: 'images/icons/profile.png'
 },
 ".rowLabel":{
-	top: 7,
+	top: 8,
 	left: 10,
 	height: "20dp",
 	font:{
-		fontSize: "15dp"
+		fontSize: "17dp",
+		fontWeight:'bold'
 	},
 	color: "#000"
 	

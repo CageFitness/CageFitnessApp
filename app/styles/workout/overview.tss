@@ -1,0 +1,114 @@
+
+".overview_container":{
+	layout:'vertical',
+}
+
+"#title_wrapper":{
+	top:0,
+	width:Ti.UI.SIZE,
+	height:Ti.UI.SIZE
+}
+"#title":{
+	// top:10,
+	color:'#d9e254',
+	width:Ti.UI.SIZE,
+	height:Ti.UI.SIZE,
+	textAlign:Ti.UI.TEXT_ALIGNMENT_CENTER,
+	font: {
+	    fontSize: 64,
+	    fontFamily: 'MuseoSans-700',
+	    fontWeight: 'normal',
+	}    
+}
+"#title_type":{
+	left:20,
+	color:'#000',
+	width:Ti.UI.SIZE,
+	height:Ti.UI.SIZE,
+	textAlign:Ti.UI.TEXT_ALIGNMENT_CENTER,
+	font: {
+	    fontSize: 64,
+	    fontFamily: 'MuseoSans-700',
+	    fontWeight: 'normal',
+	}    
+}
+
+"#subtitle":{
+	top:5,
+	color:'#000',
+	width:Ti.UI.FILL,
+	height:Ti.UI.SIZE,
+	textAlign:Ti.UI.TEXT_ALIGNMENT_CENTER,
+	font: {
+	    fontSize: 26,
+	    fontFamily: 'MuseoSans-700',
+	    fontWeight: 'normal',
+	}  
+}
+
+"#counter_big":{
+	top:10,
+	color:'#d9e254',
+	width:Ti.UI.FILL,
+	height:Ti.UI.SIZE,
+	textAlign:Ti.UI.TEXT_ALIGNMENT_CENTER,
+	font: {
+	    fontSize: 64,
+	    fontFamily: 'MuseoSans-700',
+	    fontWeight: 'normal',
+	} 	
+}
+
+
+
+
+"#elementsList":{
+	top:0,
+	width:'70%',
+	// backgroundColor:'red',
+	// height:200,
+
+}
+
+"#symbol": {
+	left: 15,
+	color: "black",
+	font: { fontSize: 34, fontWeight: 'bold' }
+},
+"#symbol[platform=android]": {
+	left: 0
+}
+"#atomProperties": {
+	top: 0, left: 80, right: 0, bottom: 0,
+	layout: "vertical"
+},
+"#atomProperties[platform=android]": {
+	left: 65
+},
+"#name": {
+	left: 0, top: 4,
+	color: "black",
+	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
+	font: { fontSize: 16 }
+},
+"#secondLine": {
+	left: 0, right: 0,
+	layout: "horizontal"
+},
+".fieldLabel": {
+	color:"#999"
+},
+".line2": {
+	font: { fontSize: 10 }
+},
+"#number": {
+	width: 30,
+	color: 'red'
+},
+"#mass": {
+	width: 50,
+	color: "blue"
+}
+"#slide_data":{
+	color: 'purple'
+}

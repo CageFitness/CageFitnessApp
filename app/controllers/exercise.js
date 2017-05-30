@@ -63,24 +63,6 @@ loadExercises();
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 var items = [];
 
 //CUSTOM FUNCTION TO DEFINE WHAT HAPPENS WHEN AN ITEM IN THE GRID IS CLICKED

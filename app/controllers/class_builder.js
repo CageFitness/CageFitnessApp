@@ -28,7 +28,7 @@ function onSuccessOptionsCallback(e){
     // Ti.API.info('SUCCESS:', e.data);
     Ti.App.Properties.setString('config', e.data );
     var config = JSON.parse( Ti.App.Properties.getString('config') );
-    Ti.API.info( 'DURATION BREAK:', config.acf['round_configs'].length );
+    Ti.API.info( 'ROUND CONFIGURATION:', config.acf['round_configs'].length );
     Ti.API.info( 'OPTS ROUNDS:', config.acf['opt_rounds'] );
 }
 
@@ -66,7 +66,7 @@ function cageAuthenticate(){
 function callOptions(tkn){
     Ti.API.info('TOKEN: ', tkn);
     var data = {};
-    var validate_url = Alloy.CFG.api_url + Alloy.CFG.validate_url;
+    var validate_url = Alloy.CFG.api_url + Alloy.CFG.validate_path;
     var config_url = Alloy.CFG.api_url + Alloy.CFG.config_path;
 
     xhr.setStaticOptions({
@@ -339,4 +339,8 @@ Alloy.Globals.scrollableView = $.scrollableView;
 // Alloy.createController('dialog', args).getView().open();
 // stepClickHandler();
 $.scrollableView.scrollToView(0);
+
+cageAuthenticate();
+
+
 

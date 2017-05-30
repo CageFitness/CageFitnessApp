@@ -1,0 +1,12 @@
+<Alloy>
+    <View id="mainTopBar">
+		<View class="verticals">
+	        <View id="button_wrapper">
+	        	<ImageView id="menuButton" />
+	        </View>
+	        <View id="main_line"></View>			
+		</View>
+		<Label id="main_title">CAGE FITNESS</Label>
+    </View>
+</Alloy>
+

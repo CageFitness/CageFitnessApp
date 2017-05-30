@@ -1,7 +1,7 @@
 var Alloy=require('alloy');
 
 exports.getMainView=function(){
-	return Alloy.createController('class_builder');;
+	return Alloy.createController('class_builder');
 };
 
 exports.getMenuView=function(){
@@ -24,17 +24,24 @@ exports.getProfileView=function(){
     return Alloy.createController('profile');
 };
 
+exports.getWorkoutView=function(){
+    return Alloy.createController('workout_player');
+};
+
 exports.getMenuButton=function(args){
 	var v=Ti.UI.createView({
 		height: args.h,
 		width: args.w,
-		backgroundColor: '#A1D0E0'
+		backgroundColor: '#fff',
 	});
 	
 	var b=Ti.UI.createView({
-		height: "20dp",
-		width: "20dp",
-		backgroundImage: "/106-sliders.png"
+		top:25,
+		height: 30,
+		width: 30,
+		backgroundImage: "images/icons/menu.png",
+		// bubbleParent:true
+		touchEnabled:false,
 	});
 	
 	v.add(b);

@@ -12,10 +12,3 @@ var image = args.customImage || 'default.png';
 $.header_title.text = title.toUpperCase();
 $.header_background.backgroundImage = image;
 
-
- 
-// add children if there are any
-_.each(args.children || [], function(child) {
-	Ti.API.info('ADDING CHILD:',child);
-    $.info.add(child);
-});

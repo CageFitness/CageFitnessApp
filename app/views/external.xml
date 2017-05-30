@@ -1,8 +1,6 @@
 <Alloy>
 	<View id="mainView">
-        <View id="mainTopBar">
-            <View id="menuButton"/>
-        </View>
+		<Require src="topbar"></Require>
 		<WebView id="external_view" onBeforeload="onBeforeLoad" onLoad="onLoad" />
 	</View>
 </Alloy>

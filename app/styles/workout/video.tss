@@ -1,0 +1,67 @@
+
+".video_container":{
+	// layout:'vertical',
+	// height:Ti.UI.SIZE,
+}
+".titles":{
+	top:0,
+}
+
+".verticals":{
+	layout:'vertical',
+	height:Ti.UI.FILL,
+	backgroundColor:'pink'
+},
+"#title":{
+	top:0,
+	color:'#000',
+	width:Ti.UI.FILL,
+	height:Ti.UI.SIZE,
+	textAlign:Ti.UI.TEXT_ALIGNMENT_CENTER,
+	font: {
+	    fontSize: 28,
+	    fontFamily: 'MuseoSans-700',
+	    fontWeight: 'normal',
+	}    
+}
+"#subtitle":{
+	top:10,
+	left:10,
+}
+"#counter":{
+	top:10,
+	right:10,
+}
+"#video_wrapper":{
+	top:0,
+	height:'75%',
+	width:Ti.UI.SIZE,
+	backgroundColor:'purple',
+}
+"#video_player":{
+	top:38,
+	height:'100%',
+	width:Ti.UI.FILL,
+	backgroundColor:'yellow',
+}
+"#controls_wrapper":{
+	height:'25%',
+	backgroundColor: 'brown'
+}
+"#controls":{
+	layout:'horizontal',
+	top:0,
+	backgroundColor:'red',
+	height:Ti.UI.SIZE,
+	width:Ti.UI.SIZE,
+}
+
+".control_element":{
+	// layout:'horizontal',
+	top:0,
+	width:'33.333%',
+	backgroundColor:'blue',
+	borderColor:'black',
+	borderWidth:1,
+	height:Ti.UI.FILL,
+}

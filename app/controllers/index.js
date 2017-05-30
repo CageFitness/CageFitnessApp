@@ -7,6 +7,7 @@ var mainView 		= controls.getMainView();
 var exerciseView 	= controls.getExerciseView();
 var helpView 		= controls.getHelpView();
 var profileView 	= controls.getProfileView();
+var workoutView 	= controls.getWorkoutView();
 // mainView.menuButton.add(controls.getMenuButton({
 //     h: '60',
 //     w: '60'
@@ -28,21 +29,29 @@ menuitems['menu_exercises']= {view:exerciseView, index:2};
 menuitems['menu_help']= {view:helpView, index:3};
 menuitems['menu_profile']= {view:profileView, index:4};
 // menuitems['menu_configuration']= {view:'configView'};
-// menuitems['menu_workouts']= {view:workoutsView};
+menuitems['menu_workouts']= {view:workoutView, index:5};
+
+
+Ti.App.addEventListener('cage/tobar/menu_button/close', function(e){
+
+	// Ti.API.info('CLOSE.BUTTON.CALLED.ON:'+JSON.stringify(e.winref));
+	$.drawermenu.showhidemenu();
+	$.drawermenu.menuOpen=!$.drawermenu.menuOpen;	
+
+});
 
 function initWindowButtons(items){
 
 	for (each in items){
 		var v = items[each].view;
 		Ti.API.info("WHATS V: ",each);
-		v.menuButton.add(controls.getMenuButton({h: '60', w: '60'}));
-		v.menuButton.addEventListener('click',function(){
+		// v.menuButton.add(controls.getMenuButton({h: '70dp', w: '70dp'}));
 
-			Ti.API.info('ONCLICK.SHOULD.WORK');
-		    $.drawermenu.showhidemenu();
-		    $.drawermenu.menuOpen=!$.drawermenu.menuOpen;
-
-		});
+		// v.menuButton.addEventListener('click',function(e){
+		// 	Ti.API.info('ONCLICK.SHOULD.WORK:',e.target);
+		//     $.drawermenu.showhidemenu();
+		//     $.drawermenu.menuOpen=!$.drawermenu.menuOpen;
+		// });
 	}
 }
 
@@ -119,40 +128,6 @@ menuView.menuTable.addEventListener('click',function(e){
 	Ti.API.info('CURRENT CHILDREN AFTER: ',$.drawermenu.drawermainview.children)
 
 
-
-    // if(e.rowData.id==="menu_builder"){
-    //     if(activeView != 1){
-    //         $.drawermenu.drawermainview.remove(exerciseView.getView());
-    //         activeView = 1;
-    //     } else {
-    //         activeView = 1;
-    //     }
-    // } 
-    // if(e.rowData.id==="menu_exercises"){
-    //     if(activeView !=2 ){
-    //         $.drawermenu.drawermainview.add(exerciseView.getView());
-    //         activeView = 2;
-    //     } else{
-    //         activeView = 2;
-    //     }
-    // }
-    
-    // if(e.rowData.id==="menu_help"){
-    //     if(activeView !=3 ){
-    //         $.drawermenu.drawermainview.add(helpView.getView());
-    //         activeView = 3;
-    //     } else{
-    //         activeView = 3;
-    //     }
-    // }
-    // if(e.rowData.id==="menu_profile"){
-    //     if(activeView !=4 ){
-    //         $.drawermenu.drawermainview.add(profileView.getView());
-    //         activeView = 4;
-    //     } else{
-    //         activeView = 4;
-    //     }
-    // }    
 
     Ti.API.info(e.rowData.id); 
 });

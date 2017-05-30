@@ -1,8 +1,6 @@
 <Alloy>
 	<View id="mainView">
-        <View id="mainTopBar">
-            <View id="menuButton"/>
-        </View>		
+		<Require src="topbar"></Require>
 		<View class="profile_picture">
 			<ImageView class="pic"></ImageView>
 		</View>

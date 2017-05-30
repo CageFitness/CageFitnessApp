@@ -1,8 +1,6 @@
 <Alloy>
 	<View id="mainView">
-        <View id="mainTopBar">
-            <View id="menuButton"/>
-        </View>
+		<Require src="topbar"></Require>
         <View id="exercise_header">
         	<Require type="view" src="exercise_filters" id="filter_equipment"/>
         	<!-- <Require type="view" src="exercise_filters" id="filter_type"/> -->

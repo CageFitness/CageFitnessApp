@@ -1,4 +1,23 @@
 <Alloy>
-	<View class="container">
-	</View>
+    <View id="mainView" class="container">
+    	<Require src="topbar"></Require>
+        <ScrollableView id="scrollable" onScrollend="scrollableViewDidScroll">
+        </ScrollableView>
+		<View id="toolbar_wrapper">
+	        <Toolbar class="toolbar" platform="ios">
+	            <Items>
+	                <Button id="scrollTo" title="Scroll to View 2" onClick="scrollToView" />
+	                <FlexSpace/>
+	                <Button id="add" title="Add new View" onClick="addNewView" />
+	                <FlexSpace/>
+	                <Button id="remove" title="Remove last View" onClick="removeLastView" />
+	                <FlexSpace/>
+	                <Button id="prev" title="Prev" onClick="scrollPrev" />
+	                <FlexSpace/>
+	                <Button id="next" title="Next" onClick="scrollNext" />
+	            </Items>
+	        </Toolbar>			
+		</View>
+    </View>
 </Alloy>
+

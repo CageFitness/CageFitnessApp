@@ -1,4 +1,18 @@
+"#scrollable": {
+	top: 0,
+	showPagingControl: true,
+	pagingControlColor: Alloy.CFG.styles.brandColor,
+	height:'80%',
+	// height:Ti.UI.FILL,
+}
 
-".container" : {
-  
+".toolbar": {
+	top: 0,
+	barColor:'#f8f8f8',
+}
+
+"#toolbar_wrapper": {
+	top: 0,
+	backgroundColor:'green',
+	height:'20%',
 }

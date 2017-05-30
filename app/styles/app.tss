@@ -1,4 +1,5 @@
 
+
 ".uniq":{
 	backgroundColor:"black"
 }
@@ -10,6 +11,27 @@
 	// orientationModes: [Ti.UI.PORTRAIT,Ti.UI.LANDSCAPE_LEFT,Ti.UI.LANDSCAPE_RIGHT,Ti.UI.UPSIDE_PORTRAIT],
 	navBarHidden: true,
 }
+
+
+
+"#mainView":{
+	layout: 'vertical',
+	backgroundColor: '#fff'
+},
+
+// "#mainTopBar":{
+// 	width: Ti.UI.FILL,
+// 	height: "70dp",
+// 	backgroundColor: '#fff',
+// 	layout: 'horizontal'
+// },
+// "#menuButton":{
+// 	width: "70dp",
+// 	height: "70dp",
+// 	backgroundColor:'red',
+// }
+
+
 
 
 
@@ -127,9 +149,10 @@
 
 "#main_title":{
 	top:30,
-	fontSize:24,
 	color:"#242424",
-
+	font:{
+		fontSize:20,
+	}
 }
 
 "#btn5":{
