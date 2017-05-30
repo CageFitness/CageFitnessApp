@@ -1,5 +1,18 @@
 var args = $.args;
 
+var NappDownloadManager = require("dk.napp.downloadmanager");
+	NappDownloadManager.addEventListener('progress', handleDownloadManager);
+	NappDownloadManager.addEventListener('overallprogress', handleDownloadManager);
+	NappDownloadManager.addEventListener('paused', handleDownloadManager);
+	NappDownloadManager.addEventListener('failed', handleDownloadManager);
+	NappDownloadManager.addEventListener('completed', handleDownloadManager);
+	NappDownloadManager.addEventListener('cancelled', handleDownloadManager);	
+	NappDownloadManager.addEventListener('started', handleDownloadManager);
+
+function handleDownloadManager(e){
+	Ti.API.info('DL.EVENT:', e);
+}
+
 var log = require('log');
 
 var xhr = new XHR();
