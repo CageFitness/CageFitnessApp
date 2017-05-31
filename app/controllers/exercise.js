@@ -35,9 +35,9 @@ function proccessWorkout(n){
 
 function onSuccessWorkoutCallback(e){
 
-    Ti.API.info('VIDEO:', e.data.acf.round_selector[0].customizer[0].acf.video.url);
-    Ti.API.info('GIF:', e.data.acf.round_selector[0].customizer[0].acf.video_animated_thumbnail.url);
-    Ti.API.info('THUMB:', e.data.acf.round_selector[0].customizer[0].acf.video_featured.url);
+    // Ti.API.info('VIDEO:', e.data.acf.round_selector[0].customizer[0].acf.video.url);
+    // Ti.API.info('GIF:', e.data.acf.round_selector[0].customizer[0].acf.video_animated_thumbnail.url);
+    // Ti.API.info('THUMB:', e.data.acf.round_selector[0].customizer[0].acf.video_featured.url);
 
 	exercises = [];
 
@@ -53,6 +53,11 @@ function onSuccessWorkoutCallback(e){
 function onErrorWorkoutCallback(e){
 	Ti.API.info(e.data);
 }
+
+
+
+
+
 
 
 

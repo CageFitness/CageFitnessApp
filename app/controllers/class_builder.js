@@ -151,6 +151,11 @@ $.scrollableView.addEventListener('scrollend',function(e){
     updateSteps(e.currentPage)
 });
 
+$.scrollableView.addEventListener('dragstart',function(e){
+    // Ti.API.info(JSON.stringify(e));
+    // updateSteps(e.currentPage)
+    Ti.App.fireEvent('cage/class_builder/dragstart',{'hello':'world'});
+});
 
 // $.list1.addEventListener('itemclick', function(e){
 //     var section = $.list1.sections[e.sectionIndex];

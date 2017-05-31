@@ -31,20 +31,26 @@ menuitems['menu_profile']= {view:profileView, index:4};
 // menuitems['menu_configuration']= {view:'configView'};
 menuitems['menu_workouts']= {view:workoutView, index:5};
 
+Ti.App.addEventListener('cage/downloadmanager/progress', function(e){
+	$.dl_progress_text.text = e.percent_pretty + ' | ' + e.bps_pretty;
+	$.dl_progress_bar.width = e.percent_pretty + '%';
+	Ti.API.info('OVERALL: ', e.overall.total, e.overall.downloaded, e.overall.remaining);
+	$.pb.value = e.overall.downloaded; 
+	$.pb.min = 0;
+	$.pb.max = e.overall.total;
+
+});
 
 Ti.App.addEventListener('cage/tobar/menu_button/close', function(e){
-
-	// Ti.API.info('CLOSE.BUTTON.CALLED.ON:'+JSON.stringify(e.winref));
 	$.drawermenu.showhidemenu();
 	$.drawermenu.menuOpen=!$.drawermenu.menuOpen;	
-
 });
 
 function initWindowButtons(items){
 
 	for (each in items){
 		var v = items[each].view;
-		Ti.API.info("WHATS V: ",each);
+		Ti.API.info("MENU.ITEMS: ",each);
 		// v.menuButton.add(controls.getMenuButton({h: '70dp', w: '70dp'}));
 
 		// v.menuButton.addEventListener('click',function(e){

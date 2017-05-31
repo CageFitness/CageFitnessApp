@@ -1,6 +1,13 @@
 <Alloy>
     <Window class="container">
-        <Require type="widget" src="com.alcoapps.drawermenu" id="drawermenu"/>
-        
+        <Require type="widget" src="com.alcoapps.drawermenu" id="drawermenu" />
+        <View id="dl_progress">
+            <View id="dl_progress_wrap">
+                <View id="dl_progress_bar"></View>
+                <ProgressBar id="pb" />
+                <Label id="dl_progress_text">REFERENCES</Label>
+            </View>
+        </View>
     </Window>
 </Alloy>
+

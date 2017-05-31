@@ -12,7 +12,8 @@ var exercise_number = args.exercise_number || '';
 var exercise_equipment = args.exercise_equipment || '';
 var exercise_type = args.exercise_type || '';
 
-$.overview.backgroundColor = Utils.getRandomColor();
+// $.overview.backgroundColor = Utils.getRandomColor();
+$.overview.backgroundColor = '#fff';
 	$.title.text = title;
 	$.title_type.text = exercise_type.label;
 	$.subtitle.text = 'Equipment: ' + exercise_equipment.label;

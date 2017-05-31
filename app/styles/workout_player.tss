@@ -1,7 +1,8 @@
 "#scrollable": {
 	top: 0,
 	showPagingControl: true,
-	pagingControlColor: Alloy.CFG.styles.brandColor,
+	// pagingControlColor: Alloy.CFG.styles.brandColor,
+	pagingControlColor: '#f8f8f8',
 	height:'80%',
 	// height:Ti.UI.FILL,
 }
@@ -15,4 +16,18 @@
 	top: 0,
 	backgroundColor:'green',
 	height:'20%',
+}
+
+
+"#pb":{
+    top: 0,
+    width: 250,
+    min: 0,
+    max: 10,
+    value: 8,
+    color: 'blue',
+    message: 'Downloading 0 of 10',
+    font: {fontSize:14, fontWeight:'bold'},
+    style: Ti.UI.iOS.ProgressBarStyle.PLAIN,
+    height:30,
 }

@@ -3,7 +3,7 @@ var args = $.args;
 
 var id = args.id || 'v565989';
 var title = args.title || 'Video Title One';
-var subtitle = args.subtitle || 'Video Subtitle Test';
+var subtitle = args.subtitle || 'END';
 var counter = args.counter || '00:00';
 var item_index = args.item_index || null;
 var video = args.video || null;
@@ -83,7 +83,7 @@ function animateVideoSlide(key) {
 
 	    $.title.animate(title_anim);
 
-		
+
 	}
 
 }
@@ -95,4 +95,9 @@ Ti.App.addEventListener('cage/workout/slide/entered', function(e) {
         Ti.API.info('PREVIEW.FINISHED.CALLED:' + e.item, item_index);
         animateVideoSlide(e.item);
     }
+});
+
+// LITHIUMLAB
+Ti.App.addEventListener('cage/class_builder/dragstart', function(e) {
+    Ti.API.info('cage/class_builder/dragstart' + e);
 });

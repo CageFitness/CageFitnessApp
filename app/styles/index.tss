@@ -1,0 +1,52 @@
+"#dl_progress":{
+	backgroundColor:'#343434',
+	// backgroundColor:'red',
+	height:Ti.UI.SIZE,
+	bottom:0,
+	width:Ti.UI.FILL,
+}
+
+"#dl_progress_wrap":{
+	top:4,
+	bottom:4,
+	right:4,
+	left:4,
+	// backgroundColor:'green',
+	height:Ti.UI.SIZE,
+	borderRadius:4,
+	borderColor:'#444',
+}
+
+"#dl_progress_bar":{
+	left:0,
+	right:10,
+	backgroundColor:'#434343',
+	height:'18dp',
+	width:40,
+	top:0,
+}
+
+"#dl_progress_text":{
+	top:3.5,
+	left:10,
+	font: {
+		fontSize: 10,
+		fontFamily:'Helvetica Neue',
+	},
+	color:'#757575',
+	height:Ti.UI.SIZE,
+}
+
+"#pb":{
+    top: 0,
+    width: Ti.UI.FILL,
+    min: 0,
+    max: 10,
+    value: 8,
+    color: '#d9e153',
+    message: 'Downloading 0 of 10',
+    font: {fontSize:11, fontWeight:'normal'},
+    style: Ti.UI.iOS.ProgressBarStyle.PLAIN,
+    height:30,
+    tintColor:'#d9e153',
+}

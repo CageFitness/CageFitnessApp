@@ -3,7 +3,7 @@
         <View class="verticals">
             <View id="video_wrapper">
                 <View id="video_player">
-                    <Label>[VIDEO_PLACEHOLDER]</Label>
+                    <!-- <Label>[VIDEO_PLACEHOLDER]</Label> -->
                     
                     <View id="full_video_wrapper">
                     	<!-- [VIDEO.INSERTED.HERE] -->
@@ -14,7 +14,8 @@
             <View id="controls_wrapper">
                 <View id="controls">
                     <View class="control_element">
-                        <Label>[COUNTER]</Label>
+                        <!-- <Label>[COUNTER]</Label> -->
+                        <Module id="progressbar" module="br.com.arlsoft.progressbar" method="createCircularView" />
                     </View>
                     <View class="control_element">
                         <Label>[COMING_UP]</Label>

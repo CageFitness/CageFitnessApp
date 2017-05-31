@@ -1,22 +1,42 @@
 var args = $.args;
 
-var NappDownloadManager = require("dk.napp.downloadmanager");
-	NappDownloadManager.addEventListener('progress', handleDownloadManager);
-	NappDownloadManager.addEventListener('overallprogress', handleDownloadManager);
-	NappDownloadManager.addEventListener('paused', handleDownloadManager);
-	NappDownloadManager.addEventListener('failed', handleDownloadManager);
-	NappDownloadManager.addEventListener('completed', handleDownloadManager);
-	NappDownloadManager.addEventListener('cancelled', handleDownloadManager);	
-	NappDownloadManager.addEventListener('started', handleDownloadManager);
 
-function handleDownloadManager(e){
-	Ti.API.info('DL.EVENT:', e);
-}
+var cage_cache_dir = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'cached');
+cage_cache_dir.createDirectory(); // this creates the directory
+Ti.API.info('===================\n Directory list to start: ', cage_cache_dir, cage_cache_dir.getDirectoryListing() );
+
+
+	// NappDownloadManager.addEventListener('progress', handleDownloadManager);
+	// NappDownloadManager.addEventListener('overallprogress', handleDownloadManager);
+	// NappDownloadManager.addEventListener('paused', handleDownloadManager);
+	// NappDownloadManager.addEventListener('failed', handleDownloadManager);
+	NappDownloadManager.addEventListener('completed', handleDownloadManager);
+	// NappDownloadManager.addEventListener('cancelled', handleDownloadManager);	
+	// NappDownloadManager.addEventListener('started', handleDownloadManager);
+
+	NappDownloadManager.permittedNetworkTypes = NappDownloadManager.NETWORK_TYPE_ANY;
+	NappDownloadManager.maximumSimultaneousDownloads = 3;
+	// NappDownloadManager.stopDownloader();
+	// NappDownloadManager.getAllDownloadInfo();
+
+	var permitted_network_types = NappDownloadManager.getPermittedNetworkTypes();	
+	Ti.API.info('PNT: ',permitted_network_types);
+	Ti.API.info('=============');
+	
+	
+
+
+
 
 var log = require('log');
 
 var xhr = new XHR();
 var workout_url = Alloy.CFG.api_url + Alloy.CFG.workout_test_path;
+
+var videos_queue = [];
+// var percent_all = 0;
+var initial_dlinfo;
+
 
 (function constructor() {
 
@@ -25,6 +45,110 @@ var workout_url = Alloy.CFG.api_url + Alloy.CFG.workout_test_path;
 })();
 
 
+
+NappDownloadManager.addEventListener('progress', function(e) {
+
+	var ob ={};
+	// var text = e.downloadedBytes+'/'+e.totalBytes+' '+Math.round(progress)+'% '+e.bps+' bps';
+	ob.progress 		= e.downloadedBytes*100.0/e.totalBytes;
+	ob.percent 			= e.downloadedBytes+'/'+e.totalBytes;
+	ob.percent_pretty 	= Math.round(ob.progress)+'%';
+	ob.bps 				= e.bps;
+	ob.bps_pretty 		= e.bps+' bps';
+
+	updateManagerProgress(ob);
+
+});
+
+
+
+
+function updateManagerProgress(o){
+	
+	Ti.App.fireEvent('cage/downloadmanager/progress', {
+		'progress': o.progress,
+		'percent': o.percent,
+		'percent_pretty': o.percent_pretty,
+		'bps': o.bps,
+		'bps_pretty': o.bps_pretty,
+		'overall': calculateProgress()
+	});
+}
+
+
+
+function addFileToDownloadQueue(filename, file_url){
+	if (filename && file_url) {
+		var file = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'cached/'+ filename);
+		var ob = {};
+		ob.filename = filename;
+		ob.url = file_url;
+		ob.native_path = file.nativePath;
+		videos_queue.push(ob);
+	}
+}
+
+
+function addAllVideosToDownloadManager(){
+
+
+
+	_.each(videos_queue || [], function(item){
+
+		// If file is not already in cache folder add it to download manager queue.
+		var result = _.findWhere(NappDownloadManager.getAllDownloadInfo(), {url: item.url});
+		var is_match = Boolean(result);
+		Ti.API.info(item.url, ' --> ',  is_match ? 'FOUND':'NOT_FOUND');
+		
+		if(!is_match){
+			// Ti.API.info('ADDED TO DOWNLOAD MANAGER:: ', is_match);
+			addVideoToDownloadManager(item);
+		}
+
+	});
+
+	initial_dlinfo = NappDownloadManager.getAllDownloadInfo();
+
+	Ti.API.info('__________________________')
+	Ti.API.info('DLINFO:',  _.size(NappDownloadManager.getAllDownloadInfo()), 'VIDEOS.QUEUE', _.size(videos_queue) );
+	Ti.API.info('__________________________')
+}
+
+
+function handleDownloadManager(e){
+	// Ti.API.info('DL.EVENT:', e);
+	// calculateProgress();
+}
+
+
+function calculateProgress(){
+
+	var dlinfo = NappDownloadManager.getAllDownloadInfo();
+	// var total = _.size(initial_dlinfo);
+	// var remaining = _.size(dlinfo);
+	// var downloaded = _.size(initial_dlinfo)  + ( -Math.abs(remaining) );
+	var remaining = _.size(dlinfo)+1;
+
+	var o = {
+		'total': _.size(initial_dlinfo),
+		'remaining': remaining,
+		'downloaded': _.size(initial_dlinfo)  + ( -Math.abs(remaining) )
+	}
+	
+	// Ti.API.info('INITIAL.DLINFO.SIZE:', total , 'DLINFO.SIZE:', remaining, 'CURRENT.STATE:', downloaded  );
+	return o;
+}
+
+
+function addVideoToDownloadManager(obj){
+	// Ti.API.info('ADDED:',obj);
+	NappDownloadManager.addDownload({
+		name: obj.filename,
+		url: obj.url,
+		filePath: obj.native_path,
+		priority: NappDownloadManager.DOWNLOAD_PRIORITY_NORMAL
+	});	
+}
 
 
 function proccessWorkout(n){
@@ -55,12 +179,25 @@ function proccessWorkout(n){
 
 		for (i in iterator ){
 			var ob = {};
-			ob.thumb = iterator[i].acf.video_animated_thumbnail.url;
+
+			
 			ob.type = "video";
 			ob.title = iterator[i].post_title;
 			ob.id = "v"+iterator[i].id;
+
 			ob.video = iterator[i].acf.video.url;
+			ob.filename = iterator[i].acf.video.filename;
+
+			ob.thumb = iterator[i].acf.video_animated_thumbnail.url;
+			ob.thumb_filename = iterator[i].acf.video_animated_thumbnail.filename;
+
+
+			addFileToDownloadQueue(ob.filename, ob.video);
+			addFileToDownloadQueue(ob.thumb_filename, ob.thumb);
+
 			exercises.push(ob);
+
+
 		}
 
 
@@ -94,6 +231,7 @@ function createSampleData(data){
         	addWorkoutElement('workout/overview',slide_data);	
         }
         else{
+        	slide_data.filename = data[x].filename;   
         	addWorkoutElement('workout/video',slide_data);	
         }
         
@@ -116,10 +254,14 @@ function onSuccessWorkoutCallback(e){
 	exercises = [];
 
 	var data = e.data.acf.round_selector;
+
+	// resetOverallProgress();
 	proccessWorkout(data);
+	
+	addAllVideosToDownloadManager(videos_queue);
 
 	createSampleData(exercises);
-	// addVideoSlide();
+
 }
 
 

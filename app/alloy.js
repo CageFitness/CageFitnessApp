@@ -1,5 +1,7 @@
+_ = require('alloy/underscore'); 
+// _ = require('underscore')._; 
 Timer = require('countdowntimer');
-DLManager = require('dk.napp.downloadmanager');
+NappDownloadManager = require("dk.napp.downloadmanager");
 Animation = require('alloy/animation');
 XHR = require('xhr');
 Utils = require('utils');
