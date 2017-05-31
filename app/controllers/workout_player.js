@@ -2,8 +2,11 @@ var args = $.args;
 
 
 var cage_cache_dir = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'cached');
-cage_cache_dir.createDirectory(); // this creates the directory
-Ti.API.info('===================\n Directory list to start: ', cage_cache_dir, cage_cache_dir.getDirectoryListing() );
+if (! cage_cache_dir.exists()) {
+    cage_cache_dir.createDirectory();
+}
+
+Ti.API.info('===================\nCached Resources:\n ', cage_cache_dir, '\n' , cage_cache_dir.getDirectoryListing() );
 
 
 	// NappDownloadManager.addEventListener('progress', handleDownloadManager);
@@ -38,13 +41,51 @@ var videos_queue = [];
 var initial_dlinfo;
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 (function constructor() {
 
 	loadWorkout();	
     
 })();
 
+Ti.App.addEventListener('cage/video/progressbar/finished',function(e){
+	Ti.API.info('CALLING NEXT FROM VIDEO COUNTER: ',e.index);
+	scrollNextFromVideo(e);
+})
 
+
+function scrollNextFromVideo(e) {
+	Ti.API.info('THISPAGE: ' + e.index);
+	$.scrollable.scrollToView(e.index + 1);
+}
 
 NappDownloadManager.addEventListener('progress', function(e) {
 
@@ -164,7 +205,7 @@ function proccessWorkout(n){
 
 
 		var ob = {};
-		ob.type="overview";
+		ob.type="overview"; 
 		ob.title="Round "+round+":";
 		ob.id = "o";
 		ob.exercise_number = exercise_number;
@@ -176,11 +217,10 @@ function proccessWorkout(n){
 		// Ti.API.info('ROUND:',round);
 		exercises.push(ob);
 
-
+		// EXERCISE ITERATOR
 		for (i in iterator ){
 			var ob = {};
 
-			
 			ob.type = "video";
 			ob.title = iterator[i].post_title;
 			ob.id = "v"+iterator[i].id;
@@ -191,6 +231,12 @@ function proccessWorkout(n){
 			ob.thumb = iterator[i].acf.video_animated_thumbnail.url;
 			ob.thumb_filename = iterator[i].acf.video_animated_thumbnail.filename;
 
+			ob.next = {};
+
+			if(i < _.size(iterator)-1){
+				ob.next = iterator[Number(i)+1];
+			}
+			// Ti.API.info( 'ITERATOR LEN: ' + _.size(iterator), (i < _.size(iterator)-1) );
 
 			addFileToDownloadQueue(ob.filename, ob.video);
 			addFileToDownloadQueue(ob.thumb_filename, ob.thumb);
@@ -231,7 +277,8 @@ function createSampleData(data){
         	addWorkoutElement('workout/overview',slide_data);	
         }
         else{
-        	slide_data.filename = data[x].filename;   
+        	slide_data.filename = data[x].filename;
+        	slide_data.next = data[x].next;
         	addWorkoutElement('workout/video',slide_data);	
         }
         

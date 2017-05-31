@@ -2,8 +2,8 @@
 var args = $.args;
 
 var id = args.id || 'v565989';
-var title = args.title || 'Video Title One';
-var subtitle = args.subtitle || 'Video Subtitle Test';
+var title = args.title || '';
+var subtitle = args.subtitle || '';
 var counter = args.counter || '10';
 var round = args.round || [];
 var item_index = args.item_index || 0;

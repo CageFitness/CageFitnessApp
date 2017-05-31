@@ -3,13 +3,18 @@
 	showPagingControl: true,
 	// pagingControlColor: Alloy.CFG.styles.brandColor,
 	pagingControlColor: '#f8f8f8',
+	tintColor:'#f90f90',
 	height:'80%',
+	pageIndicatorColor: '#cfcbca',
+	keepScreenOn:true,
 	// height:Ti.UI.FILL,
 }
 
 ".toolbar": {
 	top: 0,
 	barColor:'#f8f8f8',
+	tintColor:'red',
+	opacity:1,
 }
 
 "#toolbar_wrapper": {
@@ -18,16 +23,3 @@
 	height:'20%',
 }
 
-
-"#pb":{
-    top: 0,
-    width: 250,
-    min: 0,
-    max: 10,
-    value: 8,
-    color: 'blue',
-    message: 'Downloading 0 of 10',
-    font: {fontSize:14, fontWeight:'bold'},
-    style: Ti.UI.iOS.ProgressBarStyle.PLAIN,
-    height:30,
-}

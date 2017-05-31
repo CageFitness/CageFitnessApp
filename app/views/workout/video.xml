@@ -18,10 +18,13 @@
                         <Module id="progressbar" module="br.com.arlsoft.progressbar" method="createCircularView" />
                     </View>
                     <View class="control_element">
-                        <Label>[COMING_UP]</Label>
+						<View id="coming_wrap">
+	                        <Label id="up_next_title">Coming Up Next...</Label>
+	                        <Label id="coming_up_next"></Label>							
+						</View>
                     </View>
-                    <View class="control_element">
-                        <Label>[ANIMATED_GIF]</Label>
+                    <View id="prev_wrap" class="control_element">
+                        <ImageView id="preview_thumb"></ImageView>
                     </View>
                 </View>
             </View>

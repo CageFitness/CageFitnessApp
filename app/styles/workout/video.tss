@@ -1,3 +1,40 @@
+"#progressbar": {
+	right:10,
+	top:10,
+    height: 110,
+    width: 110,
+    progressTintColor: '#d9e153',
+    trackTintColor: '#f5f5f5',
+    progressOpacity: 1,
+    trackOpacity: 0.8,
+    roundedCorners: true,
+    animatedProgress: true,
+    thicknessRatio: 0.15,
+    progress: 1,
+    textColor: '#d9e153',
+    textOpacity: 1,
+    textFont: {
+        fontFamily: 'Helvetica',
+        fontSize: 60,
+        // fontStyle: 'normal',
+        // fontWeight: 'bold'
+    },
+    text : ''
+}
+
+
+".preview_container": {
+    backgroundColor:"#fff",
+    bottom:0,
+    width:"56%",
+    height:Ti.UI.SIZE,
+    layout:'horizontal',
+    // borderWidth:1,
+    // borderColor:'red'
+}
+
+
+
 
 ".video_container":{
 	// layout:'vertical',
@@ -13,7 +50,7 @@
 	backgroundColor:'#fff'
 },
 "#title":{
-	top:4,
+	top:24,
 	color:'#000',
 	width:Ti.UI.FILL,
 	height:Ti.UI.SIZE,
@@ -22,7 +59,8 @@
 	    fontSize: 24,
 	    fontFamily: 'MuseoSans-700',
 	    fontWeight: 'normal',
-	}    
+	},
+	opacity:0.01,    
 }
 "#subtitle":{
 	top:10,
@@ -40,6 +78,51 @@
 	}  
 }
 
+"#coming_wrap":{
+
+	layout:'vertical',
+	left:10,
+	top:10,
+	bottom:10,
+	right:10,
+	// width:Ti.UI.FILL,
+	height:Ti.UI.SIZE,
+	bottom:20,
+}
+
+"#prev_wrap":{
+	left:0,
+	width:Ti.UI.SIZE,
+	height:Ti.UI.FILL,
+	// height:'100%',
+}
+
+"#preview_thumb":{
+	left:0,
+	top:0,
+	width:Ti.UI.SIZE,
+	height:Ti.UI.SIZE,
+	// bottom:20,
+	borderColor:'red',
+	borderWidth:1,
+
+
+}
+
+"#up_next_title":{
+	font: {
+	    fontSize: 24,
+	    fontWeight:'bold',
+	},
+	textAlign:Ti.UI.TEXT_ALIGNMENT_CENTER,
+}
+"#coming_up_next":{
+	font: {
+	    fontSize: 16,
+	    fontWeight:'bold',
+	},
+	textAlign:Ti.UI.TEXT_ALIGNMENT_CENTER, 
+}
 "#video_wrapper":{
 	top:0,
 	height:'75%',
@@ -58,18 +141,18 @@
 }
 "#controls":{
 	layout:'horizontal',
-	top:0,
+	// top:0,
 	backgroundColor:'#fff',
 	height:Ti.UI.SIZE,
 	width:Ti.UI.SIZE,
 }
 
 ".control_element":{
-	// layout:'horizontal',
+	layout:'vertical',
 	top:0,
 	width:'33.333%',
 	backgroundColor:'#fff',
-	borderColor:'black',
+	borderColor:'#f8f8f8',
 	borderWidth:1,
 	height:Ti.UI.FILL,
 }

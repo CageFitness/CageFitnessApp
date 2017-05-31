@@ -6,13 +6,13 @@
 		<View id="toolbar_wrapper">
 	        <Toolbar class="toolbar" platform="ios">
 	            <Items>
-	                <Button id="scrollTo" title="Scroll to View 2" onClick="scrollToView" />
-	                <FlexSpace/>
+	                <Button id="scrollTo" title="Start Over" onClick="scrollToView" />
+<!-- 	                <FlexSpace/>
 	                <Button id="add" title="Add new View" onClick="addNewView" />
 	                <FlexSpace/>
-	                <Button id="remove" title="Remove last View" onClick="removeLastView" />
+	                <Button id="remove" title="Remove last View" onClick="removeLastView" /> -->
 	                <FlexSpace/>
-	                <Button id="prev" title="Prev" onClick="scrollPrev" />
+	                <Button id="prev" title="Back" onClick="scrollPrev" />
 	                <FlexSpace/>
 	                <Button id="next" title="Next" onClick="scrollNext" />
 	            </Items>
