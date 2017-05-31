@@ -19,7 +19,7 @@
 
 "#toolbar_wrapper": {
 	top: 0,
-	backgroundColor:'green',
+	backgroundColor:'#f8f8f8',
 	height:'20%',
 }
 

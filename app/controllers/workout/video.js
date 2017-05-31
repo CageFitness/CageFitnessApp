@@ -29,7 +29,7 @@ Ti.API.info('LOCALVID:', localvid);
 
 
 
-
+var preview_timer = 10;
 var xInt;
 var increment = -0.1;
 
@@ -99,7 +99,8 @@ if (next.ID){
 	$.preview_thumb.image = next.acf.video_animated_thumbnail.url;
 }
 else{
-	$.up_next_title.visible=false;
+	$.up_next_title.visible=true;
+	$.coming_up_next.text = 'Next Round';
 }
 
 exports.sayHello = function() {

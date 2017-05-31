@@ -90,6 +90,32 @@
 	textAlign:Ti.UI.TEXT_ALIGNMENT_CENTER,
 }
 
+".custom_workout_wrap":{
+	width:Ti.API.FILL,
+	height:60,
+	bottom:30,
+	layout:"vertical",
+	// backgroundColor:'red',
+}
+
+"#home_sub":{
+	// width:177,
+	height:Ti.API.SIZE,
+	textAlign:Ti.UI.TEXT_ALIGNMENT_CENTER,
+	color:'#888888',
+}
+
+"#home_title":{
+	// width:177,
+	height:Ti.API.SIZE,
+	textAlign:Ti.UI.TEXT_ALIGNMENT_CENTER,
+	font:{
+		fontSize: 18,
+		fontWeight: 'bold',
+		fontFamily:'Helvetica Neue'
+	},
+	color: Alloy.CFG.styles.brandColor,
+}
 "#home_btn":{
 	width:177,
 	height:177
@@ -296,10 +322,10 @@
 	width:"58%",
 	// backgroundColor:"pink",
 	backgroundColor:"#fff",
-	top:254,
-	// bottom:0,
+	// top:254,
+	bottom:40,
 	// height:Ti.UI.SIZE,
-	height:478,
+	height:460,
 	borderRadius:6,
 
 	

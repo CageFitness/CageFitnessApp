@@ -31,13 +31,29 @@ menuitems['menu_profile']= {view:profileView, index:4};
 // menuitems['menu_configuration']= {view:'configView'};
 menuitems['menu_workouts']= {view:workoutView, index:5};
 
+var progress_state = false;
+
+
+function progressHideShow(a,b){
+	if($.dl_progress.opacity!=1){
+		$.dl_progress.opacity=1;
+	}
+	if( (a-1) == b ){
+		$.dl_progress.opacity=0;
+	}
+}
+
+
 Ti.App.addEventListener('cage/downloadmanager/progress', function(e){
+	
 	$.dl_progress_text.text = e.percent_pretty + ' | ' + e.bps_pretty;
 	$.dl_progress_bar.width = e.percent_pretty + '%';
 	Ti.API.info('OVERALL: ', e.overall.total, e.overall.downloaded, e.overall.remaining);
-	$.pb.value = e.overall.downloaded; 
+
+	$.pb.value = e.overall.downloaded;
 	$.pb.min = 0;
 	$.pb.max = e.overall.total;
+	progressHideShow($.pb.max,$.pb.value);
 
 });
 

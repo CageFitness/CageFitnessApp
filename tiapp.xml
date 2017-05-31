@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ti:app xmlns:ti="http://ti.appcelerator.org">
     <id>com.cagefitness.pro</id>
-    <name>CageFitnessApp</name>
-    <version>1.2.03</version>
+    <name>Cage Fitness Pro</name>
+    <version>1.2.08</version>
     <publisher>not specified</publisher>
     <url>http://lithiumlab.com</url>
     <description>not specified</description>

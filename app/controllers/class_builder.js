@@ -49,8 +49,10 @@ function onErrorCallback(e){
 // xhr.purge();
 
 var data = {
-    username:'pabloliz_member',
-    password:'%SyNuWlj9o4p)nxZ(npsigYk'
+    // username:'pabloliz_member',
+    // password:'%SyNuWlj9o4p)nxZ(npsigYk'
+    username:'testmember',
+    password:'testmember'    
 }
 var opts = {
     // shouldAuthenticate:false,

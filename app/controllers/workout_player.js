@@ -9,11 +9,11 @@ if (! cage_cache_dir.exists()) {
 Ti.API.info('===================\nCached Resources:\n ', cage_cache_dir, '\n' , cage_cache_dir.getDirectoryListing() );
 
 
-	// NappDownloadManager.addEventListener('progress', handleDownloadManager);
+	NappDownloadManager.addEventListener('progress', ReportProgress);
 	// NappDownloadManager.addEventListener('overallprogress', handleDownloadManager);
 	// NappDownloadManager.addEventListener('paused', handleDownloadManager);
 	// NappDownloadManager.addEventListener('failed', handleDownloadManager);
-	NappDownloadManager.addEventListener('completed', handleDownloadManager);
+	NappDownloadManager.addEventListener('completed', ReportProgress);
 	// NappDownloadManager.addEventListener('cancelled', handleDownloadManager);	
 	// NappDownloadManager.addEventListener('started', handleDownloadManager);
 
@@ -87,7 +87,7 @@ function scrollNextFromVideo(e) {
 	$.scrollable.scrollToView(e.index + 1);
 }
 
-NappDownloadManager.addEventListener('progress', function(e) {
+function ReportProgress(e) {
 
 	var ob ={};
 	// var text = e.downloadedBytes+'/'+e.totalBytes+' '+Math.round(progress)+'% '+e.bps+' bps';
@@ -99,7 +99,7 @@ NappDownloadManager.addEventListener('progress', function(e) {
 
 	updateManagerProgress(ob);
 
-});
+};
 
 
 
@@ -283,7 +283,7 @@ function createSampleData(data){
         }
         
     };
-    addWorkoutElement('workout/overview',{title:'The End', type:'overview'});
+    addWorkoutElement('workout/overview',{title:'The End', type:'static'});
 
     
 

@@ -4,7 +4,7 @@ var args = $.args;
 var id = args.id || 'v565989';
 var title = args.title || '';
 var subtitle = args.subtitle || '';
-var counter = args.counter || '10';
+var counter = args.counter || '59';
 var round = args.round || [];
 var item_index = args.item_index || 0;
 
@@ -16,8 +16,14 @@ var exercise_type = args.exercise_type || '';
 $.overview.backgroundColor = '#fff';
 	$.title.text = title;
 	$.title_type.text = exercise_type.label;
-	$.subtitle.text = 'Equipment: ' + exercise_equipment.label;
-	$.counter_big.text = counter;
+	if(args.type!='static'){
+		$.subtitle.text = 'Equipment: ' + exercise_equipment.label;
+		$.counter_big.text = counter;
+	}
+	else{
+		$.counter_big.text = '';
+	}
+	
 
 var items = [];
 
@@ -38,6 +44,5 @@ function describeRound(){
 }
 
 describeRound();
-
 $.elementsList.sections[0].setItems(items);
 

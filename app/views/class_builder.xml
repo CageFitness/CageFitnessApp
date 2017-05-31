@@ -8,6 +8,10 @@
             <View id="home" class="step">
                 <!-- <Button id="home_btn" onClick="stepClick"></Button> -->
                 <Button id="home_btn" onClick="doProgress"></Button>
+                <View class="custom_workout_wrap" onClick="stepClick">
+                	<Label id="home_sub">Create your own</Label>
+                	<Label id="home_title">CUSTOM WORKOUT</Label>
+                </View>
                 <!-- <Button id="home_btn" onClick="doWorkout"></Button> -->
             </View>
             <View id="login" class="step">
@@ -31,7 +35,7 @@
                 <Require type="view" src="header" customTitle="Number of Rounds" customImage="images/layout/workout_theme.png" />
                 <View class="list_wrapper">
                     <View id="list2" class="list" top="0">
-                        <View id="button_matrix">
+                        <View top="20" id="button_matrix">
                             <Button id="btn1" left="16" class="big_btn row1" title="1"></Button>
                             <Button id="btn2" left="116" class="big_btn row1" title="2"></Button>
                             <Button id="btn3" left="216" class="big_btn row1" title="3"></Button>
@@ -43,6 +47,8 @@
                             <Button id="btn9" left="316" class="big_btn row2" title="9"></Button>
                             <Button id="btn10" left="416" class="big_btn row2" title="10"></Button>
                         </View>
+                        <Label text="5 Rounds" class="winTitle"></Label>
+                        <Label top="24" text="ASSIGN A WORKOUT TYPE TO EACH ROUND" class="winTitle center" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER"></Label>
                     </View>
                 </View>
             </View>
@@ -134,6 +140,9 @@
                             </ListSection>
                         </ListView>
                     </View>
+                        <Label text="Select Equipment" class="winTitle"></Label>
+                        <!-- <Label top="24" text="ASSIGN A WORKOUT TYPE TO EACH ROUND" class="winTitle center" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER"></Label> -->
+
                 </View>
             </View>
             <View id="step6" class="step">

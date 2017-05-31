@@ -5,7 +5,7 @@
             <View id="dl_progress_wrap">
                 <View id="dl_progress_bar"></View>
                 <ProgressBar id="pb" />
-                <Label id="dl_progress_text">REFERENCES</Label>
+                <Label id="dl_progress_text"></Label>
             </View>
         </View>
     </Window>

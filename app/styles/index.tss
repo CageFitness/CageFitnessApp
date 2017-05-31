@@ -4,6 +4,7 @@
 	height:Ti.UI.SIZE,
 	bottom:0,
 	width:Ti.UI.FILL,
+	opacity:0.2,
 }
 
 "#dl_progress_wrap":{
@@ -42,9 +43,9 @@
     width: Ti.UI.FILL,
     min: 0,
     max: 10,
-    value: 8,
+    value: 0,
     color: '#d9e153',
-    message: 'Downloading 0 of 10',
+    message: 'Downloading Workout Files...',
     font: {fontSize:11, fontWeight:'normal'},
     style: Ti.UI.iOS.ProgressBarStyle.PLAIN,
     height:30,
