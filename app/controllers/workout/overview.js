@@ -7,14 +7,15 @@ var subtitle = args.subtitle || '';
 var counter = args.counter || '59';
 var round = args.round || [];
 var item_index = args.item_index || 0;
+var round_number = args.round_number || '';
 
 var exercise_number = args.exercise_number || '';
 var exercise_equipment = args.exercise_equipment || '';
 var exercise_type = args.exercise_type || '';
-
+var duration = args.duration || 30;
 // $.overview.backgroundColor = Utils.getRandomColor();
 $.overview.backgroundColor = '#fff';
-	$.title.text = title;
+	$.title.text = "Round "+round_number+":";
 	$.title_type.text = exercise_type.label;
 	if(args.type!='static'){
 		$.subtitle.text = 'Equipment: ' + exercise_equipment.label;
@@ -35,9 +36,9 @@ function describeRound(){
 		var ob = {
 	        mass : {text : o.ID}, 
 	        name : {text : o.post_title },
-	        number : { text : item_index},
+	        number : { text : round_number},
 	        symbol : { color : "#090", text : "He"},
-	        slide_data : {text: exercise_number}
+	        slide_data : {text: exercise_number +' | '+duration}
 	    }
 	    items.push(ob);
 	}

@@ -13,7 +13,7 @@
 ".toolbar": {
 	top: 0,
 	barColor:'#f8f8f8',
-	tintColor:'red',
+	tintColor:'#666',
 	opacity:1,
 }
 

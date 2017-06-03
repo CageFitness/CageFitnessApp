@@ -13,18 +13,23 @@
             </View>
             <View id="controls_wrapper">
                 <View id="controls">
-                    <View class="control_element">
+                    <View  width="35%" class="control_element">
                         <!-- <Label>[COUNTER]</Label> -->
                         <Module id="progressbar" module="br.com.arlsoft.progressbar" method="createCircularView" />
                     </View>
-                    <View class="control_element">
+                    <View  width="30%"  class="control_element">
 						<View id="coming_wrap">
 	                        <Label id="up_next_title">Coming Up Next...</Label>
 	                        <Label id="coming_up_next"></Label>							
 						</View>
                     </View>
-                    <View id="prev_wrap" class="control_element">
-                        <ImageView id="preview_thumb"></ImageView>
+                    <View id="prev_wrap"   width="35%"  class="control_element">
+						<View id="preview_holder">
+							
+						</View>
+                        <!-- <ImageView id="preview_thumb"></ImageView> -->
+                        <!-- <Require id="gifImage" type="widget" backgroundColor="pink" src="com.boxoutthinkers.animatedgif" /> -->
+                        <!-- <Label>HELY</Label> -->
                     </View>
                 </View>
             </View>

@@ -1,12 +1,41 @@
-
+"#user_complete_name":{
+	font:{
+		fontWeight:'bold',
+		fontSize:24,
+	},
+	color:'green',
+}
 
 ".profile_picture":{
 	backgroundColor:'blue',
-	height:'50%',
+	height:'35%',
 	left:'20%',
 	right:'20%',
 	width:Ti.UI.FILL,
 }
 ".workout_list":{
 	backgroundColor:'red',
+	left:'20%',
+	right:'20%',
+	width:Ti.UI.FILL,
+	top:0,
+	height:Ti.UI.FILL,	
 }
+
+
+".titleLabel": {
+	left: 15,
+	color: "red",
+	top:5,
+	bottom:5,
+	right:15,
+}
+
+".detailLabel": {
+	right: 5,
+	color: "green",
+	font: {
+		fontWeight: "bold"	
+	}
+}
+

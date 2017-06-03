@@ -1,11 +1,30 @@
 <Alloy>
-	<View id="mainView">
-		<Require src="topbar"></Require>
-		<View class="profile_picture">
-			<ImageView class="pic"></ImageView>
-		</View>
-		<View class="workout_list">
-			<Label>Testing</Label>
-		</View>
-	</View>
+    <View id="mainView">
+        <Require src="topbar"></Require>
+        <View class="profile_picture">
+            <ImageView class="pic"></ImageView>
+            <Label id="user_complete_name">John Doe</Label>
+        </View>
+        <View class="workout_list">
+            <ListView onItemclick="handleListViewClick">
+                <!-- Enable Pull-to-Refresh -->
+                <!-- <RefreshControl id="refresh" onRefreshstart="fetchData" platform="ios" /> -->
+                <!-- Add custom item templates -->
+                <Templates>
+                    <ItemTemplate name="MyCustomTemplate">
+                        <Label bindId="title" class="titleLabel" />
+                        <Label bindId="detail" class="detailLabel" />
+                    </ItemTemplate>
+                </Templates>
+
+                <ListSection headerTitle="My Workouts">
+                    <ListItem title="My Workout" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_NONE" />
+                    <ListItem title="Detail Accessory" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DETAIL" />
+                    <ListItem title="Disclosure Accessory" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE" />
+                    <ListItem title="Checkmark Accessory" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_CHECKMARK" />
+                </ListSection>
+            </ListView>
+        </View>
+    </View>
 </Alloy>
+

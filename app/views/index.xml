@@ -8,6 +8,7 @@
                 <Label id="dl_progress_text"></Label>
             </View>
         </View>
+        <!-- <ActivityIndicator id="activityIndicator" message="Loading..."/> -->
     </Window>
 </Alloy>
 

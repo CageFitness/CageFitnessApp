@@ -44,32 +44,6 @@ var initial_dlinfo;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 (function constructor() {
 
 	loadWorkout();	
@@ -130,7 +104,7 @@ function addFileToDownloadQueue(filename, file_url){
 }
 
 
-function addAllVideosToDownloadManager(){
+function addAssetsToDownloadManager(){
 
 
 
@@ -204,44 +178,47 @@ function proccessWorkout(n){
 		var exercise_type = round_iterator[round].wo_round_type;
 
 
-		var ob = {};
-		ob.type="overview"; 
-		ob.title="Round "+round+":";
-		ob.id = "o";
-		ob.exercise_number = exercise_number;
-		ob.exercise_equipment = exercise_equipment;
-		ob.exercise_type = exercise_type;
-		ob.round = iterator;
+		var cob = {};
+		cob.round_number = getIndex(round);
+		cob.type="overview"; 
+		cob.title="Round "+round+":";
+		cob.id = "o";
+		cob.exercise_number = exercise_number;
+		cob.exercise_equipment = exercise_equipment;
+		cob.exercise_type = exercise_type;
+		cob.round = iterator;
 
 
 		// Ti.API.info('ROUND:',round);
-		exercises.push(ob);
+		exercises.push(cob);
 
 		// EXERCISE ITERATOR
 		for (i in iterator ){
-			var ob = {};
+			var rob = {};
+			rob.round_number = cob.round_number;
+			rob.exercise_number = cob.exercise_number;
+			rob.file_index = getIndex(i);
+			rob.type = "video";
+			rob.title = iterator[i].post_title;
+			rob.id = "v"+iterator[i].id;
 
-			ob.type = "video";
-			ob.title = iterator[i].post_title;
-			ob.id = "v"+iterator[i].id;
+			rob.video = iterator[i].acf.video.url;
+			rob.filename = iterator[i].acf.video.filename;
 
-			ob.video = iterator[i].acf.video.url;
-			ob.filename = iterator[i].acf.video.filename;
+			rob.thumb = iterator[i].acf.video_animated_thumbnail.url;
+			rob.thumb_filename = iterator[i].acf.video_animated_thumbnail.filename;
 
-			ob.thumb = iterator[i].acf.video_animated_thumbnail.url;
-			ob.thumb_filename = iterator[i].acf.video_animated_thumbnail.filename;
-
-			ob.next = {};
+			rob.next = {};
 
 			if(i < _.size(iterator)-1){
-				ob.next = iterator[Number(i)+1];
+				rob.next = iterator[Number(i)+1];
 			}
 			// Ti.API.info( 'ITERATOR LEN: ' + _.size(iterator), (i < _.size(iterator)-1) );
 
-			addFileToDownloadQueue(ob.filename, ob.video);
-			addFileToDownloadQueue(ob.thumb_filename, ob.thumb);
+			addFileToDownloadQueue(rob.filename, rob.video);
+			addFileToDownloadQueue(rob.thumb_filename, rob.thumb);
 
-			exercises.push(ob);
+			exercises.push(rob);
 
 
 		}
@@ -255,11 +232,11 @@ function getIndex(n){
 	return Number(n)+1;
 }
 
-function createSampleData(data){
+function prepareVideoOwl(data){
     
 
     for (var x=0;x<data.length;x++){
-        var slide_data = {
+        var sob = {
             title:data[x].title,
             type:data[x].type,
             video:data[x].video,
@@ -268,18 +245,33 @@ function createSampleData(data){
             index:$,
         }
         if(data[x].type=='overview'){
-        	slide_data.round = data[x].round;
+        	sob.round = data[x].round;
+        	sob.round_number = data[x].round_number;
 
-			slide_data.exercise_number = data[x].exercise_number;
-			slide_data.exercise_equipment = data[x].exercise_equipment;
-			slide_data.exercise_type = data[x].exercise_type;        	
+			sob.exercise_number = data[x].exercise_number;
+			sob.exercise_equipment = data[x].exercise_equipment;
+			sob.exercise_type = data[x].exercise_type;        	
         	
-        	addWorkoutElement('workout/overview',slide_data);	
+        	addWorkoutElement('workout/overview',sob);	
         }
         else{
-        	slide_data.filename = data[x].filename;
-        	slide_data.next = data[x].next;
-        	addWorkoutElement('workout/video',slide_data);	
+        	sob.filename = data[x].filename;
+        	sob.next = data[x].next;
+        	sob.file_index = data[x].file_index;
+        	sob.exercise_number = data[x].exercise_number;
+
+		    var config = JSON.parse( Ti.App.Properties.getString('config') );
+		    var item_duration = _.findWhere( config.acf['round_configs'] , {'config_round_num':sob.exercise_number} );
+		    // Ti.API.info( 'ROUND CONFIGURATION LEN:', config.acf['round_configs'].length );
+		    // Ti.API.info( 'ROUNDS:', config.acf['opt_rounds'] );
+
+		    // Ti.API.info('RCONFIG: ', sob.exercise_number, item_duration);
+
+		    sob.duration = item_duration['config_round_duration'];
+		    // Ti.API.info('RCONFIG: ', sob.exercise_number);
+
+
+        	addWorkoutElement('workout/video',sob);	
         }
         
     };
@@ -305,9 +297,9 @@ function onSuccessWorkoutCallback(e){
 	// resetOverallProgress();
 	proccessWorkout(data);
 	
-	addAllVideosToDownloadManager(videos_queue);
+	addAssetsToDownloadManager(videos_queue);
 
-	createSampleData(exercises);
+	prepareVideoOwl(exercises);
 
 }
 
@@ -322,6 +314,8 @@ function onErrorWorkoutCallback(e){
 
 
 function loadWorkout(){
+	
+
 	xhr.GET(workout_url, onSuccessWorkoutCallback, onErrorWorkoutCallback, Alloy.Globals.XHROptions);
 }
 
@@ -341,6 +335,9 @@ function addWorkoutElement(type, data){
 	$.scrollable.addView(item.getView());
 }
 
+function PlayPause(){
+	Ti.App.fireEvent('cage/workout/video/play_pause', { 'item': $.scrollable.currentPage });
+}
 
 function scrollNext() {
 	Ti.API.info('THISPAGE: ' + $.scrollable.currentPage);
@@ -353,7 +350,7 @@ function scrollPrev() {
 }
 
 function scrollToView() {
-    $.scrollable.scrollToView(1); // Index or view
+    $.scrollable.scrollToView(0); // Index or view
 }
 
 function addNewView() {
@@ -386,7 +383,7 @@ function scrollableViewDidScroll(e) {
 
 function validateButtons() {
     $.remove.setEnabled($.scrollable.views.length > 0);
-    $.scrollTo.setEnabled($.scrollable.views.length >= 2);
+    $.scrollTo.setEnabled($.scrollable.views.length >= 1);
 }
 
 

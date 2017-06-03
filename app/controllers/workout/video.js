@@ -4,7 +4,7 @@ var args = $.args;
 var id = args.id || 'v565989';
 var title = args.title || 'Video Title One';
 var subtitle = args.subtitle || 'END';
-var counter = args.counter || '00:00';
+var counter = args.counter || '00:00'+' | '+args.duration;
 var item_index = args.item_index || null;
 
 var localvid = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'cached/'+args.filename);
@@ -17,7 +17,7 @@ var next = args.next || null;
 
 
 
-Ti.API.info('LOCALVID:', localvid);
+// Ti.API.info('LOCALVID:', localvid);
 
 
 
@@ -52,30 +52,15 @@ function startCounter() {
             animation.fadeOut($.progressbar, 500, function() {
                 // $.gifImage.stop();
                 // Ti.App.fireEvent('cagefitness_app_preview_finished', { 'video': args.data_title });
-                Ti.App.fireEvent('cage/video/progressbar/finished',{'index':item_index})
+                
+                Ti.App.fireEvent('cage/video/progressbar/finished',{'index':item_index});
+
             });
         }
         $.progressbar.text = Math.round($.progressbar.progress * 10);
     }, 1000);
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -96,7 +81,12 @@ $.counter.text = counter;
 
 if (next.ID){
 	$.coming_up_next.text = next.post_title;
-	$.preview_thumb.image = next.acf.video_animated_thumbnail.url;
+	// $.preview_thumb.image = next.acf.video_animated_thumbnail.url;
+
+var localgif = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'cached/'+next.acf.video_animated_thumbnail.filename);	
+	var gifurl = localgif || next.acf.video_animated_thumbnail.url;
+	// $.gifImage.image(gifurl);
+	// Ti.API.info('NEXT.GIF.ASSIGNED:', next.acf.video_animated_thumbnail.filename);
 }
 else{
 	$.up_next_title.visible=true;
@@ -108,45 +98,85 @@ exports.sayHello = function() {
 }
 
 
+function createGif(){
+    if(next.ID){
+		var localgif = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'cached/'+next.acf.video_animated_thumbnail.filename);	
+		var gifurl = localgif || next.acf.video_animated_thumbnail.url;
+		var gif = Ti.UI.createImageView({
+			top:0,
+			left:0,
+			height: Ti.UI.FILL,
+			// backgroundColor:'pink',
+			// borderWidth:1,
+			// borderColor:"#d9e153",  			
+			layout: "horizontal",
+				gif: gifurl,
+			});
+		$.preview_holder.add( gif );    	
+    }	
+}
 
+
+
+Ti.App.addEventListener('cage/workout/video/play_pause',function(e){
+	if (e.item == item_index) {
+		Ti.API.info('You need to Pause this: ', e.item);
+		if($.full_video.playing){
+			$.full_video.stop();
+			clearInterval(xInt);
+		}
+		else{
+			$.full_video.play();
+		}
+	}
+})
 
 function createVideoPlayer() {
 
 
     if (video != null) {
         $.full_video = Titanium.Media.createVideoPlayer({
-            url: video,
+            media: video,
             opacity: 0,
             autoplay: false,
             backgroundColor: '#fff',
+			backgroundDisabledColor: '#fff',
+			backgroundFocusedColor: '#fff',
+			backgroundSelectedColor: '#fff',
             height: "100%",
             mediaControlStyle: Titanium.Media.VIDEO_CONTROL_NONE,
             repeatMode: Titanium.Media.VIDEO_REPEAT_MODE_ONE,
+            width:Ti.UI.FILL,
+
         });
 
         // checks duration
-        $.full_video.addEventListener('durationavailable', function(e) {
+        $.full_video.addEventListener('durationavailable', onDurationAvailable);
+        $.full_video.addEventListener('playbackstate', onPlayBackState);
+
+	   }
+
+}
+
+function onPlayBackState(e){
+    if (e.playbackState == 1) {
+        var vDuration = $.full_video.getDuration();
+        var vCurrentPBT = $.full_video.getCurrentPlaybackTime();
+        var vLaunchPreviewTime = vDuration - 10000 || 10000;
+        Ti.API.info('Timings: ', vDuration, vCurrentPBT, vLaunchPreviewTime);
+    }	
+}
+
+function stopAllVideoAssets(e){
             Ti.API.info('DURATION.AVAILABLE: ', e);
             checkDuration(e);
             $.full_video.play();
-        });
+}
 
-        // on every playback state change
-        $.full_video.addEventListener('playbackstate', function(e) {
-            if (e.playbackState == 1) {
-                var vDuration = $.full_video.getDuration();
-                var vCurrentPBT = $.full_video.getCurrentPlaybackTime();
-                var vLaunchPreviewTime = vDuration - 10000 || 10000;
-                Ti.API.info('Timings: ', vDuration, vCurrentPBT, vLaunchPreviewTime);
-            }
-        });
-
-
-
-
-
-    }
-
+function onDurationAvailable(e){
+            Ti.API.info('DURATION.AVAILABLE: ', e);
+            checkDuration(e);
+            $.full_video.play();
 }
 
 function checkDuration(e) {
@@ -172,6 +202,7 @@ function animateVideoSlide(key) {
 	        createVideoPlayer();
 	        resetCounter();
 	        startCounter();
+	        createGif();
 	    })
 
 
@@ -183,16 +214,31 @@ function animateVideoSlide(key) {
 }
 
 
+function pauseALlVideoAssets(){
+
+}
+
 
 Ti.App.addEventListener('cage/workout/slide/entered', function(e) {
 
 	 resetCounter();
 	if( _.size($.full_video_wrapper.children) > 0 ){
-		// $.full_video.removeEventListener('durationavailable');
+		// durationavailable
+		// playbackstate
+		$.full_video.removeEventListener('durationavailable', onDurationAvailable);
+		$.full_video.removeEventListener('playbackstate', onPlayBackState);
 		$.full_video.stop();
 		$.full_video_wrapper.remove($.full_video);
+		$.full_video = null;
 		Ti.API.info('VIDEO.REMOVED');
 	}
+	if( _.size($.preview_holder.children) > 0 ){
+		// $.gifImage.stop();
+		$.preview_holder.remove($.preview_holder.children[0]);
+		$.preview_holder.children[0] = null;
+		Ti.API.info('GIF.REMOVED');
+	}
+
 
     if (e.item === item_index) {
         Ti.API.info('PREVIEW.FINISHED.CALLED:' + e.item, item_index);

@@ -6,3 +6,10 @@ var args = $.args;
 
 // $.thumb.image = the_image;
 // $.thumb_title.text = the_title;
+function handleListViewClick(e){
+	// 
+	Ti.API.info(e);
+}
+function fetchData(){
+	// 
+}

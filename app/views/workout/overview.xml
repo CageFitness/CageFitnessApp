@@ -4,8 +4,8 @@
         	<Label id="title"></Label>
         	<Label id="title_type"></Label>
         </View>
-        <Label id="subtitle"></Label>
-        <Label id="counter_big"></Label>
+        <Label class="small_text" id="subtitle"></Label>
+        <Label class="small_text" id="counter_big"></Label>
 		<ListView id="elementsList" defaultItemTemplate="elementTemplate">
         <Templates>
             <ItemTemplate name="elementTemplate">
@@ -13,11 +13,11 @@
                 <View id="atomProperties">
                     <Label bindId="name" id="name" />
                     <View id="secondLine">
-                        <Label class="line2 fieldLabel" text="Number: " />
+                        <Label class="line2 fieldLabel" text="Index: " />
                         <Label class="line2" bindId="number" id="number" />
-                        <Label class="line2 fieldLabel" text="Atomic Mass: " />
+                        <Label class="line2 fieldLabel" text="ID: " />
                         <Label class="line2" bindId="mass" id="mass" />
-                        <Label class="line2 fieldLabel" text="Data: " />
+                        <Label class="line2 fieldLabel" text="Duration: " />
                         <Label class="line2" bindId="slide_data" id="slide_data" />                        
                     </View>
                 </View>

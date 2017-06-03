@@ -1,10 +1,12 @@
+
+
 "#dl_progress":{
 	backgroundColor:'#343434',
 	// backgroundColor:'red',
 	height:Ti.UI.SIZE,
 	bottom:0,
 	width:Ti.UI.FILL,
-	opacity:0.2,
+	opacity:0,
 }
 
 "#dl_progress_wrap":{

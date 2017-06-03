@@ -1,4 +1,36 @@
 <Alloy>
-	<View class="container">
-	</View>
+    <View id="mainView" class="page_wrapper">
+        <Require src="topbar"></Require>
+        <View class="help_list">
+            <ListView id="help_list_view" onItemclick="handleListViewClick">
+                <!-- Enable Pull-to-Refresh -->
+                <!-- <RefreshControl id="refresh" onRefreshstart="fetchData" platform="ios" /> -->
+                <!-- Add custom item templates -->
+                <Templates>
+                    <ItemTemplate name="MyCustomTemplate">
+                        <Label bindId="title" class="titleLabel" />
+                        <Label bindId="detail" class="detailLabel" />
+                    </ItemTemplate>
+                </Templates>
+                <ListSection>
+                	
+                </ListSection>
+<!--                 <ListSection headerTitle="LOVE CAGE FITNESS? HELP US GROW">
+                    <ListItem title="Find us on Facebook" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_NONE" />
+                    <ListItem title="Detail Accessory" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DETAIL" />
+                    <ListItem title="Disclosure Accessory" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE" />
+                    <ListItem title="Checkmark Accessory" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_CHECKMARK" />
+                </ListSection>
+                <ListSection headerTitle="GET IN CONTACT WITH US?">
+                    <ListItem title="Frequently Asked Questions" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_NONE" />
+                    <ListItem title="Contact US" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DETAIL" />
+                </ListSection>
+                <ListSection headerTitle="WANT TO READ THE FINE PRINT?">
+                    <ListItem id="menu_external" title="Terms of Service" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE" />
+                    <ListItem id="menu_external" title="Privacy Policy" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE" />
+                </ListSection> -->
+            </ListView>
+        </View>
+    </View>
 </Alloy>
+

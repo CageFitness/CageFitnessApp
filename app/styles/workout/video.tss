@@ -1,3 +1,16 @@
+
+"#gifImage": {
+  top:0,
+  left:0,
+  // image: "images/thumbs/v1.gif",
+  width: 196,
+  height: 110,
+  backgroundColor:'pink',
+    borderWidth:1,
+    borderColor:"#d9e153",  
+}
+
+
 "#progressbar": {
 	right:10,
 	top:10,
@@ -85,16 +98,28 @@
 	top:10,
 	bottom:10,
 	right:10,
-	// width:Ti.UI.FILL,
+	width:Ti.UI.FILL,
 	height:Ti.UI.SIZE,
 	bottom:20,
 }
 
+ "#preview_holder":{
+	left:0,
+	top:0,
+	width:Ti.UI.FILL,
+	height:Ti.UI.SIZE,
+	// bottom:20,
+	// borderColor:'green',
+	// borderWidth:1,
+
+ }
+
 "#prev_wrap":{
+	top:0,
 	left:0,
 	width:Ti.UI.SIZE,
-	height:Ti.UI.FILL,
-	// height:'100%',
+	// height:Ti.UI.FILL,
+	height:'100%',
 }
 
 "#preview_thumb":{
@@ -103,8 +128,8 @@
 	width:Ti.UI.SIZE,
 	height:Ti.UI.SIZE,
 	// bottom:20,
-	borderColor:'red',
-	borderWidth:1,
+	// borderColor:'purple',
+	// borderWidth:1,
 
 
 }
@@ -136,15 +161,17 @@
 	backgroundColor:'#fff',
 }
 "#controls_wrapper":{
+	layout:'horizontal',
 	height:'25%',
-	backgroundColor: '#fff'
+	width:Ti.UI.FILL,
+	// backgroundColor: 'green'
 }
 "#controls":{
 	layout:'horizontal',
 	// top:0,
 	backgroundColor:'#fff',
 	height:Ti.UI.SIZE,
-	width:Ti.UI.SIZE,
+	width:Ti.UI.FILL,
 }
 
 ".control_element":{
@@ -152,7 +179,8 @@
 	top:0,
 	width:'33.333%',
 	backgroundColor:'#fff',
-	borderColor:'#f8f8f8',
-	borderWidth:1,
+	// borderColor:'#f8f8f8',
+	// borderColor:'red',
+	// borderWidth:1,
 	height:Ti.UI.FILL,
 }

@@ -28,8 +28,8 @@ function onSuccessOptionsCallback(e){
     // Ti.API.info('SUCCESS:', e.data);
     Ti.App.Properties.setString('config', e.data );
     var config = JSON.parse( Ti.App.Properties.getString('config') );
-    Ti.API.info( 'ROUND CONFIGURATION:', config.acf['round_configs'].length );
-    Ti.API.info( 'OPTS ROUNDS:', config.acf['opt_rounds'] );
+    // Ti.API.info( 'ROUND CONFIGURATION:', config.acf['round_configs'].length );
+    // Ti.API.info( 'OPTS ROUNDS:', config.acf['opt_rounds'] );
 }
 
 function onSuccessCallback(e){
