@@ -56,13 +56,6 @@ function onErrorWorkoutCallback(e){
 
 
 
-
-
-
-
-
-
-
 loadExercises();
 
 

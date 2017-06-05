@@ -21,14 +21,14 @@
                     <!-- <Widget src="com.appcelerator.components" name="textfield" classes="password" icon="icon-lock" id="password"/> -->
                     <!-- <Widget src="com.appcelerator.components" name="textfield" icon="icon-plane" id="login_btn"/> -->
                 </ImageView>
-                <!--<ScrollView id="login_panel">            
+<!--                 <ScrollView id="login_panel">            
 		            <View class="container">
 		                <ImageView id="logo"/>
 		                <TextField id="username"/>
 		                <TextField id="password"/>
 		                <Button id="loginButton" onClick="cageAuthenticate">Login</Button>
 		            </View>
-		        </ScrollView> -->
+		        </ScrollView>  -->
                 <!-- <Widget src="com.appcelerator.components.login" /> -->
             </View>
             <View id="step2" class="step">

@@ -29,6 +29,15 @@
 	backgroundImage: "images/icons/menu.png",
 }
 
+"#closeButton" : {
+	top:25,
+	left:20,
+	width:34,
+	height:34,
+	// backgroundColor:'pink',
+	backgroundImage: "images/icons/close.png",
+}
+
 
 
 

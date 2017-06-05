@@ -2,7 +2,6 @@
 # --target dist-adhoc \
 appc run \
 --platform ios \
---sdk 6.0.4.GA \
 --project-dir /Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp \
 --target dist-adhoc \
 --ios-version 10.3 \

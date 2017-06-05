@@ -1,0 +1,20 @@
+<Alloy>
+    <Window id="login">
+        <View class="container">
+            <View id="login_panel">
+                <View id="logo">
+                	<View id="activity_wrapper">
+                		<ActivityIndicator id="activity_indicator" />
+                	</View>
+                </View>
+                <Label id="login_title">LOG IN</Label>
+                <Label id="message">Small text goes here in case something.</Label>
+                <TextField id="username" value="testmember" />
+                <TextField id="password" value="testmember" />
+                <Button id="loginButton" onClick="cageAuthenticate">Login</Button>
+            </View>
+        </View>
+    </Window>
+</Alloy>
+
+

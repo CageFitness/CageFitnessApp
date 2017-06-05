@@ -1,0 +1,123 @@
+
+".container" : {
+  width:Ti.UI.SIZE,
+  height:Ti.UI.SIZE,
+  backgroundColor:'red',
+}
+
+
+
+"#login_panel":{
+	// backgroundImage:"images/login_foreground.png",
+	width:432,
+	height:304,
+	backgroundColor:'red',
+	// borderWidth:2,
+	// borderColor:'red',
+}
+
+"#activity_wrapper":{
+  height:Ti.UI.FILL,
+  width:Ti.UI.FILL,
+  backgroundColor: Alloy.CFG.styles.brandColor,
+  borderRadius:20,
+  borderWidth:4,
+  borderColor:'#fff',
+  visible:false,
+
+}
+
+"#activity_indicator":{
+  color: 'green',
+  font: {
+  	fontFamily:'Helvetica Neue',
+  	fontSize:26,
+  	fontWeight:'bold'
+  },
+  // message: 'Loading...',
+  style: Ti.UI.ActivityIndicatorStyle.BIG,
+  // top:0,
+  // left:0,
+  // height:Ti.UI.SIZE,
+  width:100,
+  height:100,
+  // indicatorDiameter:100,
+  indicatorColor:'#000',
+}
+
+"#logo":{
+	top:30,
+	backgroundImage:"images/home_btn.png",
+	width:100,
+	height:100,
+}
+
+"#message":{
+	top:170,
+	color: '#fff',
+	font: {
+	    fontSize: 12,
+	    // fontFamily: 'MuseoSans-700',
+	    // fontWeight: 'bold',
+	}
+}
+"#login_title":{
+	top:140,
+	color: Alloy.CFG.styles.brandColor,
+	font: {
+	    fontSize: 24,
+	    fontFamily: 'MuseoSans-700',
+	    fontWeight: 'bold',
+	}
+}
+
+"#username": {
+	// top: 130,
+	bottom:50,
+	width:Ti.UI.FILL,
+	right:80,
+	height:50,
+	borderRadius:0,
+	hintText: 'username',
+	returnKeyType: Ti.UI.RETURNKEY_NEXT,
+	autocapitalization: false,
+	autocorrect: false,
+	backgroundColor:'#efefef',
+	font: {
+	    fontSize: 24,
+	    // fontFamily: 'MuseoSans-700',
+	    fontWeight: 'normal',
+	}
+}
+
+"#password": {
+	// top: '170dp',
+	bottom:0,
+	width:Ti.UI.FILL,
+	right:80,
+	height:50,
+	borderRadius:0,
+	borderWidth:0,
+	hintText: 'password',
+	passwordMask: true,
+	backgroundColor:'#efefef',
+	returnKeyType: Ti.UI.RETURNKEY_DONE,
+	font: {
+	    fontSize: 24,
+	    // fontFamily: 'MuseoSans-700',
+	    fontWeight: 'normal',
+	}	
+}
+
+
+
+"#loginButton": {
+	top:204,
+	right:0,
+	height: 100,
+	width: 80,
+	color: '#fff',
+	backgroundColor: "#0000DD",
+	backgroundSelectedColor: "blue",
+}
+

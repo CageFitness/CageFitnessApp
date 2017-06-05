@@ -4,7 +4,7 @@ var args = $.args;
 var id = args.id || 'v565989';
 var title = args.title || 'Video Title One';
 var subtitle = args.subtitle || 'END';
-var counter = args.counter || '00:00'+' | '+args.duration;
+var counter = args.counter || '00:00'+' |-| '+args.duration;
 var item_index = args.item_index || null;
 
 var localvid = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'cached/'+args.filename);
@@ -117,19 +117,27 @@ function createGif(){
 }
 
 
-
-Ti.App.addEventListener('cage/workout/video/play_pause',function(e){
+function onPlayPause(e){
 	if (e.item == item_index) {
-		Ti.API.info('You need to Pause this: ', e.item);
-		if($.full_video.playing){
-			$.full_video.stop();
-			clearInterval(xInt);
+		Ti.API.info('You need to Pause this: ', e.item, $.full_video_wrapper.children);
+		if(_.size($.full_video_wrapper.children)){
+			if($.full_video_wrapper.children[0].getPlaying()){
+				$.full_video_wrapper.children[0].pause();
+			}
+			else{
+				$.full_video_wrapper.children[0].play();
+			}
 		}
-		else{
-			$.full_video.play();
-		}
+		// if($.full_video.getPlaying()){
+		// 	$.full_video.pause();
+		// 	clearInterval(xInt);
+		// }
+		// else{
+		// 	$.full_video.play();
+		// }
 	}
-})
+}
+Ti.App.addEventListener('cage/workout/video/play_pause',onPlayPause);
 
 function createVideoPlayer() {
 
@@ -163,27 +171,30 @@ function onPlayBackState(e){
         var vDuration = $.full_video.getDuration();
         var vCurrentPBT = $.full_video.getCurrentPlaybackTime();
         var vLaunchPreviewTime = vDuration - 10000 || 10000;
-        Ti.API.info('Timings: ', vDuration, vCurrentPBT, vLaunchPreviewTime);
+        Ti.API.info('WKT Timings: ', vDuration, vCurrentPBT, vLaunchPreviewTime);
     }	
 }
 
 function stopAllVideoAssets(e){
-            Ti.API.info('DURATION.AVAILABLE: ', e);
-            checkDuration(e);
-            $.full_video.play();
+            // Ti.API.info('DURATION.AVAILABLE: ', e);
+            // checkDuration(e);
+            // $.full_video.play();
+            Ti.API.info('stopAllVideoAssets on video.js');
 }
 
 function onDurationAvailable(e){
             Ti.API.info('DURATION.AVAILABLE: ', e);
             checkDuration(e);
-            $.full_video.play();
+            
 }
 
 function checkDuration(e) {
     videoDuration = e.duration / 1000;
     Ti.API.info('GETTING.VIDEO.DURATION: ' + videoDuration);
     $.full_video_wrapper.add($.full_video);
-    animation.fadeIn($.full_video, 500);
+    animation.fadeIn($.full_video, 500, function(){
+    	$.full_video_wrapper.children[0].play();
+    });
 }
 
 function animateVideoSlide(key) {
@@ -218,18 +229,17 @@ function pauseALlVideoAssets(){
 
 }
 
+function onOwlSlideEntered(e) {
 
-Ti.App.addEventListener('cage/workout/slide/entered', function(e) {
-
-	 resetCounter();
+	resetCounter();
 	if( _.size($.full_video_wrapper.children) > 0 ){
-		// durationavailable
-		// playbackstate
-		$.full_video.removeEventListener('durationavailable', onDurationAvailable);
-		$.full_video.removeEventListener('playbackstate', onPlayBackState);
-		$.full_video.stop();
-		$.full_video_wrapper.remove($.full_video);
-		$.full_video = null;
+		var item = $.full_video_wrapper.children[0];
+		item.removeEventListener('durationavailable', onDurationAvailable);
+		item.removeEventListener('playbackstate', onPlayBackState);
+
+		item.stop();
+		$.full_video_wrapper.remove(item);
+		item = null;
 		Ti.API.info('VIDEO.REMOVED');
 	}
 	if( _.size($.preview_holder.children) > 0 ){
@@ -245,9 +255,31 @@ Ti.App.addEventListener('cage/workout/slide/entered', function(e) {
         animateVideoSlide(e.item);
 
     }
+}
+
+Ti.App.addEventListener('cage/topbar/menu_button/close', function(e){
+	
+	if(_.size($.full_video_wrapper.children)){
+    	$.full_video_wrapper.children[0].removeEventListener('durationavailable', onDurationAvailable);
+    	$.full_video_wrapper.children[0].removeEventListener('playbackstate', onPlayBackState);	
+	}
+
+	Ti.App.removeEventListener('cage/workout/slide/entered', onOwlSlideEntered);
 });
 
+Ti.App.addEventListener('cage/workout/slide/entered', onOwlSlideEntered);
+
 // LITHIUMLAB
-Ti.App.addEventListener('cage/class_builder/dragstart', function(e) {
-    Ti.API.info('cage/class_builder/dragstart' + e);
-});
+// function cage_dragStart(e) {
+//     Ti.API.info('cage/class_builder/dragstart' + e);
+// }
+// Ti.App.addEventListener('cage/class_builder/dragstart', cage_dragStart);
+
+
+
+
+
+
+
+
+

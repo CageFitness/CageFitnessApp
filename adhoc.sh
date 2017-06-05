@@ -3,7 +3,6 @@
 appc run \
 --platform ios \
 --log-level info \
---sdk 6.0.4.GA \
 --project-dir /Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp \
 --target device \
 --ios-version 10.3 \

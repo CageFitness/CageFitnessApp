@@ -17,32 +17,24 @@ Alloy.Globals.XHROptions = {
 var xhr = new XHR();
 
 
-function onSuccessUserCallback(e){
-    // big lenght
-    Ti.API.info('USER:', e.data);
-}
-
 
 
 function onSuccessOptionsCallback(e){
-    // Ti.API.info('SUCCESS:', e.data);
     Ti.App.Properties.setString('config', e.data );
     var config = JSON.parse( Ti.App.Properties.getString('config') );
-    // Ti.API.info( 'ROUND CONFIGURATION:', config.acf['round_configs'].length );
-    // Ti.API.info( 'OPTS ROUNDS:', config.acf['opt_rounds'] );
 }
 
+
 function onSuccessCallback(e){
+
     Ti.App.Properties.setString('user_token', e.data.token);
     Ti.App.Properties.setString('user_email', e.data.user_email);
+    Ti.API.info('AUTH DATA:', e);
     var token = Ti.App.Properties.getString('user_token');
-    // Ti.API.info('Token:', token, xhr);
     callOptions(token);
 }
 
-function onErrorCallback(e){
-    Ti.API.info(e);
-}
+
 
 // 
 // xhr.clean();
@@ -65,11 +57,20 @@ function cageAuthenticate(){
     xhr.POST(Alloy.CFG.api_url +'/wp-json/jwt-auth/v1/token', data, onSuccessCallback, onErrorCallback,opts);
 }
 
+
+function onSuccessUserCallback(e){
+    Ti.API.info('USER: ', e.data);
+}
+function onErrorCallback(e){
+    Ti.API.info('ERROR: ',e);
+}
+
 function callOptions(tkn){
     Ti.API.info('TOKEN: ', tkn);
     var data = {};
     var validate_url = Alloy.CFG.api_url + Alloy.CFG.validate_path;
     var config_url = Alloy.CFG.api_url + Alloy.CFG.config_path;
+    var user_url = Alloy.CFG.api_url + Alloy.CFG.user_path;
 
     xhr.setStaticOptions({
             requestHeaders: [
@@ -82,7 +83,7 @@ function callOptions(tkn){
         });
     xhr.POST(validate_url);
     xhr.GET(config_url, onSuccessOptionsCallback, onErrorCallback);
-    // xhr.GET(user_url, onSuccessUserCallback, onErrorCallback, opts);
+    xhr.GET(user_url, onSuccessUserCallback, onErrorCallback);
 
 
 }
@@ -149,34 +150,19 @@ $.login_box.addEventListener('click',function(e){
     Animation.fadeIn($.step_line,100);
 })
 $.scrollableView.addEventListener('scrollend',function(e){
-    // Ti.API.info(JSON.stringify(e));
     updateSteps(e.currentPage)
 });
 
 $.scrollableView.addEventListener('dragstart',function(e){
-    // Ti.API.info(JSON.stringify(e));
-    // updateSteps(e.currentPage)
     Ti.App.fireEvent('cage/class_builder/dragstart',{'hello':'world'});
 });
 
-// $.list1.addEventListener('itemclick', function(e){
-//     var section = $.list1.sections[e.sectionIndex];
-//     clickAndFollow(section,e);
-// });
 
-// $.listview_step3.addEventListener('itemclick', function(e){
-//     // var section = $.listview_step3.sections[e.sectionIndex];
-//     // clickAndFollow(section,e);
-// });
 
 $.listview_step4.addEventListener('itemclick', function(e){
 
     var section = $.listview_step4.sections[e.sectionIndex];
     var item = section.getItemAt(e.itemIndex);
-
-    // Ti.API.info(JSON.stringify(item));
-    // section.updateItemAt(e.itemIndex, item);
-    // getNext();
 
 });
 
@@ -271,23 +257,25 @@ function stepClick(e) {
 
 function doProgress(e) {
     // Ti.API.info('TESTING...');
-    var win3 = Alloy.createController('progress').getView();
-    win3.open({
-        // transition : Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT
-   });
-    Alloy.Globals.progressWin = win3;
-
+    // var win3 = Alloy.createController('progress').getView();
+   //  var win3 = Alloy.createController('window').getView();
+   //  win3.open({
+   //      transition : Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT
+   // });
+   //  Alloy.Globals.progressWin = win3;
+   Ti.App.fireEvent('cage/launch/window',{key:'menu_workouts'});
 }
 
 
 
 function doWorkout(e) {
     // Ti.API.info('TESTING...');
-    var win2 = Alloy.createController('workout').getView();
-    Alloy.Globals.win2 = win2;
-    win2.open({
-        transition : Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT
-   });
+   //  var win2 = Alloy.createController('workout').getView();
+   //  Alloy.Globals.win2 = win2;
+   //  win2.open({
+   //      transition : Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT
+   // });
+   Ti.App.fireEvent('cage/launch/window',{key:'menu_workouts'});
 }
 
 function openRoundPopover() {

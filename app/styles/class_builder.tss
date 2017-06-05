@@ -1,37 +1,24 @@
-// "#mainView":{
-// 	layout: 'vertical',
-// 	backgroundColor: '#cacaca'
-// },
-// "#mainTopBar":{
-// 	width: Ti.UI.FILL,
-// 	height: "60dp",
-// 	backgroundColor: '#5B96B2',
-// 	layout: 'horizontal'
-// },
-// "#menuButton":{
-// 	width: "60dp",
-// 	height: "60dp"
+"#username": {
+	top: 130,
+	hintText: 'username',
+	returnKeyType: Ti.UI.RETURNKEY_NEXT,
+	autocapitalization: false,
+	autocorrect: false
+}
+
+"#password": {
+	top: '170dp',
+	hintText: 'password',
+	passwordMask: true,
+	returnKeyType: Ti.UI.RETURNKEY_DONE
+}
+
+
+// "#loginButton": {
+// 	top: '210dp',
+// 	height: '40dp',
+// 	width: '100dp',
+// 	color: '#fff',
+// 	backgroundColor: "#0000DD",
+// 	backgroundSelectedColor: "blue"
 // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

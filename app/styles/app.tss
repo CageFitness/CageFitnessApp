@@ -148,30 +148,9 @@
 	borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED
 }
 
-"#username": {
-	top: 130,
-	hintText: 'username',
-	returnKeyType: Ti.UI.RETURNKEY_NEXT,
-	autocapitalization: false,
-	autocorrect: false
-}
-
-"#password": {
-	top: '170dp',
-	hintText: 'password',
-	passwordMask: true,
-	returnKeyType: Ti.UI.RETURNKEY_DONE
-}
 
 
-"#loginButton": {
-	top: '210dp',
-	height: '40dp',
-	width: '100dp',
-	color: '#fff',
-	backgroundColor: "#0000DD",
-	backgroundSelectedColor: "blue"
-}
+
 
 "#main_title":{
 	top:30,

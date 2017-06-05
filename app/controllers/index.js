@@ -7,7 +7,7 @@ var mainView 		= controls.getMainView();
 var exerciseView 	= controls.getExerciseView();
 var helpView 		= controls.getHelpView();
 var profileView 	= controls.getProfileView();
-var workoutView 	= controls.getWorkoutView();
+// var workoutView 	= controls.getWorkoutView();
 var externalView 	= controls.getExternalView();
 
 var menuitems = [];
@@ -16,7 +16,7 @@ menuitems['menu_exercises']= {view:exerciseView};
 menuitems['menu_help']= {view:helpView};
 menuitems['menu_profile']= {view:profileView};
 menuitems['menu_external']= {view:externalView};
-menuitems['menu_workouts']= {view:workoutView};
+// menuitems['menu_workouts']= {view:workoutView};
 
 var progress_state = false;
 
@@ -29,6 +29,42 @@ function progressHideShow(a,b){
 		$.dl_progress.opacity=0;
 	}
 }
+
+
+function LaunchLogin(e) {
+	Ti.API.info('LOGIN LAUNCHED: ');
+    var win = Alloy.createController('login').getView();
+    win.open({modal:true});
+    Alloy.Globals.modalWindow = win;
+}
+Ti.App.addEventListener('cage/launch/login', LaunchLogin);
+
+function LaunchWindow(e) {
+	Ti.API.info('KEY: ', e.key);
+    var win = Alloy.createController('window').getView();
+    win.open({transition : Ti.UI.iOS.AnimationStyle.FLIP_FROM_LEFT});
+    Alloy.Globals.modalWindow = win;
+}
+Ti.App.addEventListener('cage/launch/window', LaunchWindow);
+
+
+Ti.App.addEventListener('cage/topbar/menu_button/close', function(e){
+	Ti.API.info('WTYPE: ', e.window_type);
+	if(e.window_type == 'modal'){
+		// var w = Alloy.Globals.modalWindow;
+		// w.close();
+		// w.remove(w.loaded_view);
+		// w.loaded_view = null;
+	}
+	else{
+		$.drawermenu.showhidemenu();
+		$.drawermenu.menuOpen=!$.drawermenu.menuOpen;
+	}
+
+});
+
+Ti.App.addEventListener('cage/external/link', handleExternal);
+
 
 
 Ti.App.addEventListener('cage/downloadmanager/progress', function(e){
@@ -44,12 +80,6 @@ Ti.App.addEventListener('cage/downloadmanager/progress', function(e){
 
 });
 
-Ti.App.addEventListener('cage/tobar/menu_button/close', function(e){
-	$.drawermenu.showhidemenu();
-	$.drawermenu.menuOpen=!$.drawermenu.menuOpen;	
-});
-
-Ti.App.addEventListener('cage/external/link', handleExternal);
 
 function handleExternal(e){
 	Ti.API.info('HELLO WORLD:', e, e.itemIndex);
@@ -123,4 +153,5 @@ menuView.menuTable.addEventListener('click',handleMenuClickEvent);
 
 $.index.open();
 
+Ti.App.fireEvent('cage/launch/login');
 

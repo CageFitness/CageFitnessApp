@@ -1,59 +1,50 @@
 var args = $.args;
+var log = require('log');
+var xhr = new XHR();
+var workout_url = Alloy.CFG.api_url + Alloy.CFG.workout_test_path;
+var user_workout_url = Alloy.CFG.api_url + Alloy.CFG.user_workout_path;
+var videos_queue = [];
+var initial_dlinfo;
 
+
+// ?author=617&per_page=1
+
+
+var config;
 
 var cage_cache_dir = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'cached');
 if (! cage_cache_dir.exists()) {
     cage_cache_dir.createDirectory();
 }
 
-Ti.API.info('===================\nCached Resources:\n ', cage_cache_dir, '\n' , cage_cache_dir.getDirectoryListing() );
+Ti.API.info('======== Cached Resources =======\n', cage_cache_dir, '\n', cage_cache_dir.getDirectoryListing(), '\n===============================');
 
+NappDownloadManager.addEventListener('progress', ReportProgress);
+NappDownloadManager.addEventListener('completed', ReportProgress);
+NappDownloadManager.permittedNetworkTypes = NappDownloadManager.NETWORK_TYPE_ANY;
+NappDownloadManager.maximumSimultaneousDownloads = 3;
 
-	NappDownloadManager.addEventListener('progress', ReportProgress);
-	// NappDownloadManager.addEventListener('overallprogress', handleDownloadManager);
-	// NappDownloadManager.addEventListener('paused', handleDownloadManager);
-	// NappDownloadManager.addEventListener('failed', handleDownloadManager);
-	NappDownloadManager.addEventListener('completed', ReportProgress);
-	// NappDownloadManager.addEventListener('cancelled', handleDownloadManager);	
-	// NappDownloadManager.addEventListener('started', handleDownloadManager);
-
-	NappDownloadManager.permittedNetworkTypes = NappDownloadManager.NETWORK_TYPE_ANY;
-	NappDownloadManager.maximumSimultaneousDownloads = 3;
-	// NappDownloadManager.stopDownloader();
-	// NappDownloadManager.getAllDownloadInfo();
-
-	var permitted_network_types = NappDownloadManager.getPermittedNetworkTypes();	
-	Ti.API.info('PNT: ',permitted_network_types);
-	Ti.API.info('=============');
+var permitted_network_types = NappDownloadManager.getPermittedNetworkTypes();	
+Ti.API.info('PNT: ',permitted_network_types);
+Ti.API.info('=============');
 	
 	
-
-
-
-
-var log = require('log');
-
-var xhr = new XHR();
-var workout_url = Alloy.CFG.api_url + Alloy.CFG.workout_test_path;
-
-var videos_queue = [];
-// var percent_all = 0;
-var initial_dlinfo;
-
-
-
-
-
 (function constructor() {
-
+	config = JSON.parse( Ti.App.Properties.getString('config') || loadConfig() );
 	loadWorkout();	
-    
 })();
 
-Ti.App.addEventListener('cage/video/progressbar/finished',function(e){
+
+function onVideoProgressBarFinished(e){
 	Ti.API.info('CALLING NEXT FROM VIDEO COUNTER: ',e.index);
 	scrollNextFromVideo(e);
-})
+}
+Ti.App.addEventListener('cage/video/progressbar/finished',onVideoProgressBarFinished)
+
+
+Ti.App.addEventListener('cage/topbar/menu_button/close', function(e){
+	Ti.App.removeEventListener('cage/video/progressbar/finished',onVideoProgressBarFinished)
+});
 
 
 function scrollNextFromVideo(e) {
@@ -63,6 +54,7 @@ function scrollNextFromVideo(e) {
 
 function ReportProgress(e) {
 
+	Ti.API.info('EVENT_TYPE: ',e.type);
 	var ob ={};
 	// var text = e.downloadedBytes+'/'+e.totalBytes+' '+Math.round(progress)+'% '+e.bps+' bps';
 	ob.progress 		= e.downloadedBytes*100.0/e.totalBytes;
@@ -91,6 +83,22 @@ function updateManagerProgress(o){
 }
 
 
+
+function calculateProgress(){
+
+	var dlinfo = NappDownloadManager.getAllDownloadInfo();
+	var o = {}; 
+	if (_.size(dlinfo) > 0) {
+		var remaining = getIndex(dlinfo);
+		var o = {
+			'total': _.size(initial_dlinfo),
+			'remaining': remaining,
+			'downloaded': _.size(initial_dlinfo)  + ( -Math.abs(remaining) )
+		}	
+	}
+
+	return o;
+}
 
 function addFileToDownloadQueue(filename, file_url){
 	if (filename && file_url) {
@@ -135,24 +143,6 @@ function handleDownloadManager(e){
 	// calculateProgress();
 }
 
-
-function calculateProgress(){
-
-	var dlinfo = NappDownloadManager.getAllDownloadInfo();
-	// var total = _.size(initial_dlinfo);
-	// var remaining = _.size(dlinfo);
-	// var downloaded = _.size(initial_dlinfo)  + ( -Math.abs(remaining) );
-	var remaining = _.size(dlinfo)+1;
-
-	var o = {
-		'total': _.size(initial_dlinfo),
-		'remaining': remaining,
-		'downloaded': _.size(initial_dlinfo)  + ( -Math.abs(remaining) )
-	}
-	
-	// Ti.API.info('INITIAL.DLINFO.SIZE:', total , 'DLINFO.SIZE:', remaining, 'CURRENT.STATE:', downloaded  );
-	return o;
-}
 
 
 function addVideoToDownloadManager(obj){
@@ -229,7 +219,8 @@ function proccessWorkout(n){
 }
 
 function getIndex(n){
-	return Number(n)+1;
+	r = Number(n)+1; 
+	return r;
 }
 
 function prepareVideoOwl(data){
@@ -247,7 +238,7 @@ function prepareVideoOwl(data){
         if(data[x].type=='overview'){
         	sob.round = data[x].round;
         	sob.round_number = data[x].round_number;
-
+        	sob.title = "Round "+data[x].round_number+":";
 			sob.exercise_number = data[x].exercise_number;
 			sob.exercise_equipment = data[x].exercise_equipment;
 			sob.exercise_type = data[x].exercise_type;        	
@@ -260,7 +251,7 @@ function prepareVideoOwl(data){
         	sob.file_index = data[x].file_index;
         	sob.exercise_number = data[x].exercise_number;
 
-		    var config = JSON.parse( Ti.App.Properties.getString('config') );
+		    
 		    var item_duration = _.findWhere( config.acf['round_configs'] , {'config_round_num':sob.exercise_number} );
 		    // Ti.API.info( 'ROUND CONFIGURATION LEN:', config.acf['round_configs'].length );
 		    // Ti.API.info( 'ROUNDS:', config.acf['opt_rounds'] );
@@ -310,6 +301,9 @@ function onErrorWorkoutCallback(e){
 	Ti.API.info(e.data);
 }
 
+function loadConfig(){
+	Ti.API.info('COnfig should be ready.');
+}
 
 
 
@@ -349,6 +343,10 @@ function scrollPrev() {
 	$.scrollable.scrollToView($.scrollable.currentPage - 1);
 }
 
+function scrollToLast() {
+	Ti.API.info('TOTAL.CHILDREN: ' ,_.size($.scrollable.views) )
+    $.scrollable.scrollToView(_.size($.scrollable.views)-1); // Index or view
+}
 function scrollToView() {
     $.scrollable.scrollToView(0); // Index or view
 }
