@@ -103,6 +103,11 @@
 	height:Ti.API.SIZE,
 	textAlign:Ti.UI.TEXT_ALIGNMENT_CENTER,
 	color:'#888888',
+	font:{
+		fontSize: 20,
+		fontWeight: 'bold',
+		fontFamily:'Helvetica Neue'
+	},	
 }
 
 "#home_title":{
@@ -110,7 +115,7 @@
 	height:Ti.API.SIZE,
 	textAlign:Ti.UI.TEXT_ALIGNMENT_CENTER,
 	font:{
-		fontSize: 18,
+		fontSize: 24,
 		fontWeight: 'bold',
 		fontFamily:'Helvetica Neue'
 	},

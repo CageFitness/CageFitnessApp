@@ -113,7 +113,7 @@
 	autocorrect: false,
 	backgroundColor:'#efefef',
 	font: {
-	    fontSize: 24,
+	    fontSize: 20,
 	    // fontFamily: 'MuseoSans-700',
 	    fontWeight: 'normal',
 	}
@@ -132,7 +132,7 @@
 	backgroundColor:'#efefef',
 	returnKeyType: Ti.UI.RETURNKEY_DONE,
 	font: {
-	    fontSize: 24,
+	    fontSize: 20,
 	    // fontFamily: 'MuseoSans-700',
 	    fontWeight: 'normal',
 	}	

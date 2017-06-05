@@ -17,7 +17,7 @@
                 <!-- <Widget src="com.appcelerator.components.login" /> -->
             </View>	
 
-<Toolbar class="toolbar" platform="ios">
+			<Toolbar class="toolbar" platform="ios">
 	            <Items>
 	                <Button id="scrollTo" title="Start Over" onClick="scrollToView" />
 	                <Button id="scrollTo" title="Last" onClick="scrollToLast" />

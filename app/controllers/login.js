@@ -9,7 +9,7 @@ Alloy.Globals.XHROptions = {
 };
 var data = {
     // username:'pabloliz_member',
-    // password:'%SyNuWlj9o4p)nxZ(npsigYk',
+    // password:'caInterno#1',
     username:'testmember',
     password:'testmember'    
 }
@@ -82,8 +82,9 @@ function onSuccessOptionsCallback(e){
 }
 
 function onSuccessUserCallback(e){
-    Ti.API.info('USER: ', e.data);
-    closeLogin();
+   Ti.API.info('USER: ', e.data);
+   Ti.App.Properties.setString('user', e.data );
+   closeLogin();
 }
 
 // ===============================
@@ -102,4 +103,4 @@ function closeLogin(){
 }
 
 
-cageAuthenticate();	
+// cageAuthenticate();	

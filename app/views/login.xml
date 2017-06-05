@@ -13,8 +13,8 @@
 	                <Label id="link" onClick="forgotPassword">Forgot Password?</Label>						
 				</View>
                 <View id="field_bg"></View>
-                <TextField id="username" value="testmember" />
-                <TextField id="password" value="testmember" />
+                <TextField id="username" value="pabloliz_member" />
+                <TextField id="password" value="caInterno#1" />
                 <Button id="loginButton" onClick="cageAuthenticate">
                 	<ImageView id="limage"></ImageView>
                 </Button>

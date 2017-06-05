@@ -30,7 +30,9 @@ Ti.API.info('=============');
 	
 	
 (function constructor() {
+
 	config = JSON.parse( Ti.App.Properties.getString('config') || loadConfig() );
+	Ti.API.info('LOADING.CONFIGURATION.WORKOUT:',config);
 	loadWorkout();	
 })();
 
