@@ -37,7 +37,7 @@ function describeRound(){
 	        mass : {text : o.ID}, 
 	        name : {text : o.post_title },
 	        number : { text : round_number},
-	        symbol : { color : "#090", text : "He"},
+	        symbol : { color : "#090", text : round_number+"."},
 	        slide_data : {text: exercise_number +' | '+duration}
 	    }
 	    items.push(ob);

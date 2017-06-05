@@ -9,7 +9,25 @@
 	keepScreenOn:true,
 	// height:Ti.UI.FILL,
 }
+"#restart":{
+	bottom:80,
+	left:20,
+	right:10,
+	height:80,
+	width:34,
+	opacity:0.5,
+}
 
+".tool": {
+	bottom: 80,
+	opacity:1,
+	layout:'horizontal',
+	height:80,
+	// borderColor:'grey',
+	// borderWidth:1,
+	// backgroundColor:'red',
+	width:Ti.UI.SIZE,
+}
 ".toolbar": {
 	top: 0,
 	barColor:'#f8f8f8',
@@ -22,4 +40,52 @@
 	backgroundColor:'#f8f8f8',
 	height:'20%',
 }
+
+".icon":{
+	width:34,
+	height:34,
+	// image:'images/icons/play.png?v=3242',
+	// backgroundColor:'#fff',
+	// borderColor:'green',
+	// borderWidth:4,
+}
+
+"#play_icon":{
+	image:'images/icons/play.png',
+}
+"#prev_icon":{
+	image:'images/icons/back.png',
+}
+"#next_icon":{
+	image:'images/icons/forward.png',
+}
+
+"#restart_icon":{
+	image:'images/icons/restart.png',
+}
+
+
+
+
+"#prev":{
+	left:10,
+	right:10,
+	height:80,
+	width:34,
+}
+"#play":{
+	left:10,
+	right:10,
+	height:80,
+	width:34,
+}
+"#next":{
+	left:10,
+	right:10,
+	height:80,
+	width:34,
+}
+
+
+
 

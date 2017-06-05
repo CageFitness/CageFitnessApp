@@ -7,6 +7,11 @@ var args = $.args;
 
 
 
+// =========================================
+
+
+
+
 
 Alloy.Globals.XHROptions = {
     // shouldAuthenticate:false,
@@ -19,20 +24,6 @@ var xhr = new XHR();
 
 
 
-function onSuccessOptionsCallback(e){
-    Ti.App.Properties.setString('config', e.data );
-    var config = JSON.parse( Ti.App.Properties.getString('config') );
-}
-
-
-function onSuccessCallback(e){
-
-    Ti.App.Properties.setString('user_token', e.data.token);
-    Ti.App.Properties.setString('user_email', e.data.user_email);
-    Ti.API.info('AUTH DATA:', e);
-    var token = Ti.App.Properties.getString('user_token');
-    callOptions(token);
-}
 
 
 
@@ -87,6 +78,27 @@ function callOptions(tkn){
 
 
 }
+
+function onSuccessOptionsCallback(e){
+    Ti.App.Properties.setString('config', e.data );
+    var config = JSON.parse( Ti.App.Properties.getString('config') );
+}
+
+
+function onSuccessCallback(e){
+
+    Ti.App.Properties.setString('user_token', e.data.token);
+    Ti.App.Properties.setString('user_email', e.data.user_email);
+    Ti.API.info('AUTH DATA:', e);
+    var token = Ti.App.Properties.getString('user_token');
+    callOptions(token);
+}
+
+
+
+// =========================================
+
+
 
 var flashDelay = 0;
 
@@ -145,10 +157,10 @@ function updateSteps(page){
 
 }
 
-$.login_box.addEventListener('click',function(e){
-    Ti.API.info('THIS WorkS?');
-    Animation.fadeIn($.step_line,100);
-})
+// $.login_box.addEventListener('click',function(e){
+//     Ti.API.info('THIS WorkS?');
+//     Animation.fadeIn($.step_line,100);
+// })
 $.scrollableView.addEventListener('scrollend',function(e){
     updateSteps(e.currentPage)
 });
@@ -335,7 +347,7 @@ Alloy.Globals.scrollableView = $.scrollableView;
 // stepClickHandler();
 $.scrollableView.scrollToView(0);
 
-cageAuthenticate();
+// cageAuthenticate();
 
 
 

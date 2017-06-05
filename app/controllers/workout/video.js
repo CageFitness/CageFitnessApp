@@ -183,18 +183,22 @@ function stopAllVideoAssets(e){
 }
 
 function onDurationAvailable(e){
-            Ti.API.info('DURATION.AVAILABLE: ', e);
+            // Ti.API.info('DURATION.AVAILABLE: ', e.duration);
             checkDuration(e);
             
 }
 
 function checkDuration(e) {
-    videoDuration = e.duration / 1000;
-    Ti.API.info('GETTING.VIDEO.DURATION: ' + videoDuration);
-    $.full_video_wrapper.add($.full_video);
-    animation.fadeIn($.full_video, 500, function(){
-    	$.full_video_wrapper.children[0].play();
-    });
+	
+	    videoDuration = e.duration / 1000;
+	    Ti.API.info('GETTING.VIDEO.DURATION: ' + videoDuration);
+	    $.full_video_wrapper.add($.full_video);
+	    animation.fadeIn($.full_video, 500, function(){
+	    	if (_.size($.full_video_wrapper.children) > 0) {
+	    		$.full_video_wrapper.children[0].play();
+	    	}
+	    });
+	
 }
 
 function animateVideoSlide(key) {

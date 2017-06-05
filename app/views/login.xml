@@ -1,6 +1,6 @@
 <Alloy>
     <Window id="login">
-        <View class="container">
+        <ScrollView class="container">
             <View id="login_panel">
                 <View id="logo">
                 	<View id="activity_wrapper">
@@ -8,12 +8,18 @@
                 	</View>
                 </View>
                 <Label id="login_title">LOG IN</Label>
-                <Label id="message">Small text goes here in case something.</Label>
+				<View id="messages">
+	                <Label id="message">Login with your account.</Label>
+	                <Label id="link" onClick="forgotPassword">Forgot Password?</Label>						
+				</View>
+                <View id="field_bg"></View>
                 <TextField id="username" value="testmember" />
                 <TextField id="password" value="testmember" />
-                <Button id="loginButton" onClick="cageAuthenticate">Login</Button>
+                <Button id="loginButton" onClick="cageAuthenticate">
+                	<ImageView id="limage"></ImageView>
+                </Button>
             </View>
-        </View>
+        </ScrollView>
     </Window>
 </Alloy>
 

@@ -35,6 +35,19 @@ Ti.API.info('=============');
 })();
 
 
+
+
+
+
+
+
+// ===========================================
+
+
+
+
+// ===========================================
+
 function onVideoProgressBarFinished(e){
 	Ti.API.info('CALLING NEXT FROM VIDEO COUNTER: ',e.index);
 	scrollNextFromVideo(e);
@@ -89,7 +102,7 @@ function calculateProgress(){
 	var dlinfo = NappDownloadManager.getAllDownloadInfo();
 	var o = {}; 
 	if (_.size(dlinfo) > 0) {
-		var remaining = getIndex(dlinfo);
+		var remaining = _.size(dlinfo)-1;
 		var o = {
 			'total': _.size(initial_dlinfo),
 			'remaining': remaining,
@@ -266,7 +279,7 @@ function prepareVideoOwl(data){
         }
         
     };
-    addWorkoutElement('workout/overview',{title:'The End', type:'static'});
+    addWorkoutElement('workout/overview',{title:'Well Done!', type:'static'});
 
     
 

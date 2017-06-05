@@ -22,3 +22,9 @@
 // 	backgroundColor: "#0000DD",
 // 	backgroundSelectedColor: "blue"
 // }
+
+"#login_panel":{
+	backgroundColor:"#99bd6b",
+	width:432,
+	height:304
+}

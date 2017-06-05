@@ -6,6 +6,9 @@
 	        </View>
 	        <View id="main_line"></View>			
 		</View>
+        <View id="button_wrapper_login">
+        	<ImageView id="menuLogin" />
+        </View>			
 		<Label id="main_title">CAGE FITNESS</Label>
     </View>
 </Alloy>

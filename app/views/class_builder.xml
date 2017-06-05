@@ -14,23 +14,7 @@
                 </View>
                 <!-- <Button id="home_btn" onClick="doWorkout"></Button> -->
             </View>
-            <View id="login" class="step">
-                <ImageView id="login_box" onClick="stepClick">
-                    <Label id="login_field">ENTER USERNAME</Label>
-                    <!-- <Widget src="com.appcelerator.components" name="textfield" id="username" icon="icon-user"/> -->
-                    <!-- <Widget src="com.appcelerator.components" name="textfield" classes="password" icon="icon-lock" id="password"/> -->
-                    <!-- <Widget src="com.appcelerator.components" name="textfield" icon="icon-plane" id="login_btn"/> -->
-                </ImageView>
-<!--                 <ScrollView id="login_panel">            
-		            <View class="container">
-		                <ImageView id="logo"/>
-		                <TextField id="username"/>
-		                <TextField id="password"/>
-		                <Button id="loginButton" onClick="cageAuthenticate">Login</Button>
-		            </View>
-		        </ScrollView>  -->
-                <!-- <Widget src="com.appcelerator.components.login" /> -->
-            </View>
+
             <View id="step2" class="step">
                 <Require type="view" src="header" customTitle="Number of Rounds" customImage="images/layout/workout_theme.png" />
                 <View class="list_wrapper">

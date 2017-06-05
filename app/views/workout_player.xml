@@ -1,26 +1,26 @@
 <Alloy>
     <View id="mainView" class="container">
-    	<Require src="topbar" window_type="modal"></Require>
+        <Require src="topbar" window_type="modal"></Require>
         <ScrollableView id="scrollable" onScrollend="scrollableViewDidScroll">
         </ScrollableView>
-		<View id="toolbar_wrapper">
-	        <Toolbar class="toolbar" platform="ios">
-	            <Items>
-	                <Button id="scrollTo" title="Start Over" onClick="scrollToView" />
-	                <Button id="scrollTo" title="Last" onClick="scrollToLast" />
-<!-- 	                <FlexSpace/>
-	                <Button id="add" title="Add new View" onClick="addNewView" />
-	                <FlexSpace/>
-	                <Button id="remove" title="Remove last View" onClick="removeLastView" /> -->
-	                <FlexSpace/>
-	                <Button id="prev" title="Play / Pause" onClick="PlayPause" />
-	                <FlexSpace/>
-	                <Button id="prev" title="Back" onClick="scrollPrev" />
-	                <!-- <FlexSpace/> -->
-	                <Button id="next" title="Next" onClick="scrollNext" />
-	            </Items>
-	        </Toolbar>			
-		</View>
+        <View id="toolbar_wrapper">
+            <View class="tool">
+                <Button id="prev" title="Back" onClick="scrollPrev">
+                    <ImageView class="icon" id="prev_icon"></ImageView>
+                </Button>
+
+                <Button id="play" title="Play / Pause" onClick="PlayPause">
+                    <ImageView class="icon" id="play_icon"></ImageView>
+                </Button>
+
+                <Button id="next" title="Next" onClick="scrollNext">
+                    <ImageView class="icon" id="next_icon"></ImageView>
+                </Button>
+            </View>
+            <Button id="restart" title="Restart" onClick="scrollToView">
+                <ImageView class="icon" id="restart_icon"></ImageView>
+            </Button>
+        </View>
     </View>
 </Alloy>
 

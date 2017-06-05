@@ -1,19 +1,29 @@
+"#login":{
+	backgroundImage:'images/layout/login.png',
+	backgroundColor:'red',
+}
 
 ".container" : {
   width:Ti.UI.SIZE,
-  height:Ti.UI.SIZE,
-  backgroundColor:'red',
+  height:Ti.UI.FILL,
+  backgroundColor:'transparent',
+}
+
+"#field_bg":{
+	height:100,
+	backgroundColor:'#efefef',
+	bottom:0,
 }
 
 
-
 "#login_panel":{
-	// backgroundImage:"images/login_foreground.png",
+	backgroundImage:"images/layout/login_foreground.png",
 	width:432,
 	height:304,
-	backgroundColor:'red',
+	// backgroundColor:'#393939',
 	// borderWidth:2,
 	// borderColor:'red',
+	borderRadius:6,
 }
 
 "#activity_wrapper":{
@@ -22,7 +32,7 @@
   backgroundColor: Alloy.CFG.styles.brandColor,
   borderRadius:20,
   borderWidth:4,
-  borderColor:'#fff',
+  borderColor:'#787b40',
   visible:false,
 
 }
@@ -52,17 +62,36 @@
 	height:100,
 }
 
-"#message":{
-	top:170,
+"#messages":{
+	left:10,
+	right:10,
+	layout:'horizontal',
+	top:175,
 	color: '#fff',
 	font: {
-	    fontSize: 12,
+	    fontSize: 14,
 	    // fontFamily: 'MuseoSans-700',
 	    // fontWeight: 'bold',
 	}
 }
+
+
+"#link":{
+	left:10,
+	color: Alloy.CFG.styles.brandColor,
+	font: {
+	    fontSize: 14,
+	}
+}
+
+"#message":{
+	color: '#efefef',
+	font: {
+	    fontSize: 14,
+	}
+}
 "#login_title":{
-	top:140,
+	top:130,
 	color: Alloy.CFG.styles.brandColor,
 	font: {
 	    fontSize: 24,
@@ -111,13 +140,18 @@
 
 
 
+"#limage": {
+	image:'images/icons/plane.png',
+}
+
 "#loginButton": {
 	top:204,
 	right:0,
 	height: 100,
 	width: 80,
-	color: '#fff',
-	backgroundColor: "#0000DD",
-	backgroundSelectedColor: "blue",
+	color: '#000',
+	// backgroundImage:'images/icons/04.png',
+	backgroundColor: "#fff",
+	backgroundFocusedColor: Alloy.CFG.styles.brandColor,
 }
 

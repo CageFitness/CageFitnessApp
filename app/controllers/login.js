@@ -19,14 +19,31 @@ var opts = {
     debug:true,
 };
 
-
-function cageAuthenticate(e){
-	showIndicator(e);
-    xhr.POST(Alloy.CFG.api_url +'/wp-json/jwt-auth/v1/token', data, onSuccessCallback, onErrorCallback,opts);
+function forgotPassword(){
+	Ti.Platform.openURL("https://cagefitness.com/my-account/lost-password");
 }
 
+function cageAuthenticate(e){
+	var login_data = {
+		username: $.username.value,
+		password: $.password.value,
+	}
+	Ti.API.info('HELO', $.username.value,  $.password.value);
+	showIndicator(e);
+    xhr.POST(Alloy.CFG.api_url +'/wp-json/jwt-auth/v1/token', login_data, onSuccessCallback, onErrorCallback,opts);
+}
+
+function onErrorCallbackSilent(e){
+    Ti.API.info('ERROR: ',e);
+    // Animation.shake($.login_panel);
+}
 function onErrorCallback(e){
     Ti.API.info('ERROR: ',e);
+    $.activity_wrapper.hide();
+    $.activity_indicator.hide();    
+    Animation.shake($.login_panel);
+    $.message.text='Login Error. Try again.';
+    $.message.color='red';
 }
 
 function onSuccessCallback(e){
@@ -54,8 +71,8 @@ function callOptions(tkn){
             debug: true    
         });
     xhr.POST(validate_url);
-    xhr.GET(config_url, onSuccessOptionsCallback, onErrorCallback);
-    xhr.GET(user_url, onSuccessUserCallback, onErrorCallback);
+    xhr.GET(config_url, onSuccessOptionsCallback, onErrorCallbackSilent);
+    xhr.GET(user_url, onSuccessUserCallback, onErrorCallbackSilent);
 }
 
 
@@ -66,6 +83,7 @@ function onSuccessOptionsCallback(e){
 
 function onSuccessUserCallback(e){
     Ti.API.info('USER: ', e.data);
+    closeLogin();
 }
 
 // ===============================
@@ -74,15 +92,14 @@ function showIndicator(e){
     $.activity_wrapper.show();
     $.activity_indicator.show();
     Ti.App.fireEvent('cage/login/authenticate');
-    setTimeout(function(){
-        closeLogin(e);
-    }, 6000);
-
 }
 
-function closeLogin(e){
-        Ti.API.info('SHOW: ',e.source);
+function closeLogin(){
+        Ti.API.info('CLOSELOGIN: ');
         $.activity_wrapper.hide();
         $.activity_indicator.hide();
         $.login.close();
 }
+
+
+cageAuthenticate();	
