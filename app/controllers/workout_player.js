@@ -2,6 +2,7 @@ var args = $.args;
 var log = require('log');
 var xhr = new XHR();
 var workout_url = Alloy.CFG.api_url + Alloy.CFG.workout_test_path;
+var workout_final_url = Alloy.CFG.api_url + Alloy.CFG.workout_final_path;
 var user_workout_url = Alloy.CFG.api_url + Alloy.CFG.user_workout_path;
 var videos_queue = [];
 var initial_dlinfo;
@@ -33,7 +34,7 @@ Ti.API.info('=============');
 
 	config = JSON.parse( Ti.App.Properties.getString('config') || loadConfig() );
 	Ti.API.info('LOADING.CONFIGURATION.WORKOUT:',config);
-	loadWorkout();	
+	loadWorkout();
 })();
 
 
@@ -323,9 +324,10 @@ function loadConfig(){
 
 
 function loadWorkout(){
-	
-
-	xhr.GET(workout_url, onSuccessWorkoutCallback, onErrorWorkoutCallback, Alloy.Globals.XHROptions);
+	var wid = Ti.App.Properties.getString('my_workout');
+	var wurl = workout_final_url+wid;
+	Ti.API.info('ATTEMPT.LOAD.WORKOUT_PLAYER', wurl);
+	xhr.GET(wurl, onSuccessWorkoutCallback, onErrorWorkoutCallback, Alloy.Globals.XHROptions);
 }
 
 function addOverviewSlide(data){

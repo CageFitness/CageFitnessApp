@@ -2,10 +2,19 @@
 var controls=require('controls');
 
 var args = $.args;
-Ti.API.info('WINDOW',$.id);
+var cage_url = args.cage_url || false;
+
+Ti.API.info('WINDOW:');
+Ti.API.info('CAGE_URL:',cage_url);
+
+if(cage_url){
+	$.main.add(Alloy.createController('exercise/full').getView());
+}
+else{
+	$.main.add(Alloy.createController('workout_player').getView());
+}
 
 
-$.main.add(Alloy.createController('workout_player').getView());
 function onButtonClose(e){
 	Ti.API.info('WTYPE CHECK FROM WINDOW.XML: ', e.window_type);
 	if(e.window_type == 'modal'){

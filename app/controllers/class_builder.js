@@ -126,40 +126,42 @@ function updateSteps(page){
         Ti.API.info( JSON.stringify(par.children[istep]) );
         var item = par.children[istep];
         item.backgroundColor="#d9e153";
-        item.children[0].color = "#fff";
+        item.children[0].color = "#7b7b3e";
     }
 
-    if (page == 0 || page == 1) {
+    if (page == 0 ) {
       Animation.fadeOut($.step_line,100);
     }
 
-    if (page == 2) {
+    if (page == 1) {
         updateStepItem(par,0);
     }
-    if (page == 3) {
+    if (page == 2) {
         updateStepItem(par,1);
     }
-    if (page == 4) {
+    if (page == 3) {
         updateStepItem(par,2);
     }
-    if (page == 5) {
+    if (page == 4) {
         updateStepItem(par,3);
     }
-    if (page == 6) {
+    if (page == 5) {
         updateStepItem(par,4);
     }
-    if (page == 7) {
+    if (page == 6) {
         updateStepItem(par,5);
     }
-    if (page == 8) {
-       updateStepItem(par,6);
+    if (page == 7) {
+        updateStepItem(par,6);
     }
+    // if (page == 8) {
+    //    updateStepItem(par,7);
+    // }
 
 }
 
 // $.login_box.addEventListener('click',function(e){
-//     Ti.API.info('THIS WorkS?');
-//     Animation.fadeIn($.step_line,100);
+
 // })
 $.scrollableView.addEventListener('scrollend',function(e){
     updateSteps(e.currentPage)
@@ -258,36 +260,22 @@ function decrease() {
 
 function getNext(){
     $.scrollableView.scrollToView($.scrollableView.currentPage + 1);
+    Animation.fadeIn($.step_line,100);
 }
 function stepClick(e) {
-    // alert($.step3_5_btn.title);
     Ti.API.info('THISPAGE: ' + $.scrollableView.currentPage);
     getNext();
-
 }
 
 
 function doProgress(e) {
-    // Ti.API.info('TESTING...');
-    // var win3 = Alloy.createController('progress').getView();
-   //  var win3 = Alloy.createController('window').getView();
-   //  win3.open({
-   //      transition : Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT
-   // });
-   //  Alloy.Globals.progressWin = win3;
-   Ti.App.fireEvent('cage/launch/window',{key:'menu_workouts'});
+   var wkt = Ti.App.Properties.getString('my_workout');
+   Ti.App.fireEvent('cage/launch/window',{key:'menu_workouts', workout_id:wkt });
 }
 
-
-
 function doWorkout(e) {
-    // Ti.API.info('TESTING...');
-   //  var win2 = Alloy.createController('workout').getView();
-   //  Alloy.Globals.win2 = win2;
-   //  win2.open({
-   //      transition : Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT
-   // });
-   Ti.App.fireEvent('cage/launch/window',{key:'menu_workouts'});
+   var wkt = Ti.App.Properties.getString('my_workout');
+   Ti.App.fireEvent('cage/launch/window',{key:'menu_workouts', workout_id:wkt });
 }
 
 function openRoundPopover() {

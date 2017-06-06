@@ -39,8 +39,29 @@ function LaunchLogin(e) {
 }
 Ti.App.addEventListener('cage/launch/login', LaunchLogin);
 
+
+
+function LaunchVideo(e) {
+	Ti.API.info('LAUNCHING.EXTERNAL.WINDOW.WITH:', e.url);
+    var win = Alloy.createController('window', {'cage_url':e.url}).getView();
+    win.open();
+    Alloy.Globals.modalWindow = win;
+}
+Ti.App.addEventListener('cage/launch/video', LaunchVideo);
+
+
+function LaunchExternal(e) {
+	Ti.API.info('LAUNCHING.EXTERNAL.WINDOW.WITH:', e.url);
+    var win = Alloy.createController('window', {'cage_url':e.url}).getView();
+    win.open({transition : Ti.UI.iOS.AnimationStyle.FLIP_FROM_LEFT});
+    Alloy.Globals.modalWindow = win;
+}
+Ti.App.addEventListener('cage/launch/external', LaunchExternal);
+
+
+
 function LaunchWindow(e) {
-	Ti.API.info('KEY: ', e.key);
+	Ti.API.info('LAUNCHING.WINDOW.WITH:', e.key, e.workout_id);
     var win = Alloy.createController('window').getView();
     win.open({transition : Ti.UI.iOS.AnimationStyle.FLIP_FROM_LEFT});
     Alloy.Globals.modalWindow = win;
@@ -83,6 +104,8 @@ Ti.App.addEventListener('cage/downloadmanager/progress', function(e){
 
 function handleExternal(e){
 	Ti.API.info('HELLO WORLD:', e, e.itemIndex);
+	// menu_external
+	// lll
 }
 
 function initWindowButtons(items){
@@ -100,6 +123,24 @@ function handleMenuClickEvent(e){
 
     $.drawermenu.showhidemenu();
     $.drawermenu.menuOpen = false;
+
+    if((e.rowData.id in menuitems)){
+    	triggerDrawer(e);
+    }
+    else{
+    	triggerWindow(e);
+    }
+}
+
+
+function triggerWindow(e){
+// launch workout here
+Ti.API.info('Launch Workout', e.rowData.id);
+Ti.App.fireEvent('cage/launch/window',{key:'menu_workouts'});
+
+}
+
+function triggerDrawer(e){
 
 	clicked_view = getMenuObject(e.rowData.id);
 	Ti.API.info('CURRENT CHILDREN BEFORE: ',$.drawermenu.drawermainview.children)
@@ -132,9 +173,8 @@ function handleMenuClickEvent(e){
 	
 	Ti.API.info('CURRENT CHILDREN AFTER: ',$.drawermenu.drawermainview.children)
     Ti.API.info(e.rowData.id); 
+
 }
-
-
 
 initWindowButtons(menuitems);
 $.drawermenu.init({

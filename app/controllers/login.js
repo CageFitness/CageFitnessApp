@@ -1,6 +1,6 @@
 // Arguments passed into this controller can be accessed via the `$.args` object directly or:
 var args = $.args;
-var xhr = new XHR();
+// var xhr = new XHR();
 
 Alloy.Globals.XHROptions = {
     // shouldAuthenticate:false,
@@ -61,6 +61,7 @@ function callOptions(tkn){
     var validate_url = Alloy.CFG.api_url + Alloy.CFG.validate_path;
     var config_url = Alloy.CFG.api_url + Alloy.CFG.config_path;
     var user_url = Alloy.CFG.api_url + Alloy.CFG.user_path;
+    var my_workout_url = Alloy.CFG.api_url + Alloy.CFG.user_workout_path;
     xhr.setStaticOptions({
             requestHeaders: [
                 {
@@ -82,8 +83,9 @@ function onSuccessOptionsCallback(e){
 }
 
 function onSuccessUserCallback(e){
-   Ti.API.info('USER: ', e.data);
+   Ti.API.info('USER.SUCESS.CB: ', e.data);
    Ti.App.Properties.setString('user', e.data );
+   Ti.App.fireEvent('cage/login/authenticated');
    closeLogin();
 }
 

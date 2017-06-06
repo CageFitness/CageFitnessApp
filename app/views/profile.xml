@@ -25,12 +25,19 @@
 			            <View class="list_header">
 			            	<Label class="htitle">My Workouts</Label>
 			            </View>
-			        </HeaderView>                	
-                    <ListItem title="Workout" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_CHECKMARK" />
+			        </HeaderView> 
+
+                    <ListItem id="my_wkt" title="My Workout" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE" />
+                    <ListItem title="" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE" />
+                    <ListItem title="" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE" />
+<!--                     <ListItem title="Workout #2" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE" />
+                    <ListItem title="Workout #3" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE" />
+ -->                    
+<!--                     <ListItem title="Workout" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE" />
                     <ListItem title="Detail Accessory" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE" />
                     <ListItem title="Disclosure Accessory" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE" />
                     <ListItem title="Checkmark Accessory" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_CHECKMARK" />
-                </ListSection>
+ -->                </ListSection>
             </ListView>
         </View>
     </View>

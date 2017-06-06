@@ -13,22 +13,34 @@
                     </ItemTemplate>
                 </Templates>
                 <ListSection>
-                	
-                </ListSection>
-<!--                 <ListSection headerTitle="LOVE CAGE FITNESS? HELP US GROW">
-                    <ListItem title="Find us on Facebook" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_NONE" />
+			        <HeaderView>
+			            <View class="list_header">
+			            	<Label class="htitle">LOVE CAGE FITNESS? HELP US GROW</Label>
+			            </View>
+			        </HeaderView>
+                    <ListItem eurl="Test" title="Find us on Facebook" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_NONE" />
                     <ListItem title="Detail Accessory" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DETAIL" />
                     <ListItem title="Disclosure Accessory" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE" />
                     <ListItem title="Checkmark Accessory" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_CHECKMARK" />
                 </ListSection>
-                <ListSection headerTitle="GET IN CONTACT WITH US?">
+                <ListSection>
+			        <HeaderView>
+			            <View class="list_header">
+			            	<Label class="htitle">GET IN CONTACT WITH US?</Label>
+			            </View>
+			        </HeaderView>                 	
                     <ListItem title="Frequently Asked Questions" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_NONE" />
                     <ListItem title="Contact US" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DETAIL" />
                 </ListSection>
-                <ListSection headerTitle="WANT TO READ THE FINE PRINT?">
+                <ListSection>
+			        <HeaderView>
+			            <View class="list_header">
+			            	<Label class="htitle">WANT TO READ THE FINE PRINT?</Label>
+			            </View>
+			        </HeaderView>                  	
                     <ListItem id="menu_external" title="Terms of Service" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE" />
                     <ListItem id="menu_external" title="Privacy Policy" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE" />
-                </ListSection> -->
+                </ListSection>
             </ListView>
         </View>
     </View>

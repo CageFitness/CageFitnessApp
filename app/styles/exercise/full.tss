@@ -1,0 +1,20 @@
+
+".mainView" : {
+  width:Ti.UI.FILL,
+  height:Ti.UI.FILL,
+}
+
+".container" : {
+  
+}
+
+"#videoPlayer" : {
+    top : 0,
+    autoplay : true,
+    backgroundColor : '#fff',
+    height : Ti.UI.FILL,
+    width : Ti.UI.FILL,
+    mediaControlStyle : Titanium.Media.VIDEO_CONTROL_DEFAULT,
+    scalingMode : Titanium.Media.VIDEO_SCALING_ASPECT_FIT,
+}
+

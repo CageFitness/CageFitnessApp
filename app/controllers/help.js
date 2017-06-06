@@ -2,26 +2,28 @@
 var args = $.args;
 
 function handleListViewClick(e){
-    var item = $.help_list_view.sections[e.sectionIndex].getItemAt(e.itemIndex);
-    Ti.API.info('URL:',item.url);
-	Ti.App.fireEvent('cage/external/link',e);
+    Ti.API.info('URLTEST:',e, elementData, e.sectionIndex, e.itemIndex);
+	var res = _.findWhere(elementData, {'sectionIndex':e.sectionIndex, 'itemIndex':e.itemIndex});
+	// Ti.API.info('RES:',res);
+	if(_.size(res)>0){
+		Ti.API.info('RES: ',res.url);
+		// Ti.App.fireEvent('cage/external/link',{'window_type':'modal', 'url':res.url});
+		Ti.App.fireEvent('cage/launch/external',{url:res.url});
+	}
+	
+
 }
 
 
 var elementData = [
-	{"name":"Hydrogen", url:"uno.com" },
-	{"name":"Helium" },
-	{"name":"Lithium" },
-	{"name":"Beryllium" },
-	{"name":"Boron"	},
-	{"name":"Carbon" },
-	{"name":"Nitrogen"}
+	{'sectionIndex':0,'itemIndex':0, 'url':'http://uno.com', 'title':'My Title', 'accesoryType':'Ti.UI.LIST_ACCESSORY_TYPE_DETAIL' },
+	{'sectionIndex':0,'itemIndex':1, 'url':'http://uno.com', 'title':'My Title', 'accesoryType':'Ti.UI.LIST_ACCESSORY_TYPE_DETAIL' }
 ];
-var items = _.map(elementData, function(element) {
-	return {
-		properties: {
-			title: element.name
-		}
-	};
-});
-$.help_list_view.sections[0].setItems(items);
+// var items = _.map(elementData, function(element) {
+// 	return {
+// 		properties: {
+// 			title: element.name
+// 		}
+// 	};
+// });
+// $.help_list_view.sections[0].setItems(items);

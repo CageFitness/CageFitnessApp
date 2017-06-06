@@ -1,4 +1,8 @@
 // Arguments passed into this controller can be accessed via the `$.args` object directly or:
+
+// $ GET /wp/v2/posts?per_page=5&page=2
+// $ GET /wp/v2/posts?filter[posts_per_page]=5&filter[paged]=2
+
 var args = $.args;
 var exercises =[];
 
@@ -6,11 +10,11 @@ var xhr = new XHR();
 var workout_url = Alloy.CFG.api_url + Alloy.CFG.workout_test_path;
 
 function loadExercises(){
-	xhr.GET(workout_url, onSuccessWorkoutCallback, onErrorWorkoutCallback, Alloy.Globals.XHROptions);
+	xhr.GET(workout_url, onSuccessExercisesCallback, onErrorExercisesCallback, Alloy.Globals.XHROptions);
 }
 
 
-function proccessWorkout(n){
+function processExercises(n){
 
 	var round_iterator = n;
 
@@ -33,16 +37,16 @@ function proccessWorkout(n){
 
 }
 
-function onSuccessWorkoutCallback(e){
+function onSuccessExercisesCallback(e){
 
     // Ti.API.info('VIDEO:', e.data.acf.round_selector[0].customizer[0].acf.video.url);
     // Ti.API.info('GIF:', e.data.acf.round_selector[0].customizer[0].acf.video_animated_thumbnail.url);
     // Ti.API.info('THUMB:', e.data.acf.round_selector[0].customizer[0].acf.video_featured.url);
-
+    Ti.API.info('EXERCISE.SUCESS.WORKOUT.CALLBACK')
 	exercises = [];
 
 	var data = e.data.acf.round_selector;
-	proccessWorkout(data);
+	processExercises(data);
 
 
 
@@ -50,7 +54,7 @@ function onSuccessWorkoutCallback(e){
 	createSampleData(exercises);
 }
 
-function onErrorWorkoutCallback(e){
+function onErrorExercisesCallback(e){
 	Ti.API.info(e.data);
 }
 
@@ -63,12 +67,13 @@ loadExercises();
 
 var items = [];
 
-//CUSTOM FUNCTION TO DEFINE WHAT HAPPENS WHEN AN ITEM IN THE GRID IS CLICKED
-var showGridItemInfo = function(e){
-    alert(e.source.data);
+
+function showGridItemInfo(e){
+	Ti.API.info('ITEM.CLICKED.EXERCISE...', e.source.data);
+	Ti.App.fireEvent('cage/launch/video', {'url':e.source.data.video});
 };
 
-//INITIALIZE TIFLEXIGRID
+
 $.fg.init({
     columns:4,
     space:20,

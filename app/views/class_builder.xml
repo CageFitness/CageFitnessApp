@@ -1,10 +1,9 @@
 <Alloy>
     <View id="mainView" class="container">
-        <Require src="topbar"></Require>
-        <!--<View id="mainTopBar">
-			<View id="menuButton"/>
-		</View> -->
-        <ScrollableView id="scrollableView" showPagingControl="false">
+
+        <Require top="0" src="topbar"></Require>
+
+        <ScrollableView top="0" id="scrollableView" showPagingControl="false">
             <View id="home" class="step">
                 <!-- <Button id="home_btn" onClick="stepClick"></Button> -->
                 <Button id="home_btn" onClick="doProgress"></Button>
@@ -170,32 +169,34 @@
                 <Button id="step7_btn" class="step_btn" onClick="doWorkout" title="BEGIN WORKOUT"></Button>
             </View>
         </ScrollableView>
-        <View id="head" class="bar"></View>
-        <Label id="main_title" text="CAGE FITNESS" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER" />
-        <View id="main_line" class="bar"></View>
-        <View id="step_line" class="bar">
-            <View class="step_track_line"></View>
-            <View id="step_track">
-                <View id="s2" left="0" onClick="stepClickHandler" autoStyle="true" class="step_ball">
-                    <Label class="step_label" text="1" autoStyle="true"></Label>
-                </View>
-                <View id="s3" left="84" onClick="stepClickHandler" autoStyle="true" class="step_ball">
-                    <Label class="step_label" autoStyle="true" text="2"></Label>
-                </View>
-                <View id="s4" left="165" onClick="stepClickHandler" autoStyle="true" class="step_ball">
-                    <Label class="step_label" text="3" autoStyle="true"></Label>
-                </View>
-                <View id="s5" onClick="stepClickHandler" autoStyle="true" class="step_ball">
-                    <Label class="step_label" text="4" autoStyle="true"></Label>
-                </View>
-                <View id="s6" left="333" onClick="stepClickHandler" autoStyle="true" class="step_ball">
-                    <Label class="step_label" text="5" autoStyle="true"></Label>
-                </View>
-                <View id="s7" left="414" onClick="stepClickHandler" autoStyle="true" class="step_ball">
-                    <Label class="step_label" text="6" autoStyle="true"></Label>
-                </View>
-            </View>
+
+		<View top="-565" id="step_line" class="bar">
+			<View class="step_wrap">
+	            <View class="step_track_line"></View>
+	            <View id="step_track">
+	                <View id="s2" left="0" onClick="stepClickHandler" autoStyle="true" class="step_ball">
+	                    <Label class="step_label" text="1" autoStyle="true"></Label>
+	                </View>
+	                <View id="s3" left="79" onClick="stepClickHandler" autoStyle="true" class="step_ball">
+	                    <Label class="step_label" autoStyle="true" text="2"></Label>
+	                </View>
+	                <View id="s4" left="182" onClick="stepClickHandler" autoStyle="true" class="step_ball">
+	                    <Label class="step_label" text="3" autoStyle="true"></Label>
+	                </View>
+	                <View id="s5" left="285" onClick="stepClickHandler" autoStyle="true" class="step_ball">
+	                    <Label class="step_label" text="4" autoStyle="true"></Label>
+	                </View>
+	                <View id="s6" left="388" onClick="stepClickHandler" autoStyle="true" class="step_ball">
+	                    <Label class="step_label" text="5" autoStyle="true"></Label>
+	                </View>
+	                <View id="s7" left="490" onClick="stepClickHandler" autoStyle="true" class="step_ball">
+	                    <Label class="step_label" text="6" autoStyle="true"></Label>
+	                </View>
+	            </View>				
+			</View>
         </View>
+
     </View>
+            
 </Alloy>
 

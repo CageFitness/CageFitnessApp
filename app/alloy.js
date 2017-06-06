@@ -6,7 +6,4 @@ Animation = require('alloy/animation');
 XHR = require('xhr');
 Utils = require('utils');
 
-
-
-
-
+var xhr = new XHR();

@@ -1,6 +1,6 @@
 <Alloy>
 	<View id="mainView">
-		<Require src="topbar"></Require>
-		<WebView id="external_view" onBeforeload="onBeforeLoad" onLoad="onLoad" />
+		<Require src="topbar" window_type="modal"></Require>
+		<!-- <WebView id="external_view" onBeforeload="onBeforeLoad" onLoad="onLoad" /> -->
 	</View>
 </Alloy>
