@@ -11,6 +11,7 @@ var workout_url = Alloy.CFG.api_url + Alloy.CFG.workout_test_path;
 
 function loadExercises(){
 	xhr.GET(workout_url, onSuccessExercisesCallback, onErrorExercisesCallback, Alloy.Globals.XHROptions);
+	// xhr.GET(exercise_path, onSuccessExercises2Callback, onErrorExercises2Callback, Alloy.Globals.XHROptions);
 }
 
 
@@ -35,6 +36,20 @@ function processExercises(n){
 
 	}
 
+}
+
+function onSuccessExercises2Callback(e){
+    // Ti.API.info('VIDEO:', e.data.acf.round_selector[0].customizer[0].acf.video.url);
+    // Ti.API.info('GIF:', e.data.acf.round_selector[0].customizer[0].acf.video_animated_thumbnail.url);
+    // Ti.API.info('THUMB:', e.data.acf.round_selector[0].customizer[0].acf.video_featured.url);
+    Ti.API.info('EXERCISE.SUCESS.WORKOUT.CALLBACK')
+	exes = [];
+	var data = e.data;
+
+}
+
+function onErrorExercises2Callback(e){
+	Ti.API.info(e.data);
 }
 
 function onSuccessExercisesCallback(e){

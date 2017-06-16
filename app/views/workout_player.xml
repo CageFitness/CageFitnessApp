@@ -1,6 +1,11 @@
 <Alloy>
     <View id="mainView" class="container">
         <Require src="topbar" window_type="modal"></Require>
+        <!-- <View id="logo">
+            <View id="activity_wrapper">
+                <ActivityIndicator id="activity_indicator" />
+            </View>
+        </View> -->
         <ScrollableView id="scrollable" onScrollend="scrollableViewDidScroll">
         </ScrollableView>
         <View id="toolbar_wrapper">
@@ -8,11 +13,9 @@
                 <Button id="prev" title="Back" onClick="scrollPrev">
                     <ImageView class="icon" id="prev_icon"></ImageView>
                 </Button>
-
                 <Button id="play" title="Play / Pause" onClick="PlayPause">
                     <ImageView class="icon" id="play_icon"></ImageView>
                 </Button>
-
                 <Button id="next" title="Next" onClick="scrollNext">
                     <ImageView class="icon" id="next_icon"></ImageView>
                 </Button>

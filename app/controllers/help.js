@@ -16,8 +16,13 @@ function handleListViewClick(e){
 
 
 var elementData = [
-	{'sectionIndex':0,'itemIndex':0, 'url':'http://uno.com', 'title':'My Title', 'accesoryType':'Ti.UI.LIST_ACCESSORY_TYPE_DETAIL' },
-	{'sectionIndex':0,'itemIndex':1, 'url':'http://uno.com', 'title':'My Title', 'accesoryType':'Ti.UI.LIST_ACCESSORY_TYPE_DETAIL' }
+	{'sectionIndex':0,'itemIndex':0, 'url':'https://www.facebook.com/CageFitness/', 'title':'My Title', 'accesoryType':'Ti.UI.LIST_ACCESSORY_TYPE_DETAIL' },
+	{'sectionIndex':0,'itemIndex':1, 'url':'https://www.youtube.com/user/CageFitness', 'title':'My Title', 'accesoryType':'Ti.UI.LIST_ACCESSORY_TYPE_DETAIL' },
+	{'sectionIndex':0,'itemIndex':2, 'url':'https://twitter.com/cagefitness', 'title':'My Title', 'accesoryType':'Ti.UI.LIST_ACCESSORY_TYPE_DETAIL' },
+	{'sectionIndex':1,'itemIndex':0, 'url':'https://cagefitness.com/about-us#cage-faqs', 'title':'My Title', 'accesoryType':'Ti.UI.LIST_ACCESSORY_TYPE_DETAIL' },
+	{'sectionIndex':1,'itemIndex':1, 'url':'https://cagefitness.com/contact', 'title':'My Title', 'accesoryType':'Ti.UI.LIST_ACCESSORY_TYPE_DETAIL' },
+	{'sectionIndex':2,'itemIndex':0, 'url':'https://cagefitness.com/app/help/terms-of-service', 'title':'My Title', 'accesoryType':'Ti.UI.LIST_ACCESSORY_TYPE_DETAIL' },
+	{'sectionIndex':2,'itemIndex':1, 'url':'https://cagefitness.com/app/help/privacy-policy', 'title':'My Title', 'accesoryType':'Ti.UI.LIST_ACCESSORY_TYPE_DETAIL' },
 ];
 // var items = _.map(elementData, function(element) {
 // 	return {

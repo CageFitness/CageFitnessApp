@@ -1,7 +1,7 @@
 <Alloy>
     <View id="mainView">
         <Require src="topbar" window_type="modal"></Require>
-        <VideoPlayer id="videoPlayer" ns="Ti.Media" url="https://cagefitness.com/wp-content/uploads/import/CFA-BodyWeight-3PointPushupsAlternating.mp4"   />
+        <VideoPlayer id="videoPlayer" ns="Ti.Media" />
     </View>
 </Alloy>
 

@@ -18,10 +18,9 @@
 			            	<Label class="htitle">LOVE CAGE FITNESS? HELP US GROW</Label>
 			            </View>
 			        </HeaderView>
-                    <ListItem eurl="Test" title="Find us on Facebook" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_NONE" />
-                    <ListItem title="Detail Accessory" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DETAIL" />
-                    <ListItem title="Disclosure Accessory" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE" />
-                    <ListItem title="Checkmark Accessory" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_CHECKMARK" />
+                    <ListItem title="Find us on Facebook" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_NONE" />
+                    <ListItem title="Find us on Youtube" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DETAIL" />
+                    <ListItem title="Find us on Twitter" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE" />
                 </ListSection>
                 <ListSection>
 			        <HeaderView>

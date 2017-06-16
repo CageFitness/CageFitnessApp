@@ -7,6 +7,7 @@ var subtitle = args.subtitle || '';
 var counter = args.counter || '59';
 var round = args.round || [];
 var item_index = args.item_index || 0;
+var file_index = args.file_index || 0;
 var round_number = args.round_number || '';
 
 var exercise_number = args.exercise_number || '';
@@ -29,6 +30,12 @@ $.overview.backgroundColor = '#fff';
 var items = [];
 
 
+function getIndex(n){
+	r = Number(n)+1; 
+	return r;
+}
+
+
 
 function describeRound(){
 	for (each in round){
@@ -37,8 +44,8 @@ function describeRound(){
 	        mass : {text : o.ID}, 
 	        name : {text : o.post_title },
 	        number : { text : round_number},
-	        symbol : { color : "#090", text : round_number+"."},
-	        slide_data : {text: exercise_number +' | '+duration}
+	        symbol : { color : "#090", text : round_number+"."+getIndex(each)},
+	        slide_data : {text: getIndex(each) +' | '+duration}
 	    }
 	    items.push(ob);
 	}

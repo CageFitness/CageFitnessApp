@@ -5,7 +5,7 @@ appc run \
 --log-level info \
 --project-dir /Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp \
 --target device \
---ios-version 10.3 \
+--ios-version 10.3.1 \
 --device-family universal \
 --developer-name "Steven Holliday (3RC95J5NP5)" \
 --device-id 5f5b161d39c57aabf8826de69cec7f2bb00f391e \

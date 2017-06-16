@@ -3,12 +3,16 @@ var controls=require('controls');
 
 var args = $.args;
 var cage_url = args.cage_url || false;
+var wtype = args.type || false;
 
 Ti.API.info('WINDOW:');
-Ti.API.info('CAGE_URL:',cage_url);
+Ti.API.info('CAGE_URL:',cage_url, wtype);
 
-if(cage_url){
+if(wtype=='exercise'){
 	$.main.add(Alloy.createController('exercise/full').getView());
+}
+else if(wtype=='external'){
+	$.main.add(Alloy.createController('external',{'url':cage_url}).getView());
 }
 else{
 	$.main.add(Alloy.createController('workout_player').getView());

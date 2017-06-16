@@ -34,10 +34,19 @@ Ti.API.info('=============');
 
 	config = JSON.parse( Ti.App.Properties.getString('config') || loadConfig() );
 	Ti.API.info('LOADING.CONFIGURATION.WORKOUT:',config);
+	// showIndicator();
 	loadWorkout();
 })();
 
-
+function showIndicator(e){
+    // $.activity_wrapper.show();
+    // $.activity_indicator.show();
+}
+function closeIndicator(){
+        Ti.API.info('CLOSE.INDICATOR: ');
+        // $.activity_wrapper.hide();
+        // $.activity_indicator.hide();
+}
 
 
 
@@ -258,7 +267,7 @@ function prepareVideoOwl(data){
 			sob.exercise_number = data[x].exercise_number;
 			sob.exercise_equipment = data[x].exercise_equipment;
 			sob.exercise_type = data[x].exercise_type;        	
-        	
+        	sob.file_index = data[x].file_index;
         	addWorkoutElement('workout/overview',sob);	
         }
         else{
@@ -296,7 +305,7 @@ function onSuccessWorkoutCallback(e){
     // Ti.API.info('VIDEO:', e.data.acf.round_selector[0].customizer[0].acf.video.url);
     // Ti.API.info('GIF:', e.data.acf.round_selector[0].customizer[0].acf.video_animated_thumbnail.url);
     // Ti.API.info('THUMB:', e.data.acf.round_selector[0].customizer[0].acf.video_featured.url);
-
+    // closeIndicator();
 	exercises = [];
 
 	var data = e.data.acf.round_selector;

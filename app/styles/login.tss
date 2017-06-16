@@ -1,3 +1,13 @@
+"#logo":{
+	top:30,
+	backgroundImage:"images/home_btn.png",
+	width:100,
+	height:100,
+	borderRadius:20,
+	borderWidth:4,
+	borderColor:'#343434'
+}
+
 "#login":{
 	backgroundImage:'images/layout/login.png',
 	backgroundColor:'red',
@@ -24,46 +34,14 @@
 	// borderWidth:2,
 	// borderColor:'red',
 	borderRadius:6,
+	borderColor:'#000',
+	borderWidth:4,
 }
 
-"#activity_wrapper":{
-  height:Ti.UI.FILL,
-  width:Ti.UI.FILL,
-  backgroundColor: Alloy.CFG.styles.brandColor,
-  borderRadius:20,
-  borderWidth:4,
-  borderColor:'#787b40',
-  visible:false,
 
-}
-
-"#activity_indicator":{
-  color: 'green',
-  font: {
-  	fontFamily:'Helvetica Neue',
-  	fontSize:26,
-  	fontWeight:'bold'
-  },
-  // message: 'Loading...',
-  style: Ti.UI.ActivityIndicatorStyle.BIG,
-  // top:0,
-  // left:0,
-  // height:Ti.UI.SIZE,
-  width:100,
-  height:100,
-  // indicatorDiameter:100,
-  indicatorColor:'#000',
-}
-
-"#logo":{
-	top:30,
-	backgroundImage:"images/home_btn.png",
-	width:100,
-	height:100,
-}
 
 "#messages":{
-	left:10,
+	left:70,
 	right:10,
 	layout:'horizontal',
 	top:175,
@@ -80,21 +58,21 @@
 	left:10,
 	color: Alloy.CFG.styles.brandColor,
 	font: {
-	    fontSize: 14,
+	    fontSize: 15,
 	}
 }
 
 "#message":{
 	color: '#efefef',
 	font: {
-	    fontSize: 14,
+	    fontSize: 15,
 	}
 }
 "#login_title":{
 	top:130,
 	color: Alloy.CFG.styles.brandColor,
 	font: {
-	    fontSize: 24,
+	    fontSize: 20,
 	    fontFamily: 'MuseoSans-700',
 	    fontWeight: 'bold',
 	}
@@ -104,6 +82,7 @@
 	// top: 130,
 	bottom:50,
 	width:Ti.UI.FILL,
+	paddingLeft:20,
 	right:80,
 	height:50,
 	borderRadius:0,
@@ -123,6 +102,7 @@
 	// top: '170dp',
 	bottom:0,
 	width:Ti.UI.FILL,
+	paddingLeft:20,
 	right:80,
 	height:50,
 	borderRadius:0,

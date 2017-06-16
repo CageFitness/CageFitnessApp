@@ -43,8 +43,8 @@ Ti.App.addEventListener('cage/launch/login', LaunchLogin);
 
 function LaunchVideo(e) {
 	Ti.API.info('LAUNCHING.EXTERNAL.WINDOW.WITH:', e.url);
-    var win = Alloy.createController('window', {'cage_url':e.url}).getView();
-    win.open();
+    var win = Alloy.createController('window', {'cage_url':e.url, 'type':'exercise'}).getView();
+    win.open({modal:true});
     Alloy.Globals.modalWindow = win;
 }
 Ti.App.addEventListener('cage/launch/video', LaunchVideo);
@@ -52,7 +52,7 @@ Ti.App.addEventListener('cage/launch/video', LaunchVideo);
 
 function LaunchExternal(e) {
 	Ti.API.info('LAUNCHING.EXTERNAL.WINDOW.WITH:', e.url);
-    var win = Alloy.createController('window', {'cage_url':e.url}).getView();
+    var win = Alloy.createController('window', {'cage_url':e.url, 'type':'external'}).getView();
     win.open({transition : Ti.UI.iOS.AnimationStyle.FLIP_FROM_LEFT});
     Alloy.Globals.modalWindow = win;
 }

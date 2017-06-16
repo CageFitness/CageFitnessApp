@@ -1,0 +1,7 @@
+<Alloy>
+    <View id="logo">
+        <View id="activity_wrapper">
+            <ActivityIndicator id="activity_indicator" />
+        </View>
+    </View>
+</Alloy>

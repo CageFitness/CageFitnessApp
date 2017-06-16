@@ -71,16 +71,20 @@
 }
 
 "#symbol": {
+	top:4,
 	left: 15,
 	color: "black",
-	font: { fontSize: 34, fontWeight: 'bold' }
+	font: { fontSize: 20, fontWeight: 'bold' }
+
 },
 "#symbol[platform=android]": {
 	left: 0
 }
 "#atomProperties": {
 	top: 0, left: 80, right: 0, bottom: 0,
-	layout: "vertical"
+	layout: "vertical",
+	backgroundColor: 'pink',
+	height:28,
 },
 "#atomProperties[platform=android]": {
 	left: 65
@@ -89,11 +93,12 @@
 	left: 0, top: 4,
 	color: "black",
 	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-	font: { fontSize: 16 }
+	font: { fontSize: 18 }
 },
 "#secondLine": {
 	left: 0, right: 0,
-	layout: "horizontal"
+	layout: "horizontal",
+	visible:false,
 },
 ".fieldLabel": {
 	color:"#999"
