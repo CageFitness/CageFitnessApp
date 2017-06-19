@@ -6,4 +6,12 @@ Animation = require('alloy/animation');
 XHR = require('xhr');
 Utils = require('utils');
 
+
+Alloy.Globals.XHROptions = {
+    // shouldAuthenticate:false,
+    parseJSON:true,
+    debug:true,
+};
+
+
 var xhr = new XHR();

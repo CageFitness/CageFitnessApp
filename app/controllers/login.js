@@ -8,10 +8,10 @@ Alloy.Globals.XHROptions = {
     debug:true,
 };
 var data = {
-    // username:'pabloliz_member',
-    // password:'caInterno#1',
-    username:'testmember',
-    password:'testmember'    
+    username:'pabloliz_member',
+    password:'caInterno#1',
+    // username:'testmember',
+    // password:'testmember'    
 }
 var opts = {
     // shouldAuthenticate:false,
@@ -106,3 +106,8 @@ function closeLogin(){
 
 
 // cageAuthenticate();	
+
+
+
+
+

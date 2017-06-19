@@ -18,9 +18,9 @@
 			            	<Label class="htitle">LOVE CAGE FITNESS? HELP US GROW</Label>
 			            </View>
 			        </HeaderView>
-                    <ListItem title="Find us on Facebook" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_NONE" />
-                    <ListItem title="Find us on Youtube" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DETAIL" />
-                    <ListItem title="Find us on Twitter" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE" />
+                    <ListItem title="Find us on Facebook" class="list_view_item" />
+                    <ListItem title="Find us on Youtube" class="list_view_item" />
+                    <ListItem title="Find us on Twitter" class="list_view_item" />
                 </ListSection>
                 <ListSection>
 			        <HeaderView>
@@ -28,8 +28,8 @@
 			            	<Label class="htitle">GET IN CONTACT WITH US?</Label>
 			            </View>
 			        </HeaderView>                 	
-                    <ListItem title="Frequently Asked Questions" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_NONE" />
-                    <ListItem title="Contact US" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DETAIL" />
+                    <ListItem title="Frequently Asked Questions" class="list_view_item" />
+                    <ListItem title="Contact US" class="list_view_item" />
                 </ListSection>
                 <ListSection>
 			        <HeaderView>
@@ -37,8 +37,8 @@
 			            	<Label class="htitle">WANT TO READ THE FINE PRINT?</Label>
 			            </View>
 			        </HeaderView>                  	
-                    <ListItem id="menu_external" title="Terms of Service" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE" />
-                    <ListItem id="menu_external" title="Privacy Policy" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE" />
+                    <ListItem id="menu_external" title="Terms of Service" class="list_view_item" />
+                    <ListItem id="menu_external" title="Privacy Policy" class="list_view_item" />
                 </ListSection>
             </ListView>
         </View>

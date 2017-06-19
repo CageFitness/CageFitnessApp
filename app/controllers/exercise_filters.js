@@ -14,3 +14,4 @@ var log = require("log");
 function tabbedBarSelectedIndex(e) {
 	log.args('Ti.UI.iOS.TabbedBar changed to index: ', e.index);
 }
+

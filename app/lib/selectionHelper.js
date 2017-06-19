@@ -1,10 +1,3 @@
-var Alloy=require('alloy');
-
-exports.getRandomColor = function(){
-	return 'rgba(' + _.random(0,255) + ',' + _.random(0,255) + ',' + _.random(0,255) + ', 1.0)';	
-}
-
-
 /**
  * @method getViewByClass
  * This will take a class and an optional parent and find children with that class
@@ -29,9 +22,3 @@ exports.getViewByClass = function(_class, _parent, _depth) {
     
     return classArray;
 };
-
-
-exports.getIndex = function(n){
-	r = Number(n)+1; 
-	return r;
-}

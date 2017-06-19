@@ -1,6 +1,6 @@
 var args = $.args;
 var log = require('log');
-var xhr = new XHR();
+// var xhr = new XHR();
 var workout_url = Alloy.CFG.api_url + Alloy.CFG.workout_test_path;
 var workout_final_url = Alloy.CFG.api_url + Alloy.CFG.workout_final_path;
 var user_workout_url = Alloy.CFG.api_url + Alloy.CFG.user_workout_path;

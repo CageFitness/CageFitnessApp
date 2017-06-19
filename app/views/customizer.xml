@@ -1,0 +1,6 @@
+<Alloy>
+	<View class="container">
+		<Require src="topbar" window_type=""></Require>
+		<Label onClick="sendData">Hello World</Label>
+	</View>
+</Alloy>

@@ -5,7 +5,7 @@
 
 var args = $.args;
 var exercises =[];
-
+var items = [];
 var xhr = new XHR();
 var workout_url = Alloy.CFG.api_url + Alloy.CFG.workout_test_path;
 
@@ -42,7 +42,7 @@ function onSuccessExercises2Callback(e){
     // Ti.API.info('VIDEO:', e.data.acf.round_selector[0].customizer[0].acf.video.url);
     // Ti.API.info('GIF:', e.data.acf.round_selector[0].customizer[0].acf.video_animated_thumbnail.url);
     // Ti.API.info('THUMB:', e.data.acf.round_selector[0].customizer[0].acf.video_featured.url);
-    Ti.API.info('EXERCISE.SUCESS.WORKOUT.CALLBACK')
+    Ti.API.info('EXERCISE2.SUCESS.WORKOUT.CALLBACK')
 	exes = [];
 	var data = e.data;
 
@@ -57,7 +57,7 @@ function onSuccessExercisesCallback(e){
     // Ti.API.info('VIDEO:', e.data.acf.round_selector[0].customizer[0].acf.video.url);
     // Ti.API.info('GIF:', e.data.acf.round_selector[0].customizer[0].acf.video_animated_thumbnail.url);
     // Ti.API.info('THUMB:', e.data.acf.round_selector[0].customizer[0].acf.video_featured.url);
-    Ti.API.info('EXERCISE.SUCESS.WORKOUT.CALLBACK')
+    Ti.API.info('EXERCISE.SUCESS.CALLBACK')
 	exercises = [];
 
 	var data = e.data.acf.round_selector;
@@ -75,12 +75,11 @@ function onErrorExercisesCallback(e){
 
 
 
-loadExercises();
 
 
 
 
-var items = [];
+
 
 
 function showGridItemInfo(e){
@@ -89,17 +88,7 @@ function showGridItemInfo(e){
 };
 
 
-$.fg.init({
-    columns:4,
-    space:20,
-    gridBackgroundColor:'#fff',
-    itemHeightDelta: -90,
-    itemBackgroundColor:'#eee',
-    itemBorderColor:'transparent',
-    itemBorderWidth:0,
-    itemBorderRadius:0,
-    onItemClick: showGridItemInfo
-});
+
 
 //CUSTOM FUNCTION TO CREATE THE ITEMS FOR THE GRID
 function createSampleData(data){
@@ -133,6 +122,37 @@ function createSampleData(data){
     $.fg.addGridItems(items);
     
 };
+
+
+
+function init_exercise(){
+	loadExercises();
+
+	$.fg.init({
+	    columns:4,
+	    space:20,
+	    gridBackgroundColor:'#fff',
+	    itemHeightDelta: -90,
+	    itemBackgroundColor:'#eee',
+	    itemBorderColor:'transparent',
+	    itemBorderWidth:0,
+	    itemBorderRadius:0,
+	    onItemClick: showGridItemInfo
+	});	
+
+}
+
+
+
+/**
+ * The scoped constructor of the controller.
+ **/
+(function constructor() {
+    Ti.API.info('INIT.EXERCISE');
+    init_exercise();
+})();
+
+
 
 
 

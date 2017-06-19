@@ -1,5 +1,5 @@
 "#logo":{
-	top:30,
+	top:20,
 	backgroundImage:"images/home_btn.png",
 	width:100,
 	height:100,
@@ -69,7 +69,7 @@
 	}
 }
 "#login_title":{
-	top:130,
+	top:120,
 	color: Alloy.CFG.styles.brandColor,
 	font: {
 	    fontSize: 20,
@@ -82,7 +82,12 @@
 	// top: 130,
 	bottom:50,
 	width:Ti.UI.FILL,
-	paddingLeft:20,
+	// paddingLeft:20,
+	padding:{
+		left:20,
+		right:20,
+	},
+
 	right:80,
 	height:50,
 	borderRadius:0,
@@ -102,7 +107,11 @@
 	// top: '170dp',
 	bottom:0,
 	width:Ti.UI.FILL,
-	paddingLeft:20,
+	// paddingLeft:20,
+	padding:{
+		left:20,
+		right:20,
+	},
 	right:80,
 	height:50,
 	borderRadius:0,
@@ -122,16 +131,21 @@
 
 "#limage": {
 	image:'images/icons/plane.png',
+	// borderWidth:1,
+	// borderColor:'red',
 }
 
 "#loginButton": {
 	top:204,
-	right:0,
+	right:4,
+	// left:0,
 	height: 100,
-	width: 80,
+	width: 79,
 	color: '#000',
 	// backgroundImage:'images/icons/04.png',
 	backgroundColor: "#fff",
 	backgroundFocusedColor: Alloy.CFG.styles.brandColor,
+	// borderWidth:1,
+	// borderColor:'#343434',	
 }
 

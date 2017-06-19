@@ -13,90 +13,51 @@ var args = $.args;
 
 
 
-Alloy.Globals.XHROptions = {
-    // shouldAuthenticate:false,
-    parseJSON:true,
-    debug:true,
-};
+// $.button_matrix.backgroundColor='red';
+$.button_matrix.addEventListener('click', function(e){
 
-var xhr = new XHR();
-
-
+	if(e.source._type=='btn'){
+		activateRoundTypeRows(Number(e.source.title));
+	}
+});
 
 
 
-
-
-// 
-// xhr.clean();
-// xhr.purge();
-
-var data = {
-    // username:'pabloliz_member',
-    // password:'%SyNuWlj9o4p)nxZ(npsigYk'
-    username:'testmember',
-    password:'testmember'    
-}
-var opts = {
-    // shouldAuthenticate:false,
-    parseJSON:true,
-    debug:true,
-};
-
-
-function cageAuthenticate(){
-    xhr.POST(Alloy.CFG.api_url +'/wp-json/jwt-auth/v1/token', data, onSuccessCallback, onErrorCallback,opts);
-}
-
-
-function onSuccessUserCallback(e){
-    Ti.API.info('USER: ', e.data);
-}
-function onErrorCallback(e){
-    Ti.API.info('ERROR: ',e);
-}
-
-function callOptions(tkn){
-    Ti.API.info('TOKEN: ', tkn);
-    var data = {};
-    var validate_url = Alloy.CFG.api_url + Alloy.CFG.validate_path;
-    var config_url = Alloy.CFG.api_url + Alloy.CFG.config_path;
-    var user_url = Alloy.CFG.api_url + Alloy.CFG.user_path;
-
-    xhr.setStaticOptions({
-            requestHeaders: [
-                {
-                    key: 'Authorization',
-                    value: 'Bearer '+tkn
-                }
-            ],
-            debug: true    
-        });
-    xhr.POST(validate_url);
-    xhr.GET(config_url, onSuccessOptionsCallback, onErrorCallback);
-    xhr.GET(user_url, onSuccessUserCallback, onErrorCallback);
-
+function activateRoundTypeRows(n){
 
 }
 
-function onSuccessOptionsCallback(e){
-    Ti.App.Properties.setString('config', e.data );
+function createRoundTypeRows(round_number){
+	var items = [];
+	for (var i = 0; i < round_number; i++) {
+		
+		var ob = {
+			info: {text: "Round "+Utils.getIndex(i)},
+	    }
+	    items.push(ob);		
+	}
+
+	return items;
+
+}
+
+
+
+
+
+/**
+ * The scoped constructor of the controller.
+ **/
+(function constructor() {
+
     var config = JSON.parse( Ti.App.Properties.getString('config') );
-}
+    Ti.API.info('CONFIGURATION:',config.acf.opt_rounds);
+    var roundItems = createRoundTypeRows(config.acf.opt_rounds);
+    // $.listview_step3.sections[0].setItems(roundItems);
+
+})();
 
 
-function onSuccessCallback(e){
-
-    Ti.App.Properties.setString('user_token', e.data.token);
-    Ti.App.Properties.setString('user_email', e.data.user_email);
-    Ti.API.info('AUTH DATA:', e);
-    var token = Ti.App.Properties.getString('user_token');
-    callOptions(token);
-}
-
-
-
-// =========================================
 
 
 
@@ -123,10 +84,13 @@ function updateSteps(page){
     var par = $.step_track;
 
     for(istep in $.step_track.children){
-        Ti.API.info( JSON.stringify(par.children[istep]) );
+        // Ti.API.info('ONUPDATESTEPS:' );
+        // Ti.API.info('ONUPDATESTEPS:', JSON.stringify(par.children[istep]) );
+
         var item = par.children[istep];
         item.backgroundColor="#d9e153";
         item.children[0].color = "#7b7b3e";
+
     }
 
     if (page == 0 ) {
@@ -169,6 +133,7 @@ $.scrollableView.addEventListener('scrollend',function(e){
 
 $.scrollableView.addEventListener('dragstart',function(e){
     Ti.App.fireEvent('cage/class_builder/dragstart',{'hello':'world'});
+    Ti.API.info('DRAGSTART:', e);
 });
 
 
@@ -219,7 +184,7 @@ var myCount = 30;
 
 function stepClickHandler(e){
     
-    Ti.API.info(e.source.args);
+    Ti.API.info('HANDLE.STEPS:',e.source.args);
 
     var item, view
     for (item in $.step_track.children) {
@@ -335,7 +300,7 @@ Alloy.Globals.scrollableView = $.scrollableView;
 // stepClickHandler();
 $.scrollableView.scrollToView(0);
 
-// cageAuthenticate();
+
 
 
 

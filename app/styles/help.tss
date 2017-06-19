@@ -1,3 +1,7 @@
+".list_view_item":{
+	accessoryType:Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE,
+}
+
 "#mainView":{
 	backgroundColor:"#f8f8f8",
 }
