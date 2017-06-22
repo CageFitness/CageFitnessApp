@@ -7,13 +7,13 @@ var args = $.args;
 
 
 
-function onSuccessAutoGenerate(e){
+function onSuccessCustomizer(e){
 
 	Ti.API.info('SUCCESS: ',e.data);
 
 }
 
-function onErrorWorkoutCallback(e){
+function onErrorCustomizer(e){
 	Ti.API.info('ERROR: ',e);
 }
 
@@ -70,7 +70,7 @@ function sendData(){
 	var urlx = Alloy.CFG.api_url+Alloy.CFG.workout_create_update;
 	Ti.API.info('URL:',urlx);
 
-	xhr.POST('https://cagefitness.com/wp-json/app/v1/my-workout', finalData, onSuccessAutoGenerate, onErrorWorkoutCallback);
+	xhr.POST('https://cagefitness.com/wp-json/app/v1/my-workout', finalData, onSuccessCustomizer, onErrorCustomizer);
 
 }
 
