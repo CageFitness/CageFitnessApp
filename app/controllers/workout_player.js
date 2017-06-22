@@ -23,7 +23,7 @@ Ti.API.info('======== Cached Resources =======\n', cage_cache_dir, '\n', cage_ca
 NappDownloadManager.addEventListener('progress', ReportProgress);
 NappDownloadManager.addEventListener('completed', ReportProgress);
 NappDownloadManager.permittedNetworkTypes = NappDownloadManager.NETWORK_TYPE_ANY;
-NappDownloadManager.maximumSimultaneousDownloads = 3;
+NappDownloadManager.maximumSimultaneousDownloads = 2;
 
 var permitted_network_types = NappDownloadManager.getPermittedNetworkTypes();	
 Ti.API.info('PNT: ',permitted_network_types);

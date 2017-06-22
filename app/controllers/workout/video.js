@@ -155,6 +155,7 @@ function createVideoPlayer() {
             mediaControlStyle: Titanium.Media.VIDEO_CONTROL_NONE,
             repeatMode: Titanium.Media.VIDEO_REPEAT_MODE_ONE,
             width:Ti.UI.FILL,
+            sourceType:Ti.Media.VIDEO_SOURCE_TYPE_FILE,
 
         });
 

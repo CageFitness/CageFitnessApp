@@ -93,15 +93,21 @@ function createNumberOfExercisesRows(round_number){
  **/
 (function constructor() {
 
-    var config = JSON.parse( Ti.App.Properties.getString('config') );
-    Ti.API.info('CONFIGURATION:',config.acf.opt_rounds);
-    setRoundTypeItems(config.acf.opt_rounds);
-    setNumberOfExerciseItems(config.acf.opt_rounds);
-    
+
+    // init_class_builder();
 
 })();
 
+Ti.App.addEventListener('cage/class_builder/init',init_class_builder);
 
+function init_class_builder(){
+    var config = JSON.parse( Ti.App.Properties.getString('config') );
+    Ti.API.info('CONFIGURATION:',config.acf.opt_rounds);
+    // setRoundTypeItems(config.acf.opt_rounds);
+    // setNumberOfExerciseItems(config.acf.opt_rounds);	
+    setRoundTypeItems(0);
+    setNumberOfExerciseItems(0);
+}
 
 function setNumberOfExerciseItems(ritems){
     var items = createNumberOfExercisesRows(ritems);

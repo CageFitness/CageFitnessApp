@@ -124,6 +124,9 @@
 	height:60,
 	// backgroundColor:"white",
 	textAlign:Ti.UI.TEXT_ALIGNMENT_CENTER,
+	font:{
+		fontSize:14,
+	}
 }
 
 ".custom_workout_wrap":{

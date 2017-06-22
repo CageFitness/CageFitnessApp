@@ -101,7 +101,9 @@ function closeLogin(){
         Ti.API.info('CLOSELOGIN: ');
         $.activity_wrapper.hide();
         $.activity_indicator.hide();
+        Ti.App.fireEvent('cage/class_builder/init');
         $.login.close();
+
 }
 
 

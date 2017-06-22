@@ -39,7 +39,7 @@
                 <Require type="view" src="header" customTitle="Choose Round Type" customImage="images/layout/round_type.png" />
                 <View class="list_wrapper">
                     <View id="list3" class="list" top="0">
-                        <ListView id="listview_step3" defaultItemTemplate="roundType" top="80">
+                        <ListView id="listview_step3" defaultItemTemplate="roundType" top="50">
                             
                             <Templates>
                                 <ItemTemplate name="roundType">
@@ -58,8 +58,8 @@
 								<!-- <ListItem height="60" info:text="Round 1"></ListItem>-->
                             </ListSection>
                         </ListView>
-                        <Label text="5 Rounds" class="winTitle"></Label>
-                        <Label top="24" text="ASSIGN A WORKOUT TYPE TO EACH ROUND" class="winTitle center" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER"></Label>
+                        <!-- <Label text="5 Rounds" class="winTitle"></Label> -->
+                        <Label top="0" text="ASSIGN A WORKOUT TYPE TO EACH ROUND" class="winTitle center" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER"></Label>
                     </View>
                 </View>
                 <View id="blinder_3" class="blinder"></View>

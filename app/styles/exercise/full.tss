@@ -16,5 +16,7 @@
     width : Ti.UI.FILL,
     mediaControlStyle : Titanium.Media.VIDEO_CONTROL_DEFAULT,
     scalingMode : Titanium.Media.VIDEO_SCALING_ASPECT_FIT,
+    // visible:false,
+    sourceType:Ti.Media.VIDEO_SOURCE_TYPE_FILE,
 }
 
