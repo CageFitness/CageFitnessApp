@@ -28,3 +28,11 @@ function onButtonClose(e){
 	}
 }
 Ti.App.addEventListener('cage/topbar/menu_button/close', onButtonClose);
+
+
+$.cleanup = function cleanup() {
+  $.destroy();
+  $.off();
+  // someController = null;
+};
+$.win.addEventListener('close', $.cleanup);

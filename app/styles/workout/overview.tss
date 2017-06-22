@@ -84,6 +84,7 @@
 	top: 0, left: 80, right: 0, bottom: 0,
 	layout: "vertical",
 	backgroundColor: 'pink',
+	backgroundColor: '#fff',
 	height:28,
 },
 "#atomProperties[platform=android]": {
@@ -93,7 +94,7 @@
 	left: 0, top: 4,
 	color: "black",
 	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-	font: { fontSize: 18 }
+	font: { fontSize: 20 }
 },
 "#secondLine": {
 	left: 0, right: 0,
