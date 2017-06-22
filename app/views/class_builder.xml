@@ -33,6 +33,9 @@
                         <Label text="Rounds" class="winTitle"></Label>
                         <Label top="24" text="SELECT NUMBER OF ROUNDS PER WORKOUT" class="winTitle center" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER"></Label>
                     </View>
+					<Button id="restart" title="Restart" onClick="init_class_builder">
+			            <ImageView class="icon" id="restart_icon"></ImageView>
+			        </Button>                     
                 </View>
             </View>
             <View id="step3" class="step">
@@ -61,6 +64,9 @@
                         <!-- <Label text="5 Rounds" class="winTitle"></Label> -->
                         <Label top="0" text="ASSIGN A WORKOUT TYPE TO EACH ROUND" class="winTitle center" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER"></Label>
                     </View>
+					<Button id="restart" title="Restart" onClick="init_class_builder">
+			            <ImageView class="icon" id="restart_icon"></ImageView>
+			        </Button>                         
                 </View>
                 <View id="blinder_3" class="blinder"></View>
                 <Button id="step3_btn" class="step_btn" onClick="stepClick" title="NEXT"></Button>
@@ -93,6 +99,9 @@
                         <Label text="DESCRIPTION" class="winTitle xleft" textAlign="Ti.UI.TEXT_ALIGNMENT_LEFT"></Label>
                         <Label text="NUMBER OF EXERCISES" class="winTitle xright" textAlign="Ti.UI.TEXT_ALIGNMENT_RIGHT"></Label>
                     </View>
+					<Button id="restart" title="Restart" onClick="init_class_builder">
+			            <ImageView class="icon" id="restart_icon"></ImageView>
+			        </Button>                         
                 </View>
                 <View id="blinder_4" class="blinder"></View>
                 <Button id="step4_btn" class="step_btn" onClick="stepClick" title="NEXT"></Button>
@@ -121,7 +130,9 @@
                     </View>
                         <Label text="Select Equipment" class="winTitle"></Label>
                         <!-- <Label top="24" text="ASSIGN A WORKOUT TYPE TO EACH ROUND" class="winTitle center" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER"></Label> -->
-
+					<Button id="restart" title="Restart" onClick="init_class_builder">
+			            <ImageView class="icon" id="restart_icon"></ImageView>
+			        </Button>     
                 </View>
             </View>
             <View id="step6" class="step">
@@ -135,6 +146,9 @@
                             </ListSection>
                         </ListView>
                     </View>
+					<Button id="restart" title="Restart" onClick="init_class_builder">
+			            <ImageView class="icon" id="restart_icon"></ImageView>
+			        </Button>                         
                 </View>
             </View>
             <View id="step7" class="step">
@@ -160,6 +174,9 @@
                             </ListSection>
                         </ListView>
                     </View>
+					<Button id="restart" title="Restart" onClick="init_class_builder">
+			            <ImageView class="icon" id="restart_icon"></ImageView>
+			        </Button>                         
                 </View>
                 <View id="blinder_6" class="blinder"></View>
                 <Button id="step7_btn" class="step_btn" onClick="doWorkout" title="BEGIN WORKOUT"></Button>

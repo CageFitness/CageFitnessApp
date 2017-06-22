@@ -36,6 +36,25 @@
 // 	// backgroundColor:'purple'
 // }
 
+
+
+"#restart":{
+	bottom:25,
+	left:30,
+	// right:10,
+	height:34,
+	width:34,
+	opacity:0.5,
+	// backgroundColor:'red',
+	// borderWidth:1,
+	// borderColor:'black',
+}
+
+"#restart_icon":{
+	image:'images/icons/restart.png',
+	height:34,
+}
+
 ".step_wrap":{
 	top:0,
 	height:Ti.UI.SIZE,

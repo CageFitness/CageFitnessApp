@@ -10,9 +10,23 @@ var args = $.args;
 // =========================================
 
 
+var sdata;
 
+function initSelectionData(){
 
+	sdata = {
+		build:'auto',
+		update:'true',
+		rounds:[],
+	};
+	Ti.API.info('CLEARING.SELECTION.DATA:',sdata);	
 
+}
+
+function getIndex(n){
+	r = Number(n)+1; 
+	return r;
+}
 
 
 function onSuccessCustomizer(e){
@@ -128,7 +142,7 @@ function createRoundTypeRows(round_number){
 				autoStyle:true,
 				// height:Ti.UI.SIZE,
 			},
-			info: {text: "Round "+Utils.getIndex(i)},
+			info: {text: "Round "+getIndex(i)},
 	    }
 	    items.push(ob);		
 	}
@@ -158,7 +172,7 @@ function createNumberOfExercisesRows(round_number){
 				// height:Ti.UI.SIZE,
 				selectionStyle:Titanium.UI.iOS.ListViewCellSelectionStyle.NONE,
 				},
-			info: {text: "Round "+Utils.getIndex(i)},
+			info: {text: "Round "+getIndex(i)},
 	    }
 
 	    items.push(ob);		
@@ -184,6 +198,10 @@ function createNumberOfExercisesRows(round_number){
 Ti.App.addEventListener('cage/class_builder/init',init_class_builder);
 
 function init_class_builder(){
+
+	initSelectionData();
+	$.scrollableView.scrollToView(0);
+
     var config = JSON.parse( Ti.App.Properties.getString('config') );
     Ti.API.info('CONFIGURATION:',config.acf.opt_rounds);
     // setRoundTypeItems(config.acf.opt_rounds);
@@ -395,8 +413,9 @@ function doProgress(e) {
 }
 
 function doWorkout(e) {
-   var wkt = Ti.App.Properties.getString('my_workout');
-   Ti.App.fireEvent('cage/launch/window',{key:'menu_workouts', workout_id:wkt });
+   // var wkt = Ti.App.Properties.getString('my_workout');
+   // Ti.App.fireEvent('cage/launch/window',{key:'menu_workouts', workout_id:wkt });
+   sendData();
 }
 
 
