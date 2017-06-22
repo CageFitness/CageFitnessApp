@@ -8,8 +8,13 @@
                 <!-- <Button id="home_btn" onClick="stepClick"></Button> -->
                 <Button id="home_btn" onClick="doProgress"></Button>
                 <View class="custom_workout_wrap" onClick="stepClick">
-                	<Label id="home_sub">Create your own</Label>
-                	<Label id="home_title">CUSTOM WORKOUT</Label>
+                	<View id="fakeButton">
+                		<View id="fakePadding">
+	                		<Label id="home_sub">Create your own</Label>
+	                		<Label id="home_title">CUSTOM WORKOUT</Label>                		
+                		</View>
+                	</View>
+
                 </View>
                 <!-- <Button id="home_btn" onClick="doWorkout"></Button> -->
             </View>

@@ -291,7 +291,7 @@ function prepareVideoOwl(data){
         }
         
     };
-    addWorkoutElement('workout/overview',{title:'Well Done!', type:'static'});
+    addWorkoutElement('workout/finish',{title:'Well Done!', type:'static'});
 
     
 

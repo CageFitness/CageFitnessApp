@@ -12,6 +12,11 @@ var args = $.args;
 
 var sdata;
 
+var flashDelay = 0;
+
+Animation.fadeOut($.step_line,0);
+
+
 function initSelectionData(){
 
 	sdata = {
@@ -120,6 +125,16 @@ $.button_matrix.addEventListener('click', function(e){
 		// sections.push(roundTypeSection);
 		// $.listview_step3.sections = sections;
 
+		_.each(e.source.getParent().children, function(el){
+			Ti.API.info('BUTTON.MATRIX:',el);
+			el.backgroundColor='#fff';
+			el.color='#9b9b9b';
+			e.borderColor='#b4b4b4';
+		})
+		e.source.backgroundColor='#c4cb48';
+		e.source.color='#fff';
+		e.source.borderColor='#000';
+
 
 		setRoundTypeItems(Number(e.source.title));
 		setNumberOfExerciseItems(Number(e.source.title));
@@ -201,6 +216,7 @@ function init_class_builder(){
 
 	initSelectionData();
 	$.scrollableView.scrollToView(0);
+	Animation.shake($.fakeButton,400);
 
     var config = JSON.parse( Ti.App.Properties.getString('config') );
     Ti.API.info('CONFIGURATION:',config.acf.opt_rounds);
@@ -231,9 +247,7 @@ function setRoundTypeItems(nitems){
 
 
 
-var flashDelay = 0;
 
-Animation.fadeOut($.step_line,0);
 
 
 function updateStepItem(parent,page){

@@ -36,7 +36,96 @@
 // 	// backgroundColor:'purple'
 // }
 
+".big_btn":{
+	width:80,
+	height:80,
+	color:"#9b9b9b",
+	backgroundColor:"#fdfdfd",
+	borderColor:"#b4b4b4",
+	borderWidth:2,
+	borderRadius:12,
+	font:{
+		fontSize: 54,
+		fontFamily:'Helvetica Neue',
+		fontWeight:'normal'
+	},
+	autoStyle:true,
+}
 
+".btn_selected":{
+	borderColor:"#c4cb48"
+}
+
+
+"#btn5":{
+	// borderColor:"#c4cb48"
+}
+
+
+".custom_workout_wrap":{
+	width:Ti.API.FILL,
+	height:Ti.UI.SIZE,
+	bottom:15,
+	layout:"vertical",
+	// backgroundColor:'red',
+}
+
+
+"#home_sub":{
+	// width:177,
+	top:0,
+	height:Ti.API.SIZE,
+	textAlign:Ti.UI.TEXT_ALIGNMENT_CENTER,
+	color:'#343434',
+	font:{
+		fontSize: 20,
+		fontWeight: 'bold',
+		fontFamily:'Helvetica Neue'
+	},
+
+}
+
+"#home_title":{
+	// width:177,
+	top:0,
+	height:Ti.API.SIZE,
+	textAlign:Ti.UI.TEXT_ALIGNMENT_CENTER,
+	font:{
+		fontSize: 24,
+		fontWeight: 'bold',
+		fontFamily:'Helvetica Neue'
+	},
+	// color: Alloy.CFG.styles.brandColor,
+	color: '#000',
+}
+"#home_btn":{
+	width:177,
+	height:177
+}
+
+"#fakePadding":{
+	layout:'vertical',
+	width:Ti.UI.SIZE,
+	top:10,
+	bottom:10,
+	left:30,
+	right:30,
+	height:Ti.UI.SIZE,
+}
+"#fakeButton":{
+	width:Ti.UI.SIZE,
+	top:0,
+	// bottom:10,
+	// left:10,
+	// right:10,
+	backgroundColor:'#d9e153',
+	borderColor:'#343434',
+	borderWidth:3,
+	borderColor: '000',
+	borderRadius:15,
+	height:Ti.UI.SIZE,
+	zIndex:1,
+}
 
 "#restart":{
 	bottom:25,

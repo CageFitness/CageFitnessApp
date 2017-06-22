@@ -129,41 +129,7 @@
 	}
 }
 
-".custom_workout_wrap":{
-	width:Ti.API.FILL,
-	height:60,
-	bottom:30,
-	layout:"vertical",
-	// backgroundColor:'red',
-}
 
-"#home_sub":{
-	// width:177,
-	height:Ti.API.SIZE,
-	textAlign:Ti.UI.TEXT_ALIGNMENT_CENTER,
-	color:'#888888',
-	font:{
-		fontSize: 20,
-		fontWeight: 'bold',
-		fontFamily:'Helvetica Neue'
-	},	
-}
-
-"#home_title":{
-	// width:177,
-	height:Ti.API.SIZE,
-	textAlign:Ti.UI.TEXT_ALIGNMENT_CENTER,
-	font:{
-		fontSize: 24,
-		fontWeight: 'bold',
-		fontFamily:'Helvetica Neue'
-	},
-	color: Alloy.CFG.styles.brandColor,
-}
-"#home_btn":{
-	width:177,
-	height:177
-}
 "#login_box":{
 	image:"images/login_foreground.png",
 	width:432,
@@ -199,9 +165,6 @@
 	}
 }
 
-"#btn5":{
-	borderColor:"#c4cb48"
-}
 
 
 "#step7_btn":{
@@ -290,20 +253,7 @@
 }
 
 
-".big_btn":{
-	width:80,
-	height:80,
-	color:"#9b9b9b",
-	backgroundColor:"#fdfdfd",
-	borderColor:"#b4b4b4",
-	borderWidth:2,
-	borderRadius:12,
-	font:{
-		fontSize: 54,
-		fontFamily:'Helvetica Neue',
-		fontWeight:'normal'
-	}
-}
+
 ".row1":{
 	top:60
 }

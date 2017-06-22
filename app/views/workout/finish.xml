@@ -1,0 +1,47 @@
+<Alloy>
+    <View id="overview" class="overview_container">
+        <View id="title_wrapper" layout="horizontal">
+        	<Label id="title"></Label>
+        	<Label id="title_type"></Label>
+        </View>
+        <Label class="small_text" id="subtitle"></Label>
+        <Label class="small_text" id="counter_big"></Label>
+		<ListView id="elementsList" defaultItemTemplate="elementTemplate">
+        <Templates>
+            <ItemTemplate name="elementTemplate">
+                <Label bindId="symbol" id="symbol" />
+                <View id="atomProperties">
+                    <Label bindId="name" id="name" />
+                    <View id="secondLine">
+                        <Label class="line2 fieldLabel" text="Index: " />
+                        <Label class="line2" bindId="number" id="number" />
+                        <Label class="line2 fieldLabel" text="ID: " />
+                        <Label class="line2" bindId="mass" id="mass" />
+                        <Label class="line2 fieldLabel" text="Duration: " />
+                        <Label class="line2" bindId="slide_data" id="slide_data" />                        
+                    </View>
+                </View>
+                <ImageView bindId="image" id="image" />
+            </ItemTemplate>
+        </Templates>
+        <ListSection>
+<!--             <ListItem symbol:text="H" symbol:color="#090" name:text="Hydrogen" number:text="1" mass:text="1.00794" />
+            <ListItem symbol:text="He" symbol:color="#090" name:text="Helium" number:text="2" mass:text="4.002602" />
+            <ListItem symbol:text="Li" name:text="Lithium" number:text="3" mass:text="6.941" /> -->
+        </ListSection>
+    </ListView>        
+    </View>
+    <!-- <ListView id="roundQuantityList" defaultItemTemplate="roundQuantityTemplate">
+        <Templates>
+            <ItemTemplate name="roundQuantityTemplate">
+                <Button bindId="btn" id="btn1" class="big_btn row1" title="1"></Button>
+            </ItemTemplate>
+        </Templates>
+        <ListSection>
+        	<ListItem btn:title="Testing"></ListItem>
+        </ListSection>
+    </ListView> -->
+
+    
+</Alloy>
+

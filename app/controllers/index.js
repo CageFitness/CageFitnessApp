@@ -159,6 +159,9 @@ function triggerDrawer(e){
 	clicked_view = getMenuObject(e.rowData.id);
 	Ti.API.info('CURRENT CHILDREN BEFORE: ',$.drawermenu.drawermainview.children)
 	if( e.rowData.id == default_view ){
+
+		Ti.App.fireEvent('cage/class_builder/init');
+		
 		if(active_page != default_view){
 			Ti.API.info('CASE.01.01', 'active_page: '+active_page);
 			$.drawermenu.drawermainview.remove( getMenuObject(active_page).getView() );
