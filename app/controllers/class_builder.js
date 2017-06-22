@@ -129,7 +129,7 @@ $.button_matrix.addEventListener('click', function(e){
 			Ti.API.info('BUTTON.MATRIX:',el);
 			el.backgroundColor='#fff';
 			el.color='#9b9b9b';
-			e.borderColor='#b4b4b4';
+			el.borderColor='#b4b4b4';
 		})
 		e.source.backgroundColor='#c4cb48';
 		e.source.color='#fff';
