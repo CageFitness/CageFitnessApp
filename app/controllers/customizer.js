@@ -1,6 +1,6 @@
 // Arguments passed into this controller can be accessed via the `$.args` object directly or:
 var args = $.args;
-var xhr = new XHR();
+// var xhr = new XHR();
 
 
 
@@ -9,7 +9,7 @@ var xhr = new XHR();
 
 function onSuccessAutoGenerate(e){
 
-	Ti.API.info('SUCCESS: ',e);
+	Ti.API.info('SUCCESS: ',e.data);
 
 }
 
@@ -27,6 +27,20 @@ function sendData(){
 		'equipment':'body-weight',
 		'round':1,
 	},
+	{
+		'roundType':'warm-up',
+		'roundTypeName':'warm-up',
+		'numexercises':7,
+		'equipment':'body-weight',
+		'round':2,
+	},
+	{
+		'roundType':'warm-up',
+		'roundTypeName':'warm-up',
+		'numexercises':10,
+		'equipment':'body-weight',
+		'round':3,
+	},			
 	];
 
 	// rounds[0]["roundType"]="warm-up";
@@ -42,27 +56,23 @@ function sendData(){
 
 
     var token = Ti.App.Properties.getString('user_token');
-    xhr.setStaticOptions({
-            requestHeaders: [
-                {
-                    key: 'Authorization',
-                    value: 'Bearer '+token
-                }
-            ],
-            debug: true,
-            parseJSON:false,    
-        });
-
     var data = {};
-    data.action = 'cage_build_workout_html';
+    data.filter = 'red';
     data.build = 'auto';
     data.update = 'true';
     data.rounds = rounds;
-	Ti.API.info(data);
-	var url = 'https://cagefitness.com/wp-admin/admin-ajax.php';
-	xhr.POST(url, data, onSuccessAutoGenerate, onErrorWorkoutCallback);
+
+    finalData = JSON.stringify(data);
+
+	Ti.API.info('UNO', finalData);
+	Ti.API.info('DOS', token);
+
+	var urlx = Alloy.CFG.api_url+Alloy.CFG.workout_create_update;
+	Ti.API.info('URL:',urlx);
+
+	xhr.POST('https://cagefitness.com/wp-json/app/v1/my-workout', finalData, onSuccessAutoGenerate, onErrorWorkoutCallback);
 
 }
 
-// sendData();
+
 

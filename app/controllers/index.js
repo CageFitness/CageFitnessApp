@@ -180,6 +180,11 @@ function triggerDrawer(e){
 }
 
 initWindowButtons(menuitems);
+
+var default_view = 'menu_builder'
+var active_page = 'menu_builder';
+var activeView = 1;
+
 $.drawermenu.init({
     menuview:menuView.getView(),
     mainview:mainView.getView(),
@@ -187,14 +192,9 @@ $.drawermenu.init({
     parent: $.index
 });
 
-
-var default_view = 'menu_builder'
-var active_page = 'menu_builder';
-var activeView = 1;
-
 menuView.menuTable.addEventListener('click',handleMenuClickEvent);
 
 $.index.open();
 
-// Ti.App.fireEvent('cage/launch/login');
+Ti.App.fireEvent('cage/launch/login');
 

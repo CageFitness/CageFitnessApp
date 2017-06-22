@@ -6,6 +6,7 @@ var cs = Alloy.Globals.currentSelectButton;
 
 
 
+
 $.pover.addEventListener("itemclick", function(e){
 	
     var section = $.pover.sections[e.sectionIndex];
@@ -26,6 +27,7 @@ $.pover.addEventListener("itemclick", function(e){
     // Ti.API.info(item.selector.t)
     cs.title = item.properties.title;
 
+    // args.callback({'uno':'dos'});
 
     setTimeout(function(e){
     	$.popover_ob.hide();

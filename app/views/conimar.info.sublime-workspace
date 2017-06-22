@@ -1,0 +1,2050 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"is_brand",
+				"is_brand_default"
+			],
+			[
+				"pro",
+				"product_cat"
+			],
+			[
+				"sele",
+				"selectorLeft"
+			],
+			[
+				"sel",
+				"selectorCenter"
+			],
+			[
+				"selec",
+				"selectorRight"
+			],
+			[
+				"back",
+				"backgroundColor"
+			],
+			[
+				"S",
+				"SIZE"
+			],
+			[
+				"he",
+				"height"
+			],
+			[
+				"boerd",
+				"borderWidth"
+			],
+			[
+				"border",
+				"borderColor"
+			],
+			[
+				"for",
+				"for\tfor (…) {…}"
+			],
+			[
+				"crea",
+				"createRoundTypeRows"
+			],
+			[
+				"init",
+				"init_exercise"
+			],
+			[
+				"round",
+				"roundType"
+			],
+			[
+				"bord",
+				"borderColor"
+			],
+			[
+				"bor",
+				"borderWidth"
+			],
+			[
+				"get",
+				"getIndex"
+			],
+			[
+				"close",
+				"closeIndicator"
+			],
+			[
+				"bu",
+				"button_wrapper_login"
+			],
+			[
+				"cage",
+				"cage_url"
+			],
+			[
+				"work",
+				"workout_id"
+			],
+			[
+				"section",
+				"sectionIndex"
+			],
+			[
+				"elem",
+				"elementData"
+			],
+			[
+				"item",
+				"itemIndex"
+			],
+			[
+				"se",
+				"sectionIndex"
+			],
+			[
+				"ele",
+				"elementData"
+			],
+			[
+				"my",
+				"my_wkt"
+			],
+			[
+				"borde",
+				"borderWidth"
+			],
+			[
+				"logi",
+				"login_data"
+			],
+			[
+				"full",
+				"full_video_wrapper"
+			],
+			[
+				"remo",
+				"removeEventListener"
+			],
+			[
+				"mo",
+				"modalWindow"
+			],
+			[
+				"win",
+				"window_type"
+			],
+			[
+				"fon",
+				"fontWeight"
+			],
+			[
+				"clear",
+				"clearInterval"
+			],
+			[
+				"i",
+				"item_duration"
+			],
+			[
+				"file",
+				"file_index"
+			],
+			[
+				"rou",
+				"round_number"
+			],
+			[
+				"gif",
+				"gifurl"
+			],
+			[
+				"progr",
+				"progressIn"
+			],
+			[
+				"b",
+				"backgroundColor"
+			],
+			[
+				"add",
+				"addEventListener"
+			],
+			[
+				"down",
+				"downloaded"
+			],
+			[
+				"initial",
+				"initial_progress"
+			],
+			[
+				"download",
+				"downloadmanager"
+			],
+			[
+				"perc",
+				"percent_all"
+			],
+			[
+				"per",
+				"percent_all"
+			],
+			[
+				"do",
+				"downloadedBytes_all"
+			],
+			[
+				"tot",
+				"totalBytes_all"
+			],
+			[
+				"HE",
+				"height"
+			],
+			[
+				"addVideo",
+				"addVideoToDownloadManager"
+			],
+			[
+				"nat",
+				"native_path"
+			],
+			[
+				"video",
+				"video_url"
+			],
+			[
+				"slide",
+				"slide_data"
+			],
+			[
+				"exer",
+				"exercise_number"
+			],
+			[
+				"slid",
+				"slide_data"
+			],
+			[
+				"tit",
+				"title_anim"
+			],
+			[
+				"curr",
+				"currentPage"
+			],
+			[
+				"vide",
+				"video_animated_thumbnail"
+			],
+			[
+				"me",
+				"menu_builder"
+			],
+			[
+				"click",
+				"clicked_view"
+			],
+			[
+				"defa",
+				"default_view"
+			],
+			[
+				"the",
+				"theview"
+			],
+			[
+				"main",
+				"mainview"
+			],
+			[
+				"pr",
+				"proccessWorkout"
+			],
+			[
+				"r",
+				"round_selector"
+			],
+			[
+				"sam",
+				"sample_data"
+			],
+			[
+				"menu",
+				"menuitems"
+			],
+			[
+				"ex",
+				"exerciseView"
+			],
+			[
+				"e",
+				"exerciseView"
+			],
+			[
+				"roun",
+				"roundQuantityTemplate"
+			],
+			[
+				"start",
+				"startWorkout"
+			],
+			[
+				"workou",
+				"workout_ur"
+			],
+			[
+				"resp",
+				"response"
+			],
+			[
+				"build",
+				"build_option"
+			],
+			[
+				"repal",
+				"replace_current"
+			],
+			[
+				"rep",
+				"replace_current"
+			],
+			[
+				"wo_e",
+				"wo_exercise_number"
+			],
+			[
+				"z",
+				"z-index"
+			],
+			[
+				"relation",
+				"relationship"
+			],
+			[
+				"select",
+				"select_field_name"
+			],
+			[
+				"rela",
+				"relationship_field_name"
+			],
+			[
+				"align",
+				"align-items"
+			],
+			[
+				"inlin",
+				"inline-block"
+			],
+			[
+				"pre",
+				"preventDefault"
+			],
+			[
+				"nw",
+				"new_choices"
+			],
+			[
+				"choi",
+				"choice"
+			],
+			[
+				"cage-slide-e",
+				"cage-slide-title"
+			],
+			[
+				"play",
+				"playCurrentSlide"
+			],
+			[
+				"reset",
+				"resetCountdown"
+			],
+			[
+				"inline",
+				"inline-table"
+			],
+			[
+				"anim",
+				"animateTitleScreen"
+			],
+			[
+				"margin",
+				"margin-bottom"
+			],
+			[
+				"Timelin",
+				"TimelineMax"
+			],
+			[
+				"num",
+				"numex"
+			],
+			[
+				"n",
+				"numexercises"
+			],
+			[
+				"numex",
+				"numexercises"
+			],
+			[
+				"pos",
+				"position"
+			],
+			[
+				"nu",
+				"num-exercises"
+			],
+			[
+				"j",
+				"jQuery"
+			],
+			[
+				"data",
+				"data_type"
+			],
+			[
+				"po",
+				"position"
+			],
+			[
+				"cage-slide",
+				"cage-slide-exercise"
+			],
+			[
+				"res",
+				"responsive-video"
+			],
+			[
+				"owl",
+				"owlcurrent"
+			],
+			[
+				"ac",
+				"active"
+			],
+			[
+				"mar",
+				"margin"
+			],
+			[
+				"next",
+				"nextBtn"
+			],
+			[
+				"min",
+				"min-height"
+			],
+			[
+				"exercise",
+				"exercise_equipment"
+			],
+			[
+				"sc",
+				"scrollX"
+			],
+			[
+				"arr",
+				"array\t$… = array (…)"
+			],
+			[
+				"import",
+				"import-results"
+			],
+			[
+				"base",
+				"base_url"
+			],
+			[
+				"impor",
+				"import_folder"
+			],
+			[
+				"output",
+				"outputpath"
+			],
+			[
+				"new",
+				"new_post"
+			],
+			[
+				"post",
+				"post_title_source"
+			],
+			[
+				"out",
+				"outputpath"
+			],
+			[
+				"origin",
+				"originpath"
+			],
+			[
+				"bo",
+				"borderColor"
+			],
+			[
+				"int",
+				"introIntervalCounter"
+			],
+			[
+				"intern",
+				"introIntervalCounter"
+			],
+			[
+				"intro",
+				"introIntervalCounter"
+			],
+			[
+				"intr",
+				"introInternval"
+			],
+			[
+				"por",
+				"progressWin"
+			],
+			[
+				"progres",
+				"progressWin"
+			],
+			[
+				"to",
+				"totalDuration"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/Users/pabloliz/Projects/iquariusmedia.com/conimar.com/conimar.info/httpdocs/wp-content/themes/dev-master/lib/custom.php",
+			"settings":
+			{
+				"buffer_size": 2536,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/pabloliz/Projects/iquariusmedia.com/conimar.com/conimar.info/httpdocs/wp-content/themes/dev-master/functions.php",
+			"settings":
+			{
+				"buffer_size": 1233,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/pabloliz/Projects/iquariusmedia.com/conimar.com/conimar.info/httpdocs/wp-content/themes/dev-master/lib/conimar/init.php",
+			"settings":
+			{
+				"buffer_size": 1176,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/pabloliz/Projects/iquariusmedia.com/conimar.com/conimar.info/httpdocs/wp-content/themes/suprema/framework/modules/header/templates/parts/logo.php",
+			"settings":
+			{
+				"buffer_size": 1034,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/pabloliz/Projects/iquariusmedia.com/conimar.com/conimar.info/httpdocs/wp-content/debug.log",
+			"settings":
+			{
+				"buffer_size": 199,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/pabloliz/Projects/iquariusmedia.com/conimar.com/conimar.info/httpdocs/wp-content/themes/dev-master/views/brand-logo.twig",
+			"settings":
+			{
+				"buffer_size": 542,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/pabloliz/Projects/iquariusmedia.com/conimar.com/conimar.info/httpdocs/wp-content/themes/dev-master/woocommerce.php",
+			"settings":
+			{
+				"buffer_size": 7913,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/pabloliz/Projects/iquariusmedia.com/conimar.com/conimar.info/httpdocs/wp-content/themes/dev-master/woo-cat-headers.php",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "reind",
+		"selected_items":
+		[
+			[
+				"reind",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"syntaxjosn",
+				"Set Syntax: JSON"
+			],
+			[
+				"build",
+				"Build: New Build System"
+			],
+			[
+				"remove pa",
+				"Package Control: Remove Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"edit ser",
+				"SFTP: Edit Server…"
+			],
+			[
+				"SFTP",
+				"SFTP: Edit Server…"
+			],
+			[
+				"reinde",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"reinden",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"sy th",
+				"Set Syntax: HTML (Twig)"
+			],
+			[
+				"syn twig",
+				"Set Syntax: HTML (Twig)"
+			],
+			[
+				"renam",
+				"Emmet: Rename Tag"
+			],
+			[
+				"rename",
+				"Emmet: Rename Tag"
+			],
+			[
+				"liveReload",
+				"LiveReload: Enable/disable plug-ins"
+			],
+			[
+				"live",
+				"File: Open In Browser - Testing Server"
+			],
+			[
+				"twig",
+				"Set Syntax: HTML (Twig)"
+			],
+			[
+				"livereload",
+				"LiveReload: Enable/disable plug-ins"
+			],
+			[
+				"REVERSE",
+				"Permute Lines: Reverse"
+			],
+			[
+				"REVER",
+				"Permute Lines: Reverse"
+			],
+			[
+				"REV",
+				"Permute Lines: Reverse"
+			],
+			[
+				"rev",
+				"Permute Lines: Reverse"
+			],
+			[
+				"rever",
+				"Permute Lines: Reverse"
+			],
+			[
+				"revi",
+				"QuickThemes: previous"
+			],
+			[
+				"reverse",
+				"Permute Lines: Reverse"
+			],
+			[
+				"prettify",
+				"HTMLPrettify"
+			],
+			[
+				"prett",
+				"HTMLPrettify: Set Keyboard Shortcuts"
+			],
+			[
+				"Prett",
+				"HTMLPrettify: Set Plugin Options"
+			],
+			[
+				"remove",
+				"Emmet: Remove Tag"
+			],
+			[
+				"removet",
+				"Emmet: Remove Tag"
+			],
+			[
+				"remove p",
+				"Package Control: Remove Package"
+			],
+			[
+				"beau",
+				"HTMLBeautify"
+			],
+			[
+				"reid",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"bea",
+				"HTMLBeautify"
+			],
+			[
+				"badges",
+				"Snippet: bs3-list-group-badges"
+			],
+			[
+				"glyphi",
+				"Snippet: bs3-glyphicon"
+			],
+			[
+				"-col",
+				"Snippet: bs3-col-3"
+			],
+			[
+				"bs3jum",
+				"Snippet: bs3-jumbotron"
+			],
+			[
+				"bs3grid",
+				"Snippet: bs3-list-group-linked"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"emmet",
+				"Emmet: Rename Tag"
+			],
+			[
+				"beaut",
+				"HTMLBeautify"
+			],
+			[
+				"redin",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"emmet merge",
+				"Emmet: Merge Lines"
+			],
+			[
+				"join",
+				"Emmet: Split\\Join Tag"
+			],
+			[
+				"Emmet",
+				"Emmet: Split\\Join Tag"
+			],
+			[
+				"pretti",
+				"HTMLPrettify: Set Prettify Preferences"
+			],
+			[
+				"pretty",
+				"HTMLPrettify: Set Keyboard Shortcuts"
+			],
+			[
+				"pret",
+				"HTMLPrettify"
+			],
+			[
+				"reindent",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"zurb",
+				"Snippet: Zurb Large Button"
+			],
+			[
+				"zurb4c",
+				"Snippet: Zurb 4 Column Layout"
+			],
+			[
+				"removetag",
+				"Emmet: Remove Tag"
+			],
+			[
+				"LiveReload",
+				"LiveReload: Enable/disable plug-ins"
+			],
+			[
+				"livere",
+				"Snippet: Create new LiveReload plugin"
+			],
+			[
+				"liverel",
+				"LiveReload: Enable/disable plug-ins"
+			],
+			[
+				"Grunt",
+				"Snippet: Grunt Wrapper"
+			],
+			[
+				"moduleep",
+				"Snippet: module.exports"
+			],
+			[
+				"gruntini",
+				"Snippet: grunt.initConfig"
+			],
+			[
+				"npmTas",
+				"Snippet: grunt.loadNpmTasks"
+			],
+			[
+				"grunt",
+				"Snippet: grunt.file.copy"
+			],
+			[
+				"gruntmkdir",
+				"Snippet: grunt.file.mkdir"
+			],
+			[
+				"REIND",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"REDIN",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"emmetremove",
+				"Emmet: Remove Tag"
+			],
+			[
+				"reindn",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"rein",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"install p",
+				"Package Control: Install Package"
+			],
+			[
+				"show",
+				"SFTP: Show Panel"
+			],
+			[
+				"liverelo",
+				"LiveReload: Enable/disable plug-ins"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"browser",
+				"File: Open In Browser - Production Server"
+			],
+			[
+				"LiveReload: Enable/disable plugins",
+				"LiveReload: Enable/disable plug-ins"
+			],
+			[
+				"live plugin",
+				"LiveReload: Enable/disable plug-ins"
+			],
+			[
+				"live pul",
+				"LiveReload: Enable/disable plug-ins"
+			],
+			[
+				"livereload enab",
+				"LiveReload: Enable/disable plug-ins"
+			],
+			[
+				"live rel",
+				"LiveReload: Enable/disable plug-ins"
+			],
+			[
+				"liver",
+				"Snippet: Insert livereload.js script"
+			],
+			[
+				"redind",
+				"Preferences: Key Bindings - Default"
+			],
+			[
+				"rei",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"inden",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"bookmarks",
+				"Bookmarks: Clear All"
+			],
+			[
+				"bookmar",
+				"Bookmarks: Toggle"
+			],
+			[
+				"sftp",
+				"SFTP: Diff Remote File"
+			],
+			[
+				"browse",
+				"SFTP: Browse Remote…"
+			],
+			[
+				"INSTALL\t",
+				"Package Control: Install Package"
+			],
+			[
+				"remo",
+				"Emmet: Remove Tag"
+			],
+			[
+				"zurb five",
+				"Snippet: Zurb Foundation - ul Block Grid - Five up"
+			],
+			[
+				"zur",
+				"Snippet: Zurb Foundation - ul Block Grid - Five up"
+			],
+			[
+				"tab",
+				"View: Toggle Tabs"
+			],
+			[
+				"sy html",
+				"Set Syntax: HTML"
+			],
+			[
+				"remove ",
+				"Package Control: Remove Package"
+			],
+			[
+				"remove tag",
+				"Emmet: Remove Tag"
+			],
+			[
+				"emmet renam",
+				"Emmet: Rename Tag"
+			],
+			[
+				"emmet remove",
+				"Emmet: Remove Tag"
+			],
+			[
+				"comme",
+				"Toggle Block Comment"
+			],
+			[
+				"emmet remove tag",
+				"Emmet: Remove Tag"
+			],
+			[
+				"emmet remov",
+				"Emmet: Remove Tag"
+			],
+			[
+				"indent",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"Install",
+				"Package Control: Install Package"
+			],
+			[
+				"diff",
+				"FileDiffs: Menu"
+			],
+			[
+				"remove ta",
+				"Emmet: Remove Tag"
+			],
+			[
+				"emmet remo",
+				"Emmet: Remove Tag"
+			],
+			[
+				"reidnent",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"re",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"rename tag",
+				"Emmet: Rename Tag"
+			],
+			[
+				"reflect",
+				"Emmet: Reflect CSS Value"
+			],
+			[
+				"wrap",
+				"Emmet: Wrap With Abbreviation"
+			],
+			[
+				"INDENT",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"INDDEN",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"in",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"inde",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"zfblock",
+				"Snippet: Zurb Foundation - ul Block Grid - Four up"
+			],
+			[
+				"scss",
+				"Set Syntax: SCSS"
+			],
+			[
+				"snippet new",
+				"Snippet: Zurb Foundation - New Page"
+			],
+			[
+				"sass",
+				"Set Syntax: Sass"
+			],
+			[
+				"packa",
+				"Package Control: Upgrade/Overwrite All Packages"
+			],
+			[
+				"zfpage",
+				"Snippet: Zurb Foundation - New Page"
+			],
+			[
+				"pagination\t",
+				"Snippet: Zurb Pagination"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"INSTALL",
+				"Package Control: Install Package"
+			],
+			[
+				"zurb nav bar",
+				"Snippet: Zurb Nav Bar"
+			],
+			[
+				"zu",
+				"Snippet: Zurb Nav Bar"
+			],
+			[
+				"foundation",
+				"Snippet: Zurb Foundation - ul Block Grid - Five up"
+			],
+			[
+				"syntax html",
+				"Set Syntax: HTML"
+			],
+			[
+				"update",
+				"Package Control: Upgrade/Overwrite All Packages"
+			]
+		],
+		"width": 530.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/pabloliz/Projects/iquariusmedia.com/conimar.com",
+		"/Users/pabloliz/Projects/iquariusmedia.com/conimar.com/conimar.info",
+		"/Users/pabloliz/Projects/iquariusmedia.com/conimar.com/conimar.info/httpdocs",
+		"/Users/pabloliz/Projects/iquariusmedia.com/conimar.com/conimar.info/httpdocs/wp-content",
+		"/Users/pabloliz/Projects/iquariusmedia.com/conimar.com/conimar.info/httpdocs/wp-content/themes",
+		"/Users/pabloliz/Projects/iquariusmedia.com/conimar.com/conimar.info/httpdocs/wp-content/themes/dev-master",
+		"/Users/pabloliz/Projects/iquariusmedia.com/conimar.com/conimar.info/httpdocs/wp-content/themes/dev-master/lib",
+		"/Users/pabloliz/Projects/iquariusmedia.com/conimar.com/conimar.info/httpdocs/wp-content/themes/dev-master/lib/timber",
+		"/Users/pabloliz/Projects/iquariusmedia.com/conimar.com/conimar.info/httpdocs/wp-content/themes/dev-master/views",
+		"/Users/pabloliz/Projects/iquariusmedia.com/conimar.com/conimar.info/httpdocs/wp-content/themes/suprema",
+		"/Users/pabloliz/Projects/iquariusmedia.com/conimar.com/conimar.info/httpdocs/wp-content/themes/suprema/framework",
+		"/Users/pabloliz/Projects/iquariusmedia.com/conimar.com/conimar.info/httpdocs/wp-content/themes/suprema/framework/modules",
+		"/Users/pabloliz/Projects/iquariusmedia.com/conimar.com/conimar.info/httpdocs/wp-content/themes/suprema/framework/modules/header"
+	],
+	"file_history":
+	[
+		"/Users/pabloliz/Projects/iquariusmedia.com/conimar.com/conimar.info/httpdocs/sftp-config.json",
+		"/Users/pabloliz/Projects/iquariusmedia.com/conimar.com/conimar.info/httpdocs/wp-content/debug.log",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/lib/scule/com.scule.js",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/views/exercise.xml",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/controllers/exercise_filters.js",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/lib/selectionHelper.js",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/styles/exercise.tss",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/styles/external.tss",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/styles/help.tss",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/controllers/workout.js",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/styles/window.tss",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/styles/topbar.tss",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/styles/customizer.tss",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/styles/login.tss",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/styles/app.tss",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/styles/workout/overview.tss",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/styles/preloader.tss",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/styles/workout_player.tss",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/views/external.xml",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/views/help.xml",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/adhoc.sh",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/views/preloader.xml",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/views/workout/overview.xml",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/views/window.xml",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/views/login.xml",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/views/menuview.xml",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/views/workout_player.xml",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/views/topbar.xml",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/views/customizer.xml",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/tiapp.xml",
+		"/Users/pabloliz/Projects/VVV/vagrant-local/www/cagefitness.com/public_html/wp-content/themes/iq/assets/js/cage.js",
+		"/Users/pabloliz/Projects/VVV/vagrant-local/www/cagefitness.com/public_html/wp-content/themes/iq/lib/cage/cage.php",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/controllers/exercise.js",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/controllers/workout/video.js",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/controllers/workout/overview.js",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/controllers/topbar.js",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/controllers/workout_player.js",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/controllers/preloader.js",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/controllers/login.js",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/controllers/window.js",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/controllers/help.js",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/controllers/external.js",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/controllers/customizer.js",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/lib/controls.js",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/controllers/index.js",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/todo.todo",
+		"/Users/pabloliz/Projects/VVV/vagrant-local/www/cagefitness.com/public_html/wp-content/themes/iq/lib/cage/custom.php",
+		"/Users/pabloliz/Projects/VVV/vagrant-local/www/cagefitness.com/public_html/wp-content/debug.log",
+		"/Users/pabloliz/Projects/VVV/vagrant-local/www/cagefitness.com/www/wp-content/debug.log",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/config.json",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/dist.sh",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/views/workout.xml",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/styles/workout.tss",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/controllers/exercise/full.js",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/styles/exercise_filters.tss",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/styles/exercise/full.tss",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/views/exercise/full.xml",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/views/exercise_filters.xml",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/styles/index.tss",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/styles/profile.tss",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/views/profile.xml",
+		"/Users/pabloliz/Projects/VVV/vagrant-local/www/cagefitness.com/public_html/.htaccess",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/controllers/profile.js",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/controllers/exercise/video.js",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/styles/exercise/video.tss",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/views/exercise/video.xml",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/styles/class_builder.tss",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/views/class_builder.xml",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/controllers/class_builder.js",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/alloy.js",
+		"/Users/pabloliz/Projects/VVV/vagrant-local/www/cagefitness.com/public_html/wp-content/themes/iq/lib/cage/api.php",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/views/backup.xml",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/styles/workout/video.tss",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/views/index.xml",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/views/workout/video.xml",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/controllers/backup.js",
+		"/Users/pabloliz/Projects/VVV/vagrant-local/www/cagefitness.com/public_html/wp-content/plugins/woocommerce/templates/single-product/product-image.php",
+		"/Users/pabloliz/Projects/VVV/vagrant-local/www/cagefitness.com/wp-config.php",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/styles/header.tss",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/widgets/com.boxoutthinkers.animatedgif/controllers/widget.js",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/styles/progress.tss",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/styles/preview.tss",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/styles/menuview.tss",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/views/progress.xml",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/views/preview.xml",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/views/header.xml",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/controllers/progress.js",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/build.sh",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/controllers/preview.js",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/controllers/header.js",
+		"/Users/pabloliz/Library/Developer/CoreSimulator/Devices/B813DAFA-E585-4F68-A277-073880EE2729/data/Containers/Data/Application/1E48A806-DCEF-4085-89E6-EE9ECD6972DE/Documents/DownloadItemCatalog.dat",
+		"/Users/pabloliz/Library/Developer/CoreSimulator/Devices/B813DAFA-E585-4F68-A277-073880EE2729/data/Containers/Data/Application/1E48A806-DCEF-4085-89E6-EE9ECD6972DE/Documents/DownloadQueue.dat",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/lib/underscore.js",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/kitchen-sink/kitchensink-v2/app/views/controls/views/imageview.xml",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/lib/utils.js",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/kitchen-sink/kitchensink-v2/app/config.json",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/kitchen-sink/kitchensink-v2/app/controllers/controls/index.js",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/styles/workout_video.tss",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/controllers/workout_video.js",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/views/workout_video.xml",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/styles/main_topbar.tss",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/views/main_topbar.xml",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/controllers/main_topbar.js",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/controllers/item_gallery.js",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/views/item_gallery.xml",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/styles/item_gallery.tss",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/styles/mainview.tss",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/styles/intro.tss",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/views/browser.xml",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/views/mainview.xml",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/views/intro.xml",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/widgets/com.prodz.tiflexigrid/controllers/widget.js",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/controllers/mainview.js",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/controllers/intro.js",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/kitchen-sink/kitchensink-v2/app/controllers/controls/tabbedbar.js",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/APP.CAGEFITNESS.COM.sublime-project",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/kitchen-sink/kitchensink-v2/app/views/controls/tabbedbar.xml",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/controllers/browser.js",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/kitchen-sink/kitchensink-v2/app/controllers/controls/views/webview.js",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/kitchen-sink/kitchensink-v2/app/views/controls/views/webview.xml",
+		"/Users/pabloliz/Projects/VVV/vagrant-local/www/cagefitness.com/public_html/wp-content/themes/iq/page-tpl-app.php",
+		"/Users/pabloliz/Projects/VVV/vagrant-local/www/cagefitness.com/public_html/wp-content/themes/iq/templates/page-tpl-app.twig",
+		"/Users/pabloliz/Projects/VVV/vagrant-local/www/cagefitness.com/public_html/wp-content/themes/iq/page-tpl-app__BKP.php",
+		"/Users/pabloliz/Projects/VVV/vagrant-local/www/cagefitness.com/public_html/wp-content/themes/iq/single-exercise.php",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/views/config.xml",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/kitchen-sink/alloy-widget-drawermenu/demo/app/lib/controls.js",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp/app/views/wizard.xml",
+		"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/kitchen-sink/alloy-widget-drawermenu/demo/app/views/index.xml"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"*.*",
+			"*.tss",
+			".tss",
+			"",
+			"/Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium",
+			"*.js",
+			"*.php",
+			"*.less",
+			"",
+			"*.twig",
+			"",
+			"/Users/Pablo/Documents/Projects/joseduran.net/assets/templates/joseduran.100/javascripts/",
+			"/Users/Pablo/Documents/Projects/joseduran.net/assets/templates/joseduran.100/javascripts/jd.100",
+			"<project>",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"h1",
+			"logo",
+			"function vc_catID",
+			"vc_catID",
+			"$os",
+			"os",
+			"selectorLeft",
+			"selectorRight",
+			"btngroup",
+			"title",
+			"pover",
+			"selected",
+			"focused",
+			"stepClick",
+			"clickStep",
+			"selectionStyle:Titanium.UI.iOS.ListViewCellSelectionStyle.NONE",
+			"roundItems",
+			"Number of Exercises",
+			"NUMBER OF EXERCISES",
+			"selectionStyle",
+			"listView",
+			"60",
+			"list_item_bg",
+			"listview_step4",
+			"#select",
+			"dropdown_btn",
+			"60",
+			"crypto",
+			"select",
+			"dropdown_btn",
+			"}\ndropdown_btn",
+			"listview_step3",
+			"generateRoundTypeButtons",
+			"onSuccessOptionsCallback",
+			"CALLBACK",
+			"onSuccessExercisesCallback",
+			"loadExercises",
+			"updateStepItem",
+			"constructor",
+			"Ti.API.info",
+			"menu_builder",
+			"cageAuthenticate",
+			"id=",
+			"opts",
+			"DATA",
+			"data",
+			"cageAuthenticate",
+			"xhr",
+			"round_selec",
+			"cageAuthenticate",
+			"list2",
+			"button_matrix",
+			"4",
+			"response",
+			"update_option",
+			"write_log",
+			"cage_build_workout_html",
+			"XHROptions",
+			"onSuccessCallback",
+			"cage_create_workout",
+			"build_workout_html",
+			"cage_build_workout_html",
+			"write",
+			"onSuccessWorkoutCallback",
+			"LaunchWindow",
+			"cage/topbar/menu_button/close",
+			"close",
+			"WTYPE",
+			"cage/topbar/menu_button/close",
+			"close",
+			"accessoryType=\"Ti.UI.LIST_ACCESSORY_TYPE_DETAIL\"",
+			"DETAIL",
+			"accessoryType",
+			"appicon.png",
+			"borderRa",
+			"logo",
+			"symbol",
+			"getIndex",
+			"proccessWorkout",
+			"prepareVideoOwl",
+			"file_index",
+			"item_index",
+			"file_index",
+			"item_index",
+			"file_index",
+			"proccessWorkout",
+			"closeIndicator",
+			"scrollable",
+			"onSuccessWorkoutCallback",
+			"workout_final_path",
+			"user_workout_path",
+			"user_workout_url",
+			"activity",
+			"logo",
+			"formData",
+			"$.win.remove",
+			"cage/topbar/menu_button/close",
+			"LaunchVideo",
+			"cage/launch/video",
+			"fireEvent",
+			"cage/launch/video",
+			"showGridItemInfo",
+			"onErrorExercisesCallback",
+			"onErrorWorkoutCallback",
+			"onSuccessWorkoutCallback",
+			"processExercises",
+			"proccessWorkout",
+			"cage/launch/login",
+			"token",
+			"LaunchExternal",
+			"cage/launch/window",
+			"cage/external/link",
+			"menu_external",
+			"External",
+			"external",
+			"HELLO WORLD",
+			"Alloy.Globals.modalWindow",
+			"lloy.Globals.modalWindow",
+			"cage/external/link",
+			"external",
+			"step_line",
+			"stepCli",
+			"514",
+			"step_line",
+			"vertical",
+			"Ti.App.fireEvent('cage/launch/window',{key:'menu_workouts', 'workout_id':wkt});",
+			"getMenuObject",
+			"menuitems"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"XXXXXXXXX",
+			"",
+			"tr-",
+			"[[+post.",
+			" ",
+			"+fi-contact.",
+			"",
+			"jd",
+			"\"#bg\""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 5,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/Users/pabloliz/Projects/iquariusmedia.com/conimar.com/conimar.info/httpdocs/wp-content/themes/dev-master/lib/custom.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2536,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 708.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/Users/pabloliz/Projects/iquariusmedia.com/conimar.com/conimar.info/httpdocs/wp-content/themes/dev-master/functions.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1233,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								9,
+								9
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 18.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/Users/pabloliz/Projects/iquariusmedia.com/conimar.com/conimar.info/httpdocs/wp-content/themes/dev-master/lib/conimar/init.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1176,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								515,
+								515
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"open_with_edit": true,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 107.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/Users/pabloliz/Projects/iquariusmedia.com/conimar.com/conimar.info/httpdocs/wp-content/themes/suprema/framework/modules/header/templates/parts/logo.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1034,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								109,
+								142
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 3.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/Users/pabloliz/Projects/iquariusmedia.com/conimar.com/conimar.info/httpdocs/wp-content/debug.log",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 199,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								72,
+								80
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/Users/pabloliz/Projects/iquariusmedia.com/conimar.com/conimar.info/httpdocs/wp-content/themes/dev-master/views/brand-logo.twig",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 542,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								317,
+								317
+							]
+						],
+						"settings":
+						{
+							"WordCount":
+							{
+								"changes": 0,
+								"count": 32,
+								"modified": false,
+								"selection": false,
+								"status": -1,
+								"syntax": "plain text"
+							},
+							"incomplete_sync": null,
+							"open_with_edit": true,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Twig/Syntaxes/HTML (Twig).tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/Users/pabloliz/Projects/iquariusmedia.com/conimar.com/conimar.info/httpdocs/wp-content/themes/dev-master/woocommerce.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7913,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1395,
+								1395
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 542.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "/Users/pabloliz/Projects/iquariusmedia.com/conimar.com/conimar.info/httpdocs/wp-content/themes/dev-master/woo-cat-headers.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.sftp":
+	{
+		"height": 220.0
+	},
+	"pinned_build_system": "",
+	"project": "conimar.info.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": false,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"app.tss",
+				"titanium/CageFitnessApp/app/styles/app.tss"
+			],
+			[
+				"overview.js",
+				"titanium/CageFitnessApp/app/controllers/workout/overview.js"
+			],
+			[
+				"custom.php",
+				"cagefitness.com/public_html/wp-content/themes/iq/lib/cage/custom.php"
+			],
+			[
+				"cage.php",
+				"cagefitness.com/public_html/wp-content/themes/iq/lib/cage/cage.php"
+			],
+			[
+				".todo",
+				"titanium/todo.todo"
+			],
+			[
+				"exercise.js",
+				"titanium/CageFitnessApp/app/controllers/exercise.js"
+			],
+			[
+				"pimage",
+				"cagefitness.com/public_html/wp-content/plugins/woocommerce/templates/single-product/product-image.php"
+			],
+			[
+				"login.js",
+				"titanium/CageFitnessApp/app/controllers/login.js"
+			],
+			[
+				"config.json",
+				"titanium/CageFitnessApp/app/config.json"
+			],
+			[
+				"exerci",
+				"titanium/CageFitnessApp/app/controllers/exercise.js"
+			],
+			[
+				"exercis",
+				"titanium/CageFitnessApp/app/controllers/exercise.js"
+			],
+			[
+				"exercise",
+				"titanium/CageFitnessApp/app/controllers/exercise.js"
+			],
+			[
+				"exerc",
+				"titanium/CageFitnessApp/app/controllers/exercise.js"
+			],
+			[
+				"profile.js",
+				"titanium/CageFitnessApp/app/controllers/profile.js"
+			],
+			[
+				"menuview",
+				"titanium/CageFitnessApp/app/views/menuview.xml"
+			],
+			[
+				"external",
+				"titanium/CageFitnessApp/app/controllers/external.js"
+			],
+			[
+				"help.js",
+				"titanium/CageFitnessApp/app/controllers/help.js"
+			],
+			[
+				"intro.",
+				"titanium/CageFitnessApp/app/controllers/intro.js"
+			],
+			[
+				"mainview.",
+				"titanium/CageFitnessApp/app/controllers/mainview.js"
+			],
+			[
+				"help",
+				"titanium/CageFitnessApp/app/controllers/help.js"
+			],
+			[
+				"exercise_filter",
+				"titanium/CageFitnessApp/app/styles/exercise_filters.tss"
+			],
+			[
+				"exercise_filt",
+				"titanium/CageFitnessApp/app/controllers/exercise_filters.js"
+			],
+			[
+				"exercise.tss",
+				"titanium/CageFitnessApp/app/styles/exercise.tss"
+			],
+			[
+				"exercise_filter.tss",
+				"titanium/CageFitnessApp/app/styles/exercise_filters.tss"
+			],
+			[
+				"menuview.t",
+				"titanium/CageFitnessApp/app/styles/menuview.tss"
+			],
+			[
+				"build.s",
+				"titanium/CageFitnessApp/build.sh"
+			],
+			[
+				"cage.less",
+				"cagefitness.com/htdocs/wp-content/themes/iq/assets/less/cage.less"
+			],
+			[
+				"cage.js",
+				"cagefitness.com/htdocs/wp-content/themes/iq/assets/js/cage.js"
+			],
+			[
+				"cage.les",
+				"cagefitness.com/htdocs/wp-content/themes/iq/assets/less/cage.less"
+			],
+			[
+				"importer.php",
+				"htdocs/wp-content/themes/app-cagefitness/lib/cage/importer.php"
+			],
+			[
+				"importer",
+				"htdocs/wp-content/themes/app-cagefitness/lib/cage/importer.php"
+			],
+			[
+				"data_test",
+				"htdocs/wp-content/themes/app-cagefitness/static/data_test.json"
+			],
+			[
+				"preview.js",
+				"Cage Fitness/app/controllers/preview.js"
+			],
+			[
+				"preview.xml",
+				"Cage Fitness/app/views/preview.xml"
+			],
+			[
+				"round_popov",
+				"Cage Fitness/Resources/iphone/alloy/controllers/round_popover.js"
+			],
+			[
+				"comprar",
+				"new.uepatickets.com/httpdocs/templates/comprar.html"
+			],
+			[
+				"nav",
+				"uepatickets/templates/navigation.html"
+			],
+			[
+				"navi",
+				"uepatickets/templates/navigation.html"
+			],
+			[
+				"grid",
+				"uepatickets/templates/grid.html"
+			],
+			[
+				"style",
+				"uepatickets/static/asset/css/styles.css"
+			],
+			[
+				"navigation",
+				"uepatickets/templates/navigation.html"
+			],
+			[
+				"app.",
+				"uepatickets/app.py"
+			],
+			[
+				"navigat",
+				"uepatickets/templates/navigation.html"
+			],
+			[
+				"account.html",
+				"uepatickets/templates/account.html"
+			],
+			[
+				"navig",
+				"uepatickets/templates/navigation.html"
+			],
+			[
+				"styles",
+				"uepatickets/static/asset/css/styles.css"
+			],
+			[
+				"foundation.topbar.js",
+				"bower_components/foundation/js/foundation/foundation.topbar.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"learn",
+				"~/Projects/iquariusmedia.com/learn.echosim.io/learn.echosim.io.sublime-project"
+			],
+			[
+				"than",
+				"~/Projects/iquariusmedia.com/thenationalchiro.com/thenationalchiro.com.sublime-project"
+			],
+			[
+				"alexa",
+				"~/Projects/iquariusmedia.com/amazon.com/alexa/alexasimulator.sublime-project"
+			],
+			[
+				"skip",
+				"~/Projects/iquariusmedia.com/skipkirstrealtor.com/skipkirstrealtor.com.sublime-project"
+			],
+			[
+				"xoco",
+				"~/Projects/lithiumlab.com/xocolat.com.do/xocolat.com.do.sublime-project"
+			],
+			[
+				"uepatick",
+				"~/Projects/uepatickets.multipagos/electricparadise.com/httpdocs/eletricparadise.com.sublime-project"
+			],
+			[
+				"",
+				"~/Projects/uepatickets.com/uepatickets.sublime-project"
+			],
+			[
+				"body",
+				"~/Projects/iquariusmedia.com/iquariusmedia.com/bodymerry.shopify.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 47.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"generateTvTab",
+				"generateTvTab"
+			],
+			[
+				"generateTv",
+				"generateTvTab"
+			],
+			[
+				"value",
+				"value"
+			]
+		],
+		"width": 485.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 431.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

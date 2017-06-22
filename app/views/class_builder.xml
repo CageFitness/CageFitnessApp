@@ -55,11 +55,7 @@
                             </Templates>
                             
                             <ListSection height="Ti.UI.SIZE">
-                                <ListItem height="60" info:text="Round 1"></ListItem>
-                                <ListItem height="60" info:text="Round 2"></ListItem>
-                                <ListItem height="60" info:text="Round 3"></ListItem>
-                                <ListItem height="60" info:text="Round 4"></ListItem>
-                                <ListItem height="60" info:text="Round 5"></ListItem>
+								<!-- <ListItem height="60" info:text="Round 1"></ListItem>-->
                             </ListSection>
                         </ListView>
                         <Label text="5 Rounds" class="winTitle"></Label>
@@ -79,21 +75,19 @@
                                     <View class="padder">
                                         <View class="list_item_bg">
                                             <Label bindId="info" id="title" height="Ti.UI.SIZE" />
-                                            <View bindId="theparent" right="0" layout="horizontal" class="btn_item_wrapper" width="Ti.UI.SIZE" height="Ti.UI.SIZE">
-                                                <Button backgroundColor="#ffffff" onClick="ToggleMe" width="60" right="0" title="7" height="Ti.UI.SIZE" class="dropdown_btn" bindId="selectorLeft" autoStyle="true"></Button>
-                                                <View width="8"></View>
-                                                <Button backgroundColor="#ffffff" width="60" right="10" onClick="ToggleMe" title="10" height="Ti.UI.SIZE" class="dropdown_btn" bindId="selectorRight" autoStyle="true"></Button>
+                                            <View id="btngroup" bindId="theparent" right="0" layout="horizontal" class="btn_item_wrapper" width="Ti.UI.SIZE" height="Ti.UI.SIZE">
+                                                <Button backgroundColor="#ffffff" onClick="ToggleMe" width="60" right="0" title="5" height="Ti.UI.SIZE" class="dropdown_btn"   selectorValue="5" bindId="select5" autoStyle="true"></Button>
+                                                <View class="btngroupSep" height="Ti.UI.SIZE" width="8"></View>                                            	
+                                                <Button backgroundColor="#ffffff" onClick="ToggleMe" width="60" right="0" title="7" height="Ti.UI.SIZE" class="dropdown_btn"   selectorValue="7" bindId="select7" autoStyle="true"></Button>
+                                                <View class="btngroupSep" height="Ti.UI.SIZE" width="8"></View>
+                                                <Button backgroundColor="#ffffff" width="60" right="10" onClick="ToggleMe" title="10" height="Ti.UI.SIZE" class="dropdown_btn" selectorValue="10" bindId="select10" autoStyle="true"></Button>
                                             </View>
                                         </View>
                                     </View>
                                 </ItemTemplate>
                             </Templates>
                             <ListSection height="Ti.UI.SIZE" top="80">
-                                <ListItem height="70" info:text="Round 1"></ListItem>
-                                <ListItem height="70" info:text="Round 2"></ListItem>
-                                <ListItem height="70" info:text="Round 3"></ListItem>
-                                <ListItem height="70" info:text="Round 4"></ListItem>
-                                <ListItem height="70" info:text="Round 5"></ListItem>
+								<!-- <ListItem info:text="Round 1"></ListItem> -->
                             </ListSection>
                         </ListView>
                         <Label text="DESCRIPTION" class="winTitle xleft" textAlign="Ti.UI.TEXT_ALIGNMENT_LEFT"></Label>
@@ -158,7 +152,7 @@
                                 </ItemTemplate>
                             </Templates>
                             <ListSection>
-                                <ListItem height="60" info:text="Workout Theme" sub:text="Strength and Toning"></ListItem>
+                                <!-- <ListItem height="60" info:text="Workout Theme" sub:text="Strength and Toning"></ListItem> -->
                                 <ListItem height="60" info:text="Number of Rounds" sub:text="5 Rounds"></ListItem>
                                 <ListItem height="60" info:text="Round Types" sub:text="Warm Up, Upper Body, Lower Body, Combo, Core / Cool-Down"></ListItem>
                                 <ListItem height="60" info:text="Number of Exercises" sub:text="Round 1: 7, Round 2: 7, Round 3: 10, Round 4: 10, Round 5: 10"></ListItem>

@@ -100,22 +100,28 @@
 }
 "ListView":{
 	separatorColor:"#eaebdb",
-	height:Ti.UI.SIZE,
-	top:50,
+	height:Ti.UI.FILL,
+	top:40,
+	bottom:70,
+	// selectionStyle: Titanium.UI.iPhone.TableViewCellSelectionStyle.NONE
 }
+// "ListItem":{
+// 	// selectedBackgroundColor:"rgba(255,0,0,0)",
+// 	// selectionStyle:Titanium.UI.iPhone.ListViewCellSelectionStyle.NONE
+// 	selectionStyle:Titanium.UI.iOS.ListViewCellSelectionStyle.NONE
+//  	// backgroundSelectedColor: '#fff', 
+//  	// backgroundFocusedColor: '#fff', 	
+// }
+
 "ListItem":{
-	// selectedBackgroundColor:"rgba(255,0,0,0)",
-	// selectionStyle:Titanium.UI.iPhone.ListViewCellSelectionStyle.NONE
-	selectionStyle:Titanium.UI.iOS.ListViewCellSelectionStyle.NONE
- // backgroundSelectedColor: '#fff', 
- // backgroundFocusedColor: '#fff', 	
+	selectionStyle:Titanium.UI.iOS.ListViewCellSelectionStyle.BLUE,
 }
 
 ".winTitle":{
 	text:"Window Title",
-	top:"0",
+	top:0,
 	width:"80%",
-	height:"60",
+	height:60,
 	// backgroundColor:"white",
 	textAlign:Ti.UI.TEXT_ALIGNMENT_CENTER,
 }
@@ -233,7 +239,7 @@
 	borderRadius:6,
 	// backgroundSelectedColor:"green",
 	
-	backgroundSelectedColor:"red",
+	backgroundSelectedColor:"#d9e153",
 	font:{
 		fontSize: 16,
 		fontWeight: 'bold',
@@ -371,8 +377,8 @@
 		fontFamily:'Helvetica Neue'
 	},
 	borderRadius:6,
-	top:10,
-	bottom:10,
+	top:0,
+	bottom:0,
 	left:10,
 	height:Ti.UI.SIZE
 
@@ -380,6 +386,10 @@
 ".itemlist_with_icon_label":{
 	backgroundColor:undefined,
 
+}
+
+"#listview_step4":{
+	height:Ti.UI.SIZE,
 }
 ".listitem_wrapper":{
 	backgroundColor:"#fff",
@@ -390,8 +400,9 @@
 ".padder":{
 	height:Ti.UI.SIZE,
 	// top:10,
-	// bottom:10
-	right:10
+	// bottom:10,
+	right:10,
+	// height:70,	
 }
 // ListView Templates
 ".select":{
@@ -427,6 +438,15 @@
 	backgroundColor:"#fff"
 }
 
+
+".btngroupSep":{
+	height:Ti.UI.SIZE,
+	backgroundColor:'red',
+}
+
+"#btngroup":{
+	height:Ti.UI.SIZE,
+}
 
 
 

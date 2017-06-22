@@ -17,21 +17,34 @@ var args = $.args;
 $.button_matrix.addEventListener('click', function(e){
 
 	if(e.source._type=='btn'){
-		activateRoundTypeRows(Number(e.source.title));
+		// sections = [];
+		// $.listview_step3.deleteSectionAt(0,{animated:false});
+		// var roundTypeSection = Ti.UI.createListSection();
+		// sections.push(roundTypeSection);
+		// $.listview_step3.sections = sections;
+
+
+		setRoundTypeItems(Number(e.source.title));
+		setNumberOfExerciseItems(Number(e.source.title));
+		stepClick(e);
 	}
 });
 
-
-
-function activateRoundTypeRows(n){
-
-}
 
 function createRoundTypeRows(round_number){
 	var items = [];
 	for (var i = 0; i < round_number; i++) {
 		
 		var ob = {
+			// template:'roundType',
+			properties:{
+				top:0,
+				bottom:0,
+				height:65,
+				selectionStyle:Titanium.UI.iOS.ListViewCellSelectionStyle.NONE,
+				autoStyle:true,
+				// height:Ti.UI.SIZE,
+			},
 			info: {text: "Round "+Utils.getIndex(i)},
 	    }
 	    items.push(ob);		
@@ -41,6 +54,36 @@ function createRoundTypeRows(round_number){
 
 }
 
+function createNumberOfExercisesRows(round_number){
+    
+    var config = JSON.parse( Ti.App.Properties.getString('config') );
+    Ti.API.info('This runs.');
+    Ti.API.info('ROUND.CONFIGS:',config.acf.round_configs);
+
+
+	var numbers = config.acf.round_configs;
+	var items = [];
+	for (var i = 0; i < round_number; i++) {
+		
+		var ob = {
+			// template: 'numberOfExercises',
+			properties:{
+				top:0,
+				bottom:0,
+				height:65,
+				autoStyle:true,
+				// height:Ti.UI.SIZE,
+				selectionStyle:Titanium.UI.iOS.ListViewCellSelectionStyle.NONE,
+				},
+			info: {text: "Round "+Utils.getIndex(i)},
+	    }
+
+	    items.push(ob);		
+	}
+
+	return items;
+
+}
 
 
 
@@ -52,11 +95,31 @@ function createRoundTypeRows(round_number){
 
     var config = JSON.parse( Ti.App.Properties.getString('config') );
     Ti.API.info('CONFIGURATION:',config.acf.opt_rounds);
-    var roundItems = createRoundTypeRows(config.acf.opt_rounds);
-    // $.listview_step3.sections[0].setItems(roundItems);
+    setRoundTypeItems(config.acf.opt_rounds);
+    setNumberOfExerciseItems(config.acf.opt_rounds);
+    
 
 })();
 
+
+
+function setNumberOfExerciseItems(ritems){
+    var items = createNumberOfExercisesRows(ritems);
+	$.listview_step4.removeAllChildren();
+	$.listview_step4.sections[0].setItems(items);
+
+}
+
+
+
+function setRoundTypeItems(nitems){
+    var items = createRoundTypeRows(nitems);
+	// $.listview_step3.removeAllChildren();
+	var sec = $.listview_step3.sections[0];
+	sec.deleteItemsAt( 0, _.size(sec.items), {animated:true} )
+	sec.setItems(items);
+	// $.listview_step3.sections.replaceItemsAt(0,	_.size(items), items, {animated:false})
+}
 
 
 
@@ -73,6 +136,8 @@ function updateStepItem(parent,page){
     item.backgroundColor='#white';
     // Ti.API.info(item.children[0]);
     item.children[0].color="#000";
+    item.borderWidth=4;
+    item.borderColor='#d9e153';
 
     Animation.shake(item,flashDelay);
 
@@ -147,9 +212,10 @@ $.listview_step4.addEventListener('itemclick', function(e){
 
 function ToggleMe(e){
 
-
+	Ti.API.info('GROUP.BUTTON.ITEM.CLICK: ', e.itemIndex, e.source.selectorValue)
     e.source.getParent().children[0].backgroundColor = "#ffffff";
     e.source.getParent().children[2].backgroundColor = "#ffffff";
+    e.source.getParent().children[4].backgroundColor = "#ffffff";
     e.source.backgroundColor="#d9e153"
 
 }
@@ -243,6 +309,11 @@ function doWorkout(e) {
    Ti.App.fireEvent('cage/launch/window',{key:'menu_workouts', workout_id:wkt });
 }
 
+
+function testMy(e){
+	Ti.API.info('This. Works??.... ',e);
+}
+
 function openRoundPopover() {
     var round_popover = Alloy.createController('round_popover').getView();
     round_popover.show({view:$.step3_btn});
@@ -274,8 +345,12 @@ function handleClickBuildWorkout(e) {
 function handleClickNumberOfExercises(e) {
     var section = $.pover.sections[e.sectionIndex];
     var item = section.getItemAt(e.itemIndex);
+    Ti.API.info('SELECTOR:', item, item.selectorRight, item.selectorCenter, item.selectorLeft);
+
     item.selectorRight.backgroundColor = "#ffffff";
+    item.selectorCenter.backgroundColor = "#ffffff";
     item.selectorLeft.backgroundColor = "#ffffff";
+
     e.source.backgroundColor = "#d9e153";
 
     section.updateItemAt(e.itemIndex, item);

@@ -11,6 +11,7 @@
     "user_workout_path": "/wp-json/wp/v2/workout",
     "exercise_equipment_path": "/wp-json/wp/v2/exercise_equipment",
     "exercise_type_path": "/wp-json/wp/v2/exercise_type",
+    "workout_create_update":"/wp-json/app/v1/my-workout",
     "user_path": "/wp-json/wp/v2/users/me",
     "styles": {
       "brandColor": "#d9e153"
