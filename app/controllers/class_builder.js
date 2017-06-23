@@ -17,6 +17,60 @@ var flashDelay = 0;
 Animation.fadeOut($.step_line,0);
 
 
+
+function LogSDATA(){
+	Ti.API.info('SELECTION.DATA: ', JSON.stringify(sdata));
+}
+
+function updateStep_UPDATE(row){
+	Ti.API.info('DATA.UPDATE.UPDATE:',row);
+	sdata.update=true;
+}
+
+function updateStep_BUILD(row){
+	Ti.API.info('DATA.UPDATE.BUILD:',row);
+	sdata.build='auto';
+}
+
+function updateStep_EQUIPMENT(row){
+	Ti.API.info('DATA.UPDATE.EQUIPMENT');
+	_.each(sdata.rounds, function(prop){
+		prop.equipment = row.slug;
+	})
+	LogSDATA();
+}
+
+function updateStep_EXERCISES(row){
+	Ti.API.info('DATA.UPDATE.EXERCISES');
+	sdata.rounds[row.rowIndex].numexercises = row.numexercises;
+	LogSDATA();
+}
+
+function updateStep_TYPE(row){
+	// Ti.API.info('DATA.UPDATE.TYPE:',row, e);
+	// Ti.API.info('DATA.UPDATE.TYPE.ROW.SELECTOR:',row);
+	sdata.rounds[row.rowIndex].roundType = row.slug;
+	LogSDATA();
+}
+
+function handleClickPopOver(e) {
+    Alloy.Globals.currentSelectButton = e.source;
+    // Ti.API.info(e.itemIndex)
+    var round_popover = Alloy.createController('round_popover', {validate:updateStep_TYPE, row:e.itemIndex} ).getView();
+    round_popover.show({animated:true,view:e.source});
+}
+
+function updateStep_ROUND(nrounds){
+	var r = [];
+	for (var i = 0; i < nrounds; i++) {
+		var ob = {};
+		ob.round = getIndex(i);
+		r.push(ob);
+	}
+	sdata.rounds = r;
+	Ti.API.info('DATA.UPDATED:',sdata);
+}
+
 function initSelectionData(){
 
 	sdata = {
@@ -92,7 +146,8 @@ function sendData(){
     data.update = 'true';
     data.rounds = rounds;
 
-    finalData = JSON.stringify(data);
+    sdata.filter='red';
+    finalData = JSON.stringify(sdata);
 
 	Ti.API.info('UNO', finalData);
 	Ti.API.info('DOS', token);
@@ -126,7 +181,7 @@ $.button_matrix.addEventListener('click', function(e){
 		// $.listview_step3.sections = sections;
 
 		_.each(e.source.getParent().children, function(el){
-			Ti.API.info('BUTTON.MATRIX:',el);
+			// Ti.API.info('BUTTON.MATRIX:',el);
 			el.backgroundColor='#fff';
 			el.color='#9b9b9b';
 			el.borderColor='#b4b4b4';
@@ -134,10 +189,12 @@ $.button_matrix.addEventListener('click', function(e){
 		e.source.backgroundColor='#c4cb48';
 		e.source.color='#fff';
 		e.source.borderColor='#000';
+		
+		var num = Number(e.source.title);
+		updateStep_ROUND(num);
 
-
-		setRoundTypeItems(Number(e.source.title));
-		setNumberOfExerciseItems(Number(e.source.title));
+		setRoundTypeItems(Number(num));
+		setNumberOfExerciseItems(Number(num));
 		stepClick(e);
 	}
 });
@@ -155,6 +212,7 @@ function createRoundTypeRows(round_number){
 				height:65,
 				selectionStyle:Titanium.UI.iOS.ListViewCellSelectionStyle.NONE,
 				autoStyle:true,
+				row_index:getIndex(i),
 				// height:Ti.UI.SIZE,
 			},
 			info: {text: "Round "+getIndex(i)},
@@ -184,6 +242,7 @@ function createNumberOfExercisesRows(round_number){
 				bottom:0,
 				height:65,
 				autoStyle:true,
+				row_index:getIndex(i),
 				// height:Ti.UI.SIZE,
 				selectionStyle:Titanium.UI.iOS.ListViewCellSelectionStyle.NONE,
 				},
@@ -246,7 +305,12 @@ function setRoundTypeItems(nitems){
 
 
 
-
+$.listview_step3.addEventListener('itemclick',function(e){
+	Ti.API.info('LIST.3: ',e);
+	var row = $.listview_step3.sections[0].getItemAt(e.itemIndex);
+	Ti.API.info('LIST.3.ROW: ',row.selector);
+	// Ti.API.fireEvent('click')
+})
 
 
 
@@ -337,12 +401,16 @@ function ToggleMe(e){
     e.source.getParent().children[0].backgroundColor = "#ffffff";
     e.source.getParent().children[2].backgroundColor = "#ffffff";
     e.source.getParent().children[4].backgroundColor = "#ffffff";
-    e.source.backgroundColor="#d9e153"
+    e.source.backgroundColor="#d9e153";
+
+    updateStep_EXERCISES({'rowIndex':e.itemIndex, 'numexercises':e.source.selectorValue});
 
 }
 
 $.listview_step5.addEventListener('itemclick', function(e){
     var section = $.listview_step5.sections[e.sectionIndex];
+    var item = section.getItemAt(e.itemIndex);
+    updateStep_EQUIPMENT({'rowIndex':e.itemIndex, 'slug':item.properties.slug});
     clickAndFollow(section,e);
 });
 
@@ -437,11 +505,11 @@ function testMy(e){
 	Ti.API.info('This. Works??.... ',e);
 }
 
-function openRoundPopover() {
-    var round_popover = Alloy.createController('round_popover').getView();
-    round_popover.show({view:$.step3_btn});
-    Ti.API.info('Round PopOver Openend');
-};
+// function openRoundPopover() {
+//     var round_popover = Alloy.createController('round_popover').getView();
+//     round_popover.show({view:$.step3_btn});
+//     Ti.API.info('Round PopOver Openend');
+// };
 
 function itemClickBuildWorkout(e){
     // Ti.API.info('TESTING...');
@@ -479,11 +547,7 @@ function handleClickNumberOfExercises(e) {
     section.updateItemAt(e.itemIndex, item);
 }
 
-function handleClickPopOver(e) {
-    Alloy.Globals.currentSelectButton = e.source;
-    var round_popover = Alloy.createController('round_popover').getView();
-    round_popover.show({animated:true,view:e.source});
-}
+
 
 
 function stepLineClick(){

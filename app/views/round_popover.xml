@@ -8,11 +8,11 @@
                     <View id="popover_view">
                         <ListView id="pover" top="0" >
                             <ListSection>
-                                <ListItem class="checked" title="Warm Up"></ListItem>
-                                <ListItem class="checked" title="Upper Body"></ListItem>
-                                <ListItem class="checked" title="Lower Body"></ListItem>
-                                <ListItem class="checked" title="Combo"></ListItem>
-                                <ListItem class="checked" title="Core / Cool-down"></ListItem>
+                                <ListItem slug="warm-up" class="checked" title="Warm Up"></ListItem>
+                                <ListItem slug="upper-body" class="checked" title="Upper Body"></ListItem>
+                                <ListItem slug="lower-body" class="checked" title="Lower Body"></ListItem>
+                                <ListItem slug="combo" class="checked" title="Combo"></ListItem>
+                                <ListItem slug="core-cool-down" class="checked" title="Core / Cool-down"></ListItem>
                             </ListSection>                            
                         </ListView>                        
                     </View>

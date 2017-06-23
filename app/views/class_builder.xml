@@ -126,10 +126,10 @@
                                 </ItemTemplate>
                             </Templates>
                             <ListSection>
-                                <ListItem height="84" info:text="Body Weight" pic:image="images/icons/01.png" class="checked"></ListItem>
-                                <ListItem height="84" info:text="Cage Fitness Bags" pic:image="images/icons/02.png" class="checked"></ListItem>
-                                <ListItem height="84" info:text="Bands" pic:image="images/icons/03.png" class="checked"></ListItem>
-                                <ListItem height="84" info:text="Medicine Balls" pic:image="images/icons/04.png" class="checked"></ListItem>
+                                <ListItem height="84" slug="body-weight" info:text="Body Weight" pic:image="images/icons/01.png" class="checked"></ListItem>
+                                <ListItem height="84" slug="bags" info:text="Cage Fitness Bags" pic:image="images/icons/02.png" class="checked"></ListItem>
+                                <ListItem height="84" slug="bands" info:text="Bands" pic:image="images/icons/03.png" class="checked"></ListItem>
+                                <ListItem height="84" slug="med-ball" info:text="Medicine Balls" pic:image="images/icons/04.png" class="checked"></ListItem>
                             </ListSection>
                         </ListView>
                     </View>
