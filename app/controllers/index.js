@@ -46,7 +46,7 @@ Ti.App.addEventListener('cage/launch/login', LaunchLogin);
 
 function LaunchVideo(e) {
 	Ti.API.info('LAUNCHING.EXTERNAL.WINDOW.WITH:', e.url);
-    var win = Alloy.createController('window', {'cage_url':e.url, 'type':'exercise'}).getView();
+    var win = Alloy.createController('window', {'cage_url':e.url, 'type':'exercise', 'video_data':e}).getView();
     win.open({modal:true});
     Alloy.Globals.modalWindow = win;
 }

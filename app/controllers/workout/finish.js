@@ -25,32 +25,6 @@ $.overview.backgroundColor = '#fff';
 	else{
 		$.counter_big.text = '';
 	}
-	
-
-var items = [];
 
 
-function getIndex(n){
-	r = Number(n)+1; 
-	return r;
-}
-
-
-
-function describeRound(){
-	for (each in round){
-		var o = round[each];
-		var ob = {
-	        mass : {text : o.ID}, 
-	        name : {text : o.post_title },
-	        number : { text : round_number},
-	        symbol : { color : "#090", text : round_number+"."+getIndex(each)},
-	        slide_data : {text: getIndex(each) +' | '+duration}
-	    }
-	    items.push(ob);
-	}
-}
-
-describeRound();
-$.elementsList.sections[0].setItems(items);
 

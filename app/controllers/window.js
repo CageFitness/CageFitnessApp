@@ -5,11 +5,13 @@ var args = $.args;
 var cage_url = args.cage_url || false;
 var wtype = args.type || false;
 
+var video_data = args.video_data;
+
 Ti.API.info('WINDOW:');
 Ti.API.info('CAGE_URL:',cage_url, wtype);
 
 if(wtype=='exercise'){
-	$.main.add(Alloy.createController('exercise/full').getView());
+	$.main.add(Alloy.createController('exercise/full',{'video_data':video_data}).getView());
 }
 else if(wtype=='external'){
 	$.main.add(Alloy.createController('external',{'url':cage_url}).getView());

@@ -9,8 +9,8 @@
     "workout_test_path": "/wp-json/acf/v3/workout/13217",
     "workout_final_path": "/wp-json/acf/v3/workout/",
     "user_workout_path": "/wp-json/wp/v2/workout",
-    "exercise_equipment_path": "/wp-json/wp/v2/exercise_equipment",
-    "exercise_type_path": "/wp-json/wp/v2/exercise_type",
+    "exercise_equipment_path": "/wp-json/wp/v2/exercise_equipment/",
+    "exercise_type_path": "/wp-json/wp/v2/exercise_type/",
     "workout_create_update":"/wp-json/app/v1/my-workout",
     "user_path": "/wp-json/wp/v2/users/me",
     "styles": {

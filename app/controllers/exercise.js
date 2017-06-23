@@ -6,45 +6,55 @@
 var args = $.args;
 var exercises =[];
 var items = [];
-var xhr = new XHR();
+// var xhr = new XHR();
 var workout_url = Alloy.CFG.api_url + Alloy.CFG.workout_test_path;
+var exercise_url = Alloy.CFG.api_url + Alloy.CFG.exercise_path;
 
 function loadExercises(){
-	xhr.GET(workout_url, onSuccessExercisesCallback, onErrorExercisesCallback, Alloy.Globals.XHROptions);
-	// xhr.GET(exercise_path, onSuccessExercises2Callback, onErrorExercises2Callback, Alloy.Globals.XHROptions);
+	// xhr.GET(workout_url, onSuccessExercisesCallback, onErrorExercisesCallback, Alloy.Globals.XHROptions);
+	xhr.GET(exercise_url, onSuccessExercises2Callback, onErrorExercises2Callback);
 }
 
 
-function processExercises(n){
+// function processExercises(n){
 
-	var round_iterator = n;
+// 	var round_iterator = n;
 
-	for (round in round_iterator){
-		// Generates round intro slide here...
-		var iterator = round_iterator[round].customizer;
+// 	for (round in round_iterator){
+// 		// Generates round intro slide here...
+// 		var iterator = round_iterator[round].customizer;
 
-		for (i in iterator ){
-			var ob = {};
-			ob.thumb = iterator[i].acf.video_animated_thumbnail.url;
-			ob.type = "";
-			ob.title = iterator[i].post_title;
-			ob.id = "v"+iterator[i].id;
-			ob.video = iterator[i].acf.video.url;
-			exercises.push(ob);
-		}
+// 		for (i in iterator ){
+// 			var ob = {};
+// 			ob.thumb = iterator[i].acf.video_animated_thumbnail.url;
+// 			ob.type = "";
+// 			ob.title = iterator[i].post_title;
+// 			ob.id = "v"+iterator[i].id;
+// 			ob.video = iterator[i].acf.video.url;
+// 			exercises.push(ob);
+// 		}
 
 
-	}
+// 	}
 
-}
+// }
 
 function onSuccessExercises2Callback(e){
-    // Ti.API.info('VIDEO:', e.data.acf.round_selector[0].customizer[0].acf.video.url);
-    // Ti.API.info('GIF:', e.data.acf.round_selector[0].customizer[0].acf.video_animated_thumbnail.url);
-    // Ti.API.info('THUMB:', e.data.acf.round_selector[0].customizer[0].acf.video_featured.url);
-    Ti.API.info('EXERCISE2.SUCESS.WORKOUT.CALLBACK')
-	exes = [];
-	var data = e.data;
+	Ti.API.info('GET.EXERCISE.REST.API');
+
+    _.each(JSON.parse(e.data), function(item){
+    	Ti.API.info(item.title.rendered);
+			var ob = {};
+			ob.thumb = item.acf.video_featured.url;
+			ob.gif = item.acf.video_animated_thumbnail.url;
+			ob.type = "";
+			ob.title = item.title.rendered;
+			ob.id = "v"+item.id;
+			ob.video = item.acf.video.url;
+			exercises.push(ob);
+
+    })
+    createSampleData(exercises);
 
 }
 
@@ -52,22 +62,22 @@ function onErrorExercises2Callback(e){
 	Ti.API.info(e.data);
 }
 
-function onSuccessExercisesCallback(e){
+// function onSuccessExercisesCallback(e){
 
-    // Ti.API.info('VIDEO:', e.data.acf.round_selector[0].customizer[0].acf.video.url);
-    // Ti.API.info('GIF:', e.data.acf.round_selector[0].customizer[0].acf.video_animated_thumbnail.url);
-    // Ti.API.info('THUMB:', e.data.acf.round_selector[0].customizer[0].acf.video_featured.url);
-    Ti.API.info('EXERCISE.SUCESS.CALLBACK')
-	exercises = [];
+//     // Ti.API.info('VIDEO:', e.data.acf.round_selector[0].customizer[0].acf.video.url);
+//     // Ti.API.info('GIF:', e.data.acf.round_selector[0].customizer[0].acf.video_animated_thumbnail.url);
+//     // Ti.API.info('THUMB:', e.data.acf.round_selector[0].customizer[0].acf.video_featured.url);
+//     Ti.API.info('EXERCISE.SUCESS.CALLBACK')
+// 	exercises = [];
 
-	var data = e.data.acf.round_selector;
-	processExercises(data);
-
-
+// 	var data = e.data.acf.round_selector;
+// 	processExercises(data);
 
 
-	createSampleData(exercises);
-}
+
+
+// 	createSampleData(exercises);
+// }
 
 function onErrorExercisesCallback(e){
 	Ti.API.info(e.data);
@@ -80,11 +90,9 @@ function onErrorExercisesCallback(e){
 
 
 
-
-
 function showGridItemInfo(e){
 	Ti.API.info('ITEM.CLICKED.EXERCISE...', e.source.data);
-	Ti.App.fireEvent('cage/launch/video', {'url':e.source.data.video});
+	Ti.App.fireEvent('cage/launch/video', {'url':e.source.data.video, 'title':e.source.data.title});
 };
 
 
@@ -149,7 +157,7 @@ function init_exercise(){
  **/
 (function constructor() {
     Ti.API.info('INIT.EXERCISE');
-    // init_exercise();
+    init_exercise();
 })();
 
 

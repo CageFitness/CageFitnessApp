@@ -8,14 +8,9 @@ var args = $.args;
 
 
 // =========================================
-
-
 var sdata;
-
 var flashDelay = 0;
-
 Animation.fadeOut($.step_line,0);
-
 
 
 function LogSDATA(){

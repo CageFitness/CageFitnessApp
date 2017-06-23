@@ -2,9 +2,10 @@
 	<View id="mainView">
 		<Require src="topbar"></Require>
         <View id="exercise_header">
-        	<Require type="view" src="exercise_filters" id="filter_equipment"/>
+        	<Require type="view" src="exercise_filters" id="filter_equipment" />
         	<!-- <Require type="view" src="exercise_filters" id="filter_type"/> -->
         </View>
+
 		<View class="exercise_grid">
 			<Require type="widget" src="com.prodz.tiflexigrid" id="fg"/>
 		</View>

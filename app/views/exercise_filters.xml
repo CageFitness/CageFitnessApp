@@ -1,12 +1,21 @@
 <Alloy>
     <View class="wrapper">
-    	<TabbedBar onClick="tabbedBarSelectedIndex" class="tabbed_bar">
+    	<TabbedBar onClick="tabEquipment" class="tabbed_bar">
     	    <Labels>
     	        <Label slug="body-weight">Body Weight</Label>
-    	        <Label slug="bags">CageFitness Bags</Label>
-    	        <Label slug="body-weight">Body Weight</Label>
-    	        <Label slug="body-weight">Body Weight</Label>
+    	        <Label slug="bags">Bags</Label>
+    	        <Label slug="bands">Bands</Label>
+    	        <Label slug="medicine-ball">Med Ball</Label>
     	    </Labels>
     	</TabbedBar>
+		<TabbedBar onClick="tabExerciseType" class="tabbed_bar">
+    	    <Labels>
+    	        <Label slug="warm-up">Warm Up</Label>
+    	        <Label slug="upper-body">Upper Body</Label>
+    	        <Label slug="lower-body">Lower Body</Label>
+    	        <Label slug="combo">Combo</Label>
+    	        <Label slug="core-cool-down">Cool-down</Label>
+    	    </Labels>
+    	</TabbedBar>    	
     </View>
 </Alloy>

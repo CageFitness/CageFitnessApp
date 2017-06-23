@@ -4,9 +4,10 @@
 	width: Ti.UI.SIZE,
 	index: 1,
 	backgroundColor:'gray',
-	height:45
+	height:35
 }
 ".wrapper":{
+	layout:'horizontal',
 	// left:20,
 	width:Ti.UI.SIZE,
 	height:Ti.UI.SIZE
