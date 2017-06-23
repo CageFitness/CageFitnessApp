@@ -22,6 +22,15 @@ function LogSDATA(){
 	Ti.API.info('SELECTION.DATA: ', JSON.stringify(sdata));
 }
 
+function updateStep_REVIEW(row){
+	var sec = $.listview_step7.sections[0];
+	var item = sec.getItemAt(row.rowIndex);
+
+	Ti.API.info('DATA.UPDATE.REVIEW:',item, row.value);
+	item.sub.text = row.value;
+	sec.updateItemAt(row.rowIndex, item);
+
+}
 function updateStep_UPDATE(row){
 	Ti.API.info('DATA.UPDATE.UPDATE:',row);
 	sdata.update=true;
@@ -37,19 +46,39 @@ function updateStep_EQUIPMENT(row){
 	_.each(sdata.rounds, function(prop){
 		prop.equipment = row.slug;
 	})
+	updateStep_REVIEW({rowIndex:3,value:row.title});
 	LogSDATA();
 }
 
 function updateStep_EXERCISES(row){
 	Ti.API.info('DATA.UPDATE.EXERCISES');
 	sdata.rounds[row.rowIndex].numexercises = row.numexercises;
+	var res = _.map(sdata.rounds, function(prop){ return 'Round '+prop.round+': '+prop.numexercises;});
+	updateStep_REVIEW( {rowIndex:2, value: res.join(', ')} );
 	LogSDATA();
 }
 
 function updateStep_TYPE(row){
-	// Ti.API.info('DATA.UPDATE.TYPE:',row, e);
-	// Ti.API.info('DATA.UPDATE.TYPE.ROW.SELECTOR:',row);
+	Ti.API.info('DATA.UPDATE.TYPE');
 	sdata.rounds[row.rowIndex].roundType = row.slug;
+	sdata.rounds[row.rowIndex].roundTitle = row.title;
+	var res = _.map(sdata.rounds, function(prop){ return prop.roundTitle});
+	updateStep_REVIEW({rowIndex:1, value:res.join(', ')});
+	LogSDATA();
+
+}
+
+
+function updateStep_ROUND(nrounds){
+	Ti.API.info('DATA.UPDATE.ROUND');
+	var r = [];
+	for (var i = 0; i < nrounds; i++) {
+		var ob = {};
+		ob.round = getIndex(i);
+		r.push(ob);
+	}
+	sdata.rounds = r;
+	updateStep_REVIEW({rowIndex:0,value:_.size(sdata.rounds)+' Rounds'});
 	LogSDATA();
 }
 
@@ -58,17 +87,6 @@ function handleClickPopOver(e) {
     // Ti.API.info(e.itemIndex)
     var round_popover = Alloy.createController('round_popover', {validate:updateStep_TYPE, row:e.itemIndex} ).getView();
     round_popover.show({animated:true,view:e.source});
-}
-
-function updateStep_ROUND(nrounds){
-	var r = [];
-	for (var i = 0; i < nrounds; i++) {
-		var ob = {};
-		ob.round = getIndex(i);
-		r.push(ob);
-	}
-	sdata.rounds = r;
-	Ti.API.info('DATA.UPDATED:',sdata);
 }
 
 function initSelectionData(){
@@ -410,7 +428,7 @@ function ToggleMe(e){
 $.listview_step5.addEventListener('itemclick', function(e){
     var section = $.listview_step5.sections[e.sectionIndex];
     var item = section.getItemAt(e.itemIndex);
-    updateStep_EQUIPMENT({'rowIndex':e.itemIndex, 'slug':item.properties.slug});
+    updateStep_EQUIPMENT({'rowIndex':e.itemIndex, 'slug':item.properties.slug, 'title':item.info.text});
     clickAndFollow(section,e);
 });
 

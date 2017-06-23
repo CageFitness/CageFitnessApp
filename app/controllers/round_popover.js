@@ -32,7 +32,7 @@ $.pover.addEventListener("itemclick", function(e){
 
 
     // args.validate(item, e, args.row);
-    args.validate({'rowIndex':args.row, 'slug':item.properties.slug});
+    args.validate({'rowIndex':args.row, 'slug':item.properties.slug, 'title':item.properties.title});
 
     setTimeout(function(e){
     	$.popover_ob.hide();

@@ -23,6 +23,12 @@
             <Button id="restart" title="Restart" onClick="scrollToView">
                 <ImageView class="icon" id="restart_icon"></ImageView>
             </Button>
+            <View id="dlman">
+            	<Label id="dlmanlabel"></Label>
+				<View id="activity_wrapper">
+            		<ActivityIndicator id="activity_indicator" />
+            	</View>            	
+            </View>
         </View>
     </View>
 </Alloy>

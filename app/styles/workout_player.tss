@@ -1,3 +1,58 @@
+"#activity_wrapper":{
+  height:34,
+  width:34,
+  // backgroundColor: Alloy.CFG.styles.brandColor,
+  borderRadius:0,
+  borderWidth:0,
+  borderColor:'#787b40',
+  visible:true,
+  right:20,
+
+}
+
+"#activity_indicator":{
+  color: 'green',
+  font: {
+  	fontFamily:'Helvetica Neue',
+  	fontSize:26,
+  	fontWeight:'bold'
+  },
+  // message: 'Loading...',
+  style: Ti.UI.ActivityIndicatorStyle.BIG,
+  // top:0,
+  // left:0,
+  // height:Ti.UI.SIZE,
+  width:100,
+  height:100,
+  // indicatorDiameter:100,
+  indicatorColor:'#000',
+  autoStyle:true,
+}
+
+
+"#dlman":{
+	bottom:80,
+	// left:20,
+	right:20,
+	height:80,
+	width:Ti.UI.SIZE,
+	// opacity:0.5,
+}
+"#dlmanlabel":{
+	color:"#9b9b9b",
+	right:74,
+	// backgroundColor:"#fdfdfd",
+	// borderColor:"#b4b4b4",
+	// borderWidth:2,
+	// borderRadius:12,
+	font:{
+		fontSize: 17,
+		fontFamily:'Helvetica Neue',
+		fontWeight:'normal'
+	},
+	autoStyle:true,
+}
+
 "#logo": {
 	layout:'absolute',
 }
@@ -15,11 +70,12 @@
 "#restart":{
 	bottom:80,
 	left:20,
-	right:10,
+	// right:10,
 	height:80,
 	width:34,
 	opacity:0.5,
 }
+
 
 ".tool": {
 	bottom: 80,

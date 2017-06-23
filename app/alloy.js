@@ -1,7 +1,12 @@
 // _ = require('alloy/underscore'); 
 // _ = require('underscore')._; 
-Timer = require('countdowntimer');
 NappDownloadManager = require("dk.napp.downloadmanager");
+NappDownloadManager.permittedNetworkTypes = NappDownloadManager.NETWORK_TYPE_ANY;
+NappDownloadManager.maximumSimultaneousDownloads = 4;
+NappDownloadManager.stopDownloader();
+NappDownloadManager.cleanUp();
+
+Timer = require('countdowntimer');
 Animation = require('alloy/animation');
 XHR = require('xhr');
 Utils = require('utils');

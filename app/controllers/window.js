@@ -31,6 +31,8 @@ Ti.App.addEventListener('cage/topbar/menu_button/close', onButtonClose);
 
 
 $.cleanup = function cleanup() {
+	Ti.API.info('PERFORMING.CLEANUP');
+	// NappDownloadManager.cleanUp();
   $.destroy();
   $.off();
   // someController = null;

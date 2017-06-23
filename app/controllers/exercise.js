@@ -149,7 +149,7 @@ function init_exercise(){
  **/
 (function constructor() {
     Ti.API.info('INIT.EXERCISE');
-    init_exercise();
+    // init_exercise();
 })();
 
 

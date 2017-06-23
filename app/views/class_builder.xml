@@ -172,10 +172,10 @@
                             </Templates>
                             <ListSection>
                                 <!-- <ListItem height="60" info:text="Workout Theme" sub:text="Strength and Toning"></ListItem> -->
-                                <ListItem height="60" info:text="Number of Rounds" sub:text="5 Rounds"></ListItem>
-                                <ListItem height="60" info:text="Round Types" sub:text="Warm Up, Upper Body, Lower Body, Combo, Core / Cool-Down"></ListItem>
-                                <ListItem height="60" info:text="Number of Exercises" sub:text="Round 1: 7, Round 2: 7, Round 3: 10, Round 4: 10, Round 5: 10"></ListItem>
-                                <ListItem height="60" info:text="Equipment" sub:text="Medicine Ball"></ListItem>
+                                <ListItem _type="round" height="60" info:text="Number of Rounds" sub:text=""></ListItem>
+                                <ListItem _type="type" height="60" info:text="Round Types" sub:text=""></ListItem>
+                                <ListItem _type="exercises" height="60" info:text="Number of Exercises" sub:text=""></ListItem>
+                                <ListItem _type="equipment" height="60" info:text="Equipment" sub:text=""></ListItem>
                             </ListSection>
                         </ListView>
                     </View>

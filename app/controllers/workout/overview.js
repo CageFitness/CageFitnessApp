@@ -41,11 +41,12 @@ function describeRound(){
 	for (each in round){
 		var o = round[each];
 		var ob = {
-	        mass : {text : o.ID}, 
+			properties:{height:30},
+	        // mass : {text : o.ID}, 
 	        name : {text : o.post_title },
-	        number : { text : round_number},
-	        symbol : { color : "#090", text : round_number+"."+getIndex(each)},
-	        slide_data : {text: getIndex(each) +' | '+duration}
+	        // number : { text : round_number},
+	        rxIndex : { color : "#090", text : round_number+"."+getIndex(each)},
+	        // slide_data : {text: getIndex(each) +' | '+duration}
 	    }
 	    items.push(ob);
 	}
