@@ -4,6 +4,7 @@
 /i18n
 build.log
 build
+dist
 npm-debug.log
 tmp
 .map
