@@ -22,11 +22,14 @@ else{
 
 
 function onButtonClose(e){
-	Ti.API.info('WTYPE CHECK FROM WINDOW.XML: ', e.window_type);
+	
 	if(e.window_type == 'modal'){
+
+		Ti.API.info('WTYPE CHECK FROM WINDOW.XML: ', e.window_type);
 		$.win.remove($.main);
 		$.main = null;
 		$.win.close();
+
 	}
 }
 Ti.App.addEventListener('cage/topbar/menu_button/close', onButtonClose);

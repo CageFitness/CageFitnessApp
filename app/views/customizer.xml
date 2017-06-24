@@ -1,6 +1,62 @@
 <Alloy>
-	<View class="container">
-		<Require src="topbar" window_type=""></Require>
-		<Label onClick="sendData">Hello World</Label>
-	</View>
+    <View id="mainView" class="page_wrapper">
+        <Require src="topbar"></Require>
+        <Require type="view" src="header" customTitle="Customize your Workout" customImage="images/layout/workout_theme.png" />
+        <View class="customizer_list">
+            <ListView id="customizer_list_view" onItemclick="handleListViewClick">
+                <!-- Enable Pull-to-Refresh -->
+                <!-- <RefreshControl id="refresh" onRefreshstart="fetchData" platform="ios" /> -->
+                <!-- Add custom item templates -->
+                <Templates>
+                    <ItemTemplate name="MyCustomTemplate">
+                        <Label bindId="title" class="titleLabel" />
+                        <Label bindId="detail" class="detailLabel" />
+                    </ItemTemplate>
+                </Templates>
+
+                <ListSection>
+			        <HeaderView>
+			            <View class="list_header">
+			            	<Label class="htitle">ROUND 1</Label>
+			            </View>
+			        </HeaderView>
+                    <ListItem title="Exercise Title 1" class="list_view_item" />
+                    <ListItem title="Exercise Title 2" class="list_view_item" />
+                    <ListItem title="Exercise Title 3" class="list_view_item" />
+                    <ListItem title="Exercise Title 4" class="list_view_item" />
+                    <ListItem title="Exercise Title 5" class="list_view_item" />
+                </ListSection>
+                
+				<ListSection>
+			        <HeaderView>
+			            <View class="list_header">
+			            	<Label class="htitle">ROUND 2</Label>
+			            </View>
+			        </HeaderView>
+                    <ListItem title="Exercise Title 1" class="list_view_item" />
+                    <ListItem title="Exercise Title 2" class="list_view_item" />
+                    <ListItem title="Exercise Title 3" class="list_view_item" />
+                    <ListItem title="Exercise Title 4" class="list_view_item" />
+                    <ListItem title="Exercise Title 5" class="list_view_item" />
+                </ListSection>
+
+                <ListSection>
+			        <HeaderView>
+			            <View class="list_header">
+			            	<Label class="htitle">ROUND 3</Label>
+			            </View>
+			        </HeaderView>
+                    <ListItem title="Exercise Title 1" class="list_view_item" />
+                    <ListItem title="Exercise Title 2" class="list_view_item" />
+                    <ListItem title="Exercise Title 3" class="list_view_item" />
+                    <ListItem title="Exercise Title 4" class="list_view_item" />
+                    <ListItem title="Exercise Title 5" class="list_view_item" />
+                </ListSection>
+
+
+
+            </ListView>
+        </View>
+    </View>
 </Alloy>
+

@@ -19,7 +19,7 @@ var xhr = new XHR();
 
 function onSuccessUserCallback(e){
     // big lenght
-    Ti.API.info('USER:', e.data);
+    Ti.API.info('USER:', e.data.name, e.data.slug);
 }
 
 

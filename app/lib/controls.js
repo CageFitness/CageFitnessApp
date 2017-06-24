@@ -12,6 +12,9 @@ exports.getCustomizerView = function(){
     return Alloy.createController('customizer');
 };
 
+exports.getCustomizerView =function(){
+    return Alloy.createController('customizer');
+};
 exports.getConfigView =function(){
     return Alloy.createController('config');
 };

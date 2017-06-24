@@ -10,40 +10,78 @@ var items = [];
 var workout_url = Alloy.CFG.api_url + Alloy.CFG.workout_test_path;
 var exercise_url = Alloy.CFG.api_url + Alloy.CFG.exercise_path;
 
-function loadExercises(){
-	// xhr.GET(workout_url, onSuccessExercisesCallback, onErrorExercisesCallback, Alloy.Globals.XHROptions);
-	xhr.GET(exercise_url, onSuccessExercises2Callback, onErrorExercises2Callback);
+var exercise_query;
+
+
+
+/**
+ * The scoped constructor of the controller.
+ **/
+(function constructor() {
+    Ti.API.info('INIT.EXERCISE');
+    init_exercise();
+})();
+
+
+
+function showPreloader(){
+	Animation.fadeIn($.activity_wrapper);
+	$.activity_indicator.show();	
 }
 
 
-// function processExercises(n){
+function hidePreloader(){
+	Animation.fadeOut($.activity_wrapper);
+	$.activity_indicator.hide();
+}
 
-// 	var round_iterator = n;
-
-// 	for (round in round_iterator){
-// 		// Generates round intro slide here...
-// 		var iterator = round_iterator[round].customizer;
-
-// 		for (i in iterator ){
-// 			var ob = {};
-// 			ob.thumb = iterator[i].acf.video_animated_thumbnail.url;
-// 			ob.type = "";
-// 			ob.title = iterator[i].post_title;
-// 			ob.id = "v"+iterator[i].id;
-// 			ob.video = iterator[i].acf.video.url;
-// 			exercises.push(ob);
-// 		}
+function loadExercises(e){
+	Ti.API.info('GETTING FILTER INFORMATION:', e);
+	showPreloader();
+	$.fg.clearGrid();
 
 
-// 	}
 
-// }
+	var filter_query = {}
+		filter_query.per_page=50;
+		filter_query.page=1;
+
+	if(e.filter=='all'){
+		if(e.search){
+			filter_query.s=e.search;
+		}
+	}
+	else if(e.filter=='exercise_equipment'){
+		filter_query.exercise_equipment=e.ttid;
+	}
+	else if(e.filter=='exercise_type'){
+		filter_query.exercise_type=e.ttid;
+	}
+
+
+	
+	
+
+	var querystring = Object.keys(filter_query).map(function(k) {
+	    return encodeURIComponent(k) + '=' + encodeURIComponent(filter_query[k])
+	}).join('&');
+
+	// https://cagefitness.com/wp-json/wp/v2/exercise?per_page=5&page=1&exercise_equipment=278
+	xhr.GET(exercise_url+'?'+querystring, onSuccessExercises2Callback, onErrorExercises2Callback);
+}
+Ti.App.addEventListener('cage/exercise/filter',loadExercises);
+
 
 function onSuccessExercises2Callback(e){
-	Ti.API.info('GET.EXERCISE.REST.API');
 
-    _.each(JSON.parse(e.data), function(item){
-    	Ti.API.info(item.title.rendered);
+	hidePreloader();	
+
+	var parsed = JSON.parse(e.data);
+	Ti.API.info('GET.EXERCISE.REST.API.COUNT.RESULTS: ',_.size(parsed));
+	exercises=[];
+	// Why JSON needed to be parsed?
+    _.each(parsed, function(item){
+    	Ti.API.info('TITLE: ',item.title.rendered);
 			var ob = {};
 			ob.thumb = item.acf.video_featured.url;
 			ob.gif = item.acf.video_animated_thumbnail.url;
@@ -62,40 +100,16 @@ function onErrorExercises2Callback(e){
 	Ti.API.info(e.data);
 }
 
-// function onSuccessExercisesCallback(e){
-
-//     // Ti.API.info('VIDEO:', e.data.acf.round_selector[0].customizer[0].acf.video.url);
-//     // Ti.API.info('GIF:', e.data.acf.round_selector[0].customizer[0].acf.video_animated_thumbnail.url);
-//     // Ti.API.info('THUMB:', e.data.acf.round_selector[0].customizer[0].acf.video_featured.url);
-//     Ti.API.info('EXERCISE.SUCESS.CALLBACK')
-// 	exercises = [];
-
-// 	var data = e.data.acf.round_selector;
-// 	processExercises(data);
-
-
-
-
-// 	createSampleData(exercises);
-// }
 
 function onErrorExercisesCallback(e){
 	Ti.API.info(e.data);
 }
 
 
-
-
-
-
-
-
 function showGridItemInfo(e){
 	Ti.API.info('ITEM.CLICKED.EXERCISE...', e.source.data);
 	Ti.App.fireEvent('cage/launch/video', {'url':e.source.data.video, 'title':e.source.data.title});
 };
-
-
 
 
 //CUSTOM FUNCTION TO CREATE THE ITEMS FOR THE GRID
@@ -125,16 +139,18 @@ function createSampleData(data){
             data: values
         });
     };
+
+
+
     
     //ADD ALL THE ITEMS TO THE GRID
+
     $.fg.addGridItems(items);
     
 };
 
-
-
 function init_exercise(){
-	loadExercises();
+	loadExercises('all');
 
 	$.fg.init({
 	    columns:4,
@@ -149,16 +165,6 @@ function init_exercise(){
 	});	
 
 }
-
-
-
-/**
- * The scoped constructor of the controller.
- **/
-(function constructor() {
-    Ti.API.info('INIT.EXERCISE');
-    init_exercise();
-})();
 
 
 

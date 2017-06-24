@@ -9,7 +9,7 @@ var helpView 		= controls.getHelpView();
 var profileView 	= controls.getProfileView();
 // var workoutView 	= controls.getWorkoutView();
 var externalView 	= controls.getExternalView();
-// var customizerView 	= controls.getCustomizerView();
+var customizerView 	= controls.getCustomizerView();
 
 var menuitems = [];
 menuitems['menu_builder'] = {view:mainView};
@@ -17,7 +17,7 @@ menuitems['menu_exercises']= {view:exerciseView};
 menuitems['menu_help']= {view:helpView};
 menuitems['menu_profile']= {view:profileView};
 menuitems['menu_external']= {view:externalView};
-// menuitems['menu_customizer']= {view:customizerView};
+menuitems['menu_customizer']= {view:customizerView};
 
 // menuitems['menu_workouts']= {view:workoutView};
 
@@ -78,7 +78,7 @@ Ti.App.addEventListener('cage/topbar/menu_button/close', function(e){
 		// var w = Alloy.Globals.modalWindow;
 		// w.close();
 		// w.remove(w.loaded_view);
-		// w.loaded_view = null;
+		// w.loaded_view = null;	
 	}
 	else{
 		$.drawermenu.showhidemenu();
@@ -160,6 +160,7 @@ function triggerDrawer(e){
 	Ti.API.info('CURRENT CHILDREN BEFORE: ',$.drawermenu.drawermainview.children)
 	if( e.rowData.id == default_view ){
 
+		// This can trigger init only the current window.
 		Ti.App.fireEvent('cage/class_builder/init');
 		
 		if(active_page != default_view){

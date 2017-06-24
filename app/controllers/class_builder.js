@@ -241,6 +241,7 @@ function createNumberOfExercisesRows(round_number){
     
     var config = JSON.parse( Ti.App.Properties.getString('config') );
     Ti.API.info('This runs.');
+    // Ti.API.info('ROUND.CONFIGS:',config.acf.round_configs);
     Ti.API.info('ROUND.CONFIGS:',config.acf.round_configs);
 
 

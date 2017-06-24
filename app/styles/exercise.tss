@@ -1,7 +1,7 @@
-// "#mainView":{
-// 	layout: 'vertical',
-// 	backgroundColor: '#fff'
-// },
+"#mainView":{
+	// layout: 'vertical',
+	backgroundColor: '#fff'
+},
 // "#mainTopBar":{
 // 	width: Ti.UI.FILL,
 // 	height: "60dp",
@@ -12,6 +12,11 @@
 // 	width: "60dp",
 // 	height: "60dp"
 // }
+
+"#fg":{
+	top:200,
+}
+
 "#exercise_header":{
 	// width: Ti.UI.SIZE,
 	layout:'horizontal',
@@ -22,4 +27,44 @@
 	height: Ti.UI.SIZE,
 	// backgroundColor:'#d9e153',
 	textAlign:Ti.UI.TEXT_ALIGNMENT_CENTER,
+	width:Ti.UI.FILL,
+}
+
+ "#exercise_grid":{
+ 	width:Ti.UI.FILL,
+ 	height:Ti.UI.FILL,
+ 	backgroundColor:'purple',
+ }
+"#activity_wrapper":{
+  height:100,
+  width:100,
+  backgroundColor: Alloy.CFG.styles.brandColor,
+  borderRadius:10,
+  borderWidth:0,
+  borderColor:'#787b40',
+  visible:true,
+  opacity:0,
+  // right:20,
+  // top:300,
+
+}
+
+"#activity_indicator":{
+  color: 'green',
+  font: {
+  	fontFamily:'Helvetica Neue',
+  	fontSize:26,
+  	fontWeight:'bold'
+  },
+  // message: 'Loading...',
+  style: Ti.UI.ActivityIndicatorStyle.BIG,
+  // top:0,
+  // left:0,
+  // height:Ti.UI.SIZE,
+  width:100,
+  height:100,
+  // indicatorDiameter:100,
+  indicatorColor:'#000',
+  autoStyle:true,
+  borderRadius:10,
 }

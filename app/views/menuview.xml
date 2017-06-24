@@ -37,11 +37,11 @@
 				</View>
 			</TableViewRow>	
 
-<!-- 			<TableViewRow class="tableRow" id="menu_customizer">
+			<TableViewRow class="tableRow" id="menu_customizer">
 				<View id="rowContainer">
 					<View id="rowGear" class="rowIcon"/><Label id="rowLabel" class="rowLabel">Customizer</Label>
 				</View>
-			</TableViewRow>	 -->
+			</TableViewRow>	
 
 
 			<!-- <TableViewRow class="tableRow" id="menu_configuration">

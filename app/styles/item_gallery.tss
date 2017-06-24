@@ -6,10 +6,11 @@
 }
 "#thumb_title":{
 	bottom:0,
-	backgroundColor:'#b4b4b4',
+	backgroundColor:'#f8f8f8',
 	font:{
 		fontSize:12
 	},
 	width:Ti.UI.FILL,
 	textAlign:Ti.UI.TEXT_ALIGNMENT_CENTER,
+	height:18,
 }

@@ -2,10 +2,6 @@
 var args = $.args;
 // var xhr = new XHR();
 
-setTimeout(function(){
-	Ti.API.info('HELLO.DELAYD');
-	
-},5000)
 
 
 Alloy.Globals.XHROptions = {

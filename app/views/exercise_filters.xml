@@ -1,21 +1,40 @@
 <Alloy>
     <View class="wrapper">
-    	<TabbedBar onClick="tabEquipment" class="tabbed_bar">
+
+		<SearchBar onReturn="performSearch" id="search" />
+
+		<!-- <TabbedBar id="filter_all" onClick="tabAll" class="tabbed_bar">
     	    <Labels>
-    	        <Label slug="body-weight">Body Weight</Label>
-    	        <Label slug="bags">Bags</Label>
-    	        <Label slug="bands">Bands</Label>
-    	        <Label slug="medicine-ball">Med Ball</Label>
+    	        <Label ttid="0" width="60" slug="all">All</Label>
+    	    </Labels>
+    	</TabbedBar> -->
+    	 
+		<TabbedBar id="filter_taxonomy" onClick="tabTaxonomy" class="tabbed_bar">
+    	    <Labels>
+    	        <Label slug="all">All</Label>
+    	        <Label slug="equipment">Equipment</Label>
+    	        <Label slug="type">Type</Label>
+    	    </Labels>
+    	</TabbedBar>  
+
+    	<TabbedBar id="filter_equipment" onClick="tabEquipment" class="tabbed_bar_right">
+    	    <Labels>
+    	        <Label ttid="276" slug="body-weight">Body Weight</Label>
+    	        <Label ttid="277" slug="bags">Bags</Label>
+    	        <Label ttid="278" slug="bands">Bands</Label>
+    	        <Label ttid="279" slug="medicine-ball">Med Ball</Label>
     	    </Labels>
     	</TabbedBar>
-		<TabbedBar onClick="tabExerciseType" class="tabbed_bar">
+
+		<TabbedBar id="filter_type" onClick="tabExerciseType" class="tabbed_bar_right">
     	    <Labels>
-    	        <Label slug="warm-up">Warm Up</Label>
-    	        <Label slug="upper-body">Upper Body</Label>
-    	        <Label slug="lower-body">Lower Body</Label>
-    	        <Label slug="combo">Combo</Label>
-    	        <Label slug="core-cool-down">Cool-down</Label>
+    	        <Label ttid="289" slug="warm-up">Warm Up</Label>
+    	        <Label ttid="288" slug="upper-body">Upper Body</Label>
+    	        <Label ttid="285" slug="lower-body">Lower Body</Label>
+    	        <Label ttid="281" slug="combo">Combo</Label>
+    	        <Label ttid="282" slug="core-cool-down">Cool-down</Label>
     	    </Labels>
-    	</TabbedBar>    	
+    	</TabbedBar>
+
     </View>
 </Alloy>

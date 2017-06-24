@@ -2,13 +2,40 @@
 	left:20,
 	tintColor: 'red',
 	width: Ti.UI.SIZE,
-	index: 1,
+	// index: 1,
 	backgroundColor:'gray',
-	height:35
+	height:35,
+	hiddenBehavior:Titanium.UI.HIDDEN_BEHAVIOR_GONE,
+	visible:false,
+}
+
+".tabbed_bar_right": {
+	right:20,
+	tintColor: 'red',
+	width: Ti.UI.SIZE,
+	backgroundColor:'gray',
+	height:35,
+	hiddenBehavior:Titanium.UI.HIDDEN_BEHAVIOR_GONE,
+	visible:false,
+}
+
+"#filter_taxonomy":{
+	visible:true,
+	left:250,
 }
 ".wrapper":{
-	layout:'horizontal',
+	// layout:'horizontal',
 	// left:20,
-	width:Ti.UI.SIZE,
-	height:Ti.UI.SIZE
+	width:Ti.UI.FILL,
+	height:Ti.UI.SIZE,
+	// backgroundColor:'pink',
+}
+
+"#search":{
+	height:35,
+	// barColor:'#000',
+	showCancel:false,
+	width:210,
+	left:20,
+	borderRadius:6,
 }

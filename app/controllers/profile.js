@@ -9,7 +9,7 @@ var args = $.args;
 // $.thumb_title.text = the_title;
 var user = JSON.parse( Ti.App.Properties.getString('user') ) || {};
 
-Ti.API.info('USER:',user);
+Ti.API.info('USER:',user.name, user.slug);
 
 
 function handleListViewClick(e){
