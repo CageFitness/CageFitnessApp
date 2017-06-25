@@ -1,9 +1,28 @@
+"#customizer_search":{
+	barColor:'#ddd',
+	borderColor:'#ddd',
+}
+
+"#customizer_list_view":{
+	canMove:true,
+	canInsert:true,
+	canEdit:true,
+	// editing:true,
+	pruneSectionsOnEdit:true,
+	// backgroundColor:'purple',
+	height:Ti.UI.SIZE,
+	top:20,
+	bottom:20,
+}
+
 ".list_view_item":{
-	accessoryType:Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE,
+	// accessoryType:Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE,
 }
 
 "#mainView":{
 	backgroundColor:"#f8f8f8",
+	// backgroundColor:"red",
+	layout:'vertical',
 }
 
 ".page_wrapper" : {
@@ -11,25 +30,28 @@
 }
 ".customizer_list":{
 	backgroundColor:'#f8f8f8',
+	// backgroundColor:'green',
 	left:'20%',
 	right:'20%',
 	width:Ti.UI.FILL,
 	top:0,
-	height:Ti.UI.FILL,	
+	height:Ti.UI.FILL,
+	// layout:'vertical',
 }
 
 
 ".titleLabel": {
 	left: 15,
-	color: "red",
-	top:5,
-	bottom:5,
+	// color: "red",
+	// top:5,
+	// bottom:5,
 	right:15,
 }
 
 ".detailLabel": {
-	right: 5,
-	color: "green",
+	// top:5,
+	right: 15,
+	color: "grey",
 	font: {
 		fontWeight: "bold"	
 	}

@@ -1,5 +1,12 @@
 var controls=require('controls');
 
+
+var default_view = 'menu_builder'
+var active_page = 'menu_builder';
+
+var activeView = 1;
+
+
 // get main and menu view as objects
 var menuView 		= controls.getMenuView();
 var mainView 		= controls.getMainView();
@@ -10,6 +17,7 @@ var profileView 	= controls.getProfileView();
 // var workoutView 	= controls.getWorkoutView();
 var externalView 	= controls.getExternalView();
 var customizerView 	= controls.getCustomizerView();
+
 
 var menuitems = [];
 menuitems['menu_builder'] = {view:mainView};
@@ -196,9 +204,7 @@ function triggerDrawer(e){
 
 initWindowButtons(menuitems);
 
-var default_view = 'menu_builder'
-var active_page = 'menu_builder';
-var activeView = 1;
+
 
 $.drawermenu.init({
     menuview:menuView.getView(),

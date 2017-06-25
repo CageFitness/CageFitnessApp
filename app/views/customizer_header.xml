@@ -1,0 +1,5 @@
+<Alloy>
+    <View class="list_header">
+    	<Label id="hTitle" class="htitle">ROUND 1</Label>
+    </View>
+</Alloy>

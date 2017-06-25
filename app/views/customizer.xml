@@ -4,57 +4,25 @@
         <Require type="view" src="header" customTitle="Customize your Workout" customImage="images/layout/workout_theme.png" />
         <View class="customizer_list">
             <ListView id="customizer_list_view" onItemclick="handleListViewClick">
-                <!-- Enable Pull-to-Refresh -->
-                <!-- <RefreshControl id="refresh" onRefreshstart="fetchData" platform="ios" /> -->
-                <!-- Add custom item templates -->
+                <SearchBar id="customizer_search" />
                 <Templates>
-                    <ItemTemplate name="MyCustomTemplate">
-                        <Label bindId="title" class="titleLabel" />
-                        <Label bindId="detail" class="detailLabel" />
+                    <ItemTemplate name="RoundTemplate">
+                        <Label bindId="main" class="titleLabel" />
+                        <Label bindId="sub" class="detailLabel" />
+                    </ItemTemplate>
+                    <ItemTemplate name="headerTemplate" id="headerTemplate">
+                        <HeaderView>
+                            <View class="list_header">
+                                <Label bindId="hTitle" class="htitle">ROUND 1</Label>
+                            </View>
+                        </HeaderView>
                     </ItemTemplate>
                 </Templates>
-
-                <ListSection>
-			        <HeaderView>
-			            <View class="list_header">
-			            	<Label class="htitle">ROUND 1</Label>
-			            </View>
-			        </HeaderView>
-                    <ListItem title="Exercise Title 1" class="list_view_item" />
-                    <ListItem title="Exercise Title 2" class="list_view_item" />
-                    <ListItem title="Exercise Title 3" class="list_view_item" />
-                    <ListItem title="Exercise Title 4" class="list_view_item" />
-                    <ListItem title="Exercise Title 5" class="list_view_item" />
-                </ListSection>
-                
-				<ListSection>
-			        <HeaderView>
-			            <View class="list_header">
-			            	<Label class="htitle">ROUND 2</Label>
-			            </View>
-			        </HeaderView>
-                    <ListItem title="Exercise Title 1" class="list_view_item" />
-                    <ListItem title="Exercise Title 2" class="list_view_item" />
-                    <ListItem title="Exercise Title 3" class="list_view_item" />
-                    <ListItem title="Exercise Title 4" class="list_view_item" />
-                    <ListItem title="Exercise Title 5" class="list_view_item" />
-                </ListSection>
-
-                <ListSection>
-			        <HeaderView>
-			            <View class="list_header">
-			            	<Label class="htitle">ROUND 3</Label>
-			            </View>
-			        </HeaderView>
-                    <ListItem title="Exercise Title 1" class="list_view_item" />
-                    <ListItem title="Exercise Title 2" class="list_view_item" />
-                    <ListItem title="Exercise Title 3" class="list_view_item" />
-                    <ListItem title="Exercise Title 4" class="list_view_item" />
-                    <ListItem title="Exercise Title 5" class="list_view_item" />
-                </ListSection>
-
-
-
+                <FooterView>
+                    <View backgroundColor="#DDD" height="Ti.UI.SIZE">
+                        <Label onClick="createNewRound">ADD ANOTHER ROUND</Label>
+                    </View>
+                </FooterView>
             </ListView>
         </View>
     </View>

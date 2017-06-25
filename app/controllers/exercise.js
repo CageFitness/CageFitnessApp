@@ -81,7 +81,7 @@ function onSuccessExercises2Callback(e){
 	exercises=[];
 	// Why JSON needed to be parsed?
     _.each(parsed, function(item){
-    	Ti.API.info('TITLE: ',item.title.rendered);
+    	// Ti.API.info('TITLE: ',item.title.rendered);
 			var ob = {};
 			ob.thumb = item.acf.video_featured.url;
 			ob.gif = item.acf.video_animated_thumbnail.url;
