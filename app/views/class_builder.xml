@@ -146,8 +146,8 @@
                     <View id="list6" class="list" top="0">
                         <ListView id="listview_step6" onItemClick="handleClickBuildWorkout">
                             <ListSection>
-                                <ListItem height="70" class="checked" title="Auto-Generate (Workout is created for you)"></ListItem>
-                                <ListItem height="70" class="checked" title="Customize (Create your own class)"></ListItem>
+                                <ListItem build="auto" height="70" class="checked" title="Auto-Generate (Workout is created for you)"></ListItem>
+                                <ListItem build="custom" height="70" class="checked" title="Customize (Create your own class)"></ListItem>
                             </ListSection>
                         </ListView>
                     </View>

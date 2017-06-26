@@ -2,10 +2,10 @@
 var controls=require('controls');
 
 var args = $.args;
-var cage_url = args.cage_url || false;
-var wtype = args.type || false;
+var cage_url = args.cage_url || '';
+var wtype = args.type || '';
 
-var video_data = args.video_data;
+var video_data = args.video_data || '';
 
 Ti.API.info('WINDOW:');
 Ti.API.info('CAGE_URL:',cage_url, wtype);
@@ -15,6 +15,9 @@ if(wtype=='exercise'){
 }
 else if(wtype=='external'){
 	$.main.add(Alloy.createController('external',{'url':cage_url}).getView());
+}
+else if(wtype=='customizer'){
+	$.main.add(Alloy.createController('customizer').getView());	
 }
 else{
 	$.main.add(Alloy.createController('workout_player').getView());

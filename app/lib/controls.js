@@ -8,13 +8,10 @@ exports.getMenuView =function(){
 	return Alloy.createController('menuview');	
 };
 
-exports.getCustomizerView = function(){
-    return Alloy.createController('customizer');
-};
-
 exports.getCustomizerView =function(){
     return Alloy.createController('customizer');
 };
+
 exports.getConfigView =function(){
     return Alloy.createController('config');
 };

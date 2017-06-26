@@ -8,34 +8,48 @@ var videos_queue = [];
 var initial_dlinfo;
 // ?author=617&per_page=1
 var config;
-
-
 var cage_cache_dir = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'cached');
-if (! cage_cache_dir.exists()) {
-    cage_cache_dir.createDirectory();
-}
 
 
 
-Ti.API.info('======== Cached Resources =======\n', cage_cache_dir, '\n', cage_cache_dir.getDirectoryListing(), '\n===============================');
-Ti.API.info('=================================');
+
+
+
 	
 	
 (function constructor() {
 
-	
+	init();
+
+})();
+
+
+
+
+function init(){
+
+	if (! cage_cache_dir.exists()) {cage_cache_dir.createDirectory();}
+
+	Ti.API.info('======== Cached Resources =======\n', cage_cache_dir, '\n', cage_cache_dir.getDirectoryListing(), '\n===============================');
+	Ti.API.info('=================================');	
+
+	// Remove Events?
+
 	NappDownloadManager.addEventListener('progress', ReportProgress);
 	NappDownloadManager.addEventListener('completed', ReportProgress);
 
 	NappDownloadManager.stopDownloader();
 	NappDownloadManager.cleanUp();
 
-
 	config = JSON.parse( Ti.App.Properties.getString('config') || loadConfig() );
 	Ti.API.info('LOADING.CONFIGURATION.WORKOUT:',config);
 	// showIndicator();
 	loadWorkout();
-})();
+
+}
+
+
+
 
 function showIndicator(e){
     // $.activity_wrapper.show();

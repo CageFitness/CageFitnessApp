@@ -9,6 +9,10 @@
 	visible:false,
 }
 
+".insert_remove":{
+	color:'black',
+}
+
 ".tabbed_bar_right": {
 	right:20,
 	tintColor: 'red',

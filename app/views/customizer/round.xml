@@ -1,0 +1,21 @@
+<Alloy>
+    <Popover id="popover_ob" class="popover">
+        <ContentView>
+            <NavigationWindow id="navWin" height="350" width="250">
+                <Window id="roundWin" title="Number of Exercises">
+                    <!-- <RightNavButton title="Robin" /> -->
+                    <!-- <Label>It's not easy being green.</Label> -->
+                    <View id="popover_view">
+                        <ListView id="pover" top="0" >
+                            <ListSection>
+                                <ListItem slug="5" class="checked" title="5 Exercises"></ListItem>
+                                <ListItem slug="7" class="checked" title="7 Exercises"></ListItem>
+                                <ListItem slug="10" class="checked" title="10 Exercises"></ListItem>
+                            </ListSection>                            
+                        </ListView>                        
+                    </View>
+                </Window>
+            </NavigationWindow>
+        </ContentView>
+    </Popover>
+</Alloy>

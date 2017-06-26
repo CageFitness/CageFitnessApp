@@ -8,7 +8,9 @@
         <View class="exercise_grid">
 
             <Require autoStyle="true" type="widget" src="com.prodz.tiflexigrid" id="fg" />
-
+			<!-- <View id="loader">
+				<Label id="load_more">Load More</Label>
+			</View> -->
             <View id="activity_wrapper">
                 <ActivityIndicator id="activity_indicator" />
             </View>		

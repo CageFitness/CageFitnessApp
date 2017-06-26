@@ -1,0 +1,7 @@
+
+".container" : {
+	height:60,
+	width:Ti.UI.FILL,
+	backGroundColor:'blue',
+	top:10,bottom:10, left:10, right:10,
+}

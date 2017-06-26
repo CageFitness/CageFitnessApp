@@ -1,0 +1,18 @@
+<Alloy>
+    <Window id="equipmentWin" title="Equipment">
+        <!-- <RightNavButton title="Robin" /> -->
+        <!-- <Label>It's not easy being green.</Label> -->
+        <View id="popover_view">
+            <ListView id="pover" top="0" >
+                <ListSection>
+	    	        <ListItem class="checked" ttid="276" slug="body-weight" title="Body Weight"></ListItem>
+	    	        <ListItem class="checked" ttid="277" slug="bags" title="Bags"></ListItem>
+	    	        <ListItem class="checked" ttid="278" slug="bands" title="Bands"></ListItem>
+	    	        <ListItem class="checked" ttid="279" slug="medicine-ball" title="Med Ball"></ListItem>
+                </ListSection>                            
+            </ListView>                        
+        </View>
+    </Window>
+</Alloy>
+
+

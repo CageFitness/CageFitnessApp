@@ -1,17 +1,66 @@
+".customizer_tool_btn":{
+	left:10,
+	backgroundColor:Alloy.CFG.styles.brandColor,
+	borderRadius:10,
+	height:Ti.UI.SIZE,
+}
+"#addRoundBtn":{
+	backgroundColor:'#ddd',
+}
+"#add_label":{
+	// backgroundColor:Alloy.CFG.styles.brandColor,
+	top:15,
+	bottom:15,
+	// left:15,
+	// right:15,
+	borderRadius:10,
+	font:{
+		fontWeight:'bold',
+		fontSize:20,
+	},
+	height:Ti.UI.SIZE,
+
+}
+"#edit_mode_label":{
+	font:{
+		fontWeight:'bold',
+
+	},
+}
+
+"#tools":{
+	top:20,
+	left:'20%',
+	right:'20%',
+	width:Ti.UI.FILL,
+	// layout:'horizontal',
+	// backgroundColor:'pink',
+	height:Ti.UI.SIZE,
+}
+"#pane_right":{
+	// width:'50%',
+	// backgroundColor:'red',
+	layout:'horizontal',
+	height:Ti.UI.SIZE,
+	right:0,
+	width:Ti.UI.SIZE,
+}
+"#pane_left":{
+	width:'50%',
+	// backgroundColor:'blue',
+	layout:'horizontal',
+	height:Ti.UI.SIZE,
+}
+
 "#customizer_search":{
 	barColor:'#ddd',
 	borderColor:'#ddd',
 }
 
 "#customizer_list_view":{
-	canMove:true,
-	canInsert:true,
-	canEdit:true,
-	// editing:true,
 	pruneSectionsOnEdit:true,
-	// backgroundColor:'purple',
 	height:Ti.UI.SIZE,
-	top:20,
+	top:0,
 	bottom:20,
 }
 

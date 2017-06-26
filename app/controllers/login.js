@@ -32,7 +32,8 @@ function cageAuthenticate(e){
 	}
 	Ti.API.info('HELO', $.username.value,  $.password.value);
 	showIndicator(e);
-    xhr.POST(Alloy.CFG.api_url +'/wp-json/jwt-auth/v1/token', login_data, onSuccessCallback, onErrorCallback,opts);
+    var request = xhr.POST(Alloy.CFG.api_url +'/wp-json/jwt-auth/v1/token', login_data, onSuccessCallback, onErrorCallback,opts);
+    Ti.API.info('REQUEST.INFO',request);
 }
 
 function onErrorCallbackSilent(e){
@@ -49,7 +50,6 @@ function onErrorCallback(e){
 }
 
 function onSuccessCallback(e){
-
     Ti.App.Properties.setString('user_token', e.data.token);
     Ti.App.Properties.setString('user_email', e.data.user_email);
     Ti.API.info('AUTH DATA:', e);

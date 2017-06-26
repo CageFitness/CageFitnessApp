@@ -1,0 +1,25 @@
+
+".container" : {
+  
+}
+
+
+".htitle":{
+	font:{
+		fontWeight:'bold',
+		fontSize:20,
+	},
+	left:15,
+	rigth:15,
+	color:'#000',
+	backgroundColor:"#f8f8f8",
+	height:50,
+	width:Ti.UI.FILL,
+	autoStyle:true,
+}
+".list_header":{
+	backgroundColor:"#f8f8f8",
+	height:Ti.UI.SIZE,
+	width:Ti.UI.FILL,
+	autoStyle:true,
+}

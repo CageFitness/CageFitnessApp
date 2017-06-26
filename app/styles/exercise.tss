@@ -1,3 +1,20 @@
+"#loader":{
+	left:20,
+	right:20,
+	top:20,
+	bottom:20,
+	width:Ti.UI.FILL,
+	height:60,
+	backgroundColor:Alloy.CFG.styles.brandColor,
+}
+"#load_more":{
+	color:'#fff',
+	font:{
+		fontSize:30,
+		fontWeight:'bold',
+	}
+}
+
 "#mainView":{
 	// layout: 'vertical',
 	backgroundColor: '#fff'
@@ -34,6 +51,7 @@
  	width:Ti.UI.FILL,
  	height:Ti.UI.FILL,
  	backgroundColor:'purple',
+ 	layout:'vertical',
  }
 "#activity_wrapper":{
   height:100,

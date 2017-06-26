@@ -284,7 +284,8 @@ function createNumberOfExercisesRows(round_number){
 
 Ti.App.addEventListener('cage/class_builder/init',init_class_builder);
 
-function init_class_builder(){
+function init_class_builder(e){
+	Ti.API.info('INITIALIZE.WITH:',e);
 
 	initSelectionData();
 	$.scrollableView.scrollToView(0);
@@ -428,6 +429,13 @@ $.listview_step5.addEventListener('itemclick', function(e){
 });
 
 $.listview_step6.addEventListener('itemclick', function(e){
+	Ti.API.info('CLASS.BUILDER.CUSTOMIZER:', e);
+
+	if(e.itemIndex===1){
+		Ti.App.fireEvent('cage/launch/customizer',{menu_id:'menu_customizer'});
+	    Ti.App.fireEvent('cage/drawer/item_click',{menu_id:'menu_customizer'});
+	}
+
     var section = $.listview_step6.sections[e.sectionIndex];
     clickAndFollow(section,e);
 });
@@ -503,7 +511,9 @@ function stepClick(e) {
 
 function doProgress(e) {
    
-   sendData();
+   // sendData();
+		Ti.App.fireEvent('cage/launch/customizer',{menu_id:'menu_customizer'});
+	    Ti.App.fireEvent('cage/drawer/item_click',{menu_id:'menu_customizer'});   
 
 }
 
@@ -543,7 +553,11 @@ function handleClickBeginWorkout (e) {
 
 
 function handleClickBuildWorkout(e) {
-     Ti.API.info('BUILD WORKOUT...');
+    Ti.API.info('BUILD.TYPE:',e);
+    // Ti.App.fireEvent('cage/drawer/itemclick',{menu_id:'menu_customizer'});
+    var section = $.listview_step6.sections[e.sectionIndex];
+    clickAndFollow(section,e);
+
 }
 
 function handleClickNumberOfExercises(e) {

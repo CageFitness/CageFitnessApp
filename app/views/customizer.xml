@@ -1,26 +1,44 @@
 <Alloy>
     <View id="mainView" class="page_wrapper">
-        <Require src="topbar"></Require>
+        <Require src="topbar"  window_type="modal"></Require>
+
         <Require type="view" src="header" customTitle="Customize your Workout" customImage="images/layout/workout_theme.png" />
+        <!-- <Button id="editBtn" onClick="enableEditing">Edit Mode</Button> -->
+		<View id="tools">
+			<!-- <View id="pane_left">
+		        <Switch id="insertSwitch" value="false" onChange="handleEnableInserting"/>
+		        <Label> INSERT MODE</Label>			
+			</View> -->
+			<View id="pane_right">
+		        <Label id="edit_mode_label"> EDIT MODE</Label>	
+		        <Switch left="10" id="editSwitch" value="false" onChange="handleEnableEditing"/>
+				
+				<TabbedBar left="10" class="insert_remove">
+		    	    <Labels>
+		    	        <Label ttid="276" slug="body-weight">Insert</Label>
+		    	        <Label ttid="277" slug="bags">Remove</Label>
+		    	    </Labels>
+		    	</TabbedBar>
+
+		    	<Button onClick="createNewRound">Add Round</Button>
+		    	<Button onClick="createNewRound">Save</Button>
+
+			</View>
+		</View>
         <View class="customizer_list">
             <ListView id="customizer_list_view" onItemclick="handleListViewClick">
-                <SearchBar id="customizer_search" />
+                <!-- <SearchBar id="customizer_search" /> -->
                 <Templates>
                     <ItemTemplate name="RoundTemplate">
                         <Label bindId="main" class="titleLabel" />
                         <Label bindId="sub" class="detailLabel" />
                     </ItemTemplate>
-                    <ItemTemplate name="headerTemplate" id="headerTemplate">
-                        <HeaderView>
-                            <View class="list_header">
-                                <Label bindId="hTitle" class="htitle">ROUND 1</Label>
-                            </View>
-                        </HeaderView>
-                    </ItemTemplate>
                 </Templates>
+
                 <FooterView>
-                    <View backgroundColor="#DDD" height="Ti.UI.SIZE">
-                        <Label onClick="createNewRound">ADD ANOTHER ROUND</Label>
+                	
+                    <View id="addRoundBtn" onClick="createNewRound" backgroundColor="#DDD" height="Ti.UI.SIZE">
+                        <Label id="add_label">ADD ROUND</Label>
                     </View>
                 </FooterView>
             </ListView>

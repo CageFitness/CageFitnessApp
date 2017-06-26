@@ -19,9 +19,8 @@ var exercise_query;
  **/
 (function constructor() {
     Ti.API.info('INIT.EXERCISE');
-    init_exercise();
+    // init('menu_exercises');
 })();
-
 
 
 function showPreloader(){
@@ -43,7 +42,7 @@ function loadExercises(e){
 
 
 	var filter_query = {}
-		filter_query.per_page=50;
+		filter_query.per_page=52;
 		filter_query.page=1;
 
 	if(e.filter=='all'){
@@ -149,24 +148,29 @@ function createSampleData(data){
     
 };
 
-function init_exercise(){
-	loadExercises('all');
+function init(e){
+	Ti.API.info('INIT.EXERCISES: ', e);
+	if(e.menu_id=='menu_exercises'){
 
-	$.fg.init({
-	    columns:4,
-	    space:20,
-	    gridBackgroundColor:'#fff',
-	    itemHeightDelta: -90,
-	    itemBackgroundColor:'#eee',
-	    itemBorderColor:'transparent',
-	    itemBorderWidth:0,
-	    itemBorderRadius:0,
-	    onItemClick: showGridItemInfo
-	});	
-
+		loadExercises('all');
+		$.fg.init({
+		    columns:4,
+		    space:20,
+		    gridBackgroundColor:'#fff',
+		    itemHeightDelta: -90,
+		    itemBackgroundColor:'#eee',
+		    itemBorderColor:'transparent',
+		    itemBorderWidth:0,
+		    itemBorderRadius:0,
+		    onItemClick: showGridItemInfo
+		});	
+	}
 }
+Ti.App.addEventListener('cage/drawer/item_click', init);
 
-
+function onLoadMore(e){
+	Ti.API.info('EXERCISE.LOAD.MORE',e);
+}
 
 
 
