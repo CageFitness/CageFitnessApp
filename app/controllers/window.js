@@ -4,7 +4,7 @@ var controls=require('controls');
 var args = $.args;
 var cage_url = args.cage_url || '';
 var wtype = args.type || '';
-
+var ref = args.ref || null;
 var video_data = args.video_data || '';
 
 Ti.API.info('WINDOW:');
@@ -39,7 +39,7 @@ Ti.App.addEventListener('cage/topbar/menu_button/close', onButtonClose);
 
 
 $.cleanup = function cleanup() {
-	Ti.API.info('PERFORMING.CLEANUP');
+	Ti.API.info('PERFORMING.CLEANUP:', args.ref);
 	// NappDownloadManager.cleanUp();
   $.destroy();
   $.off();

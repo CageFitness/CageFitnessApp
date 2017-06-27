@@ -73,7 +73,7 @@ Ti.App.addEventListener('cage/exercise/filter',loadExercises);
 
 function onSuccessExercises2Callback(e){
 
-	hidePreloader();	
+	hidePreloader();
 
 	var parsed = JSON.parse(e.data);
 	Ti.API.info('GET.EXERCISE.REST.API.COUNT.RESULTS: ',_.size(parsed));

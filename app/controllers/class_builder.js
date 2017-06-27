@@ -433,7 +433,7 @@ $.listview_step6.addEventListener('itemclick', function(e){
 
 	if(e.itemIndex===1){
 		Ti.App.fireEvent('cage/launch/customizer',{menu_id:'menu_customizer'});
-	    Ti.App.fireEvent('cage/drawer/item_click',{menu_id:'menu_customizer'});
+	    // Ti.App.fireEvent('cage/drawer/item_click',{menu_id:'menu_customizer'});
 	}
 
     var section = $.listview_step6.sections[e.sectionIndex];
@@ -512,8 +512,9 @@ function stepClick(e) {
 function doProgress(e) {
    
    // sendData();
+   
 		Ti.App.fireEvent('cage/launch/customizer',{menu_id:'menu_customizer'});
-	    Ti.App.fireEvent('cage/drawer/item_click',{menu_id:'menu_customizer'});   
+	    
 
 }
 

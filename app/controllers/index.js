@@ -77,6 +77,7 @@ function LaunchCustomizer(e) {
     var win = Alloy.createController('window',{type:'customizer'}).getView();
      win.open({modal:true});
     Alloy.Globals.modalWindow = win;
+    Ti.App.fireEvent('cage/drawer/item_click',{menu_id:e.menu_id})
 }
 Ti.App.addEventListener('cage/launch/customizer', LaunchCustomizer);
 

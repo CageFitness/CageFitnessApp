@@ -359,8 +359,17 @@
 
 }
 
+
+"#pover" : {
+	// height:Ti.UI.FILL,
+	// width:Ti.UI.FILL,
+	// backgroundColor:'blue',
+}
+
 ".popover":{
-	backgroundColor:"#fff"
+	// backgroundColor:"green",
+	// height:Ti.UI.FILL,
+	top:0,
 }
 
 

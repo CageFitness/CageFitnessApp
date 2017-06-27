@@ -1,0 +1,50 @@
+
+".mainView" : {
+  width:Ti.UI.FILL,
+  height:Ti.UI.FILL,
+}
+
+".container" : {
+  
+}
+
+"#videoPlayer" : {
+    top : 0,
+    autoplay : false,
+    backgroundColor : '#fff',
+    height : Ti.UI.FILL,
+    width : Ti.UI.FILL,
+    mediaControlStyle : Titanium.Media.VIDEO_CONTROL_NONE,
+    scalingMode : Titanium.Media.VIDEO_SCALING_ASPECT_FIT,
+    // visible:false,
+    sourceType:Ti.Media.VIDEO_SOURCE_TYPE_FILE,
+    repeatMode: Titanium.Media.VIDEO_REPEAT_MODE_ONE,
+    opacity:0.01
+}
+
+"#title_wrapper":{
+	top:0,
+	height:Ti.UI.SIZE,
+	// backgroundColor:'red',
+}
+// "#title":{
+// 	top:0,
+// 	height:Ti.UI.SIZE,
+// 	width:Ti.UI.FILL,
+// 	font:{
+// 		fontSize:35,
+// 	},
+// }
+
+"#title":{
+	top:24,
+	color:'#000',
+	width:Ti.UI.FILL,
+	height:Ti.UI.SIZE,
+	textAlign:Ti.UI.TEXT_ALIGNMENT_CENTER,
+	font: {
+	    fontSize: 24,
+	    fontFamily: 'MuseoSans-700',
+	    fontWeight: 'normal',
+	}, 
+}

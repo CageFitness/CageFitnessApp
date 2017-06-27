@@ -1,18 +1,36 @@
 <Alloy>
     <Window id="exercisesWin" title="Select Exercises">
-        <!-- <RightNavButton title="Robin" /> -->
+        <RightNavButton>
+        	<Button id="finishBtn" onClick="finishExerciseListSelection">Done</Button>
+        </RightNavButton>
         <!-- <Label>It's not easy being green.</Label> -->
-        <View id="popover_view">
-            <ListView id="pover" top="0" >
-                <ListSection>
-<!-- 	    	        <ListItem class="checked" ttid="276" slug="body-weight" title="Body Weight"></ListItem>
-	    	        <ListItem class="checked" ttid="277" slug="bags" title="Bags"></ListItem>
-	    	        <ListItem class="checked" ttid="278" slug="bands" title="Bands"></ListItem>
-	    	        <ListItem class="checked" ttid="279" slug="medicine-ball" title="Med Ball"></ListItem>
- -->                </ListSection>                            
-            </ListView>                        
-        </View>
+        <ListView id="pover" top="0">
+            <Templates>
+                <!-- Define your item templates within the Templates tags or use the
+        	                     Require tag to include a view that only contains an ItemTemplate -->
+                <ItemTemplate name="exerciseItem">
+                    <ImageView bindId="pic" id="list_icon" />
+                    <Label bindId="info" id="list_title" />
+                    <!-- <Label bindId="es_info" id="list_subtitle" /> -->
+                </ItemTemplate>
+            </Templates>
+            <SearchBar id="list_customizer_search" />
+            <ListSection>
+            	
+            </ListSection>
+			<!--             <FooterView>
+
+				            <PullView>
+				                <View backgroundColor="red" height="50">
+				                    <Label>Release to reload</Label>
+				                </View>
+				            </PullView>     
+			                
+						
+			            </FooterView>
+			 -->
+ 		<Widget id="is" src="nl.fokkezb.infiniteScroll" onEnd="myLoader" />
+        </ListView>
     </Window>
 </Alloy>
-
 

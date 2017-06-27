@@ -1,52 +1,33 @@
 // Arguments passed into this controller can be accessed via the `$.args` object directly or:
 var args = $.args;
 
-
-// var win2 = Titanium.UI.createWindow({
-//     backgroundColor: 'red',
-//     title: 'Red Window'
-// });
-
-// var win1 = Titanium.UI.iOS.createNavigationWindow({
-//    window: win2
-// });
-
-// var win3 = Titanium.UI.createWindow({
-//     backgroundColor: 'blue',
-//     title: 'Blue Window'
-// });
-
-// var button = Titanium.UI.createButton({
-//     title: 'Open Blue Window'
-// });
-// button.addEventListener('click', function(){
-//     win1.openWindow(win3, {animated:true});
-// });
-
-// win2.add(button);
-// var button2 = Titanium.UI.createButton({
-//     title: 'Close Blue Window'
-// });
-// button2.addEventListener('click', function(){
-//     win1.closeWindow(win3, {animated:false}); //win3.close() will also work!!
-// });
-
-// win3.add(button2);
-// win1.open();
-
-
+$.popover_ob.contentView.height=Ti.UI.FILL;
 function equipmentWindow(selection_ob) {
-    var equipmentWin = Alloy.createController('customizer/equipment', {validate:args.validate, selection:selection_ob, exerciseWindow:exerciseWindow}).getView();
+    var equipmentWin = Alloy.createController('customizer/equipment', {
+    	validate:args.validate,
+     	selection:selection_ob,
+     	exerciseWindow:exerciseWindow,
+     	roundWin:$.roundWin,
+     }).getView();
     $.navWin.openWindow(equipmentWin);
 }
 
 function typeWindow(selection_ob) {
-    var typeWin = Alloy.createController('customizer/type', {validate:args.validate, selection:selection_ob, equipmentWindow:equipmentWindow}).getView();
+    var typeWin = Alloy.createController('customizer/type', {
+    	validate:args.validate,
+    	selection:selection_ob,
+    	equipmentWindow:equipmentWindow,
+    	}).getView();
     $.navWin.openWindow(typeWin);
 }
 
 function exerciseWindow(selection_ob) {
-    var exercisesWin = Alloy.createController('customizer/list', {validate:args.validate, selection:selection_ob, equipmentWindow:equipmentWindow}).getView();
+    var exercisesWin = Alloy.createController('customizer/list', {
+    	validate:args.validate,
+    	selection:selection_ob,
+    	roundWin:$.roundWin,
+    	popover:$.popover_ob,
+    	}).getView();
     $.navWin.openWindow(exercisesWin);
 }
 

@@ -2,14 +2,51 @@
 var args = $.args;
 var workout_url = Alloy.CFG.api_url + Alloy.CFG.workout_test_path;
 var exercise_url = Alloy.CFG.api_url + Alloy.CFG.exercise_path;
+var pages = 1;
+$.is.init($.pover);
+$.is.load();
+
+
+ function myLoader(e) {
+ 	Ti.API.info('LOADING.MORE...');
+	loadExercises({page:pages++});
+ 	// var ln = myCollection.models.length;
+
+ 	// myCollection.fetch({
+
+ 	// 	// whatever your sync adapter needs to fetch the next page
+ 	// 	data: { offset: ln },
+
+ 	// 	// don't reset the collection, but add to it
+ 	// 	add: true,
+
+ 	// 	success: function (col) {
+ 		
+ 	// 		// call done() when we received last page - else success()
+ 	// 		(col.models.length === ln) ? e.done() : e.success();
+
+ 	// 	},
+
+ 	// 	// call error() when fetch fails
+ 	// 	error: function(col) {
+ 	// 		// pass optional error message to display
+ 	// 		e.error(L('isError', 'Tap to try again...'));
+ 	// 	}
+ 	// });
+ }
+
 
 
 function loadExercises(selection){
 	Ti.API.info('GETTING EXERCISES:', selection);
-
 	var filter_query = {}
 		filter_query.per_page=52;
-		filter_query.page=1;
+		if(!selection.page){
+			filter_query.page=1;
+		}
+		else{
+			filter_query.page = selection.page;
+		}
 		// if(e.filter=='all'){
 		// 	if(e.search){
 		// 		filter_query.s=e.search;
@@ -27,29 +64,68 @@ function loadExercises(selection){
 	}).join('&');
 
 	// https://cagefitness.com/wp-json/wp/v2/exercise?per_page=5&page=1&exercise_equipment=278
-	xhr.GET(exercise_url+'?'+querystring, onSuccessExercises2Callback, onErrorExercises2Callback);
+	xhr.GET(exercise_url+'?'+querystring, onSuccessExercises3Callback, onErrorExercises2Callback);
 }
 
+function onSuccessExercises3Callback(e){
 
-function createExerciseList(exercises, roundIndex){
-	Ti.API.info('EXERCISES.IN.ROUND: ', _.size(exercises.customizer));
-	var roundData = [];
+	// hidePreloader();
 
-	_.each(exercises,function(exercise){
-		// Ti.API.info('EXERCISE.DATA:', exercise.ID, exercise.post_title);
+
+
+
+	var parsed = JSON.parse(e.data);
+	Ti.API.info('GET.EXERCISE.REST.API.COUNT.RESULTS: ',_.size(parsed));
+	exercises=[];
+	// Why JSON needed to be parsed?
+    _.each(parsed, function(exercise){
+    	// Ti.API.info('TITLE: ',exercise.title.rendered);
 	    var ob = {
-	    	properties: { title: exercise.post_title, searchableText:exercise.post_title, canMove:true, canInsert:false, canEdit:true,},
-	    }
-	    roundData.push(ob);
-	})
+	    	template:'exerciseItem',
+	    	properties: { 
+	    		title: exercise.title.rendered,
+	    	 	searchableText: exercise.title.rendered,
+	    	 	accessoryType: Titanium.UI.LIST_ACCESSORY_TYPE_DISCLOSURE,
+	    	 },
+	    	 pic:{image: exercise.acf.video_featured.url},
+	    	 info:{text: exercise.title.rendered, data:exercise},
+	    };
+	    exercises.push(ob);		
 
-	var round_title = 'Round '+roundIndex;
-	var roundSection = Ti.UI.createListSection();
-	roundSection.setItems(roundData);
-	$.pover.appendSection(roundSection);
+    })
+    var mode = 'append';
+	if(mode=='append'){
+		var exerciseSection = $.pover.sections[0];
+		exerciseSection.appendItems(exercises,{animated:true, animationStyle:Titanium.UI.iOS.RowAnimationStyle.BOTTOM})		
+	}
+	else if(mode=='replace'){
+		var exerciseSection = Ti.UI.createListSection();
+		exerciseSection.setItems(exercises);		
+		$.pover.replaceSectionAt(0,exerciseSection,{animated:true, animationStyle:Titanium.UI.iOS.RowAnimationStyle.BOTTOM})	
+	}
+
+	$.is.state($.is.SUCCESS);
+	// $.pover.appendSection(exerciseSection);
+	
+
 }
 
+function finishExerciseListSelection(e){
 
+	Ti.API.info('EXERCISE.SELECTION.FINISHED',e);
+	Ti.API.info('EXERCISE.SELECTION.OBJECT',args.selection);
+	args.popover.hide();
+}
+
+function onErrorExercises2Callback(e){
+	Ti.API.info(e.data);
+}
+
+function closePover(){
+	Ti.API.info('EXERCISE.LIST.DONE');
+	// args.roundWin.close();
+
+}
 
 $.pover.addEventListener("itemclick", function(e){
     var section = $.pover.sections[e.sectionIndex];
@@ -68,8 +144,13 @@ $.pover.addEventListener("itemclick", function(e){
 
     args.selection.equipment='bands';
     args.validate(args.selection);
-    listWindow(args.selection);
+    // listWindow(args.selection);
 
 
 
 });
+
+
+loadExercises({page:1});
+
+

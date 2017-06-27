@@ -2,16 +2,14 @@
     <Window id="typeWind" title="Workout Type">
         <!-- <RightNavButton title="Robin" /> -->
         <!-- <Label>It's not easy being green.</Label> -->
-        <View id="popover_view">
-            <ListView id="pover" top="0" >
-                <ListSection>
-                    <ListItem ttid="289" slug="warm-up" class="checked" title="Warm Up"></ListItem>
-                    <ListItem ttid="288" slug="upper-body" class="checked" title="Upper Body"></ListItem>
-                    <ListItem ttid="285" slug="lower-body" class="checked" title="Lower Body"></ListItem>
-                    <ListItem ttid="281" slug="combo" class="checked" title="Combo"></ListItem>
-                    <ListItem ttid="282" slug="core-cool-down" class="checked" title="Core / Cool-down"></ListItem>
-                </ListSection>                            
-            </ListView>                        
-        </View>
+        <ListView id="pover" top="0">
+            <ListSection>
+                <ListItem ttid="289" slug="warm-up" class="checked" title="Warm Up"></ListItem>
+                <ListItem ttid="288" slug="upper-body" class="checked" title="Upper Body"></ListItem>
+                <ListItem ttid="285" slug="lower-body" class="checked" title="Lower Body"></ListItem>
+                <ListItem ttid="281" slug="combo" class="checked" title="Combo"></ListItem>
+                <ListItem ttid="282" slug="core-cool-down" class="checked" title="Core / Cool-down"></ListItem>
+            </ListSection>                            
+        </ListView>
     </Window>
 </Alloy>

@@ -1,47 +1,59 @@
 <Alloy>
     <View id="mainView" class="page_wrapper">
-        <Require src="topbar"  window_type="modal"></Require>
+        <Require src="topbar" window_type="modal"></Require>
+        <View id="pover_target"></View>
+        <Require type="view" src="header" customTitle="Customize your Workout" customImage="images/layout/workout_theme.png"></Require>
 
-        <Require type="view" src="header" customTitle="Customize your Workout" customImage="images/layout/workout_theme.png" />
-        <!-- <Button id="editBtn" onClick="enableEditing">Edit Mode</Button> -->
-		<View id="tools">
-			<!-- <View id="pane_left">
-		        <Switch id="insertSwitch" value="false" onChange="handleEnableInserting"/>
-		        <Label> INSERT MODE</Label>			
-			</View> -->
-			<View id="pane_right">
-		        <Label id="edit_mode_label"> EDIT MODE</Label>	
-		        <Switch left="10" id="editSwitch" value="false" onChange="handleEnableEditing"/>
-				
-				<TabbedBar left="10" class="insert_remove">
-		    	    <Labels>
-		    	        <Label ttid="276" slug="body-weight">Insert</Label>
-		    	        <Label ttid="277" slug="bags">Remove</Label>
-		    	    </Labels>
-		    	</TabbedBar>
-
-		    	<Button onClick="createNewRound">Add Round</Button>
-		    	<Button onClick="createNewRound">Save</Button>
-
-			</View>
-		</View>
         <View class="customizer_list">
+
+
+			<View id="tools">
+				<View id="pane_right">
+			        <View id="editmode">
+						<Label id="edit_mode_label"> EDIT MODE</Label>	
+			        	<Switch left="10" id="editSwitch" value="false" onChange="handleEnableEditing"/>		        	
+						<TabbedBar left="10" id="insert_remove">
+				    	    <Labels>
+				    	        <Label ttid="276" slug="body-weight">Insert</Label>
+				    	        <Label ttid="277" slug="bags">Remove</Label>
+				    	    </Labels>
+				    	</TabbedBar>		        	
+			        </View>
+			        <ButtonBar id="customizer_btn_bar">
+			            <Labels>
+			                <Label id="add" title="Add Round">Add Round</Label>
+			                <Label id="save" title="Save Workout">Save Workout</Label>
+			                <Label id="begin" title="Begin Workout">Begin Workout</Label>
+			            </Labels>
+			        </ButtonBar>
+				</View>
+			</View>			
+
+			<OptionDialog id="dialog" title="Overwrite Workout?">
+	            <Options>
+	                <Option>Confirm</Option>
+	                <Option>Cancel</Option>
+	            </Options>
+	        </OptionDialog>
+
+
             <ListView id="customizer_list_view" onItemclick="handleListViewClick">
-                <!-- <SearchBar id="customizer_search" /> -->
                 <Templates>
-                    <ItemTemplate name="RoundTemplate">
+                    <ItemTemplate name="RoundItemTemplate">
+                    	<ImageView bindId="pic" id="list_icon" />
                         <Label bindId="main" class="titleLabel" />
                         <Label bindId="sub" class="detailLabel" />
                     </ItemTemplate>
                 </Templates>
-
                 <FooterView>
-                	
                     <View id="addRoundBtn" onClick="createNewRound" backgroundColor="#DDD" height="Ti.UI.SIZE">
                         <Label id="add_label">ADD ROUND</Label>
                     </View>
                 </FooterView>
             </ListView>
+
+			
+
         </View>
     </View>
 </Alloy>

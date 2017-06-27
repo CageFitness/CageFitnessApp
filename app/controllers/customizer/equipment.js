@@ -20,7 +20,7 @@ $.pover.addEventListener("itemclick", function(e){
 
     args.selection.equipment='bands';
     args.validate(args.selection);
-    args.exerciseWindow(e);
+    args.exerciseWindow(args.selection);
 
 
 
