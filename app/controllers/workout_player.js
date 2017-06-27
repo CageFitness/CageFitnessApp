@@ -105,14 +105,17 @@ function scrollNextFromVideo(e) {
 
 function ReportProgress(e) {
 	var p = calculateProgress();
-	$.dlmanlabel.text = [p.total,p.remaining,p.downloaded].join(' | ');
-	$.dlmanlabel.text = 'Loading...'+p.remaining;
-	$.activity_wrapper.show();
-	$.activity_indicator.show();
 
 	if(!p.remaining>=1){
 		$.activity_wrapper.hide();
 		$.activity_indicator.hide();		
+		$.dlmanlabel.hide();		
+	}else{
+		$.dlmanlabel.text = [p.total,p.remaining,p.downloaded].join(' | ');
+		$.dlmanlabel.text = 'Loading...'+p.remaining;
+		$.activity_wrapper.show();
+		$.activity_indicator.show();
+		$.dlmanlabel.show();
 	}
 
 	Ti.API.info('EVENT_TYPE: ',e.type);

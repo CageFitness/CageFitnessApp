@@ -75,7 +75,7 @@ function onSuccessExercises3Callback(e){
 
 
 	var parsed = JSON.parse(e.data);
-	Ti.API.info('GET.EXERCISE.REST.API.COUNT.RESULTS: ',_.size(parsed));
+	Ti.API.info('GET.EXERCISE.LIST.REST.API.COUNT.RESULTS: ',_.size(parsed));
 	exercises=[];
 	// Why JSON needed to be parsed?
     _.each(parsed, function(exercise){
@@ -96,6 +96,7 @@ function onSuccessExercises3Callback(e){
     var mode = 'append';
 	if(mode=='append'){
 		var exerciseSection = $.pover.sections[0];
+		Ti.API.info('EXERCISE.LISTION.SECTION: ',exerciseSection);
 		exerciseSection.appendItems(exercises,{animated:true, animationStyle:Titanium.UI.iOS.RowAnimationStyle.BOTTOM})		
 	}
 	else if(mode=='replace'){

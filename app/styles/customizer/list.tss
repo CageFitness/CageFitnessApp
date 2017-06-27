@@ -13,7 +13,7 @@
 },
 "#list_subtitle" : {
     color: 'gray',
-    // font: { fontFamily:'Arial', fontSize: '14dp' },
+    // font: { fontFamily:'	Arial', fontSize: '14dp' },
     left: 60,
     // top: 25,
 }

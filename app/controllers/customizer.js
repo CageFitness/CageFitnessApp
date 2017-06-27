@@ -9,14 +9,56 @@ var tool_labels=[
 	{title:'SAVE WORKOUT', cb:saveWorkout},
 ]
 $.customizer_btn_bar.labels = tool_labels;
-
-
-
 $.customizer_btn_bar.addEventListener('click',function(e){
 	Ti.API.info('TOOL.BAR.TYPE:',e.source.labels[e.index]);
-	$.customizer_btn_bar.labels[e.index].cb();
+	$.customizer_btn_bar.labels[e.index].cb(e);
 });
 
+
+
+var tool_edit=[
+	{title:'Remove', cb:enableFeature, mode:'edit'},
+	{title:'Insert', cb:enableFeature, mode:'insert'},
+]
+$.insert_remove.labels = tool_edit;
+$.insert_remove.addEventListener('click',function(e){
+	Ti.API.info('TOOL.BAR.EDIT:',e.source.labels[e.index]);
+
+	$.insert_remove.labels[e.index].cb(e, $.insert_remove.labels[e.index].mode);
+});
+
+
+
+function enableFeature(e, mode){
+	Ti.API.info('ENABLE.INSERT',e);
+
+		_.each($.customizer_list_view.sections,function(section,index){
+			
+			var sec = $.customizer_list_view.sections[index];
+			var els = sec.getItems();
+
+			_.each(els,function(item){
+				Ti.API.info('ITEM:',item.properties);
+				if(mode=='insert'){
+					item.properties.canEdit=false;
+					item.properties.canInsert=true;
+				}
+				else if(mode=='edit'){
+					item.properties.canInsert=false;
+					item.properties.canEdit=true;
+				}
+			});
+			
+			sec.replaceItemsAt(0,_.size(els),els);
+
+	})
+
+
+
+}
+function enableRemove(e){
+	Ti.API.info('ENABLE.REMOVE',e);
+}
 
 
 (function constructor() {
@@ -87,7 +129,7 @@ function createRound(round, roundIndex){
 	    var ob = {
 	    	template:'RoundItemTemplate',
 	    	properties: { title: exercise.post_title, searchableText:exercise.post_title, launch_data:exercise, 
-	    	canMove:true, canInsert:true, canEdit:false, accessoryType:Titanium.UI.LIST_ACCESSORY_TYPE_DISCLOSURE},
+	    	canMove:true, canInsert:false, canEdit:true, accessoryType:Titanium.UI.LIST_ACCESSORY_TYPE_DISCLOSURE},
 	    	pic:{image: exercise.acf.video_featured.url},
 	    	main:{text:exercise.post_title},
 	    	sub:{text:'REPLACE'},
@@ -101,6 +143,9 @@ function createRound(round, roundIndex){
 	roundSection.setItems(roundData);
 	$.customizer_list_view.appendSection(roundSection);	
 }
+
+
+
 
 // function handleCustomizerTools(e){
 
@@ -168,6 +213,8 @@ function handleEnableInserting(e){
 	$.customizer_list_view.canEdit=false;
 	$.customizer_list_view.canInsert=true;
 	$.customizer_list_view.setEditing(e.value);
+
+
 
 }
 
