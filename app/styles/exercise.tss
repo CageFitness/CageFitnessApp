@@ -50,7 +50,7 @@
  "#exercise_grid":{
  	width:Ti.UI.FILL,
  	height:Ti.UI.FILL,
- 	backgroundColor:'purple',
+ 	backgroundColor:'#fff',
  	layout:'vertical',
  }
 "#activity_wrapper":{
@@ -63,12 +63,12 @@
   visible:true,
   opacity:0,
   // right:20,
-  // top:300,
+  top:'20%',
 
 }
 
 "#activity_indicator":{
-  color: 'green',
+  color: Alloy.CFG.styles.brandColor,
   font: {
   	fontFamily:'Helvetica Neue',
   	fontSize:26,

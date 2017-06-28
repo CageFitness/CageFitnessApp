@@ -27,6 +27,10 @@ $.insert_remove.addEventListener('click',function(e){
 	$.insert_remove.labels[e.index].cb(e, $.insert_remove.labels[e.index].mode);
 });
 
+(function constructor() {
+	init({menu_id:'menu_customizer'});
+})();
+
 
 
 function enableFeature(e, mode){
@@ -61,18 +65,16 @@ function enableRemove(e){
 }
 
 
-(function constructor() {
-	// init('menu_customizer');
-})();
+
 
 function init(e){
-	Ti.API.info('INIT.CALLED');
+	Ti.API.info('INIT.CALLED', e);
 	if(e.menu_id=='menu_customizer'){
 		loadWorkout();
 	}
 }
 
-Ti.App.addEventListener('cage/drawer/item_click', init);
+// Ti.App.addEventListener('cage/drawer/item_click', init);
 
 
 function getIndex(n){

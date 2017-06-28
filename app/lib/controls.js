@@ -32,6 +32,6 @@ exports.getProfileView =function(){
     return Alloy.createController('profile');
 };
 
-exports.getWorkoutView =function(){
-    return Alloy.createController('workout_player');
-};
+// exports.getWorkoutView =function(){
+//     return Alloy.createController('workout_player');
+// };

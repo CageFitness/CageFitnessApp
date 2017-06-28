@@ -71,7 +71,8 @@ function callOptions(tkn){
                     value: 'Bearer '+tkn
                 }
             ],
-            debug: true    
+            debug: true,
+            ttl:300,
         });
     xhr.POST(validate_url);
     xhr.GET(config_url, onSuccessOptionsCallback, onErrorCallbackSilent);

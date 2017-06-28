@@ -11,7 +11,7 @@ var workout_url = Alloy.CFG.api_url + Alloy.CFG.workout_test_path;
 var exercise_url = Alloy.CFG.api_url + Alloy.CFG.exercise_path;
 
 var exercise_query;
-
+var inited=false;
 
 
 /**
@@ -73,7 +73,7 @@ Ti.App.addEventListener('cage/exercise/filter',loadExercises);
 
 function onSuccessExercises2Callback(e){
 
-	hidePreloader();
+	
 
 	var parsed = JSON.parse(e.data);
 	Ti.API.info('GET.EXERCISE.REST.API.COUNT.RESULTS: ',_.size(parsed));
@@ -92,6 +92,7 @@ function onSuccessExercises2Callback(e){
 
     })
     createSampleData(exercises);
+    hidePreloader();
 
 }
 
@@ -143,27 +144,33 @@ function createSampleData(data){
 
     
     //ADD ALL THE ITEMS TO THE GRID
-
+    Ti.API.info('BEFORE.FG');
     $.fg.addGridItems(items);
+    Ti.API.info('AFTER.FG');
     
 };
 
 function init(e){
-	Ti.API.info('INIT.EXERCISES: ', e);
+	
 	if(e.menu_id=='menu_exercises'){
+		Ti.API.info('INIT.EXERCISES: ', e);
+		if(!inited){
+			$.fg.init({
+			    columns:4,
+			    space:20,
+			    gridBackgroundColor:'#fff',
+			    itemHeightDelta: -90,
+			    itemBackgroundColor:'#eee',
+			    itemBorderColor:'transparent',
+			    itemBorderWidth:0,
+			    itemBorderRadius:0,
+			    onItemClick: showGridItemInfo
+			});
+			inited=true;
+			loadExercises('all');
+		}
 
-		loadExercises('all');
-		$.fg.init({
-		    columns:4,
-		    space:20,
-		    gridBackgroundColor:'#fff',
-		    itemHeightDelta: -90,
-		    itemBackgroundColor:'#eee',
-		    itemBorderColor:'transparent',
-		    itemBorderWidth:0,
-		    itemBorderRadius:0,
-		    onItemClick: showGridItemInfo
-		});	
+		
 	}
 }
 Ti.App.addEventListener('cage/drawer/item_click', init);
