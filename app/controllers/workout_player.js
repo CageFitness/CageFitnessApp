@@ -462,7 +462,12 @@ function loadWorkout(){
 	xhr.GET(wurl, onSuccessWorkoutCallback, onErrorWorkoutCallback, Alloy.Globals.XHROptions);
 }
 
+function startOverviewClock(){
+	
+}
+
 function addOverviewSlide(data){
+	data.cb=
 	var overview = Alloy.createController('workout/overview', data);
 	$.scrollable.addView(overview.getView());	
 }
