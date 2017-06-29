@@ -9,7 +9,10 @@
         <ScrollableView id="scrollable" onScrollend="scrollableViewDidScroll">
         </ScrollableView>
         <View id="toolbar_wrapper">
-            <View class="tool">
+
+
+
+            <!-- <View class="tool">
                 <Button class="player_control" id="prev" title="Back" onClick="scrollPrev">
                     <ImageView class="icon" id="prev_icon"></ImageView>
                 </Button>
@@ -19,10 +22,20 @@
                 <Button class="player_control" id="next" title="Next" onClick="scrollNext">
                     <ImageView class="icon" id="next_icon"></ImageView>
                 </Button>
-            </View>
+            </View> -->
             <Button id="restart" title="Restart" onClick="scrollToView">
                 <ImageView class="icon" id="restart_icon"></ImageView>
             </Button>
+
+
+			<ButtonBar id="workout_player_buttons">
+        		<Labels>
+        			<Label class="player_btn" id="c_prev">Back</Label>
+        			<Label class="player_btn" id="c_play">Play</Label>
+        			<Label class="player_btn" id="c_next">Fordward</Label>
+        		</Labels>
+        	</ButtonBar>
+
 
 	        <View class="bar_wrap">
 	        	<ButtonBar id="round_btn_bar"></ButtonBar>

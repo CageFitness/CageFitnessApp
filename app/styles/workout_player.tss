@@ -1,3 +1,37 @@
+"#workout_player_buttons":{
+	top:9,
+    backgroundColor:'#000',
+    style:Titanium.UI.iOS.SystemButtonStyle.BORDERED,
+    height:40,
+    width:Ti.UI.SIZE,
+    visible:false,
+    width:224,
+    // right:10,
+    visible:true,
+    // borderWidth:1,
+    // borderColor:'red',
+    // top:0,
+}
+
+".player_btn":{
+	// height:Ti.UI.SIZE,
+	autoStyle:true,
+	backgroundSelectedColor:Alloy.CFG.styles.brandColor,
+	backgroundFocusedColor:Alloy.CFG.styles.brandColor,
+
+}
+
+
+"#c_prev":{
+	image:"images/icons/back.png",
+}
+"#c_play":{
+	image:"images/icons/play.png",
+}
+"#c_next":{
+	image:"images/icons/forward.png",
+}
+
 ".bar_wrap":{
 	left:10,
 	width:392,
@@ -99,6 +133,7 @@
 
 ".tool": {
 	// bottom: 80,
+	left:10,
 	top:8,
 	opacity:1,
 	layout:'horizontal',
@@ -120,6 +155,9 @@
 	opacity:0.5,
 	visible:false,
 }
+
+
+
 
 "#round_btn_bar":{
 	top:9,

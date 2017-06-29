@@ -6,7 +6,8 @@
         <ScrollableView top="0" id="scrollableView" showPagingControl="false">
             <View id="home" class="step">
                 <!-- <Button id="home_btn" onClick="stepClick"></Button> -->
-                <Button id="home_btn" onClick="doProgress"></Button>
+                <!-- <Button id="home_btn" onClick="doProgress"></Button> -->
+                <Button id="home_btn"></Button>
                 <View class="custom_workout_wrap" onClick="stepClick">
                 	<View id="fakeButton">
                 		<View id="fakePadding">

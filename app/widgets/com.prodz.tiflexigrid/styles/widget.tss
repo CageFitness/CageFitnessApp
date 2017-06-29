@@ -1,12 +1,15 @@
+
 "#fgMain": {
-	backgroundColor: '#f90f90',
+	backgroundColor: '#fff',
 	height: Ti.UI.FILL,
 	width: Ti.UI.FILL
 },
 "#fgWrapper":{
+	top:0,
 	width:Ti.UI.FILL,
-	height:Ti.UI.FILL,
-	backgroundColor:'transparent'
+	height:Ti.UI.SIZE,
+	backgroundColor:'transparent',
+	// layout:'vertical',
 },
 "#fgScrollView":{
 	width: Ti.UI.FILL,
@@ -16,4 +19,18 @@
 	layout:'horizontal',
 	backgroundColor:'transparent',
 	scrollType:'vertical'
+}
+".loadMoar":{
+	width:Ti.UI.FILL,
+	backgroundColor:'#fff',
+	height:50,
+	opacity:0.8,
+	bottom:0,
+}
+
+".lmore_label":{
+	font:{
+		fontSize:20,
+		fontWeight:'bold',
+	}	
 }

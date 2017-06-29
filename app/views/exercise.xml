@@ -5,7 +5,7 @@
             <Require type="view" src="exercise_filters" id="filter_equipment" />
             <!-- <Require type="view" src="exercise_filters" id="filter_type"/> -->
         </View>
-        <View class="exercise_grid">
+        <View id="fg_wrapper" class="exercise_grid">
 
             <Require autoStyle="true" type="widget" src="com.prodz.tiflexigrid" id="fg" />
 			<!-- <View id="loader">

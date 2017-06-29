@@ -1,7 +1,11 @@
 <Alloy>
 	<View id="fgMain">
 		<View id="fgWrapper">
-			<ScrollView id="fgScrollView"/>
+			<ScrollView id="fgScrollView">
+			</ScrollView>
+			<View id="lmore" class="loadMoar">
+				<Label class="lmore_label">LOAD MORE</Label>
+			</View>
 		</View>	
 	</View>
 </Alloy>

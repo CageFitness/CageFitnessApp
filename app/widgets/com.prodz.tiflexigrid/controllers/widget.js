@@ -48,6 +48,7 @@ var addGridItems = function(args){
 	}
 };
 
+
 var addGridItem = function(item){
 	var frame = Ti.UI.createView({
 		width:columnWidth,
@@ -189,6 +190,17 @@ var setOnItemClick = function(fnt){
 	onItemClick = fnt || function(){Ti.API.info('TiFlexiGrid -> onItemClick is not defined.');};
 };
 
+// var setOnLoadMore = function(loadMoreFunction){
+// 	Ti.API.info('SHOULD.TRIGGER.THINGS...');
+// 	Ti.App.fireEvent('exercise/grid/load',e);
+// 	onLoadMore = loadMoreFunction || function(){Ti.API.info('TiFlexiGrid -> onLoadMore is not defined.');};
+// }
+
+$.lmore.addEventListener('click',function(e){
+	Ti.API.info('BUTTON.CLICKED.NOW.WHAT');
+	Ti.App.fireEvent('exercise/grid/load',{page:1});
+})
+
 exports.init=init;
 exports.addGridItems = addGridItems;
 exports.clearGrid = clearGrid;
@@ -197,3 +209,4 @@ exports.addGridItem = addGridItem;
 exports.getItemWidth = getItemWidth;
 exports.getItemHeight = getItemHeight;
 exports.setOnItemClick = setOnItemClick;
+// exports.setOnLoadMore = setOnLoadMore;

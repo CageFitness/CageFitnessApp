@@ -1,0 +1,20 @@
+
+".container" : {
+  
+}
+
+"#loadMore": {
+	backgroundColor: 'pink',
+	height: 80,
+	width: Ti.UI.FILL,
+	font:{
+		fontSize:30,
+		fontWeight:'bold'
+	}
+},
+
+"#load_img":{
+	image:'images/icons/refresh.png',
+	width:68,
+	height:68,
+}

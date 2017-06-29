@@ -27,6 +27,19 @@ var round_tool=[];
 // ];
 
 
+	$.workout_player_buttons.addEventListener('click',function(e){
+		Ti.API.info('TOOL.BAR.EDIT:',e.source.labels[e.index]);
+		if(e.index===0){
+			scrollPrev(e);
+		}
+		else if(e.index===1){
+			PlayPause(e);
+		}
+		else if(e.index===2){
+			scrollNext(e);
+		}
+		// $.workout_player_buttons.labels[e.index].cb(e, $.workout_player_buttons.labels[e.index].mode, e.source.labels[e.index]);
+	});
 
 
 function handleRoundNavigator(e, mode, slideToOverview) {
@@ -402,6 +415,8 @@ function prepareVideoOwl(data){
     
 };
 
+
+
 function populateRoundNavigator(button_bar_labels){
 
     var toolW = _.size(button_bar_labels) * 38;
@@ -414,6 +429,7 @@ function populateRoundNavigator(button_bar_labels){
 		Ti.API.info('TOOL.BAR.EDIT:',e.source.labels[e.index]);
 		$.round_btn_bar.labels[e.index].cb(e, $.round_btn_bar.labels[e.index].mode, e.source.labels[e.index]);
 	});
+
 
 
 }
@@ -463,11 +479,11 @@ function loadWorkout(){
 }
 
 function startOverviewClock(){
-	
+	Ti.API.info('STARTING.CLOCK');
 }
 
 function addOverviewSlide(data){
-	data.cb=
+	data.cb=startOverviewClock;
 	var overview = Alloy.createController('workout/overview', data);
 	$.scrollable.addView(overview.getView());	
 }

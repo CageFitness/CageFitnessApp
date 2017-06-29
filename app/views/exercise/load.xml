@@ -1,0 +1,5 @@
+<Alloy>
+	<View id="loadMore" class="container">
+		<ImageView id="load_img"></ImageView>
+	</View>
+</Alloy>

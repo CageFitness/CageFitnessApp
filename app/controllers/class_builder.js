@@ -116,54 +116,42 @@ function onErrorCustomizer(e){
 
 function sendData(){
 
-	var rounds = [
-	{
-		'roundType':'warm-up',
-		'roundTypeName':'warm-up',
-		'numexercises':5,
-		'equipment':'body-weight',
-		'round':1,
-	},
-	{
-		'roundType':'warm-up',
-		'roundTypeName':'warm-up',
-		'numexercises':7,
-		'equipment':'body-weight',
-		'round':2,
-	},
-	{
-		'roundType':'warm-up',
-		'roundTypeName':'warm-up',
-		'numexercises':10,
-		'equipment':'body-weight',
-		'round':3,
-	},			
-	];
+	// var rounds = [
+	// {
+	// 	'roundType':'warm-up',
+	// 	'roundTypeName':'warm-up',
+	// 	'numexercises':5,
+	// 	'equipment':'body-weight',
+	// 	'round':1,
+	// },
+	// {
+	// 	'roundType':'warm-up',
+	// 	'roundTypeName':'warm-up',
+	// 	'numexercises':7,
+	// 	'equipment':'body-weight',
+	// 	'round':2,
+	// },
+	// {
+	// 	'roundType':'warm-up',
+	// 	'roundTypeName':'warm-up',
+	// 	'numexercises':10,
+	// 	'equipment':'body-weight',
+	// 	'round':3,
+	// },			
+	// ];
 
-	// rounds[0]["roundType"]="warm-up";
-	// rounds[0]["roundTypeName"]="warm-up";
-	// rounds[0]["numexercises"]="5";
-	// rounds[0]["equipment"]="body-weight";
-	// rounds[0]["round"]="1";
-	// rounds[1]["roundType"]="upper-body";
-	// rounds[1]["roundTypeName"]="upper-body";
-	// rounds[1]["numexercises"]="5";
-	// rounds[1]["equipment"]="body-weight";
-	// rounds[1]["round"]="2";
-
-
-    var token = Ti.App.Properties.getString('user_token');
-    var data = {};
-    data.filter = 'red';
-    data.build = 'auto';
-    data.update = 'true';
-    data.rounds = rounds;
+    // var token = Ti.App.Properties.getString('user_token');
+    // var data = {};
+    // data.filter = 'red';
+    // data.build = 'auto';
+    // data.update = 'true';
+    // data.rounds = rounds;
 
     sdata.filter='red';
     finalData = JSON.stringify(sdata);
 
-	Ti.API.info('UNO', finalData);
-	Ti.API.info('DOS', token);
+	Ti.API.info('AUTO.GENERATE.WORKOUT.WITH:', finalData);
+	// Ti.API.info('DOS', token);
 
 	var urlx = Alloy.CFG.api_url+Alloy.CFG.workout_create_update;
 	Ti.API.info('URL:',urlx);
@@ -430,7 +418,7 @@ $.listview_step5.addEventListener('itemclick', function(e){
 
 $.listview_step6.addEventListener('itemclick', function(e){
 	Ti.API.info('CLASS.BUILDER.CUSTOMIZER:', e);
-
+	// XXXX
 	if(e.itemIndex===1){
 		Ti.App.fireEvent('cage/launch/customizer',{menu_id:'menu_customizer'});
 	    // Ti.App.fireEvent('cage/drawer/item_click',{menu_id:'menu_customizer'});

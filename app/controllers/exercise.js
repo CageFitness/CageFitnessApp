@@ -12,8 +12,9 @@ var exercise_url = Alloy.CFG.api_url + Alloy.CFG.exercise_path;
 
 var exercise_query;
 var inited=false;
-
-
+var pagesss=1;
+// $.fg = Alloy.createWidget('com.prodz.tiflexigrid');
+// $.fg_wrapper.add($.fg);
 /**
  * The scoped constructor of the controller.
  **/
@@ -37,13 +38,19 @@ function hidePreloader(){
 function loadExercises(e){
 	Ti.API.info('GETTING FILTER INFORMATION:', e);
 	showPreloader();
-	$.fg.clearGrid();
-
-
-
+	
 	var filter_query = {}
 		filter_query.per_page=52;
-		filter_query.page=1;
+		if(e.page){
+			filter_query.page=++pagesss;
+		}
+		else{
+			Ti.API.info('EXERCISE.QUERY.CLEAN.CALL');
+			items = [];
+			filter_query.page=1;
+			$.fg.clearGrid();
+		}
+
 
 	if(e.filter=='all'){
 		if(e.search){
@@ -108,15 +115,21 @@ function onErrorExercisesCallback(e){
 
 
 function showGridItemInfo(e){
-	Ti.API.info('ITEM.CLICKED.EXERCISE...', e.source.data);
-	Ti.App.fireEvent('cage/launch/video', {'url':e.source.data.video, 'title':e.source.data.title});
+	if(e.source.data.type=='action'){
+		Ti.API.info('LOAD.MORE.TRIGGERED',e);
+		loadExercises({page:1});
+	}
+	else{
+		Ti.API.info('ITEM.CLICKED.EXERCISE...', e.source.data);
+		Ti.App.fireEvent('cage/launch/video', {'url':e.source.data.video, 'title':e.source.data.title});
+	}
 };
 
 
 //CUSTOM FUNCTION TO CREATE THE ITEMS FOR THE GRID
 function createSampleData(data){
     
-    items = [];
+    // items = [];
     for (var x=0;x<data.length;x++){
     
         //CREATES A VIEW WITH OUR CUSTOM LAYOUT
@@ -142,8 +155,27 @@ function createSampleData(data){
     };
 
 
+	// var loadMoreView = Alloy.createController('exercise/load',{
+	// 	type:'action',
+ //        image:null,
+ //        title:null,
+ //        width:Ti.UI.FILL,
+ //        height:30,
+ //    }).getView();
 
-    
+ //    //THIS IS THE DATA THAT WE WANT AVAILABLE FOR THIS ITEM WHEN onItemClick OCCURS
+ //    var loadMoreValues = {
+ //        title: null,
+ //        image: null,
+ //        video: null,
+ //        type: 'action',
+ //    };        
+
+ //    items.push({
+ //        view: loadMoreView,
+ //        data: loadMoreValues,
+ //    });    
+
     //ADD ALL THE ITEMS TO THE GRID
     Ti.API.info('BEFORE.FG');
     $.fg.addGridItems(items);
@@ -165,10 +197,11 @@ function init(e){
 			    itemBorderColor:'transparent',
 			    itemBorderWidth:0,
 			    itemBorderRadius:0,
-			    onItemClick: showGridItemInfo
+			    onItemClick: showGridItemInfo,
+			    // onLoadMore: loadExercises({page:pagesss})
 			});
 			inited=true;
-			loadExercises('all');
+			loadExercises({filter:'all'});
 		}
 
 		
@@ -179,6 +212,9 @@ Ti.App.addEventListener('cage/drawer/item_click', init);
 function onLoadMore(e){
 	Ti.API.info('EXERCISE.LOAD.MORE',e);
 }
+Ti.App.addEventListener('exercise/grid/load', loadExercises);
+
+
 
 
 
