@@ -1,3 +1,16 @@
+".bar_wrap":{
+	left:10,
+	width:392,
+	// backgroundColor:'pink',
+}
+
+"#stepper":{
+    tintColor: "green",
+    steps: 3,
+    maximum: 3,
+    minimum: 1
+}
+
 "#activity_wrapper":{
   height:34,
   width:34,
@@ -31,10 +44,13 @@
 
 
 "#dlman":{
-	bottom:80,
+	top:8,
+	// bottom:80,
 	// left:20,
 	right:20,
-	height:80,
+	// backgroundColor:'pink',
+	height:34,
+	// height:Ti.UI.SIZE,
 	width:Ti.UI.SIZE,
 	// opacity:0.5,
 }
@@ -58,35 +74,70 @@
 }
 "#scrollable": {
 	top: 0,
-	showPagingControl: true,
+	showPagingControl: false,
 	// pagingControlColor: Alloy.CFG.styles.brandColor,
 	pagingControlColor: '#f8f8f8',
 	tintColor:'#f90f90',
-	height:'80%',
+	height:'83%',
 	pageIndicatorColor: '#cfcbca',
 	keepScreenOn:true,
+	visible:false,
 	// height:Ti.UI.FILL,
 }
+
+
+
+
+"#toolbar_wrapper": {
+	top: 0,
+	// backgroundColor:'pink',
+	backgroundColor:'#f8f8f8',
+	height:Ti.UI.FILL,
+	zIndex:1,
+}
+
+
+".tool": {
+	// bottom: 80,
+	top:8,
+	opacity:1,
+	layout:'horizontal',
+	// height:80,
+	borderColor:'#ebebeb',
+	borderWidth:1,
+	borderRadius:8,
+	backgroundColor:'#fff',
+	width:Ti.UI.SIZE,
+	height:Ti.UI.SIZE,
+}
+
 "#restart":{
-	bottom:80,
+	// bottom:80,
 	left:20,
 	// right:10,
 	height:80,
 	width:34,
 	opacity:0.5,
+	visible:false,
+}
+
+"#round_btn_bar":{
+	top:9,
+    backgroundColor:'#000',
+    style:Titanium.UI.iOS.SystemButtonStyle.BORDERED,
+    height:40,
+    width:Ti.UI.SIZE,
+    visible:false,
+    width:330,
+    right:10,
+    visible:false,
+    // borderWidth:1,
+    // borderColor:'red',
+    // top:0,
 }
 
 
-".tool": {
-	bottom: 80,
-	opacity:1,
-	layout:'horizontal',
-	height:80,
-	// borderColor:'grey',
-	// borderWidth:1,
-	// backgroundColor:'red',
-	width:Ti.UI.SIZE,
-}
+
 ".toolbar": {
 	top: 0,
 	barColor:'#f8f8f8',
@@ -94,11 +145,6 @@
 	opacity:1,
 }
 
-"#toolbar_wrapper": {
-	top: 0,
-	backgroundColor:'#f8f8f8',
-	height:'20%',
-}
 
 ".icon":{
 	width:34,
@@ -124,24 +170,26 @@
 }
 
 
-
+".player_control":{
+	backgroundSelectedColor:'#f8f8f8',
+	left:20, top:4, bottom:4,
+	right:20, top:4, bottom:4,
+	borderRadius:6,
+}
 
 "#prev":{
-	left:10,
-	right:10,
-	height:80,
+
+	height:Ti.UI.SIZE,
 	width:34,
 }
 "#play":{
-	left:10,
-	right:10,
-	height:80,
+
+	height:Ti.UI.SIZE,
 	width:34,
 }
 "#next":{
-	left:10,
-	right:10,
-	height:80,
+
+	height:Ti.UI.SIZE,
 	width:34,
 }
 

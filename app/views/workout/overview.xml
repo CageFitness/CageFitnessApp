@@ -12,6 +12,7 @@
                 <Label bindId="rxIndex" id="rxIndex" />
                 <View id="overviewTitleWrap">
                     <Label bindId="name" id="name" />
+                    <Label bindId="duration" id="duration"></Label>
                 </View>
             </ItemTemplate>
         </Templates>

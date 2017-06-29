@@ -74,9 +74,10 @@ Ti.App.addEventListener('cage/exercise/filter',loadExercises);
 function onSuccessExercises2Callback(e){
 
 	
-
+	Ti.API.info('HEADERINFO:',e.headers, e.status, e.result);
 	var parsed = JSON.parse(e.data);
 	Ti.API.info('GET.EXERCISE.REST.API.COUNT.RESULTS: ',_.size(parsed));
+	// Ti.API.info('GET.EXERCISE.REST.API.HEADERS: ',e.headers);
 	exercises=[];
 	// Why JSON needed to be parsed?
     _.each(parsed, function(item){

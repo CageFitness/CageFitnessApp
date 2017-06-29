@@ -37,6 +37,7 @@ function onButtonClose(e){
 	if(wtype=='customizer'){
 		Ti.App.removeEventListener('cage/topbar/menu_button/close', onButtonClose);
 	}
+
 }
 Ti.App.addEventListener('cage/topbar/menu_button/close', onButtonClose);
 

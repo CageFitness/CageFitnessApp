@@ -11,8 +11,43 @@ var config;
 var cage_cache_dir = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'cached');
 
 
+$.round_btn_bar.addEventListener('postlayout',function(e){
+	$.round_btn_bar.visible=true;
+});
+
+$.scrollable.addEventListener('postlayout',function(e){
+	$.scrollable.visible=true;
+});
+
+var round_tool=[];
+
+// 	{title:'Restart', cb:handleRoundNavigator, mode:'restart'},
+// 	{title:'Previous Round', cb:handleRoundNavigator, mode:'prev'},
+// 	{title:'Next Round', cb:handleRoundNavigator, mode:'next'},
+// ];
 
 
+
+
+function handleRoundNavigator(e, mode, slideToOverview) {
+    
+    if(mode=='restart'){
+    	Ti.API.info('ROUND.NAVIGATOR.RESTART', e);
+    }
+    else if (mode=='prev'){
+    	Ti.API.info('ROUND.NAVIGATOR.PREV', e);
+    }
+    else if (mode=='next'){
+    	Ti.API.info('ROUND.NAVIGATOR.NEXT', e);
+    }
+    else if(mode=='navigate'){
+    	Ti.API.info('ROUND.NAVIGATE.TO',e, slideToOverview.slideIndex);
+    	scrollToRound(e, slideToOverview.slideIndex);
+    }
+
+
+
+};
 
 
 	
@@ -37,7 +72,6 @@ function init(){
 
 	NappDownloadManager.addEventListener('progress', ReportProgress);
 	NappDownloadManager.addEventListener('completed', ReportProgress);
-
 	NappDownloadManager.stopDownloader();
 	NappDownloadManager.cleanUp();
 
@@ -117,8 +151,9 @@ function ReportProgress(e) {
 		$.activity_indicator.show();
 		$.dlmanlabel.show();
 	}
-
-	Ti.API.info('EVENT_TYPE: ',e.type);
+	// 
+	// xxxx
+	// Ti.API.info('EVENT_TYPE: ',e.type);
 	var ob ={};
 	// var text = e.downloadedBytes+'/'+e.totalBytes+' '+Math.round(progress)+'% '+e.bps+' bps';
 	ob.progress 		= e.downloadedBytes*100.0/e.totalBytes;
@@ -186,7 +221,7 @@ function addAssetsToDownloadManager(){
 		// If file is not already in cache folder add it to download manager queue.
 		var result = _.findWhere(NappDownloadManager.getAllDownloadInfo(), {url: item.url});
 		var is_match = Boolean(result);
-		Ti.API.info(item.url, ' --> ',  is_match ? 'FOUND':'NOT_FOUND');
+		// Ti.API.info(item.url, ' --> ',  is_match ? 'FOUND':'NOT_FOUND');
 		
 		if(!is_match){
 			// Ti.API.info('ADDED TO DOWNLOAD MANAGER:: ', is_match);
@@ -228,6 +263,7 @@ function proccessWorkout(n){
 	var round_iterator = n;
 
 	for (round in round_iterator){
+
 		// Generates round intro slide here...
 		var iterator = round_iterator[round].customizer;
 		var exercise_number = round_iterator[round].wo_exercise_number;
@@ -252,6 +288,10 @@ function proccessWorkout(n){
 		// EXERCISE ITERATOR
 		for (i in iterator ){
 			var rob = {};
+			
+			// Ti.API.info('CONFIGURATION.FOR.ROUND:',config);
+			// duration_config = getExerciseDuration(exercise_number);
+
 			rob.round_number = cob.round_number;
 			rob.exercise_number = cob.exercise_number;
 			rob.file_index = getIndex(i);
@@ -281,13 +321,26 @@ function proccessWorkout(n){
 		}
 
 
+
+
+
+
 	}
+
+
+
+
+
 
 }
 
 function getIndex(n){
 	r = Number(n)+1; 
 	return r;
+}
+
+function navigateRounds(e){
+	Ti.API.info('ROUND.NAVIGATOR.ROUND.NUMBER:',e);
 }
 
 function prepareVideoOwl(data){
@@ -310,7 +363,12 @@ function prepareVideoOwl(data){
 			sob.exercise_equipment = data[x].exercise_equipment;
 			sob.exercise_type = data[x].exercise_type;        	
         	sob.file_index = data[x].file_index;
-        	addWorkoutElement('workout/overview',sob);	
+        	sob.config = config;
+        	addWorkoutElement('workout/overview',sob);
+			// Adds Slide Information to Round Navigator
+
+			// _TOOL
+			round_tool.push({slideIndex:x, title:sob.round_number, cb:handleRoundNavigator, mode:'navigate'});        	
         }
         else{
         	sob.filename = data[x].filename;
@@ -318,7 +376,7 @@ function prepareVideoOwl(data){
         	sob.file_index = data[x].file_index;
         	sob.exercise_number = data[x].exercise_number;
 
-		    
+
 		    var item_duration = _.findWhere( config.acf['round_configs'] , {'config_round_num':sob.exercise_number} );
 		    // Ti.API.info( 'ROUND CONFIGURATION LEN:', config.acf['round_configs'].length );
 		    // Ti.API.info( 'ROUNDS:', config.acf['opt_rounds'] );
@@ -333,6 +391,10 @@ function prepareVideoOwl(data){
         }
         
     };
+
+
+
+
     addWorkoutElement('workout/finish',{title:'Well Done!', type:'static'});
 
     
@@ -340,7 +402,21 @@ function prepareVideoOwl(data){
     
 };
 
+function populateRoundNavigator(button_bar_labels){
 
+    var toolW = _.size(button_bar_labels) * 38;
+	$.round_btn_bar.labels = button_bar_labels;
+	$.round_btn_bar.setWidth(toolW);
+	$.round_btn_bar.show();
+	$.round_btn_bar.visible=true;
+
+	$.round_btn_bar.addEventListener('click',function(e){
+		Ti.API.info('TOOL.BAR.EDIT:',e.source.labels[e.index]);
+		$.round_btn_bar.labels[e.index].cb(e, $.round_btn_bar.labels[e.index].mode, e.source.labels[e.index]);
+	});
+
+
+}
 
 function onSuccessWorkoutCallback(e){
 
@@ -349,16 +425,19 @@ function onSuccessWorkoutCallback(e){
     // Ti.API.info('THUMB:', e.data.acf.round_selector[0].customizer[0].acf.video_featured.url);
     // closeIndicator();
 	exercises = [];
-
+	// var parsed = JSON.parse(e);
+	// Ti.API.info(e);
 	var data = e.data.acf.round_selector;
 
-	// resetOverallProgress();
+
 	proccessWorkout(data);
-	
+	prepareVideoOwl(exercises);
+    populateRoundNavigator(round_tool);
+
+
 	addAssetsToDownloadManager(videos_queue);
 	NappDownloadManager.restartDownloader();
 	NappDownloadManager.resumeAll();
-	prepareVideoOwl(exercises);
 
 }
 
@@ -379,6 +458,7 @@ function loadWorkout(){
 	var wid = Ti.App.Properties.getString('my_workout');
 	var wurl = workout_final_url+wid;
 	Ti.API.info('ATTEMPT.LOAD.WORKOUT_PLAYER', wurl);
+	// Alloy.Globals.XHROptions.ttl=300;
 	xhr.GET(wurl, onSuccessWorkoutCallback, onErrorWorkoutCallback, Alloy.Globals.XHROptions);
 }
 
@@ -411,6 +491,14 @@ function scrollPrev() {
 	Ti.API.info('THISPAGE: ' + $.scrollable.currentPage);
 	$.scrollable.scrollToView($.scrollable.currentPage - 1);
 }
+
+function scrollToRound(e, overview) {
+	Ti.API.info('SCROLL.TO.ROUND: ' + $.scrollable.currentPage);
+	var roundSlide = overview;
+	$.scrollable.scrollToView(roundSlide);
+}	
+
+
 
 function scrollToLast() {
 	Ti.API.info('TOTAL.CHILDREN: ' ,_.size($.scrollable.views) )

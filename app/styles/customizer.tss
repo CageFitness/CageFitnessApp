@@ -153,13 +153,13 @@
 	// color: "red",
 	// top:5,
 	// bottom:5,
-	right:15,
+	right:30,
 }
 
 ".detailLabel": {
 	// top:5,
-	right: 15,
-	color: "grey",
+	right: 10,
+	color: "gray",
 	font: {
 		fontWeight: "bold",
 		fontSize:12,	

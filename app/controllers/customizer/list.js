@@ -3,13 +3,15 @@ var args = $.args;
 var workout_url = Alloy.CFG.api_url + Alloy.CFG.workout_test_path;
 var exercise_url = Alloy.CFG.api_url + Alloy.CFG.exercise_path;
 var pages = 1;
+var paging ={};
 $.is.init($.pover);
 $.is.load();
 
 
  function myLoader(e) {
- 	Ti.API.info('LOADING.MORE...');
-	loadExercises({page:pages++});
+ 	// Ti.API.info('LOADING.MORE.PAGING...', paging.total_pages);
+ 	Ti.API.info('LOADER: ',e);
+	loadExercises({page:pages < 5 ? pages++ : 5});
  	// var ln = myCollection.models.length;
 
  	// myCollection.fetch({
@@ -70,9 +72,16 @@ function loadExercises(selection){
 function onSuccessExercises3Callback(e){
 
 	// hidePreloader();
+	$.is.state($.is.SUCCESS);
 
+	
+	if( e.headers != 'cache' ){
+		Ti.API.info('HEADERS.SHOW:',e.headers);
+		Ti.API.info('HEADERS.SHOW:',e.headers['X-WP-TotalPages']);
 
-
+		// paging.total_items = e.headers['X-WP-Total'];
+		// paging.total_pages = e.headers['X-WP-TotalPages'];		
+	}
 
 	var parsed = JSON.parse(e.data);
 	Ti.API.info('GET.EXERCISE.LIST.REST.API.COUNT.RESULTS: ',_.size(parsed));
@@ -96,8 +105,13 @@ function onSuccessExercises3Callback(e){
     var mode = 'append';
 	if(mode=='append'){
 		var exerciseSection = $.pover.sections[0];
-		Ti.API.info('EXERCISE.LISTION.SECTION: ',exerciseSection);
-		exerciseSection.appendItems(exercises,{animated:true, animationStyle:Titanium.UI.iOS.RowAnimationStyle.BOTTOM})		
+		Ti.API.info('EXERCISE.LISTING.SECTION.BEFORE: ',exerciseSection);
+
+		$.pover.sections[0].appendItems(exercises,{animated:true, animationStyle:Titanium.UI.iOS.RowAnimationStyle.BOTTOM});
+		$.is.mark();
+
+		Ti.API.info('EXERCISE.LISTING.SECTION.AFTER: ',exerciseSection);
+		// Ti.API.info('EXERCISE.LISTION.SECTION: ',exerciseSection.getItems());
 	}
 	else if(mode=='replace'){
 		var exerciseSection = Ti.UI.createListSection();
@@ -105,7 +119,7 @@ function onSuccessExercises3Callback(e){
 		$.pover.replaceSectionAt(0,exerciseSection,{animated:true, animationStyle:Titanium.UI.iOS.RowAnimationStyle.BOTTOM})	
 	}
 
-	$.is.state($.is.SUCCESS);
+	
 	// $.pover.appendSection(exerciseSection);
 	
 
@@ -120,6 +134,7 @@ function finishExerciseListSelection(e){
 
 function onErrorExercises2Callback(e){
 	Ti.API.info(e.data);
+	$.is.state($.is.ERROR);
 }
 
 function closePover(){

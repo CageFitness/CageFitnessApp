@@ -10,19 +10,25 @@
         </ScrollableView>
         <View id="toolbar_wrapper">
             <View class="tool">
-                <Button id="prev" title="Back" onClick="scrollPrev">
+                <Button class="player_control" id="prev" title="Back" onClick="scrollPrev">
                     <ImageView class="icon" id="prev_icon"></ImageView>
                 </Button>
-                <Button id="play" title="Play / Pause" onClick="PlayPause">
+                <Button class="player_control" id="play" title="Play / Pause" onClick="PlayPause">
                     <ImageView class="icon" id="play_icon"></ImageView>
                 </Button>
-                <Button id="next" title="Next" onClick="scrollNext">
+                <Button class="player_control" id="next" title="Next" onClick="scrollNext">
                     <ImageView class="icon" id="next_icon"></ImageView>
                 </Button>
             </View>
             <Button id="restart" title="Restart" onClick="scrollToView">
                 <ImageView class="icon" id="restart_icon"></ImageView>
             </Button>
+
+	        <View class="bar_wrap">
+	        	<ButtonBar id="round_btn_bar"></ButtonBar>
+	        </View>
+
+
             <View id="dlman">
             	<Label id="dlmanlabel"></Label>
 				<View id="activity_wrapper">

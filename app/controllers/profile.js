@@ -51,6 +51,7 @@ function getMyWorkout(usr){
    var my_workout_url = Alloy.CFG.api_url + Alloy.CFG.user_workout_path;
    Ti.API.info('MY.WORKOUT.CALLED: ',usr.id, my_workout_url+'?author='+usr.id+ '&per_page=1');
    xhr.GET(my_workout_url+'?author='+usr.id+ '&per_page=1', onSuccessMyWorkout, onErrorCallbackSilent, Alloy.Globals.XHROptions);
+   // xhr.GET(my_workout_url+'?author='+usr.id+ '&per_page=1', onSuccessMyWorkout, onErrorCallbackSilent);
 }
 
 function onSuccessMyWorkout(e){

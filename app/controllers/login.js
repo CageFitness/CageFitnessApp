@@ -4,11 +4,6 @@ var args = $.args;
 
 
 
-Alloy.Globals.XHROptions = {
-    // shouldAuthenticate:false,
-    parseJSON:true,
-    debug:true,
-};
 var data = {
     username:'pabloliz_member',
     password:'caInterno#1',
@@ -74,7 +69,7 @@ function callOptions(tkn){
             debug: true,
             ttl:300,
         });
-    xhr.POST(validate_url);
+    // xhr.POST(validate_url);
     xhr.GET(config_url, onSuccessOptionsCallback, onErrorCallbackSilent);
     xhr.GET(user_url, onSuccessUserCallback, onErrorCallbackSilent);
 }
@@ -110,7 +105,7 @@ function closeLogin(){
 }
 
 
-// cageAuthenticate();	
+cageAuthenticate();	
 
 
 

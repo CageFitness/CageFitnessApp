@@ -1,3 +1,15 @@
+"#logout_label":{
+	top:33,
+	right:64,
+	height:Ti.UI.SIZE,
+	color:'grey',
+	// backgroundColor:'red',
+	// width:100,
+	font:{
+		fontSize:14,
+	}
+}
+
 "#mainTopBar":{
 	top:0,
 	width: Ti.UI.FILL,
@@ -23,8 +35,8 @@
 "#button_wrapper_login":{
 	top:0,
 	right:0,
-	width: "70dp",
-	height: "70dp",
+	width: 200,
+	height: 70,
 	backgroundColor: '#fff',
 }
 

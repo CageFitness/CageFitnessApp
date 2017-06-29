@@ -42,7 +42,7 @@ function enableFeature(e, mode){
 			var els = sec.getItems();
 
 			_.each(els,function(item){
-				Ti.API.info('ITEM:',item.properties);
+				Ti.API.info('==== ITEM:',item.properties.launch_data.ID);
 				if(mode=='insert'){
 					item.properties.canEdit=false;
 					item.properties.canInsert=true;
@@ -178,15 +178,36 @@ function handleListViewClick(e){
 function launchExercise(e){
 
 	Ti.API.info('LAUNCHING.EXTERNAL.WINDOW.WITH:', e.url);
-    var win = Alloy.createController('window', {'cage_url':e.url, 'type':'exercise', 'video_data':e}).getView();
 
-    win.open({modal:true});
-    Alloy.Globals.modalWindow = win;
+	// $.wx = Ti.UI.iOS.createNavigationWindow({
+	//     window: Ti.UI.createWindow({
+	//         title: e.title,
+	//         video_data:e,
+	//     })
+	// });
+	// $.full = Alloy.createController('exercise/full',{'video_data':e, ref:$.wx}).getView();
+	// $.wx.add($.full);
+
+
+	// $.wx.open({
+	//     modal: true,
+	//     modalTransitionStyle: Ti.UI.iOS.MODAL_TRANSITION_STYLE_FLIP_HORIZONTAL,
+	//     modalStyle: Ti.UI.iOS.MODAL_PRESENTATION_FORMSHEET
+	// });
+
+
+ //    // var win = Alloy.createController('window', {'cage_url':e.url, 'type':'exercise', 'video_data':e}).getView();
+
+ //    // win.open({modal:true,
+ //    // modalTransitionStyle: Ti.UI.iOS.MODAL_TRANSITION_STYLE_FLIP_HORIZONTAL,
+ //    // modalStyle: Ti.UI.iOS.MODAL_PRESENTATION_FORMSHEET
+ //    // });
+ //    // Alloy.Globals.modalWindow = win;
 
 }
 
 function createNewRound(e){
-    var round_popover = Alloy.createController('customizer/round', {validate:addNewRound} ).getView();
+    var round_popover = Alloy.createController('customizer/selection', {validate:addNewRound} ).getView();
     round_popover.show({animated:true, view:$.pover_target});
 }
 

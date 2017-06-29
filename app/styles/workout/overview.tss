@@ -1,3 +1,9 @@
+"#duration":{
+	right:0,
+	font:{
+		fontWeight:'bold',
+	}
+}
 
 ".overview_container":{
 	layout:'vertical',
@@ -9,25 +15,26 @@
 	height:Ti.UI.SIZE
 }
 "#title":{
-	// top:10,
+	top:10,
 	color:'#d9e254',
 	width:Ti.UI.SIZE,
 	height:Ti.UI.SIZE,
 	textAlign:Ti.UI.TEXT_ALIGNMENT_CENTER,
 	font: {
-	    fontSize: 64,
+	    fontSize: 58,
 	    fontFamily: 'MuseoSans-700',
 	    fontWeight: 'normal',
 	}    
 }
 "#title_type":{
+	top:10,	
 	left:20,
 	color:'#000',
 	width:Ti.UI.SIZE,
 	height:Ti.UI.SIZE,
 	textAlign:Ti.UI.TEXT_ALIGNMENT_CENTER,
 	font: {
-	    fontSize: 64,
+	    fontSize: 58,
 	    fontFamily: 'MuseoSans-700',
 	    fontWeight: 'normal',
 	}    
@@ -74,7 +81,7 @@
 	// top:4,
 	left: 15,
 	color: "black",
-	font: { fontSize: 20, fontWeight: 'bold' },
+	font: { fontSize: 18, fontWeight: 'bold' },
 	// backgroundColor: 'red',
 },
 
@@ -84,13 +91,13 @@
 	top: 0,
 	color: "black",
 	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-	font: { fontSize: 20 }
+	font: { fontSize: 18 }
 },
 
 
 "#overviewTitleWrap": {
 	// top: 0,
-	left: 65, 
+	left: 70, 
 	right: 0,
 	// bottom: 0,
 	// layout: "vertical",

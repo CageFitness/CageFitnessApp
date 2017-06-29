@@ -118,7 +118,7 @@ Ti.App.addEventListener('cage/downloadmanager/progress', function(e){
 
 		$.dl_progress_text.text = e.percent_pretty + ' | ' + e.bps_pretty;
 		$.dl_progress_bar.width = e.percent_pretty + '%';
-		Ti.API.info('OVERALL: ', e.overall.total, e.overall.downloaded, e.overall.remaining);
+		// Ti.API.info('OVERALL: ', e.overall.total, e.overall.downloaded, e.overall.remaining);
 		$.pb.value = e.overall.downloaded;
 		$.pb.min = 0;
 		$.pb.max = e.overall.total;
@@ -235,4 +235,3 @@ Ti.App.addEventListener('cage/goto/customizer',function(e){
 $.index.open();
 
 Ti.App.fireEvent('cage/launch/login');
-

@@ -53,6 +53,7 @@ XHR.prototype.GET = function(url, onSuccess, onError, extraParams) {
         var result = {};
         result.result = "cache";
         result.status = 304;
+        result.headers = "cache";
         // not modified
         result.data = cache;
 
@@ -274,6 +275,8 @@ function handleSuccess(xhr, extraParams) {
     var result = {};
     result.result = "success";
     result.status = xhr.status;
+    // lithiumlab fix
+    result.headers = xhr.getResponseHeaders();
 
     /**
      * Check if the response is XML, if not try to parse JSON (if that was requested)
@@ -299,6 +302,7 @@ function handleError(xhr, error) {
     result.result = "error";
     result.status = xhr.status;
     result.error = error.error;
+    result.headers = xhr.getResponseHeaders();
     result.data = xhr.responseData;
     return result;
 }
