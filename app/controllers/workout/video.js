@@ -4,15 +4,14 @@ var args = $.args;
 var id = args.id || 'v565989';
 var title = args.title || 'Video Title One';
 var subtitle = args.subtitle || 'END';
-var counter = args.counter || '00:00'+' |-| '+args.duration;
+var counter = args.counter || '00:00'+' |-| '+args.duration+' > '+args.last+' > ';
 var item_index = args.item_index || null;
-
 var localvid = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'cached/'+args.filename);
 var video = localvid || args.video || null;
 var next = args.next || null;
 
 
-
+Ti.API.info('IS.LAST.VIDEO.CHECK', args.last ? args.duration.config_round_duration_last : args.duration.config_round_duration)
 
 
 
@@ -31,12 +30,22 @@ var next = args.next || null;
 
 var preview_timer = 10;
 var xInt;
-var increment = -0.1;
+var increment = -(1/preview_timer);
 
 function resetCounter(){
 	clearInterval(xInt);
 	$.progressbar.progress = 1;
-	$.progressbar.text = Math.round($.progressbar.progress * 10);	
+	$.progressbar.text = Math.round($.progressbar.progress * preview_timer);	
+}
+
+
+function pauseCounter(){
+	clearInterval(xInt);
+}
+
+
+function resumeCounter(){
+	startCounter();
 }
 
 
@@ -57,7 +66,7 @@ function startCounter() {
 
             });
         }
-        $.progressbar.text = Math.round($.progressbar.progress * 10);
+        $.progressbar.text = Math.round($.progressbar.progress * preview_timer);
     }, 1000);
 
 }

@@ -4,7 +4,7 @@ var args = $.args;
 var id = args.id || 'v565989';
 var title = args.title || '';
 var subtitle = args.subtitle || '';
-var counter = args.counter || '05';
+
 var round = args.round || [];
 var item_index = args.item_index || 0;
 var file_index = args.file_index || 0;
@@ -15,6 +15,12 @@ var exercise_equipment = args.exercise_equipment || '';
 var exercise_type = args.exercise_type || '';
 var duration = args.duration || 30;
 // $.overview.backgroundColor = Utils.getRandomColor();
+
+Ti.API.info('CONFIG.OVERVIEW.DURATION.FIRST', args.first_slide);
+// gets first slide duration or normal oversion duration from configuration
+var overview_duration = (args.first_slide?args.config.acf.duration_first:args.config.acf.duration_break);
+var counter = overview_duration;
+
 $.overview.backgroundColor = '#fff';
 	$.title.text = title;
 	$.title_type.text = exercise_type.label;
@@ -36,15 +42,9 @@ function getIndex(n){
 }
 
 function getExerciseDuration(round_size){
-	// Ti.API.info('ROUND.SIZE:',round_size);
-
 	var cfg = args.config;
 	var duration_ob = _.findWhere( cfg.acf.round_configs, {'config_round_num':round_size} );
-
-  	// Ti.API.info('DURATION:',duration_ob);
-  	// Ti.API.info('DURATION:',duration_ob);
 	return duration_ob;
-
 }
 
 function describeRound2(){

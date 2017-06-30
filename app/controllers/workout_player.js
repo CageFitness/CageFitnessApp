@@ -302,9 +302,9 @@ function proccessWorkout(n){
 		for (i in iterator ){
 			var rob = {};
 			
-			// Ti.API.info('CONFIGURATION.FOR.ROUND:',config);
-			// duration_config = getExerciseDuration(exercise_number);
-
+			// is last in round
+			var last = (_.size(iterator)-1 === i) ? true : false;
+			rob.last = last;
 			rob.round_number = cob.round_number;
 			rob.exercise_number = cob.exercise_number;
 			rob.file_index = getIndex(i);
@@ -356,10 +356,23 @@ function navigateRounds(e){
 	Ti.API.info('ROUND.NAVIGATOR.ROUND.NUMBER:',e);
 }
 
+
+function getExerciseDuration(round_size){
+	var cfg = config;
+	var duration_ob = _.findWhere( cfg.acf.round_configs, {'config_round_num':round_size} );
+	return duration_ob;
+}
+
+
 function prepareVideoOwl(data){
     
 
     for (var x=0;x<data.length;x++){
+
+    	// if first Owl slide
+    	
+    	
+
         var sob = {
             title:data[x].title,
             type:data[x].type,
@@ -368,6 +381,8 @@ function prepareVideoOwl(data){
             item_index:x,
             index:$,
         }
+        sob.first_slide = (x===0) ? true : false;
+
         if(data[x].type=='overview'){
         	sob.round = data[x].round;
         	sob.round_number = data[x].round_number;
@@ -384,20 +399,13 @@ function prepareVideoOwl(data){
 			round_tool.push({slideIndex:x, title:sob.round_number, cb:handleRoundNavigator, mode:'navigate'});        	
         }
         else{
+        	sob.last = data[x].last;
         	sob.filename = data[x].filename;
         	sob.next = data[x].next;
         	sob.file_index = data[x].file_index;
         	sob.exercise_number = data[x].exercise_number;
+		    sob.duration = getExerciseDuration(sob.exercise_number);
 
-
-		    var item_duration = _.findWhere( config.acf['round_configs'] , {'config_round_num':sob.exercise_number} );
-		    // Ti.API.info( 'ROUND CONFIGURATION LEN:', config.acf['round_configs'].length );
-		    // Ti.API.info( 'ROUNDS:', config.acf['opt_rounds'] );
-
-		    // Ti.API.info('RCONFIG: ', sob.exercise_number, item_duration);
-
-		    sob.duration = item_duration['config_round_duration'];
-		    // Ti.API.info('RCONFIG: ', sob.exercise_number);
 
 
         	addWorkoutElement('workout/video',sob);	
