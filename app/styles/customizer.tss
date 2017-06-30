@@ -1,3 +1,47 @@
+
+"#activity_wrapper":{
+  height:100,
+  width:100,
+  backgroundColor: Alloy.CFG.styles.brandColor,
+  borderRadius:10,
+  borderWidth:0,
+  borderColor:'#787b40',
+  visible:true,
+  opacity:0,
+  // right:20,
+  top:'20%',
+  zIndex:1,
+  layout:'horizontal',
+
+}
+
+"#activity_indicator":{
+  color: Alloy.CFG.styles.brandColor,
+  font: {
+  	fontFamily:'Helvetica Neue',
+  	fontSize:26,
+  	fontWeight:'bold'
+  },
+  // message: 'Loading...',
+  style: Ti.UI.ActivityIndicatorStyle.BIG,
+  // top:0,
+  // left:0,
+  // height:Ti.UI.SIZE,
+  width:100,
+  height:100,
+  // indicatorDiameter:100,
+  indicatorColor:'#000',
+  autoStyle:true,
+  borderRadius:10,
+}
+
+
+
+
+
+
+
+
 "#editmode":{
 	left:0,
 	layout:'horizontal',
@@ -15,11 +59,22 @@
 "#insert_remove" : {
 	top:0,
 	width:200,
-    height:Ti.UI.SIZE,
+    height:30,
     left:0,
     backgroundColor:'#000',
     index:0,
-    opacity:0,
+    // opacity:0,
+}
+
+"#customizer_btn_bar":{
+    backgroundColor:'#000',
+    style:Titanium.UI.iOS.SystemButtonStyle.BORDERED,
+    height:30,
+    // width:200,
+    right:0,
+    top:0,
+    // borderWidth:1,
+    // borderColor:'red',
 }
 
 "#pover_target" : {
@@ -37,15 +92,7 @@
     borderWidth:1,
 }
 
-"#customizer_btn_bar":{
-    backgroundColor:'#000',
-    style:Titanium.UI.iOS.SystemButtonStyle.BORDERED,
-    height:Ti.UI.SIZE,
-    // width:200,
-    right:0,
-    // borderWidth:1,
-    // borderColor:'red',
-}
+
 
 ".customizer_tool_btn":{
 	left:10,

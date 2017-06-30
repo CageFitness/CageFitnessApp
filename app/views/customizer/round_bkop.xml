@@ -1,0 +1,19 @@
+<Alloy>
+    <Popover id="popover_ob" class="popover">
+        <ContentView height="Ti.UI.FILL">
+            <NavigationWindow id="navWin" height="Ti.UI.FILL" width="450">
+                <Window id="roundWin" title="Number of Exercises" height="Ti.UI.FILL">
+                    <!-- <RightNavButton title="Robin" /> -->
+                    <!-- <Label>It's not easy being green.</Label> -->
+                    <ListView id="pover" top="0" >
+                        <ListSection>
+                            <ListItem slug="5" class="checked" title="5 Exercises"></ListItem>
+                            <ListItem slug="7" class="checked" title="7 Exercises"></ListItem>
+                            <ListItem slug="10" class="checked" title="10 Exercises"></ListItem>
+                        </ListSection>                            
+                    </ListView>
+                </Window>
+            </NavigationWindow>
+        </ContentView>
+    </Popover>
+</Alloy>

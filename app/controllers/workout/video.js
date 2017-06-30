@@ -28,7 +28,7 @@ Ti.API.info('IS.LAST.VIDEO.CHECK', args.last ? args.duration.config_round_durati
 
 
 
-var preview_timer = 10;
+var preview_timer = 20;
 var xInt;
 var increment = -(1/preview_timer);
 

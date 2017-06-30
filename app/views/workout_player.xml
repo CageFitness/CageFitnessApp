@@ -23,9 +23,9 @@
                     <ImageView class="icon" id="next_icon"></ImageView>
                 </Button>
             </View> -->
-            <Button id="restart" title="Restart" onClick="scrollToView">
+            <!-- <Button id="restart" title="Restart" onClick="scrollToView">
                 <ImageView class="icon" id="restart_icon"></ImageView>
-            </Button>
+            </Button> -->
 
 
 			<ButtonBar id="workout_player_buttons">

@@ -1,0 +1,26 @@
+<Alloy>
+    <Popover id="popover_ob" class="popover">
+        <ContentView height="Ti.UI.FILL">
+            <NavigationWindow id="navWin" height="Ti.UI.FILL" width="450">
+                <Window id="exercisesWin" title="Select Exercise">
+                    <RightNavButton>
+                        <Button id="finishBtn" onClick="finishExerciseListSelection">Done</Button>
+                    </RightNavButton>
+                    <ListView id="pover" top="0">
+                        <Templates>
+                            <ItemTemplate name="exerciseItem">
+                                <ImageView bindId="pic" id="list_icon" />
+                                <Label bindId="info" id="list_title" />
+                            </ItemTemplate>
+                        </Templates>
+                        <SearchBar id="list_customizer_search" />
+                        <ListSection>
+                        </ListSection>
+                        <Widget id="is" src="nl.fokkezb.infiniteScroll" onEnd="myLoader" />
+                    </ListView>
+                </Window>
+            </NavigationWindow>
+        </ContentView>
+    </Popover>
+</Alloy>
+

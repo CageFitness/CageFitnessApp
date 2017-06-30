@@ -1,4 +1,5 @@
 <Alloy>
+
     <View id="mainView" class="page_wrapper">
         <Require src="topbar" window_type="modal"></Require>
         <View id="pover_target"></View>
@@ -6,17 +7,22 @@
 
         <View class="customizer_list">
 
+					
+
 
 			<View id="tools">
+
+
+
 				<View id="pane_right">
 			        <View id="editmode">
-						<Label id="edit_mode_label"> EDIT MODE</Label>	
-			        	<Switch left="10" id="editSwitch" value="false" onChange="handleEnableEditing"/>		        	
+						<!-- <Label id="edit_mode_label"> EDIT MODE</Label>	 -->
+			        	<!-- <Switch left="10" id="editSwitch" value="false" onChange="handleEnableEditing"/>		        	 -->
 						<TabbedBar left="10" id="insert_remove">
-				    	    <Labels>
+<!-- 				    	    <Labels>
 				    	        <Label ttid="276" slug="body-weight">Insert</Label>
 				    	        <Label ttid="277" slug="bags">Remove</Label>
-				    	    </Labels>
+				    	    </Labels> -->
 				    	</TabbedBar>		        	
 			        </View>
 			        <ButtonBar id="customizer_btn_bar">
@@ -27,6 +33,14 @@
 			            </Labels>
 			        </ButtonBar>
 				</View>
+
+
+
+			<!-- <View id="activity_wrapper">
+                <ActivityIndicator id="activity_indicator" />
+            </View> -->	
+
+
 			</View>			
 
 			<OptionDialog id="dialog" title="Overwrite Workout?">
