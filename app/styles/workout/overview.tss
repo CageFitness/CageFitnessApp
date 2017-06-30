@@ -1,3 +1,32 @@
+
+
+
+"#progressbar": {
+	right:10,
+	top:10,
+    height: 110,
+    width: 110,
+    progressTintColor: '#d9e153',
+    trackTintColor: '#f5f5f5',
+    progressOpacity: 1,
+    trackOpacity: 0.8,
+    roundedCorners: true,
+    animatedProgress: true,
+    thicknessRatio: 0.15,
+    progress: 1,
+    textColor: '#d9e153',
+    textOpacity: 1,
+    textFont: {
+        fontFamily: 'Helvetica',
+        fontSize: 60,
+        // fontStyle: 'normal',
+        // fontWeight: 'bold'
+    },
+    text : ''
+}
+
+
+
 "#duration":{
 	right:0,
 	font:{
@@ -84,6 +113,15 @@
 	font: { fontSize: 18, fontWeight: 'bold' },
 	// backgroundColor: 'red',
 },
+
+
+"#rpic":{
+	left:0,
+	width:80,
+	height:40,
+	borderWidth:1,
+	borderColor:'#f8f8f8',
+}
 
 
 "#name": {

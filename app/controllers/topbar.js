@@ -8,6 +8,7 @@ if (window_type=='modal') {
 }
 
 $.button_wrapper.addEventListener('click',function(e){
+	clearInterval(Alloy.Globals.Timer);
 	Ti.App.fireEvent('cage/topbar/menu_button/close', {'window_type':args.window_type});
 });
 $.button_wrapper_login.addEventListener('click',function(e){

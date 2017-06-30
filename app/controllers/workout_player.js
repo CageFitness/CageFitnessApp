@@ -303,8 +303,10 @@ function proccessWorkout(n){
 			var rob = {};
 			
 			// is last in round
-			var last = (_.size(iterator)-1 === i) ? true : false;
+			var last = (i == _.size(iterator)-1) ? true : false;
+			// Ti.API.info('CHECKING.LAST:', i, _.size(iterator), '==',( _.size(iterator)-1),  last );
 			rob.last = last;
+			// rob.last = 'HOLA';
 			rob.round_number = cob.round_number;
 			rob.exercise_number = cob.exercise_number;
 			rob.file_index = getIndex(i);
@@ -332,6 +334,7 @@ function proccessWorkout(n){
 
 
 		}
+		Ti.API.info('=====');
 
 
 
@@ -392,6 +395,7 @@ function prepareVideoOwl(data){
 			sob.exercise_type = data[x].exercise_type;        	
         	sob.file_index = data[x].file_index;
         	sob.config = config;
+
         	addWorkoutElement('workout/overview',sob);
 			// Adds Slide Information to Round Navigator
 

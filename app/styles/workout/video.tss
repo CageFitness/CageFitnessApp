@@ -82,6 +82,13 @@
 "#counter":{
 	top:10,
 	right:20,
+	font:{
+		fontSize:18,
+		fontWeight:'bold',
+	},
+	width:100,
+	textAlign:Ti.UI.TEXT_ALIGNMENT_RIGHT,
+	// backgroundColor:'#f8f8f8',
 }
 
 ".small_text":{

@@ -11,8 +11,15 @@ var video = localvid || args.video || null;
 var next = args.next || null;
 
 
-Ti.API.info('IS.LAST.VIDEO.CHECK', args.last ? args.duration.config_round_duration_last : args.duration.config_round_duration)
+// Ti.API.info('IS.LAST.VIDEO.CHECK', args.last ? args.duration.config_round_duration_last : args.duration.config_round_duration)
+// Ti.API.info('\n===================================');
+// Ti.API.info('IS.LAST.VIDEO.CHECK.DURATION:', args.duration.config_round_duration);
+// Ti.API.info('IS.LAST.VIDEO.CHECK.DURATION.LAST:', args.duration.config_round_duration_last);
+// Ti.API.info('IS.LAST.VIDEO.CHECK.IS.LAST', args.last);
+// Ti.API.info('IS.LAST.VIDEO.CHECK.IS.USE.THIS:', args.last ? args.duration.config_round_duration_last : args.duration.config_round_duration);
+// Ti.API.info('===================================');
 
+var timer_duration = args.last ? args.duration.config_round_duration_last : args.duration.config_round_duration;
 
 
 
@@ -23,41 +30,50 @@ Ti.API.info('IS.LAST.VIDEO.CHECK', args.last ? args.duration.config_round_durati
 
 
 
+var stopped_at;
 
 
 
 
-
-var preview_timer = 20;
-var xInt;
+var preview_timer = timer_duration;
+// var Alloy.Globals.Timer;
 var increment = -(1/preview_timer);
 
 function resetCounter(){
-	clearInterval(xInt);
+	clearInterval(Alloy.Globals.Timer);
 	$.progressbar.progress = 1;
 	$.progressbar.text = Math.round($.progressbar.progress * preview_timer);	
 }
 
-
 function pauseCounter(){
-	clearInterval(xInt);
+	stopped_at = Alloy.Globals.Timer;
+	Ti.API.info('STOPPING.AT: ',fancyTimeFormat(stopped_at) );
+	clearInterval(Alloy.Globals.Timer);
 }
 
 
 function resumeCounter(){
+	Alloy.Globals.Timer = stopped_at;
 	startCounter();
+}
+
+function stopCounter(){
+	// stops and reset the counter;
+
 }
 
 
 
 function startCounter() {
 
-    xInt = setInterval(function() {
+    Alloy.Globals.Timer = setInterval(function() {
+
         $.progressbar.progress += increment;
+
         if ($.progressbar.text == 1) {
             //this clear Interval needs to be removed when closing the progress window.
-            clearInterval(xInt);
-            Ti.API.info('STOP');
+            clearInterval(Alloy.Globals.Timer);
+            Ti.API.info('STOP.VIDEO!!!!');
             animation.fadeOut($.progressbar, 500, function() {
                 // $.gifImage.stop();
                 // Ti.App.fireEvent('cagefitness_app_preview_finished', { 'video': args.data_title });
@@ -66,7 +82,13 @@ function startCounter() {
 
             });
         }
-        $.progressbar.text = Math.round($.progressbar.progress * preview_timer);
+        var pr = Math.abs(Math.round($.progressbar.progress * preview_timer));
+        Ti.API.info('TIMER.GOING:',pr);
+       	if(pr >= 0){
+       		$.progressbar.text = pr;
+       		$.counter.text = fancyTimeFormat(pr);
+       	}
+
     }, 1000);
 
 }
@@ -83,7 +105,7 @@ function startCounter() {
 $.vid.backgroundColor = Utils.getRandomColor();
 $.title.text = title;
 $.subtitle.text = subtitle;
-$.counter.text = counter;
+$.counter.text = fancyTimeFormat(timer_duration);
 // $.video_player_thumb.image = args.thumb;
 
 // args.index.hello($);
@@ -129,17 +151,24 @@ function createGif(){
 function onPlayPause(e){
 	if (e.item == item_index) {
 		Ti.API.info('You need to Pause this: ', e.item, $.full_video_wrapper.children);
+
+
 		if(_.size($.full_video_wrapper.children)){
 			if($.full_video_wrapper.children[0].getPlaying()){
 				$.full_video_wrapper.children[0].pause();
+				pauseCounter();
 			}
 			else{
 				$.full_video_wrapper.children[0].play();
+				resumeCounter();
 			}
 		}
+
+
+
 		// if($.full_video.getPlaying()){
 		// 	$.full_video.pause();
-		// 	clearInterval(xInt);
+		// 	clearInterval(Alloy.Globals.Timer);
 		// }
 		// else{
 		// 	$.full_video.play();
@@ -170,7 +199,7 @@ function createVideoPlayer() {
 
         // checks duration
         $.full_video.addEventListener('durationavailable', onDurationAvailable);
-        $.full_video.addEventListener('playbackstate', onPlayBackState);
+        // $.full_video.addEventListener('playbackstate', onPlayBackState);
 
 	   }
 
@@ -194,6 +223,7 @@ function stopAllVideoAssets(e){
 
 function onDurationAvailable(e){
             // Ti.API.info('DURATION.AVAILABLE: ', e.duration);
+             $.full_video.removeEventListener('durationavailable', onDurationAvailable);
             checkDuration(e);
             
 }
@@ -226,6 +256,7 @@ function animateVideoSlide(key) {
 	        Ti.API.info('INTRO.ANIMATION.ENDED');
 	        createVideoPlayer();
 	        resetCounter();
+	        clearInterval(Alloy.Globals.Timer);
 	        startCounter();
 	        createGif();
 	    })
@@ -249,7 +280,7 @@ function onOwlSlideEntered(e) {
 	if( _.size($.full_video_wrapper.children) > 0 ){
 		var item = $.full_video_wrapper.children[0];
 		item.removeEventListener('durationavailable', onDurationAvailable);
-		item.removeEventListener('playbackstate', onPlayBackState);
+		// item.removeEventListener('playbackstate', onPlayBackState);
 
 		item.stop();
 		$.full_video_wrapper.remove(item);
@@ -275,7 +306,7 @@ Ti.App.addEventListener('cage/topbar/menu_button/close', function(e){
 	
 	if(_.size($.full_video_wrapper.children)){
     	$.full_video_wrapper.children[0].removeEventListener('durationavailable', onDurationAvailable);
-    	$.full_video_wrapper.children[0].removeEventListener('playbackstate', onPlayBackState);	
+    	// $.full_video_wrapper.children[0].removeEventListener('playbackstate', onPlayBackState);	
 	}
 
 	Ti.App.removeEventListener('cage/workout/slide/entered', onOwlSlideEntered);

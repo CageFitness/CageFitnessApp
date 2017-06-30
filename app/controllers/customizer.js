@@ -39,29 +39,13 @@ $.insert_remove.addEventListener('click',function(e){
 
 
 function enableFeature(e, mode){
-	Ti.API.info('ENABLE.INSERT',e);
+	Ti.API.info('ENABLE.FEATURE',e, e.source);
 
-		if(mode=='insert'){
-			$.customizer_list_view.canInsert=true;
-			$.customizer_list_view.canEdit=false;
-			$.customizer_list_view.setEditing(true);
-		}
-		else if (mode=='edit'){
-			$.customizer_list_view.canInsert=false;
-			$.customizer_list_view.canEdit=true;
-			$.customizer_list_view.setEditing(true);
-		}
-		else if (mode=='replace'){
-			$.customizer_list_view.canInsert=false;
-			$.customizer_list_view.canEdit=false;
-			$.customizer_list_view.setEditing(false);
-		}
+
 
 		_.each($.customizer_list_view.sections,function(section,index){
-			
 			var sec = $.customizer_list_view.sections[index];
 			var els = sec.getItems();
-
 			_.each(els,function(item){
 				Ti.API.info('==== ITEM:',item.properties.launch_data.ID);
 				if(mode=='insert'){
@@ -80,12 +64,24 @@ function enableFeature(e, mode){
 					item.sub.visible=true;
 				}
 			});
-			
 			sec.replaceItemsAt(0,_.size(els),els);
+		});
 
-	})
-
-
+		if(mode=='insert'){
+			$.customizer_list_view.canInsert=true;
+			$.customizer_list_view.canEdit=false;
+			$.customizer_list_view.setEditing(true);
+		}
+		else if (mode=='edit'){
+			$.customizer_list_view.canInsert=false;
+			$.customizer_list_view.canEdit=true;
+			$.customizer_list_view.setEditing(true);
+		}
+		else if (mode=='replace'){
+			$.customizer_list_view.canInsert=false;
+			$.customizer_list_view.canEdit=true;
+			$.customizer_list_view.setEditing(false);
+		}
 
 }
 function enableRemove(e){
@@ -275,13 +271,13 @@ function handleListViewClick(e){
     var exercise = row.properties.launch_data;
     Ti.API.info('REPLACE.INTENT:',e, e.sectionIndex, e.itemIndex, e.source, row.properties.launch_data.ID);
     // launchExercise({'url':exercise.acf.video.url, 'title':exercise.post_title});
+    // Animation.shake(row);
     replaceExercise(e, 'replace');
 }
 
 function getCurrentMode(mode){
 	var modes = ['insert','replace','remove'];
-
-	return 
+	return;
 }
 
 function insertExercise(el,cli,validate_mode){
