@@ -29,12 +29,13 @@ function onButtonClose(e){
 	if(e.window_type == 'modal'){
 
 		Ti.API.info('WTYPE CHECK FROM WINDOW.XML: ', e.window_type);
-		$.win.remove($.main);
-		$.main = null;
-		$.win.close();
+		// $.win.remove($.main);
+		// $.main = null;
+		$.win.close({animated:true});
 
 	}
 	if(wtype=='customizer'){
+		Ti.API.info('REMOVING.BUTTON.CLOSE.LISTENER');
 		Ti.App.removeEventListener('cage/topbar/menu_button/close', onButtonClose);
 	}
 

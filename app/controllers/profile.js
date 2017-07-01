@@ -1,12 +1,4 @@
-// Arguments passed into this controller can be accessed via the `$.args` object directly or:
 var args = $.args;
-// var xhr = new XHR();
-
-// var the_image = args.image || '';
-// var the_title = args.title || '';
-
-// $.thumb.image = the_image;
-// $.thumb_title.text = the_title;
 var user = JSON.parse( Ti.App.Properties.getString('user') ) || {};
 
 Ti.API.info('USER:',user.name, user.slug);
@@ -14,8 +6,6 @@ Ti.API.info('USER:',user.name, user.slug);
 
 function handleListViewClick(e){
 	Ti.API.info(e);
-	// $.pimage.image = user.avatar_urls[0];
-	// setAvatar();
 	var wkt = Ti.App.Properties.getString('my_workout');
 	Ti.App.fireEvent('cage/launch/window',{key:'menu_workouts', 'workout_id':wkt});
 }
@@ -28,7 +18,6 @@ function init_profile(){
 	user = JSON.parse( Ti.App.Properties.getString('user') ) || {};
 	$.user_complete_name.text = user.name;
 	$.user_username.text = user.slug;
-	// getMyWorkout(user);
 	setAvatar();
 	Ti.API.info('PROFILE IMAGE: ', user.avatar_urls['96'] );
 	getMyWorkout(user);
@@ -42,8 +31,6 @@ function setAvatar(){
 
 function getMyWorkout(usr){
 	// ?author=617&per_page=1
-	
-
 	var data = {
 		'author':usr.id,
 		'per_page':1,
@@ -57,20 +44,6 @@ function getMyWorkout(usr){
 function onSuccessMyWorkout(e){
 	
 	if(_.size(e.data) > 0){
-
-
-
-		var elementData = [
-			{"name":"Hydrogen", url:"uno.com" },
-			{"name":"Helium" },
-			{"name":"Lithium" },
-			{"name":"Beryllium" },
-			{"name":"Boron"	},
-			{"name":"Carbon" },
-			{"name":"Nitrogen"}
-		];
-
-
 
 
 		var my = e.data;

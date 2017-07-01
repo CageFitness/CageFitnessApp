@@ -130,6 +130,8 @@ $.dialog.addEventListener('click',function(e){
 	// $.activity_indicator.show();
 	// sendData();
 
+	Alloy.Globals.updateWorkout=0;
+
 });
 
 function saveWorkout(e){

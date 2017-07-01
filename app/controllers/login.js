@@ -32,7 +32,7 @@ function cageAuthenticate(e){
 }
 
 function onErrorCallbackSilent(e){
-    Ti.API.info('ERROR: ',e);
+    Ti.API.info('LOGIN.ERROR: ',e);
     // Animation.shake($.login_panel);
 }
 function onErrorCallback(e){

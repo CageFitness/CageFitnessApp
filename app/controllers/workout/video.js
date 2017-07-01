@@ -47,7 +47,7 @@ function resetCounter(){
 
 function pauseCounter(){
 	stopped_at = Alloy.Globals.Timer;
-	Ti.API.info('STOPPING.AT: ',fancyTimeFormat(stopped_at) );
+	Ti.API.info('STOPPING.AT: ',stopped_at );
 	clearInterval(Alloy.Globals.Timer);
 }
 
@@ -86,7 +86,7 @@ function startCounter() {
         Ti.API.info('TIMER.GOING:',pr);
        	if(pr >= 0){
        		$.progressbar.text = pr;
-       		$.counter.text = fancyTimeFormat(pr);
+       		$.counter.text = Utils.fancyTimeFormat(pr);
        	}
 
     }, 1000);
@@ -105,7 +105,7 @@ function startCounter() {
 $.vid.backgroundColor = Utils.getRandomColor();
 $.title.text = title;
 $.subtitle.text = subtitle;
-$.counter.text = fancyTimeFormat(timer_duration);
+$.counter.text = Utils.fancyTimeFormat(timer_duration);
 // $.video_player_thumb.image = args.thumb;
 
 // args.index.hello($);

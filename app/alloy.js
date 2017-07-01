@@ -1,3 +1,6 @@
+var getRandomInt = function(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 var fancyTimeFormat = function(time)
 {   
@@ -14,8 +17,6 @@ var fancyTimeFormat = function(time)
     ret += "" + secs;
     return ret;
 }
-Alloy.Globals.Timer = 0;
-clearInterval(Alloy.Globals.Timer);
 
 NappDownloadManager = require("dk.napp.downloadmanager");
 NappDownloadManager.permittedNetworkTypes = NappDownloadManager.NETWORK_TYPE_ANY;
@@ -26,24 +27,20 @@ NappDownloadManager.cleanUp();
 Timer = require('countdowntimer');
 Animation = require('alloy/animation');
 XHR = require('xhr');
-
 Utils = require('utils');
-
-
+Alloy.Globals.updateWorkout = false;
+Alloy.Globals.Timer = 0;
+clearInterval(Alloy.Globals.Timer);
 Alloy.Globals.XHROptions = {
     // shouldAuthenticate:false,
     parseJSON:true,
     debug:true,
 };
 
-
 var xhr = new XHR();
 Ti.API.info('XHR.CLEAN.TRIGGERED.ON.APP.START');
 xhr.clean();
 
-
 Ti.API.info('===============');
-
-
 Ti.API.info('===============');
 

@@ -4,20 +4,6 @@ exports.getRandomColor = function(){
 	return 'rgba(' + _.random(0,255) + ',' + _.random(0,255) + ',' + _.random(0,255) + ', 1.0)';	
 }
 
-
-/**
- * @method getViewByClass
- * This will take a class and an optional parent and find children with that class
- * Untested but would pretty likely work
- * @param {String} _class Class name
- * @param {Object} _parent Optional Parent View to iterate through
- * @param {Number} _depth Optional depth of recursiveness
- * @return {Array} Array of views with the class
- * 
- * @TODO Implement _depth and recursive calls
- */ 
-
-
 exports.getViewByClass = function(_class, _parent, _depth) {
     _parent = _parent || $.main;
     var classArray = [];
@@ -34,4 +20,26 @@ exports.getViewByClass = function(_class, _parent, _depth) {
 exports.getIndex = function(n){
 	r = Number(n)+1; 
 	return r;
+}
+
+
+
+exports.getRandomInt = function(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+exports.fancyTimeFormat = function(time)
+{   
+    // Hours, minutes and seconds
+    var hrs = ~~(time / 3600);
+    var mins = ~~((time % 3600) / 60);
+    var secs = time % 60;
+    // Output like "1:01" or "4:03:59" or "123:03:59"
+    var ret = "";
+    if (hrs > 0) {
+        ret += "" + hrs + ":" + (mins < 10 ? "0" : "");
+    }
+    ret += "" + mins + ":" + (secs < 10 ? "0" : "");
+    ret += "" + secs;
+    return ret;
 }

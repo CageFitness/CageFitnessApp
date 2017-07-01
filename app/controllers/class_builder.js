@@ -157,6 +157,7 @@ function sendData(){
 	Ti.API.info('URL:',urlx);
 
 	xhr.POST('https://cagefitness.com/wp-json/app/v1/my-workout', finalData, onSuccessCustomizer, onErrorCustomizer);
+	Alloy.Globals.updateWorkout = 1;
 
 }
 

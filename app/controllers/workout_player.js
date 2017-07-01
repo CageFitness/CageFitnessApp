@@ -447,7 +447,7 @@ function populateRoundNavigator(button_bar_labels){
 }
 
 function onSuccessWorkoutCallback(e){
-
+	Ti.API.info(e.data.headers);
     // Ti.API.info('VIDEO:', e.data.acf.round_selector[0].customizer[0].acf.video.url);
     // Ti.API.info('GIF:', e.data.acf.round_selector[0].customizer[0].acf.video_animated_thumbnail.url);
     // Ti.API.info('THUMB:', e.data.acf.round_selector[0].customizer[0].acf.video_featured.url);
@@ -484,10 +484,12 @@ function loadConfig(){
 
 function loadWorkout(){
 	var wid = Ti.App.Properties.getString('my_workout');
-	var wurl = workout_final_url+wid;
+	var updatedCall = Alloy.Globals.updateWorkout ? '?rn='+Utils.getRandomInt(0,1000000) : '';
+	var wurl = workout_final_url+wid+updatedCall;
 	Ti.API.info('ATTEMPT.LOAD.WORKOUT_PLAYER', wurl);
 	// Alloy.Globals.XHROptions.ttl=300;
 	xhr.GET(wurl, onSuccessWorkoutCallback, onErrorWorkoutCallback, Alloy.Globals.XHROptions);
+	Alloy.Globals.updateWorkout=0;
 }
 
 function startOverviewClock(){

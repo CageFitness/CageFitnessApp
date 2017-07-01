@@ -28,7 +28,7 @@ $.overview.backgroundColor = '#fff';
 	$.title_type.text = exercise_type.label;
 	if(args.type!='static'){
 		$.subtitle.text = 'Equipment: ' + exercise_equipment.label;
-		$.counter_big.text = fancyTimeFormat(counter);
+		$.counter_big.text = Utils.fancyTimeFormat(counter);
 	}
 	else{
 		$.counter_big.text = '';
@@ -103,32 +103,22 @@ function stopCounter(){
 
 
 function startCounter() {
-
     Alloy.Globals.Timer = setInterval(function() {
-
         $.progressbar.progress += increment;
-
         if ($.progressbar.text == 1) {
-            //this clear Interval needs to be removed when closing the progress window.
             clearInterval(Alloy.Globals.Timer);
             Ti.API.info('STOP.VIDEO!!!!');
             Animation.fadeOut($.progressbar, 500, function() {
-                // $.gifImage.stop();
-                // Ti.App.fireEvent('cagefitness_app_preview_finished', { 'video': args.data_title });
-                
                 Ti.App.fireEvent('cage/video/progressbar/finished',{'index':item_index});
-
             });
         }
         var pr = Math.abs(Math.round($.progressbar.progress * preview_timer));
         Ti.API.info('TIMER.GOING:',pr);
        	if(pr >= 0){
        		$.progressbar.text = pr;
-       		$.counter_big.text = fancyTimeFormat(pr);
+       		$.counter_big.text = Utils.fancyTimeFormat(pr);
        	}
-
     }, 1000);
-
 }
 
 
@@ -178,7 +168,7 @@ function describeRound2(){
 			properties:{height:30},
 			name:{text:item.post_title},
 			rxIndex:{color:'#090', text:round_number+"."+getIndex(index)},
-			duration:{text:fancyTimeFormat(duration)}
+			duration:{text:Utils.fancyTimeFormat(duration)}
 		}
 
 		items.push(ob);
