@@ -5,11 +5,11 @@ var getURLSessionIdentifier = function(){
 };
 
 
-NappDownloadManager = require("dk.napp.downloadmanager");
-NappDownloadManager.permittedNetworkTypes = NappDownloadManager.NETWORK_TYPE_ANY;
-NappDownloadManager.maximumSimultaneousDownloads = 2;
-NappDownloadManager.stopDownloader();
-NappDownloadManager.cleanUp();
+// NappDownloadManager = require("dk.napp.downloadmanager");
+// NappDownloadManager.permittedNetworkTypes = NappDownloadManager.NETWORK_TYPE_ANY;
+// NappDownloadManager.maximumSimultaneousDownloads = 2;
+// NappDownloadManager.stopDownloader();
+// NappDownloadManager.cleanUp();
 
 Timer = require('countdowntimer');
 Animation = require('alloy/animation');
@@ -60,7 +60,7 @@ Alloy.Globals.WorkoutAssets = [];
 Ti.App.iOS.addEventListener('downloadprogress', function(e) {
     // Update the progress indicator
 
-    var progress = (e.totalBytesWritten / e.totalBytesExpectedToWrite);
+    // var progress = (e.totalBytesWritten / e.totalBytesExpectedToWrite);
     // $.downprogress.value = (e.totalBytesWritten / e.totalBytesExpectedToWrite);
    // Alloy.Globals.DownloadProgress = progress;
 });
@@ -89,6 +89,10 @@ Ti.App.iOS.addEventListener('downloadcompleted', function(e) {
 			var inqueue = _.size(Alloy.Globals.WorkoutAssets);
 			Ti.API.info('ASSET.DOWNLOAD.COMPLETE:', completed, inqueue, completed/inqueue,  JSON.stringify(task_completed));
 			Alloy.Globals.DownloadProgress=completed/inqueue;
+			if(Alloy.Globals.downprogress){
+				Alloy.Globals.downprogress.value=Alloy.Globals.DownloadProgress;
+			}
+
 		} else {
 			Ti.API.info('[SAVE.FILE:] NO ]');
 		}
@@ -110,8 +114,12 @@ Ti.App.iOS.addEventListener('sessioneventscompleted', function(e) {
 
 });
  
- 
+function hideActivity(){
+	Ti.API.info('SHOULD.HIDE.ONLY.ONCE');
+	Alloy.Globals.prog.hide();
+}
 // Monitor this event to know when all session tasks have completed
+// Ti.App.iOS.addEventListener('sessioncompleted', function(e) {
 Ti.App.iOS.addEventListener('sessioncompleted', function(e) {
     
     if (e.success) {
@@ -122,9 +130,11 @@ Ti.App.iOS.addEventListener('sessioncompleted', function(e) {
     	if(completed>0 && completed===total){
     		Ti.API.info('ONSESSIONCOMPLETED: ' + JSON.stringify(e));
     		Ti.API.info(' ========== ALL DOWNLOADS COMPLETE, GO WORKOUT!!!!');
+    		Animation.fadeOut(Alloy.Globals.downprogress);
     		// Ti.App.iOS.removeEventListener('downloadcompleted', onDownloadComplete);
-    		if(Alloy.Globals.prog){
-    			Alloy.Globals.prog.hide();
+    		if(Alloy.Globals.downprogress){
+    			// _.once(hideActivity);
+    			Animation.fadeOut(Alloy.Globals.downprogress);
     		}
 		    // Notify the user the download is complete if the application is in the background
 		    // Ti.App.iOS.scheduleLocalNotification({

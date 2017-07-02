@@ -27,32 +27,49 @@ $.scrollable.addEventListener('postlayout',function(e){
 
 var round_tool=[];
 
+Alloy.Globals.downprogress = $.downprogress;
 
 
 
 
 
+function showActivity(){
+	Ti.API.info('This should work only once.');
+	$.downprogress.show();
+}
+function hideActivity(){
+	Ti.API.info('This should work only once.');
+	$.downprogress.hide();
+}
 
- 
+
+function onDownloadProgress(e){
+	_.once(showActivity);
+}
+
+Ti.App.iOS.addEventListener('downloadprogress', onDownloadProgress);
 
 
 function onDownloadComplete(e){
+
     var task_completed = _.findWhere(Alloy.Globals.WorkoutAssets,{task:e.taskIdentifier});
     if( task_completed && task_completed.filename ) {
-    	Ti.API.info('AFTER.ASKING:');
     	var completed = _.size(_.where(Alloy.Globals.WorkoutAssets, {complete: true}));
-		var inqueue = _.size(Alloy.Globals.WorkoutAssets);
-		Ti.API.info('ASSET.DOWNLOAD.COMPLETE:', completed, inqueue, JSON.stringify(task_completed));
-		Ti.API.info('CALCULATE:', completed, inqueue, completed/inqueue );
-		$.downprogress.value=Alloy.Globals.DownloadProgress;
-		Alloy.Globals.prog = $.downprogress;
+	    var file = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'cached/'+task_completed.filename);
+		if(file.exists()) {
+	    	Ti.API.info('AFTER.ASKING:', task_completed.task, e.taskIdentifier);
+			var inqueue = _.size(Alloy.Globals.WorkoutAssets);
+			Ti.API.info('ASSET.DOWNLOAD.COMPLETE:', completed, inqueue, JSON.stringify(task_completed));
+			Ti.API.info('CALCULATE:', completed, inqueue, completed/inqueue );
+			// $.downprogress.value=Alloy.Globals.DownloadProgress;
+			// xxxxx
+		} else {
+
+		}
 	}
 
 }
-Ti.App.iOS.addEventListener('downloadcompleted', onDownloadComplete);
-
-
-
+// Ti.App.iOS.addEventListener('downloadcompleted', onDownloadComplete);
 
 
 
@@ -124,10 +141,10 @@ function init(){
 
 	// Remove Events?
 
-	NappDownloadManager.addEventListener('progress', ReportProgress);
-	NappDownloadManager.addEventListener('completed', ReportProgress);
-	NappDownloadManager.stopDownloader();
-	NappDownloadManager.cleanUp();
+	// NappDownloadManager.addEventListener('progress', ReportProgress);
+	// NappDownloadManager.addEventListener('completed', ReportProgress);
+	// NappDownloadManager.stopDownloader();
+	// NappDownloadManager.cleanUp();
 
 	config = JSON.parse( Ti.App.Properties.getString('config') || loadConfig() );
 	Ti.API.info('LOADING.CONFIGURATION.WORKOUT:',config);
@@ -159,10 +176,10 @@ $.dlmanlabel.addEventListener('click',function(e){
 	Ti.API.info(old_cache);
 	Ti.API.info(current_cache);
 	Ti.API.info('==============================');
-	NappDownloadManager.stopDownloader();
-	NappDownloadManager.resumeAll();
-	NappDownloadManager.restartDownloader();
-	Ti.API.info(NappDownloadManager.getAllDownloadInfo());
+	// NappDownloadManager.stopDownloader();
+	// NappDownloadManager.resumeAll();
+	// NappDownloadManager.restartDownloader();
+	// Ti.API.info(NappDownloadManager.getAllDownloadInfo());
 	Ti.API.info('==============================');
 })
 
@@ -192,6 +209,7 @@ function scrollNextFromVideo(e) {
 }
 
 function ReportProgress(e) {
+	Ti.API.info('REPORT.PROGRESS.SHOULD.NOT.PLAY');
 	var p = calculateProgress();
 
 	if(!p.remaining>=1){
@@ -438,7 +456,7 @@ function addToDownloadSession(ob){
 		}
 		Alloy.Globals.WorkoutAssets.push(TaskObject);
 	}
-	Ti.API.info('ADDED.TO.DOWNLOAD.QUEUE:', in_cache, ob.filename);
+	Ti.API.info('CACHED? --> ', in_cache? 'YES' : 'NO ' , ob.filename);
 }
 
 
@@ -467,7 +485,7 @@ function getExerciseDuration(round_size){
 
 function prepareVideoOwl(data){
     
-	owl_views = [];
+	// owl_views = [];
     for (var x=0;x<data.length;x++){
 
     	// if first Owl slide
@@ -536,22 +554,14 @@ function prepareVideoOwl(data){
 
 function populateRoundNavigator(button_bar_labels){
 
-    // var toolW = _.size(button_bar_labels) * 38;
+    var toolW = _.size(button_bar_labels) * 38;
 	$.round_btn_bar.labels = button_bar_labels;
-	// $.round_btn_bar.setWidth(toolW);
-	// position to left side of player play buttons
-	// $.round_btn_bar.left= -($.workout_player_buttons.width/2);
+	$.round_btn_bar.applyProperties({width:toolW, visible:true});
 
 	$.round_btn_bar.addEventListener('click',function(e){
 		Ti.API.info('TOOL.BAR.EDIT:',e.source.labels[e.index]);
-		// xxxx
 		clearInterval(Alloy.Globals.Timer);
 		$.round_btn_bar.labels[e.index].cb(e, $.round_btn_bar.labels[e.index].mode, e.source.labels[e.index]);
-	});
-
-	$.round_btn_bar.addEventListener('postlayout',function(e){
-		$.round_btn_bar.visible=true;
-		// Animation.fadeIn($.round_btn_bar);
 	});
 
 
