@@ -4,7 +4,11 @@ var log = require('log');
 var workout_url = Alloy.CFG.api_url + Alloy.CFG.workout_test_path;
 var workout_final_url = Alloy.CFG.api_url + Alloy.CFG.workout_final_path;
 var user_workout_url = Alloy.CFG.api_url + Alloy.CFG.user_workout_path;
+
 var videos_queue = [];
+var assets_queue = [];
+var owl_views = [];
+
 var initial_dlinfo;
 // ?author=617&per_page=1
 var config;
@@ -12,11 +16,13 @@ var cage_cache_dir = Titanium.Filesystem.getFile(Titanium.Filesystem.application
 
 
 $.round_btn_bar.addEventListener('postlayout',function(e){
-	$.round_btn_bar.visible=true;
+	Ti.API.info('POST.LAYOUT.TRIGGERED',e);
+	// $.round_btn_bar.visible=true;
 });
 
 $.scrollable.addEventListener('postlayout',function(e){
-	$.scrollable.visible=true;
+	Ti.API.info('POST.LAYOUT.TRIGGERED',e);
+	// $.scrollable.visible=true;
 });
 
 var round_tool=[];
@@ -249,43 +255,7 @@ function calculateProgress(){
 	return o;
 }
 
-function addFileToDownloadQueue(filename, file_url){
-	if (filename && file_url) {
-		var file = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'cached/'+ filename);
-		var ob = {};
-		ob.filename = filename;
-		ob.url = file_url;
-		ob.native_path = file.nativePath;
-		videos_queue.push(ob);
-	}
-}
 
-
-function addAssetsToDownloadManager(){
-
-
-
-	_.each(videos_queue || [], function(item){
-
-		// If file is not already in cache folder add it to download manager queue.
-		var result = _.findWhere(NappDownloadManager.getAllDownloadInfo(), {url: item.url});
-		var is_match = Boolean(result);
-		// Ti.API.info(item.url, ' --> ',  is_match ? 'FOUND':'NOT_FOUND');
-		
-		if(!is_match){
-			// Ti.API.info('ADDED TO DOWNLOAD MANAGER:: ', is_match);
-			addVideoToDownloadManager(item);
-		}
-
-	});
-
-	initial_dlinfo = NappDownloadManager.getAllDownloadInfo();
-
-	Ti.API.info('__________________________')
-	Ti.API.info('DLINFO:',  _.size(NappDownloadManager.getAllDownloadInfo()), 'VIDEOS.QUEUE', _.size(videos_queue) );
-	Ti.API.info('__________________________')
-
-}
 
 
 function handleDownloadManager(e){
@@ -364,8 +334,8 @@ function proccessWorkout(n){
 			// Ti.API.info( 'ITERATOR LEN: ' + _.size(iterator), (i < _.size(iterator)-1) );
 
 			
-			addToDownloadSession({url:rob.video, filename:rob.filename});
-			addToDownloadSession({url:rob.thumb, filename:rob.thumb_filename});
+			// addToDownloadSession({url:rob.video, filename:rob.filename});
+			// addToDownloadSession({url:rob.thumb, filename:rob.thumb_filename});
 			
 
 			// var vidtask = Alloy.Globals.SessionDownloader.downloadTask({url:rob.video, filename:rob.filename});
@@ -387,6 +357,9 @@ function proccessWorkout(n){
 			// addFileToDownloadQueue(rob.filename, rob.video);
 			// addFileToDownloadQueue(rob.thumb_filename, rob.thumb);
 
+			addFileToDownloadQueue2(rob.filename, rob.video);
+			addFileToDownloadQueue2(rob.thumb_filename, rob.thumb);
+
 			exercises.push(rob);
 
 
@@ -398,12 +371,66 @@ function proccessWorkout(n){
 
 }
 
+
+
+
+function addAssetsToSessionDownloadManager(){
+	_.each(assets_queue || [], function(item){
+		addToDownloadSession(item);
+	});
+}
+
+
+function addAssetsToDownloadManager(){
+	_.each(videos_queue || [], function(item){
+		// If file is not already in cache folder add it to download manager queue.
+		var result = _.findWhere(NappDownloadManager.getAllDownloadInfo(), {url: item.url});
+		var is_match = Boolean(result);
+		// Ti.API.info(item.url, ' --> ',  is_match ? 'FOUND':'NOT_FOUND');
+		if(!is_match){
+			// Ti.API.info('ADDED TO DOWNLOAD MANAGER:: ', is_match);
+			addVideoToDownloadManager(item);
+		}
+	});
+
+	initial_dlinfo = NappDownloadManager.getAllDownloadInfo();
+
+	Ti.API.info('__________________________')
+	Ti.API.info('DLINFO:',  _.size(NappDownloadManager.getAllDownloadInfo()), 'VIDEOS.QUEUE', _.size(videos_queue) );
+	Ti.API.info('__________________________')
+
+}
+
+
+function addFileToDownloadQueue(filename, file_url){
+	if (filename && file_url) {
+		var file = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'cached/'+ filename);
+		var ob = {};
+		ob.filename = filename;
+		ob.url = file_url;
+		ob.native_path = file.nativePath;
+		videos_queue.push(ob);
+	}
+}
+
+
+
+
+function addFileToDownloadQueue2(filename, file_url){
+	if (filename && file_url) {
+		var file = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'cached/'+ filename);
+		var ob = {};
+		ob.filename = filename;
+		ob.url = file_url;
+		ob.native_path = file.nativePath;
+		assets_queue.push(ob);
+	}
+}
+
 function addToDownloadSession(ob){
-
 	// add to download task if video does not exist in cached app directoy
-	Ti.API.info('CHECKING.OB:',ob, isInCache(ob.filename));
-
-	if( !isInCache(ob.filename) ){
+	var in_cache = isInCache(ob.filename);
+	if( !in_cache ){
 		var task = Alloy.Globals.SessionDownloader.downloadTask({url:ob.url, filename:ob.filename});
 		var TaskObject = {
 			task:task,
@@ -411,8 +438,8 @@ function addToDownloadSession(ob){
 			filename:ob.filename,
 		}
 		Alloy.Globals.WorkoutAssets.push(TaskObject);
-		Ti.API.info('ADDED.TO.DOWNLOAD.QUEUE:',JSON.stringify(TaskObject));
 	}
+	Ti.API.info('ADDED.TO.DOWNLOAD.QUEUE:', in_cache, ob.filename);
 }
 
 
@@ -441,7 +468,7 @@ function getExerciseDuration(round_size){
 
 function prepareVideoOwl(data){
     
-
+	owl_views = [];
     for (var x=0;x<data.length;x++){
 
     	// if first Owl slide
@@ -468,7 +495,10 @@ function prepareVideoOwl(data){
         	sob.file_index = data[x].file_index;
         	sob.config = config;
 
-        	addWorkoutElement('workout/overview',sob);
+        	Ti.API.info('ADDING.OVERVIEW:');
+        	var overview_view = {type:'workout/overview',data:sob};
+        	owl_views.push(overview_view);
+        	// addWorkoutElement('workout/overview',sob);
 			// Adds Slide Information to Round Navigator
 
 			// _TOOL
@@ -482,17 +512,21 @@ function prepareVideoOwl(data){
         	sob.exercise_number = data[x].exercise_number;
 		    sob.duration = getExerciseDuration(sob.exercise_number);
 
-
-
-        	addWorkoutElement('workout/video',sob);	
+		    Ti.API.info('ADDING.VIDEO:');
+		    var video_view = {type:'workout/video',data:sob}
+		    owl_views.push(video_view);
+        	// addWorkoutElement('workout/video',sob);
         }
         
     };
 
 
 
+    var finish_view  = {type:'workout/finish',data:{title:'Well Done!', type:'static'}};
+    Ti.API.info('ADDING.FINISH:');
+    owl_views.push(finish_view);
 
-    addWorkoutElement('workout/finish',{title:'Well Done!', type:'static'});
+    // addWorkoutElement('workout/finish',{title:'Well Done!', type:'static'});
 
     
 
@@ -511,6 +545,8 @@ function populateRoundNavigator(button_bar_labels){
 
 	$.round_btn_bar.addEventListener('click',function(e){
 		Ti.API.info('TOOL.BAR.EDIT:',e.source.labels[e.index]);
+		// xxxx
+		clearInterval(Alloy.Globals.Timer);
 		$.round_btn_bar.labels[e.index].cb(e, $.round_btn_bar.labels[e.index].mode, e.source.labels[e.index]);
 	});
 
@@ -530,6 +566,7 @@ function onSuccessWorkoutCallback(e){
     // Ti.API.info('THUMB:', e.data.acf.round_selector[0].customizer[0].acf.video_featured.url);
     // closeIndicator();
 	exercises = [];
+	assets_queue = [];
 	// var parsed = JSON.parse(e);
 	// Ti.API.info(e);
 	var data = e.data.acf.round_selector;
@@ -537,12 +574,17 @@ function onSuccessWorkoutCallback(e){
 
 	proccessWorkout(data);
 	prepareVideoOwl(exercises);
+	Ti.API.info('ATTEMPT.BEFORE.OWL');
+	addOwlElements(owl_views);
+	Ti.API.info('ATTEMPT.AFTER.OWL');
     populateRoundNavigator(round_tool);
 
 
-	addAssetsToDownloadManager(videos_queue);
-	NappDownloadManager.restartDownloader();
-	NappDownloadManager.resumeAll();
+	// addAssetsToDownloadManager(videos_queue);
+
+	addAssetsToSessionDownloadManager(assets_queue);
+	// NappDownloadManager.restartDownloader();
+	// NappDownloadManager.resumeAll();
 
 }
 
@@ -585,6 +627,15 @@ function addVideoSlide(data){
 	$.scrollable.addView(slide.getView());	
 }
 
+function addOwlElements(items){
+	var owl_pages = [];
+	_.each(items,function(item,index){
+		var page = Alloy.createController(item.type,item.data);
+		owl_pages.push(page.getView());
+	});
+	$.scrollable.setViews(owl_pages);
+}
+
 function addWorkoutElement(type, data){
 	var item = Alloy.createController(type,data);
 	// item.bark();
@@ -597,28 +648,31 @@ function PlayPause(){
 
 function scrollNext() {
 	Ti.API.info('THISPAGE: ' + $.scrollable.currentPage);
+
 	$.scrollable.scrollToView($.scrollable.currentPage + 1);
 }
 
 function scrollPrev() {
 	Ti.API.info('THISPAGE: ' + $.scrollable.currentPage);
+
 	$.scrollable.scrollToView($.scrollable.currentPage - 1);
 }
 
 function scrollToRound(e, overview) {
 	Ti.API.info('SCROLL.TO.ROUND: ' + $.scrollable.currentPage);
 	var roundSlide = overview;
-	$.scrollable.scrollToView(roundSlide);
+	// $.scrollable.scrollToView(roundSlide);
+	$.scrollable.setCurrentPage(roundSlide);
 }	
 
 
 
 function scrollToLast() {
 	Ti.API.info('TOTAL.CHILDREN: ' ,_.size($.scrollable.views) )
-    $.scrollable.scrollToView(_.size($.scrollable.views)-1); // Index or view
+    $.scrollable.setCurrentPage(_.size($.scrollable.views)-1); // Index or view
 }
 function scrollToView() {
-    $.scrollable.scrollToView(0); // Index or view
+    $.scrollable.setCurrentPage(0); // Index or view
 }
 
 function addNewView() {

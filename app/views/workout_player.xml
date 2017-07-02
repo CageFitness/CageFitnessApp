@@ -1,13 +1,14 @@
 <Alloy>
-    <View id="mainView" class="container">
+    <View id="mainView">
         <Require src="topbar" window_type="modal"></Require>
+		<View class="dl">
+			<ProgressBar id="downprogress"></ProgressBar>
+		</View>        
         <ScrollableView id="scrollable" onScrollend="scrollableViewDidScroll">
         </ScrollableView>
         <View id="toolbar_wrapper">
 
-			<View class="dl">
-				<ProgressBar id="downprogress"></ProgressBar>
-			</View>
+
 
             <ButtonBar id="workout_player_buttons">
                 <Labels>

@@ -2,7 +2,7 @@
 <ti:app xmlns:ti="http://ti.appcelerator.org">
     <id>com.cagefitness.pro</id>
     <name>Cage Fitness Pro</name>
-    <version>1.5.09</version>
+    <version>1.5.06</version>
     <publisher>Cage Fitness Inc.</publisher>
     <url>http://lithiumlab.com</url>
     <description>not specified</description>
@@ -65,7 +65,7 @@
         <module platform="iphone">hyperloop</module>
         <module platform="iphone">dk.napp.downloadmanager</module>
         <module platform="iphone">com.appcelerator.urlSession</module>
-    </modules<name />
+    </modules>
     <deployment-targets>
         <target device="android">false</target>
         <target device="ipad">true</target>

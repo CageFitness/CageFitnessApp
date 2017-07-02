@@ -72,19 +72,26 @@ Ti.App.iOS.addEventListener('downloadcompleted', function(e) {
     	task_completed.complete=true;
     }
     var completed = _.size(_.where(Alloy.Globals.WorkoutAssets, {complete: true}));
-    // var saved = Utils.saveFile({filename:task_completed.filename, blob:e.data, directory:'cached'});
     var directory= 'cached';
-    var file = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, directory+'/'+task_completed.filename);
-	file.write(e.data);
-	if(file.exists) {
-		Ti.API.info('[saveFile] Saved: YES! (' + file.nativePath + ')');
-	} else {
-		Ti.API.info('[saveFile] Saved: NO!');
+    Ti.API.info('BEFORE.ASKING:');
+
+
+    if( task_completed && task_completed.filename ) {
+    	 Ti.API.info('AFTER.ASKING:');
+	    var file = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, directory+'/'+task_completed.filename);
+	    // Write file data
+		file.write(e.data);
+		if(file.exists) {
+			Ti.API.info('[saveFile] Saved: YES! (' + file.nativePath + ')');
+		} else {
+			Ti.API.info('[saveFile] Saved: NO!');
+		}
+		Ti.API.info('ASSET.DOWNLOAD.COMPLETE:', completed, file.exists, JSON.stringify(task_completed));
 	}
 
-    Ti.API.info('ASSET.DOWNLOAD.COMPLETE.COUNT:', completed, file.exists, JSON.stringify(task_completed));
-    // completed, _.size(Alloy.Globals.WorkoutAssets),
-    // If file doesn't exist.. save it to cache:
+
+    
+
    
 
 });
@@ -100,20 +107,19 @@ Ti.App.iOS.addEventListener('sessioneventscompleted', function(e) {
 // Monitor this event to know when all session tasks have completed
 Ti.App.iOS.addEventListener('sessioncompleted', function(e) {
     Ti.API.info('sessioncompleted: ' + JSON.stringify(e));
-    Ti.API.info('sessioncompleted.source: ' + JSON.stringify(e.source));
     if (e.success) {
         
         var completed = _.size(_.where(Alloy.Globals.WorkoutAssets, {complete: true}));
         var total = _.size(Alloy.Globals.WorkoutAssets);
-        
-    	if(completed===total){
+
+    	if(completed>0 && completed===total){
     		Ti.API.info('========== ALL DOWNLOADS COMPLETE, GO WORKOUT!!!!');
 		    // Notify the user the download is complete if the application is in the background
 		    Ti.App.iOS.scheduleLocalNotification({
 		        alertBody: 'Cage Downloads Completed!',
 		        date: new Date().getTime() 
 		    });
-		    alert('Downloads completed successfully.');
+		    // alert('Downloads completed successfully.');
     	}
 
     
