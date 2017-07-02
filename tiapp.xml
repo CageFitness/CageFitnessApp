@@ -2,7 +2,7 @@
 <ti:app xmlns:ti="http://ti.appcelerator.org">
     <id>com.cagefitness.pro</id>
     <name>Cage Fitness Pro</name>
-    <version>1.5.10</version>
+    <version>1.5.11</version>
     <publisher>Cage Fitness Inc.</publisher>
     <url>http://lithiumlab.com</url>
     <description>not specified</description>
@@ -61,9 +61,9 @@
         <module platform="iphone">de.marcelpociot.circularprogress</module>
         <module platform="iphone">br.com.arlsoft.progressbar</module>
         <module platform="iphone">de.marcelpociot.imagefromgif</module>
-        <module platform="android">hyperloop</module>
-        <module platform="iphone">hyperloop</module>
-        <module platform="iphone">dk.napp.downloadmanager</module>
+        <!-- <module platform="android">hyperloop</module> -->
+        <!-- <module platform="iphone">hyperloop</module> -->
+        <!-- <module platform="iphone">dk.napp.downloadmanager</module> -->
         <module platform="iphone">com.appcelerator.urlSession</module>
     </modules>
     <deployment-targets>
@@ -75,7 +75,7 @@
     <sdk-version>6.1.0.GA</sdk-version>
     <plugins>
         <plugin version="1.0">ti.alloy</plugin>
-        <plugin>hyperloop</plugin>
+        <!-- <plugin>hyperloop</plugin> -->
     </plugins>
     <property name="appc-app-id" type="string">5944247a41ad64138e53867b</property>
     <property name="acs-authbase-url-development" type="string">https://secure-identity.cloud.appcelerator.com</property>

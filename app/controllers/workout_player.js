@@ -34,8 +34,33 @@ Alloy.Globals.downprogress = $.downprogress;
 
 
 function showActivity(){
-	Ti.API.info('This should work only once.');
+	Ti.API.info('***************');
+	Ti.API.info('***************');
+	Ti.API.info('***************');
+	Ti.API.info('***************');
+	Ti.API.info('***************');
+	Ti.API.info('***************');
+	Ti.API.info('***************');
+	Ti.API.info('***************');
+	Ti.API.info('***************');
+	Ti.API.info('***************');
+	Ti.API.info('***************');
+	Ti.API.info('***************');
+	Ti.API.info('***************');
+	Ti.API.info('***************');
+	Ti.API.info('***************');
+	Ti.API.info('***************');
+	Ti.API.info('***************');
+	Ti.API.info('***************');
+	Ti.API.info('***************');
+	Ti.API.info('***************');
+	Ti.API.info('***************');
+	Ti.API.info('***************');
+	
+	
+	$.downprogress.setOpacity(1);
 	$.downprogress.show();
+	
 }
 function hideActivity(){
 	Ti.API.info('This should work only once.');
@@ -384,7 +409,9 @@ function proccessWorkout(n){
 		Ti.API.info('=====');
 
 
+
 	}
+	return exercises;
 
 }
 
@@ -392,7 +419,10 @@ function proccessWorkout(n){
 
 
 function addAssetsToSessionDownloadManager(){
+	// Calls adding to URLSession to improve performance
+	// var throttled = _.throttle(addToDownloadSession, 300);
 	_.each(assets_queue || [], function(item){
+		// throttled(item);
 		addToDownloadSession(item);
 	});
 }
@@ -542,6 +572,7 @@ function prepareVideoOwl(data){
     var finish_view  = {type:'workout/finish',data:{title:'Well Done!', type:'static'}};
     // Ti.API.info('ADDING.FINISH:');
     owl_views.push(finish_view);
+    return owl_views;
 
     // addWorkoutElement('workout/finish',{title:'Well Done!', type:'static'});
 
@@ -580,20 +611,30 @@ function onSuccessWorkoutCallback(e){
 	// Ti.API.info(e);
 	var data = e.data.acf.round_selector;
 
+	
 
-	proccessWorkout(data);
-	prepareVideoOwl(exercises);
+	// proccessWorkout(data);
+	// prepareVideoOwl(exercises);
+	// addOwlElements(owl_views);
+	Ti.API.info('GETTING.PROCESSED');
+	var processed = proccessWorkout(data);
+	Ti.API.info('GETTING.OWLED');
+	var owled = prepareVideoOwl(processed);
+
+	populateRoundNavigator(round_tool);
+
 	// Ti.API.info('ATTEMPT.BEFORE.OWL');
-	addOwlElements(owl_views);
+	Ti.API.info('ADDING.OWLED.TO.DOWNLOADS');
+	var owled = addOwlElements(owled);
 	// Ti.API.info('ATTEMPT.AFTER.OWL');
-    populateRoundNavigator(round_tool);
+    
 
 
 	// addAssetsToDownloadManager(videos_queue);
 
 	// addAssetsToSessionDownloadManager(assets_queue);
 	
-
+	Ti.API.info('DELAYING.DOWNLOAD.MANAGER.START');
 	_.delay(addAssetsToSessionDownloadManager,3000,'assets_queue');
 
 	// NappDownloadManager.restartDownloader();
@@ -710,6 +751,7 @@ function scrollableViewDidScroll(e) {
     log.args('Ti.UI.ScrollableView did scroll to index ' + e.currentPage);
     var curr = $.scrollable.views[e.currentPage]
     Ti.App.fireEvent('cage/workout/slide/entered', { 'item': e.currentPage });
+    // lithiumlab
     // startSlide(curr);
     // cancelAllTimers();
     // removeVideoFromLastSlide();

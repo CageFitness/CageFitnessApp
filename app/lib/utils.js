@@ -29,8 +29,7 @@ exports.getRandomInt = function(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-exports.fancyTimeFormat = function(time)
-{   
+exports.fancyTimeFormat = function(time){   
     // Hours, minutes and seconds
     var hrs = ~~(time / 3600);
     var mins = ~~((time % 3600) / 60);
@@ -48,49 +47,49 @@ exports.fancyTimeFormat = function(time)
 
 
 
-// OS
-if(Ti.Platform.osname === 'iPhone' || Ti.Platform.osname === 'iPad') {
-  var ios = true;
-}
+// // OS
+// if(Ti.Platform.osname === 'iPhone' || Ti.Platform.osname === 'iPad') {
+//   var ios = true;
+// }
  
-/**
- * Save file function
- *
- * @file: Binary file (Blob)
- * @filename: Name of file (String)
- * @directory: Directory to Save the file (String)
- *
- */
-exports.saveFile = function(_args) {
+// /**
+//  * Save file function
+//  *
+//  * @file: Binary file (Blob)
+//  * @filename: Name of file (String)
+//  * @directory: Directory to Save the file (String)
+//  *
+//  */
+// exports.saveFile = function(_args) {
    
-  // Test if External Storage (Android only)
-  if(Ti.Filesystem.isExternalStoragePresent()){
-    var file = Ti.Filesystem.getFile(Ti.Filesystem.externalStorageDirectory,  _args.directory+'/'+_args.filename);
-  }
+//   // Test if External Storage (Android only)
+//   if(Ti.Filesystem.isExternalStoragePresent()){
+//     var file = Ti.Filesystem.getFile(Ti.Filesystem.externalStorageDirectory,  _args.directory+'/'+_args.filename);
+//   }
  
-  // No SD or iOS
-  else {
-    var file = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, _args.directory+'/'+_args.filename);
-  }
+//   // No SD or iOS
+//   else {
+//     var file = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, _args.directory+'/'+_args.filename);
+//   }
    
-  // Save file
-  file.write(_args.file);
+//   // Save file
+//   file.write(_args.file);
    
-  // Debug: Test if file exist now
-  if(file.exists) {
-    Ti.API.info('[saveFile] Saved: YES! (' + file.nativePath + ')');
-  } else {
-    Ti.API.info('[saveFile] Saved: NO!');
-  }
+//   // Debug: Test if file exist now
+//   if(file.exists) {
+//     Ti.API.info('[saveFile] Saved: YES! (' + file.nativePath + ')');
+//   } else {
+//     Ti.API.info('[saveFile] Saved: NO!');
+//   }
  
-  // Return full path of file
-  if(ios) {
-    var iosPath = Ti.Filesystem.applicationDataDirectory + _args.filename;
-    iosPath = iosPath.replace('file://','app://');
+//   // Return full path of file
+//   if(ios) {
+//     var iosPath = Ti.Filesystem.applicationDataDirectory + _args.filename;
+//     iosPath = iosPath.replace('file://','app://');
      
-    return iosPath;
-  } 
-  else {
-    return file.nativePath;
-  }
-};
+//     return iosPath;
+//   } 
+//   else {
+//     return file.nativePath;
+//   }
+// };
