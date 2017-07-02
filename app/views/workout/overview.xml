@@ -8,21 +8,20 @@
         <Label class="small_text" id="counter_big"></Label>
 
 		<ListView id="elementsList" defaultItemTemplate="elementTemplate">
-        <Templates>
-            <ItemTemplate name="elementTemplate">
-                <Label bindId="rxIndex" id="rxIndex" />
-                <View id="overviewTitleWrap">
-                	<!-- <ImageView bindId="rpic" id="rpic"></ImageView> -->
-                    <Label bindId="name" id="name" />
-                    <Label bindId="duration" id="duration"></Label>
-                </View>
-            </ItemTemplate>
-        </Templates>
-        <ListSection>
-
-        </ListSection>
-    </ListView>
-    <Module id="progressbar" module="br.com.arlsoft.progressbar" method="createCircularView" />   
+	        <Templates>
+	            <ItemTemplate name="elementTemplate">
+	                <Label bindId="rxIndex" id="rxIndex" />
+	                <View id="overviewTitleWrap">
+	                	<!-- <ImageView bindId="rpic" id="rpic"></ImageView> -->
+	                    <Label bindId="name" id="name" />
+	                    <Label bindId="duration" id="duration"></Label>
+	                </View>
+	            </ItemTemplate>
+	        </Templates>
+	        <ListSection>
+	        </ListSection>
+    	</ListView>
+    	<Module id="progressbar" module="br.com.arlsoft.progressbar" method="createCircularView" />   
     </View>
    
 </Alloy>

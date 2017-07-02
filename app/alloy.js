@@ -59,9 +59,10 @@ Alloy.Globals.WorkoutAssets = [];
 // // Monitor this event to receive updates on the progress of the download
 Ti.App.iOS.addEventListener('downloadprogress', function(e) {
     // Update the progress indicator
+
     var progress = (e.totalBytesWritten / e.totalBytesExpectedToWrite);
     // $.downprogress.value = (e.totalBytesWritten / e.totalBytesExpectedToWrite);
-   Alloy.Globals.DownloadProgress = progress;
+   // Alloy.Globals.DownloadProgress = progress;
 });
  
 // Monitor this event to know when the download completes
@@ -71,22 +72,28 @@ Ti.App.iOS.addEventListener('downloadcompleted', function(e) {
     if(task_completed){
     	task_completed.complete=true;
     }
-    var completed = _.size(_.where(Alloy.Globals.WorkoutAssets, {complete: true}));
-    var directory= 'cached';
-    Ti.API.info('BEFORE.ASKING:');
+
+
 
 
     if( task_completed && task_completed.filename ) {
-    	 Ti.API.info('AFTER.ASKING:');
-	    var file = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, directory+'/'+task_completed.filename);
-	    // Write file data
+
+    	Ti.API.info('AFTER.ASKING:');
+
+    	var completed = _.size(_.where(Alloy.Globals.WorkoutAssets, {complete: true}));
+	    var file = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'cached/'+task_completed.filename);
 		file.write(e.data);
-		if(file.exists) {
-			Ti.API.info('[saveFile] Saved: YES! (' + file.nativePath + ')');
+		if(file.exists()) {
+			Ti.API.info('[SAVE.FILE: YES ] (' + file.nativePath + ')');
+			// Ti.API.info('ASSET.DOWNLOAD.COMPLETE:', completed, _.size(Alloy.Globals.WorkoutAssets), file.exists(), JSON.stringify(task_completed));
+			var inqueue = _.size(Alloy.Globals.WorkoutAssets);
+			Ti.API.info('ASSET.DOWNLOAD.COMPLETE:', completed, inqueue, completed/inqueue,  JSON.stringify(task_completed));
+			Alloy.Globals.DownloadProgress=completed/inqueue;
 		} else {
-			Ti.API.info('[saveFile] Saved: NO!');
+			Ti.API.info('[SAVE.FILE:] NO ]');
 		}
-		Ti.API.info('ASSET.DOWNLOAD.COMPLETE:', completed, file.exists, JSON.stringify(task_completed));
+
+
 	}
 
 
@@ -106,19 +113,24 @@ Ti.App.iOS.addEventListener('sessioneventscompleted', function(e) {
  
 // Monitor this event to know when all session tasks have completed
 Ti.App.iOS.addEventListener('sessioncompleted', function(e) {
-    Ti.API.info('sessioncompleted: ' + JSON.stringify(e));
+    
     if (e.success) {
         
         var completed = _.size(_.where(Alloy.Globals.WorkoutAssets, {complete: true}));
         var total = _.size(Alloy.Globals.WorkoutAssets);
 
     	if(completed>0 && completed===total){
-    		Ti.API.info('========== ALL DOWNLOADS COMPLETE, GO WORKOUT!!!!');
+    		Ti.API.info('ONSESSIONCOMPLETED: ' + JSON.stringify(e));
+    		Ti.API.info(' ========== ALL DOWNLOADS COMPLETE, GO WORKOUT!!!!');
+    		// Ti.App.iOS.removeEventListener('downloadcompleted', onDownloadComplete);
+    		if(Alloy.Globals.prog){
+    			Alloy.Globals.prog.hide();
+    		}
 		    // Notify the user the download is complete if the application is in the background
-		    Ti.App.iOS.scheduleLocalNotification({
-		        alertBody: 'Cage Downloads Completed!',
-		        date: new Date().getTime() 
-		    });
+		    // Ti.App.iOS.scheduleLocalNotification({
+		    //     alertBody: 'Cage Downloads Completed!',
+		    //     date: new Date().getTime() 
+		    // });
 		    // alert('Downloads completed successfully.');
     	}
 

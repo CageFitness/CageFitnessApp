@@ -33,24 +33,23 @@ var round_tool=[];
 
 
 
+ 
 
 
-Ti.App.iOS.addEventListener('downloadprogress', function(e) {
-    // var progress = (e.totalBytesWritten / e.totalBytesExpectedToWrite);
-    // var cage_cache_dir = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'cached');
-    // var file = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'cached/'+ filename);
+function onDownloadComplete(e){
+    var task_completed = _.findWhere(Alloy.Globals.WorkoutAssets,{task:e.taskIdentifier});
+    if( task_completed && task_completed.filename ) {
+    	Ti.API.info('AFTER.ASKING:');
+    	var completed = _.size(_.where(Alloy.Globals.WorkoutAssets, {complete: true}));
+		var inqueue = _.size(Alloy.Globals.WorkoutAssets);
+		Ti.API.info('ASSET.DOWNLOAD.COMPLETE:', completed, inqueue, JSON.stringify(task_completed));
+		Ti.API.info('CALCULATE:', completed, inqueue, completed/inqueue );
+		$.downprogress.value=Alloy.Globals.DownloadProgress;
+		Alloy.Globals.prog = $.downprogress;
+	}
 
-
-    $.downprogress.value=Alloy.Globals.DownloadProgress;
-});
-
-
-
-
-
-
-
-
+}
+Ti.App.iOS.addEventListener('downloadcompleted', onDownloadComplete);
 
 
 
@@ -495,7 +494,7 @@ function prepareVideoOwl(data){
         	sob.file_index = data[x].file_index;
         	sob.config = config;
 
-        	Ti.API.info('ADDING.OVERVIEW:');
+        	// Ti.API.info('ADDING.OVERVIEW:');
         	var overview_view = {type:'workout/overview',data:sob};
         	owl_views.push(overview_view);
         	// addWorkoutElement('workout/overview',sob);
@@ -512,7 +511,7 @@ function prepareVideoOwl(data){
         	sob.exercise_number = data[x].exercise_number;
 		    sob.duration = getExerciseDuration(sob.exercise_number);
 
-		    Ti.API.info('ADDING.VIDEO:');
+		    // Ti.API.info('ADDING.VIDEO:');
 		    var video_view = {type:'workout/video',data:sob}
 		    owl_views.push(video_view);
         	// addWorkoutElement('workout/video',sob);
@@ -523,7 +522,7 @@ function prepareVideoOwl(data){
 
 
     var finish_view  = {type:'workout/finish',data:{title:'Well Done!', type:'static'}};
-    Ti.API.info('ADDING.FINISH:');
+    // Ti.API.info('ADDING.FINISH:');
     owl_views.push(finish_view);
 
     // addWorkoutElement('workout/finish',{title:'Well Done!', type:'static'});
@@ -574,15 +573,19 @@ function onSuccessWorkoutCallback(e){
 
 	proccessWorkout(data);
 	prepareVideoOwl(exercises);
-	Ti.API.info('ATTEMPT.BEFORE.OWL');
+	// Ti.API.info('ATTEMPT.BEFORE.OWL');
 	addOwlElements(owl_views);
-	Ti.API.info('ATTEMPT.AFTER.OWL');
+	// Ti.API.info('ATTEMPT.AFTER.OWL');
     populateRoundNavigator(round_tool);
 
 
 	// addAssetsToDownloadManager(videos_queue);
 
-	addAssetsToSessionDownloadManager(assets_queue);
+	// addAssetsToSessionDownloadManager(assets_queue);
+	
+
+	_.delay(addAssetsToSessionDownloadManager,3000,'assets_queue');
+
 	// NappDownloadManager.restartDownloader();
 	// NappDownloadManager.resumeAll();
 
@@ -661,8 +664,8 @@ function scrollPrev() {
 function scrollToRound(e, overview) {
 	Ti.API.info('SCROLL.TO.ROUND: ' + $.scrollable.currentPage);
 	var roundSlide = overview;
-	// $.scrollable.scrollToView(roundSlide);
-	$.scrollable.setCurrentPage(roundSlide);
+	$.scrollable.scrollToView(roundSlide);
+	// $.scrollable.setCurrentPage(roundSlide);
 }	
 
 

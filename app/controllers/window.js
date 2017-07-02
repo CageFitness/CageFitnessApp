@@ -25,6 +25,7 @@ else{
 
 
 function onButtonClose(e){
+
 	
 	if(e.window_type == 'modal'){
 
@@ -46,6 +47,7 @@ Ti.App.addEventListener('cage/topbar/menu_button/close', onButtonClose);
 $.cleanup = function cleanup() {
 	Ti.API.info('PERFORMING.CLEANUP:');
 	// NappDownloadManager.cleanUp();
+	clearInterval(Alloy.Globals.Timer);
 	$.destroy();
 	$.off();
 	// someController = null;

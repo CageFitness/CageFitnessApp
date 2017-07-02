@@ -1,25 +1,19 @@
-"#mainView":{
-	layout:'horizontal',
-}
 
 ".dl" : {
 	// top:100,
 top:0,
-// layout:'absolute',
 right:0,
-width:Ti.UI.FILL,
+width:390,
   layout:'vertical',
   // backgroundColor:'pink',
   height:Ti.UI.SIZE,
-  clipMode:Titanium.UI.iOS.CLIP_MODE_DISABLED,
-  zIndex:1,
 }
 
 "#downprogress" : {
  	width: Ti.UI.FILL,
- 	right:0,
- 	left:0,
-    height: Ti.UI.SIZE,
+ 	right:10,
+ 	left:10,
+    height: 50,
     min: 0,
     max: 1,
     value: 0,
@@ -164,11 +158,10 @@ width:Ti.UI.FILL,
 	// pagingControlColor: Alloy.CFG.styles.brandColor,
 	pagingControlColor: '#f8f8f8',
 	tintColor:'#f90f90',
-	height:Ti.UI.FILL,
+	height:'83%',
 	pageIndicatorColor: '#cfcbca',
 	keepScreenOn:true,
 	visible:true,
-	clipViews:false,
 	// height:Ti.UI.FILL,
 }
 
@@ -176,7 +169,7 @@ width:Ti.UI.FILL,
 
 
 "#toolbar_wrapper": {
-	bottom: '27%',
+	top: 0,
 	// backgroundColor:'pink',
 	backgroundColor:'#f8f8f8',
 	height:Ti.UI.FILL,
