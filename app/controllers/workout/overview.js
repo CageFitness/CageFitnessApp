@@ -205,7 +205,7 @@ $.elementsList.sections[0].setItems(items);
 
 Ti.API.info('FIRST.SLIDE: ',args.first_slide);
 if(args.first_slide){
-	startCounter();
+	// startCounter();
 }
 
 

@@ -1,3 +1,53 @@
+
+".dl" : {
+	// top:100,
+top:0,
+right:0,
+width:390,
+  layout:'vertical',
+  // backgroundColor:'pink',
+  height:Ti.UI.SIZE,
+}
+
+"#downprogress" : {
+ 	width: Ti.UI.FILL,
+ 	right:10,
+ 	left:10,
+    height: 50,
+    min: 0,
+    max: 1,
+    value: 0,
+    style: Ti.UI.iOS.ProgressBarStyle.PLAIN,
+    // top: 10,
+    message: 'Downloading Assets',
+    font: { fontSize: 11},
+    color: '#000',  
+}
+
+
+
+".bar_wrap":{
+	left:10,
+	width:390,
+	// backgroundColor:'pink',
+}
+
+"#round_btn_bar":{
+	top:9,
+    backgroundColor:'#000',
+    style:Titanium.UI.iOS.SystemButtonStyle.BORDERED,
+    height:40,
+    // width:Ti.UI.SIZE,
+    visible:false,
+    width:380,
+    right:10,
+    // opacity:0,
+    // borderWidth:1,
+    // borderColor:'red',
+    // top:0,
+}
+
+
 "#workout_player_buttons":{
 	top:9,
     backgroundColor:'#000',
@@ -32,11 +82,7 @@
 	image:"images/icons/forward.png",
 }
 
-".bar_wrap":{
-	left:10,
-	width:392,
-	// backgroundColor:'pink',
-}
+
 
 "#stepper":{
     tintColor: "green",
@@ -158,21 +204,6 @@
 
 
 
-
-"#round_btn_bar":{
-	top:9,
-    backgroundColor:'#000',
-    style:Titanium.UI.iOS.SystemButtonStyle.BORDERED,
-    height:40,
-    width:Ti.UI.SIZE,
-    visible:false,
-    width:330,
-    right:10,
-    visible:false,
-    // borderWidth:1,
-    // borderColor:'red',
-    // top:0,
-}
 
 
 

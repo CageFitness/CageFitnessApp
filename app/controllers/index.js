@@ -42,6 +42,14 @@ function progressHideShow(a,b){
 }
 
 
+function LaunchDownloadManager(e) {
+	Ti.API.info('LOGIN LAUNCHED: ');
+    var win = Alloy.createController('download_manager').getView();
+    win.open({modal:true});
+    Alloy.Globals.modalWindow = win;
+}
+Ti.App.addEventListener('cage/launch/download_manager', LaunchDownloadManager);
+
 function LaunchLogin(e) {
 	Ti.API.info('LOGIN LAUNCHED: ');
     var win = Alloy.createController('login').getView();
@@ -235,3 +243,5 @@ Ti.App.addEventListener('cage/goto/customizer',function(e){
 $.index.open();
 
 Ti.App.fireEvent('cage/launch/login');
+
+

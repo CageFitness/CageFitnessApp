@@ -21,6 +21,36 @@ $.scrollable.addEventListener('postlayout',function(e){
 
 var round_tool=[];
 
+
+
+
+
+
+
+
+
+Ti.App.iOS.addEventListener('downloadprogress', function(e) {
+    // var progress = (e.totalBytesWritten / e.totalBytesExpectedToWrite);
+    // var cage_cache_dir = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'cached');
+    // var file = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'cached/'+ filename);
+
+
+    $.downprogress.value=Alloy.Globals.DownloadProgress;
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // 	{title:'Restart', cb:handleRoundNavigator, mode:'restart'},
 // 	{title:'Previous Round', cb:handleRoundNavigator, mode:'prev'},
 // 	{title:'Next Round', cb:handleRoundNavigator, mode:'next'},
@@ -274,7 +304,7 @@ function addVideoToDownloadManager(obj){
 function proccessWorkout(n){
 
 	var round_iterator = n;
-
+	Alloy.Globals.WorkoutAssets =[];
 	for (round in round_iterator){
 
 		// Generates round intro slide here...
@@ -326,9 +356,25 @@ function proccessWorkout(n){
 				rob.next = iterator[Number(i)+1];
 			}
 			// Ti.API.info( 'ITERATOR LEN: ' + _.size(iterator), (i < _.size(iterator)-1) );
+			
+			var vidtask = Alloy.Globals.SessionDownloader.downloadTask({url:rob.video, filename:rob.filename});
+			var giftask = Alloy.Globals.SessionDownloader.downloadTask({url:rob.thumb, filename:rob.thumb_filename});
+			
+			var ob = {};
+			ob.task=vidtask;
+			ob.url=rob.video;
+			ob.filename=rob.filename;
+			Alloy.Globals.WorkoutAssets.push(ob);
 
-			addFileToDownloadQueue(rob.filename, rob.video);
-			addFileToDownloadQueue(rob.thumb_filename, rob.thumb);
+			var ob = {};
+			ob.task=giftask;
+			ob.url=rob.thumb;
+			ob.filename=rob.thumb_filename;
+			Alloy.Globals.WorkoutAssets.push(ob);			
+
+
+			// addFileToDownloadQueue(rob.filename, rob.video);
+			// addFileToDownloadQueue(rob.thumb_filename, rob.thumb);
 
 			exercises.push(rob);
 
@@ -341,9 +387,8 @@ function proccessWorkout(n){
 
 
 
+
 	}
-
-
 
 
 
@@ -431,15 +476,20 @@ function prepareVideoOwl(data){
 
 function populateRoundNavigator(button_bar_labels){
 
-    var toolW = _.size(button_bar_labels) * 38;
+    // var toolW = _.size(button_bar_labels) * 38;
 	$.round_btn_bar.labels = button_bar_labels;
-	$.round_btn_bar.setWidth(toolW);
-	$.round_btn_bar.show();
-	$.round_btn_bar.visible=true;
+	// $.round_btn_bar.setWidth(toolW);
+	// position to left side of player play buttons
+	// $.round_btn_bar.left= -($.workout_player_buttons.width/2);
 
 	$.round_btn_bar.addEventListener('click',function(e){
 		Ti.API.info('TOOL.BAR.EDIT:',e.source.labels[e.index]);
 		$.round_btn_bar.labels[e.index].cb(e, $.round_btn_bar.labels[e.index].mode, e.source.labels[e.index]);
+	});
+
+	$.round_btn_bar.addEventListener('postlayout',function(e){
+		$.round_btn_bar.visible=true;
+		// Animation.fadeIn($.round_btn_bar);
 	});
 
 
@@ -485,8 +535,9 @@ function loadConfig(){
 function loadWorkout(){
 	var wid = Ti.App.Properties.getString('my_workout');
 	var updatedCall = Alloy.Globals.updateWorkout ? '?rn='+Utils.getRandomInt(0,1000000) : '';
+
 	var wurl = workout_final_url+wid+updatedCall;
-	Ti.API.info('ATTEMPT.LOAD.WORKOUT_PLAYER', wurl);
+	Ti.API.info('ATTEMPT.LOAD.WORKOUT_PLAYER.UPDATE?', updatedCall, wurl);
 	// Alloy.Globals.XHROptions.ttl=300;
 	xhr.GET(wurl, onSuccessWorkoutCallback, onErrorWorkoutCallback, Alloy.Globals.XHROptions);
 	Alloy.Globals.updateWorkout=0;

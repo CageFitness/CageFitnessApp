@@ -1,0 +1,10 @@
+<Alloy>
+	<Window>
+		<View class="dl">
+			<Label id="titlex">Download Manager</Label>
+			<Label id="console">...</Label>
+			<Button id="dlbutton" title="Start Downloading"></Button>
+			<ProgressBar id="downprogress"></ProgressBar>
+		</View>		
+	</Window>
+</Alloy>

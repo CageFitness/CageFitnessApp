@@ -1,22 +1,9 @@
-var getRandomInt = function(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+var getURLSessionIdentifier = function(){
+	var prefix = 'com.cagefitness.app';
+	var sid = Utils.getRandomInt(0,1000000);
+	return prefix+'.'+sid;
+};
 
-var fancyTimeFormat = function(time)
-{   
-    // Hours, minutes and seconds
-    var hrs = ~~(time / 3600);
-    var mins = ~~((time % 3600) / 60);
-    var secs = time % 60;
-    // Output like "1:01" or "4:03:59" or "123:03:59"
-    var ret = "";
-    if (hrs > 0) {
-        ret += "" + hrs + ":" + (mins < 10 ? "0" : "");
-    }
-    ret += "" + mins + ":" + (secs < 10 ? "0" : "");
-    ret += "" + secs;
-    return ret;
-}
 
 NappDownloadManager = require("dk.napp.downloadmanager");
 NappDownloadManager.permittedNetworkTypes = NappDownloadManager.NETWORK_TYPE_ANY;
@@ -41,6 +28,106 @@ var xhr = new XHR();
 Ti.API.info('XHR.CLEAN.TRIGGERED.ON.APP.START');
 xhr.clean();
 
+
+Ti.App.addEventListener('uncaughtException',function(e){
+	Ti.API.info('APP.ERROR:',e);
+});
+
 Ti.API.info('===============');
+
+// Require in the module
+var urlSession = require('com.appcelerator.urlSession');
+
+var sid = getURLSessionIdentifier();
+Ti.API.info(sid);
+var sessionConfig = urlSession.createSessionConfiguration({
+    identifier: sid
+});
+
+var session = urlSession.createSession({
+    configuration: sessionConfig
+});
+
+Alloy.Globals.SessionDownloader = session;
+Alloy.Globals.DownloadProgress = 0;
+Alloy.Globals.WorkoutAssets = [];
+
+
+
+
+
+// // Monitor this event to receive updates on the progress of the download
+Ti.App.iOS.addEventListener('downloadprogress', function(e) {
+    // Update the progress indicator
+    var progress = (e.totalBytesWritten / e.totalBytesExpectedToWrite);
+    // $.downprogress.value = (e.totalBytesWritten / e.totalBytesExpectedToWrite);
+   Alloy.Globals.DownloadProgress = progress;
+});
+ 
+// Monitor this event to know when the download completes
+Ti.App.iOS.addEventListener('downloadcompleted', function(e) {
+    // Ti.API.info('Download completed: ' + JSON.stringify(e), e.source, e.data);
+    var task_completed = _.findWhere(Alloy.Globals.WorkoutAssets,{task:e.taskIdentifier});
+    if(task_completed){
+    	task_completed.complete=true;
+    }
+    var completed = _.size(_.where(Alloy.Globals.WorkoutAssets, {complete: true}));
+    // var saved = Utils.saveFile({filename:task_completed.filename, blob:e.data, directory:'cached'});
+    var directory= 'cached';
+    var file = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, directory+'/'+task_completed.filename);
+	file.write(e.data);
+	if(file.exists) {
+		Ti.API.info('[saveFile] Saved: YES! (' + file.nativePath + ')');
+	} else {
+		Ti.API.info('[saveFile] Saved: NO!');
+	}
+
+    Ti.API.info('ASSET.DOWNLOAD.COMPLETE.COUNT:', completed, file.exists, JSON.stringify(task_completed));
+    // completed, _.size(Alloy.Globals.WorkoutAssets),
+    // If file doesn't exist.. save it to cache:
+   
+
+});
+ 
+ // Monitor this event to know when the download completes
+Ti.App.iOS.addEventListener('sessioneventscompleted', function(e) {
+    Ti.API.info('Session Events Completed: ' + JSON.stringify(e));
+
+
+});
+ 
+ 
+// Monitor this event to know when all session tasks have completed
+Ti.App.iOS.addEventListener('sessioncompleted', function(e) {
+    Ti.API.info('sessioncompleted: ' + JSON.stringify(e));
+    Ti.API.info('sessioncompleted.source: ' + JSON.stringify(e.source));
+    if (e.success) {
+        
+        var completed = _.size(_.where(Alloy.Globals.WorkoutAssets, {complete: true}));
+        var total = _.size(Alloy.Globals.WorkoutAssets);
+        
+    	if(completed===total){
+    		Ti.API.info('========== ALL DOWNLOADS COMPLETE, GO WORKOUT!!!!');
+		    // Notify the user the download is complete if the application is in the background
+		    Ti.App.iOS.scheduleLocalNotification({
+		        alertBody: 'Cage Downloads Completed!',
+		        date: new Date().getTime() 
+		    });
+		    alert('Downloads completed successfully.');
+    	}
+
+    
+
+
+    }
+});
+
+
+
 Ti.API.info('===============');
+
+
+
+
+
 
