@@ -106,7 +106,13 @@ function handleRoundNavigator(e, mode, slideToOverview) {
 
 function init(){
 
-	if (! cage_cache_dir.exists()) {cage_cache_dir.createDirectory();}
+	if (! cage_cache_dir.exists()) {
+
+		cage_cache_dir.createDirectory();
+	}
+	else{
+		Ti.API.info('SKIPPING.CACHE.FOLDER.CREATION');
+	}
 
 	Ti.API.info('======== Cached Resources =======\n', cage_cache_dir, '\n', cage_cache_dir.getDirectoryListing(), '\n===============================');
 	Ti.API.info('=================================');	
@@ -356,21 +362,26 @@ function proccessWorkout(n){
 				rob.next = iterator[Number(i)+1];
 			}
 			// Ti.API.info( 'ITERATOR LEN: ' + _.size(iterator), (i < _.size(iterator)-1) );
-			
-			var vidtask = Alloy.Globals.SessionDownloader.downloadTask({url:rob.video, filename:rob.filename});
-			var giftask = Alloy.Globals.SessionDownloader.downloadTask({url:rob.thumb, filename:rob.thumb_filename});
-			
-			var ob = {};
-			ob.task=vidtask;
-			ob.url=rob.video;
-			ob.filename=rob.filename;
-			Alloy.Globals.WorkoutAssets.push(ob);
 
-			var ob = {};
-			ob.task=giftask;
-			ob.url=rob.thumb;
-			ob.filename=rob.thumb_filename;
-			Alloy.Globals.WorkoutAssets.push(ob);			
+			
+			addToDownloadSession({url:rob.video, filename:rob.filename});
+			addToDownloadSession({url:rob.thumb, filename:rob.thumb_filename});
+			
+
+			// var vidtask = Alloy.Globals.SessionDownloader.downloadTask({url:rob.video, filename:rob.filename});
+			// var giftask = Alloy.Globals.SessionDownloader.downloadTask({url:rob.thumb, filename:rob.thumb_filename});
+			
+			// var ob = {};
+			// ob.task=vidtask;
+			// ob.url=rob.video;
+			// ob.filename=rob.filename;
+			// Alloy.Globals.WorkoutAssets.push(ob);
+
+			// var ob = {};
+			// ob.task=giftask;
+			// ob.url=rob.thumb;
+			// ob.filename=rob.thumb_filename;
+			// Alloy.Globals.WorkoutAssets.push(ob);			
 
 
 			// addFileToDownloadQueue(rob.filename, rob.video);
@@ -383,17 +394,33 @@ function proccessWorkout(n){
 		Ti.API.info('=====');
 
 
-
-
-
-
-
 	}
 
-
-
-
 }
+
+function addToDownloadSession(ob){
+
+	// add to download task if video does not exist in cached app directoy
+	Ti.API.info('CHECKING.OB:',ob, isInCache(ob.filename));
+
+	if( !isInCache(ob.filename) ){
+		var task = Alloy.Globals.SessionDownloader.downloadTask({url:ob.url, filename:ob.filename});
+		var TaskObject = {
+			task:task,
+			url:ob.url,
+			filename:ob.filename,
+		}
+		Alloy.Globals.WorkoutAssets.push(TaskObject);
+		Ti.API.info('ADDED.TO.DOWNLOAD.QUEUE:',JSON.stringify(TaskObject));
+	}
+}
+
+
+function isInCache(file){
+	var file = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'cached/'+file);
+	return file.exists();
+}
+
 
 function getIndex(n){
 	r = Number(n)+1; 

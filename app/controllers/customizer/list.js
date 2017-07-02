@@ -40,7 +40,11 @@ $.is.load();
 
 
 function loadExercises(selection){
-	Ti.API.info('GETTING EXERCISES:', selection);
+	Ti.API.info('GETTING EXERCISES. SHOULD USE _.defaults() HERE!!:', selection);
+
+
+
+
 	var filter_query = {}
 		filter_query.per_page=52;
 		if(!selection.page){
