@@ -200,11 +200,13 @@
 	// color: "red",
 	// top:5,
 	// bottom:5,
+	height:40,
 	right:30,
 }
 
 ".detailLabel": {
 	// top:5,
+	height:40,
 	right: 10,
 	color: "gray",
 	font: {

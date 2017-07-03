@@ -12,38 +12,13 @@ $.is.load();
  	// Ti.API.info('LOADING.MORE.PAGING...', paging.total_pages);
  	Ti.API.info('LOADER: ',e);
 	loadExercises({page:pages < 5 ? pages++ : 5});
- 	// var ln = myCollection.models.length;
 
- 	// myCollection.fetch({
-
- 	// 	// whatever your sync adapter needs to fetch the next page
- 	// 	data: { offset: ln },
-
- 	// 	// don't reset the collection, but add to it
- 	// 	add: true,
-
- 	// 	success: function (col) {
- 		
- 	// 		// call done() when we received last page - else success()
- 	// 		(col.models.length === ln) ? e.done() : e.success();
-
- 	// 	},
-
- 	// 	// call error() when fetch fails
- 	// 	error: function(col) {
- 	// 		// pass optional error message to display
- 	// 		e.error(L('isError', 'Tap to try again...'));
- 	// 	}
- 	// });
  }
 
 
 
 function loadExercises(selection){
 	Ti.API.info('GETTING EXERCISES. SHOULD USE _.defaults() HERE!!:', selection);
-
-
-
 
 	var filter_query = {}
 		filter_query.per_page=52;
@@ -55,20 +30,14 @@ function loadExercises(selection){
 		else{
 			filter_query.page = selection.page;
 		}
-		// if(e.filter=='all'){
-		// 	if(e.search){
-		// 		filter_query.s=e.search;
-		// 	}
-		// }
-		// else if(e.filter=='exercise_equipment'){
-		// 	filter_query.exercise_equipment=e.ttid;
-		// }
-		// else if(e.filter=='exercise_type'){
-		// 	filter_query.exercise_type=e.ttid;
-		// }
 
-	var querystring = Object.keys(filter_query).map(function(k) {
-	    return encodeURIComponent(k) + '=' + encodeURIComponent(filter_query[k])
+		Ti.API.info("SELECTIONS:",args.selection);
+		var custom_query = _.defaults(filter_query, args.selection);
+
+		Ti.API.info("FINAL.SELECTION:",custom_query);
+
+	var querystring = Object.keys(custom_query).map(function(k) {
+	    return encodeURIComponent(k) + '=' + encodeURIComponent(custom_query[k])
 	}).join('&');
 
 	// https://cagefitness.com/wp-json/wp/v2/exercise?per_page=5&page=1&exercise_equipment=278

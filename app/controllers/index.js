@@ -92,7 +92,8 @@ Ti.App.addEventListener('cage/launch/customizer', LaunchCustomizer);
 function LaunchWindow(e) {
 	Ti.API.info('LAUNCHING.WINDOW.WITH:', e.key, e.workout_id);
     var win = Alloy.createController('window').getView();
-    win.open({transition : Ti.UI.iOS.AnimationStyle.FLIP_FROM_LEFT});
+    // win.open({transition : Ti.UI.iOS.AnimationStyle.FLIP_FROM_LEFT});
+    win.open({modal:true});
     Alloy.Globals.modalWindow = win;
 }
 Ti.App.addEventListener('cage/launch/window', LaunchWindow);

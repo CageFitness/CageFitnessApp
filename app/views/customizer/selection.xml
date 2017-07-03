@@ -2,7 +2,7 @@
     <Popover id="popover_ob" class="popover">
         <ContentView height="Ti.UI.FILL">
             <NavigationWindow id="navWin" height="Ti.UI.FILL" width="450">
-                <Window id="roundWin" title="Number of Exercises" height="Ti.UI.FILL">
+                <Window id="roundWin" title="Number of Exercises_" height="Ti.UI.FILL">
                     <!-- <RightNavButton title="Robin" /> -->
                     <!-- <Label>It's not easy being green.</Label> -->
                     <ListView id="pover" top="0" >

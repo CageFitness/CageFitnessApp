@@ -18,7 +18,10 @@ $.pover.addEventListener("itemclick", function(e){
     section.updateItemAt(e.itemIndex, item);
     item.properties.cage_selected=true;
 
-    args.selection.equipment='bands';
+   
+    args.selection.exercise_equipment=item.properties.ttid;
+    Ti.API.info("SELECTIONS:",args.selection);
+
     args.validate(args.selection);
     args.exerciseWindow(args.selection);
 

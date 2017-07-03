@@ -41,6 +41,8 @@ function loadExercises(e){
 	
 	var filter_query = {}
 		filter_query.per_page=52;
+		filter_query.sortby='title';
+		filter_query.order='asc';
 		if(e.page){
 			filter_query.page=++pagesss;
 		}

@@ -56,7 +56,8 @@ $.pover.addEventListener("itemclick", function(e){
     section.updateItemAt(e.itemIndex, item);
     item.properties.cage_selected=true;
     var ob = {};
-    ob.rounds=5;
+    ob.rounds=item.properties.slug;
+    args.validate(ob);
     // args.validate({'rounds':5, 'type':'warm-up', 'equipment':'bands'});
     // args.validate(ob);
     typeWindow(ob);
