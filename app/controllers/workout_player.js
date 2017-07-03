@@ -573,6 +573,20 @@ function prepareVideoOwl(data){
 
 
 
+
+	
+	$.customizer_btn_bar.addEventListener('click',function(e){
+		Ti.API.info('LAUNCHING CUSTOMIZER:',e.source.labels[e.index]);
+		clearInterval(Alloy.Globals.Timer);
+		
+		Ti.App.fireEvent('cage/launch/customizer',{menu_id:'menu_customizer'});
+	});
+
+
+
+
+
+
 function populateRoundNavigator(button_bar_labels){
 
     var toolW = _.size(button_bar_labels) * 38;

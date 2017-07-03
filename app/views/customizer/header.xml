@@ -1,5 +1,8 @@
 <Alloy>
     <View class="list_header">
     	<Label id="hTitle" class="htitle">ROUND 1</Label>
-    </View>
+    	<Label id="exercise_type" class="desc">Equipment</Label>
+    	<Label id="exercise_equipment" class="desc">Type</Label>
+<!--     	<Label id="exercise_number" class="desc">N Exercises</Label>
+ -->    </View>
 </Alloy>

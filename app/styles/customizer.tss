@@ -196,7 +196,7 @@
 }
 
 ".titleLabel": {
-	left: 80,
+	left: 86,
 	// color: "red",
 	// top:5,
 	// bottom:5,

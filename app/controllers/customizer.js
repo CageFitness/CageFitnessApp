@@ -129,10 +129,29 @@ $.dialog.addEventListener('click',function(e){
 	// $.activity_wrapper.show();
 	// $.activity_indicator.show();
 	// sendData();
+	gatherCurrentSelection($.customizer_list_view);
 
 	Alloy.Globals.updateWorkout=0;
 
 });
+
+
+function gatherCurrentSelection(listview){
+
+	var rounds = _.map(listview.sections,function(listItem){
+		var data = _.map(listItem.getItems(),function(round,index){
+			return {
+				customizer:round.properties.launch_data
+			}
+		});
+
+		return {
+			customizer:data,
+			
+		}
+	});
+	Ti.API.info('ROUNDS:',rounds);
+}
 
 function saveWorkout(e){
 	// preare POST request here...
@@ -184,13 +203,26 @@ function onErrorWorkoutCallback(e){
 function createRound(round, roundIndex){
 	Ti.API.info('EXERCISES.IN.ROUND: ', _.size(round.customizer), roundIndex);
 	var roundData = [];
+	
 	_.each(round.customizer,function(exercise, index){
 		// Ti.API.info('EXERCISE.DATA:', exercise.ID, exercise.post_title);
 
 	    var ob = {
 	    	template:'RoundItemTemplate',
-	    	properties: { title: exercise.post_title, searchableText:exercise.post_title, launch_data:exercise, exercise_index:index,
-	    	canMove:true, canInsert:false, canEdit:true, accessoryType:Titanium.UI.LIST_ACCESSORY_TYPE_DISCLOSURE},
+	    	properties: { 
+	    		title: exercise.post_title,
+	    		searchableText:exercise.post_title,
+	    		launch_data:exercise,
+	    		exercise_index:index,
+				wo_exercise_number:round.wo_exercise_number,
+				wo_equipment:round.wo_equipment,
+				wo_round_type:round.wo_round_type,
+		    	canMove:true,
+		    	canInsert:false,
+		    	canEdit:true,
+		    	accessoryType:Titanium.UI.LIST_ACCESSORY_TYPE_DISCLOSURE
+	    },
+
 	    	pic:{image: exercise.acf.video_featured.url},
 	    	main:{text:exercise.post_title},
 	    	sub:{text:'REPLACE'},
@@ -198,8 +230,15 @@ function createRound(round, roundIndex){
 	    roundData.push(ob);
 	})
 
-	var round_title = 'Round '+roundIndex;
-	var hT = Alloy.createController('customizer/header',{htitle:round_title, round_index:roundIndex, onHeaderItemClick:onHeaderItemClick}).getView();
+	var round_title = 'Round '+roundIndex+': ';
+	var hT = Alloy.createController('customizer/header',{
+			htitle:round_title,
+			round_index:roundIndex,
+			onHeaderItemClick:onHeaderItemClick,
+			wo_round_type:round.wo_round_type,
+			wo_equipment:round.wo_equipment,
+			wo_exercise_number:round.wo_exercise_number,
+		}).getView();
 	var roundSection = Ti.UI.createListSection({ headerView: hT});
 	roundSection.setItems(roundData);
 	$.customizer_list_view.appendSection(roundSection);
@@ -271,6 +310,7 @@ function handleListViewClick(e){
     var sec = $.customizer_list_view.sections[e.sectionIndex];
     var row = sec.getItemAt(e.itemIndex);
     var exercise = row.properties.launch_data;
+    Ti.API.info('ROW.DATA:',row.wo_exercise_number, row.wo_equipment, row.wo_round_type);
     Ti.API.info('REPLACE.INTENT:',e, e.sectionIndex, e.itemIndex, e.source, row.properties.launch_data.ID);
     // launchExercise({'url':exercise.acf.video.url, 'title':exercise.post_title});
     // Animation.shake(row);
@@ -314,20 +354,23 @@ function insertExercise(el,cli,validate_mode){
     	// popover:$.popover_ob,
 
 function replaceExercise(e, insert_mode){
-
-    var round_popover = Alloy.createController('customizer/insert', {
+	Ti.API.info('\n\nBUILD.QUERY');
+	var sec = $.customizer_list_view.sections[e.sectionIndex];
+    var row = sec.getItemAt(e.itemIndex);
+    Ti.API.info('ROW.DATA',row.properties);
+    var insert_popover = Alloy.createController('customizer/insert', {
     	validate:insertExercise,
     	validate_mode:insert_mode,
     	include:'customizer/list',
     	selection:{
-    		equipment:'bands',
-    		type:'upper-body',
-    		rounds:7,
+    		equipment:row.properties.wo_equipment.value,
+    		type:row.properties.wo_round_type.value,
+    		rounds:row.properties.wo_exercise_number,
     	},
     	customizerListItem:e,
     }).getView();
 
-    round_popover.show({animated:true, view:$.insert_remove});
+    insert_popover.show({animated:true, view:$.insert_remove});
 }
 
 function createNewRound(e){

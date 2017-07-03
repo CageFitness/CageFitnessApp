@@ -7,6 +7,12 @@ function handleListViewClick(e){
 	// Ti.API.info('RES:',res);
 	if(_.size(res)>0){
 		Ti.API.info('RES: ',res.url);
+		if(res.url=="download_manager"){
+
+		}
+		else{
+			
+		}
 		// Ti.App.fireEvent('cage/external/link',{'window_type':'modal', 'url':res.url});
 		Ti.App.fireEvent('cage/launch/external',{url:res.url});
 	}
@@ -23,6 +29,7 @@ var elementData = [
 	{'sectionIndex':1,'itemIndex':1, 'url':'https://cagefitness.com/contact?app_embed', 'title':'My Title', 'accesoryType':'Ti.UI.LIST_ACCESSORY_TYPE_DETAIL' },
 	{'sectionIndex':2,'itemIndex':0, 'url':'https://cagefitness.com/app/help/terms-of-service', 'title':'My Title', 'accesoryType':'Ti.UI.LIST_ACCESSORY_TYPE_DETAIL' },
 	{'sectionIndex':2,'itemIndex':1, 'url':'https://cagefitness.com/app/help/privacy-policy', 'title':'My Title', 'accesoryType':'Ti.UI.LIST_ACCESSORY_TYPE_DETAIL' },
+	{'sectionIndex':2,'itemIndex':1, 'url':'download_manager', 'title':'Donwload Manager', 'accesoryType':'Ti.UI.LIST_ACCESSORY_TYPE_DETAIL' },
 ];
 // var items = _.map(elementData, function(element) {
 // 	return {

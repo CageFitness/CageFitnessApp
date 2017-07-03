@@ -67,17 +67,20 @@ function callOptions(tkn){
                 }
             ],
             debug: true,
-            ttl:300,
+            ttl:604800,
         });
     // xhr.POST(validate_url);
     xhr.GET(config_url, onSuccessOptionsCallback, onErrorCallbackSilent);
-    xhr.GET(user_url, onSuccessUserCallback, onErrorCallbackSilent);
+    
 }
 
 
 function onSuccessOptionsCallback(e){
     Ti.App.Properties.setString('config', e.data );
     var config = JSON.parse( Ti.App.Properties.getString('config') );
+    Ti.API.info('ROUND.CONFIGS.READY:',config.acf.round_configs);
+    var user_url = Alloy.CFG.api_url + Alloy.CFG.user_path;
+    xhr.GET(user_url, onSuccessUserCallback, onErrorCallbackSilent);
 }
 
 function onSuccessUserCallback(e){
@@ -104,7 +107,7 @@ function closeLogin(){
 
 }
 
-// cageAuthenticate();	
+cageAuthenticate();	
 
 
 

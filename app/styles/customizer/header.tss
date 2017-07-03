@@ -10,16 +10,46 @@
 		fontSize:20,
 	},
 	left:15,
-	rigth:15,
+	// rigth:15,
 	color:'#000',
 	backgroundColor:"#f8f8f8",
-	height:50,
-	width:Ti.UI.FILL,
+	
+	width:Ti.UI.SIZE,
 	autoStyle:true,
 }
 ".list_header":{
 	backgroundColor:"#f8f8f8",
-	height:Ti.UI.SIZE,
+	// height:50,
 	width:Ti.UI.FILL,
 	autoStyle:true,
+	layout:'horizontal',
+
+}
+
+
+"#exercise_type":{
+	height:40,
+	width:Ti.UI.SIZE,
+	color:'#144794',
+	left:10,
+	font:{
+		fontSize:20,
+	}	
+}
+"#exercise_equipment":{
+	height:40,
+	width:Ti.UI.SIZE,
+	left:10,
+	// color:'#c4cb48',
+	color:'#2a751b',
+	font:{
+		fontSize:20,
+	}	
+}
+"#exercise_number":{
+	height:40,
+	color:'green',
+	font:{
+		fontSize:12,
+	}
 }

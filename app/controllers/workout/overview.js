@@ -28,9 +28,9 @@ var item_index = args.item_index || 0;
 var file_index = args.file_index || 0;
 var round_number = args.round_number || '';
 
-var exercise_number = args.exercise_number || '';
-var exercise_equipment = args.exercise_equipment || '';
-var exercise_type = args.exercise_type || '';
+var exercise_number = args.exercise_number || 5;
+var exercise_equipment = args.exercise_equipment || 'body-weight';
+var exercise_type = args.exercise_type || 'combo';
 var duration = args.duration || 30;
 // $.overview.backgroundColor = getRandomColor();
 var items = [];
@@ -162,6 +162,7 @@ function getIndex(n){
 }
 
 function getExerciseDuration(round_size){
+	Ti.API.info('======= >>>> ENSURE.CONFIG:',args.config.acf.duration_break);
 	var cfg = args.config;
 	var duration_ob = _.findWhere( cfg.acf.round_configs, {'config_round_num':round_size} );
 	return duration_ob;
@@ -173,6 +174,8 @@ function describeRound2(){
 		var duration;
 		if(_.size(round)-1 === index){
 			// Ti.API.info('this is last', index, exercise_number, getExerciseDuration(exercise_number));
+			Ti.API.info('EXERCISE.DURATION.FIX:',exercise_number);
+
 			duration = getExerciseDuration(exercise_number).config_round_duration_last;
 		}
 		else{

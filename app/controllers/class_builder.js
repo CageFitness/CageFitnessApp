@@ -235,9 +235,9 @@ function createRoundTypeRows(round_number){
 function createNumberOfExercisesRows(round_number){
     
     var config = JSON.parse( Ti.App.Properties.getString('config') );
-    Ti.API.info('This runs.');
+    Ti.API.info('CREATIG.NUMBER.EXERCISES:');
     // Ti.API.info('ROUND.CONFIGS:',config.acf.round_configs);
-    Ti.API.info('ROUND.CONFIGS:',config.acf.round_configs);
+   
 
 
 	var numbers = config.acf.round_configs;
@@ -429,13 +429,18 @@ $.listview_step6.addEventListener('itemclick', function(e){
 	// XXXX
 	if(e.itemIndex===1){
 		sdata.build='custom';
-		$.step7_btn.setTitle('CUSTOMIZE');
+		$.step7_btn.setTitle('CUSTOMIZE!');
+		
 		
 	}
 	else{
 		sdata.build='auto';
-		$.step7_btn.setTitle('BEGIN WORKOUT');
+		$.step7_btn.setTitle('BEGIN WORKOUT!');
+		
 	}
+	setTimeout(function(){
+		Animation.shake($.step7_btn);
+	}, 1000);
 
 
     var section = $.listview_step6.sections[e.sectionIndex];
