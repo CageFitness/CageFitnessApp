@@ -196,12 +196,12 @@
 }
 
 ".titleLabel": {
-	left: 95,
+	left: 80,
 	// color: "red",
 	// top:5,
 	// bottom:5,
 	height:40,
-	right:30,
+	right:50,
 }
 
 ".detailLabel": {

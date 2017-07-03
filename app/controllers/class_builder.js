@@ -31,8 +31,9 @@ function updateStep_UPDATE(row){
 	sdata.update=true;
 }
 
-function updateStep_BUILD(row){
-	Ti.API.info('DATA.UPDATE.BUILD:',row);
+function updateStep_BUILD(row, mode){
+	Ti.API.info('DATA.UPDATE.BUILD:',row, mode);
+
 	sdata.build='auto';
 }
 
@@ -103,9 +104,14 @@ function getIndex(n){
 
 function onSuccessCustomizer(e){
 
-   var wkt = Ti.App.Properties.getString('my_workout');
-   Ti.App.fireEvent('cage/launch/window',{key:'menu_workouts', workout_id:wkt });
-
+	var wkt = Ti.App.Properties.getString('my_workout');
+	if(sdata.build=='auto'){
+		Ti.App.fireEvent('cage/launch/window',{key:'menu_workouts', workout_id:wkt });
+	}
+	else{
+		Ti.App.fireEvent('cage/launch/customizer',{menu_id:'menu_customizer'});
+	}
+	
 	Ti.API.info('SUCCESS.CUSTOMIZER: ',e.data);
 
 }
@@ -114,7 +120,7 @@ function onErrorCustomizer(e){
 	Ti.API.info('ERROR: ',e);
 }
 
-function sendData(){
+function sendData(mode){
 
 	// var rounds = [
 	// {
@@ -150,6 +156,7 @@ function sendData(){
     sdata.filter='red';
     finalData = JSON.stringify(sdata);
 
+	Ti.API.info('AUTO.GENERATE.WORKOUT.MODE:', mode);
 	Ti.API.info('AUTO.GENERATE.WORKOUT.WITH:', finalData);
 	// Ti.API.info('DOS', token);
 
@@ -421,9 +428,15 @@ $.listview_step6.addEventListener('itemclick', function(e){
 	Ti.API.info('CLASS.BUILDER.CUSTOMIZER:', e);
 	// XXXX
 	if(e.itemIndex===1){
-		Ti.App.fireEvent('cage/launch/customizer',{menu_id:'menu_customizer'});
-	    // Ti.App.fireEvent('cage/drawer/item_click',{menu_id:'menu_customizer'});
+		sdata.build='custom';
+		$.step7_btn.setTitle('CUSTOMIZE');
+		
 	}
+	else{
+		sdata.build='auto';
+		$.step7_btn.setTitle('BEGIN WORKOUT');
+	}
+
 
     var section = $.listview_step6.sections[e.sectionIndex];
     clickAndFollow(section,e);
@@ -510,7 +523,7 @@ function doProgress(e) {
 function doWorkout(e) {
    // var wkt = Ti.App.Properties.getString('my_workout');
    // Ti.App.fireEvent('cage/launch/window',{key:'menu_workouts', workout_id:wkt });
-   sendData();
+   sendData(sdata.build);
 }
 
 
