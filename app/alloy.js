@@ -125,9 +125,6 @@ Ti.App.iOS.addEventListener('sessioncompleted', function(e) {
         var completed = _.size(_.where(Alloy.Globals.WorkoutAssets, {complete: true}));
         var total = _.size(Alloy.Globals.WorkoutAssets);
 
-        if(completed===0 && completed===total){
-        	Ti.API.info('PROBABALY.NO.FILES.TO.DOWNLOAD?',completed===total);
-        }
     	if(completed>0 && completed===total){
     		Ti.API.info('ONSESSIONCOMPLETED: ' + JSON.stringify(e));
     		Ti.API.info(' ========== ALL DOWNLOADS COMPLETE, GO WORKOUT!!!!');

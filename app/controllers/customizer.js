@@ -15,9 +15,9 @@ $.customizer_btn_bar.addEventListener('click',function(e){
 });
 
 var tool_edit=[
-	{title:'Replace', cb:enableFeature, mode:'replace'},
-	{title:'Insert', cb:enableFeature, mode:'insert'},
-	{title:'Remove', cb:enableFeature, mode:'edit'},
+	{title:'REPLACE', cb:enableFeature, mode:'replace', right:10, left:10},
+	{title:'INSERT', cb:enableFeature, mode:'insert', right:10, left:10},
+	{title:'REMOVE', cb:enableFeature, mode:'edit', right:10, left:10},
 ]
 $.insert_remove.labels = tool_edit;
 $.insert_remove.addEventListener('click',function(e){

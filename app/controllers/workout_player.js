@@ -13,7 +13,8 @@ var initial_dlinfo;
 // ?author=617&per_page=1
 var config;
 var cage_cache_dir = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'cached');
-
+var inited = 0;
+var show_activity = _.once(justShow);
 
 $.round_btn_bar.addEventListener('postlayout',function(e){
 	Ti.API.info('POST.LAYOUT.TRIGGERED',e);
@@ -22,7 +23,7 @@ $.round_btn_bar.addEventListener('postlayout',function(e){
 
 $.scrollable.addEventListener('postlayout',function(e){
 	Ti.API.info('POST.LAYOUT.TRIGGERED',e);
-	// $.scrollable.visible=true;
+	$.scrollable.show();
 });
 
 var round_tool=[];
@@ -34,26 +35,6 @@ Alloy.Globals.downprogress = $.downprogress;
 
 
 function showActivity(){
-	Ti.API.info('***************');
-	Ti.API.info('***************');
-	Ti.API.info('***************');
-	Ti.API.info('***************');
-	Ti.API.info('***************');
-	Ti.API.info('***************');
-	Ti.API.info('***************');
-	Ti.API.info('***************');
-	Ti.API.info('***************');
-	Ti.API.info('***************');
-	Ti.API.info('***************');
-	Ti.API.info('***************');
-	Ti.API.info('***************');
-	Ti.API.info('***************');
-	Ti.API.info('***************');
-	Ti.API.info('***************');
-	Ti.API.info('***************');
-	Ti.API.info('***************');
-	Ti.API.info('***************');
-	Ti.API.info('***************');
 	Ti.API.info('***************');
 	Ti.API.info('***************');
 	
@@ -486,9 +467,17 @@ function addToDownloadSession(ob){
 		}
 		Alloy.Globals.WorkoutAssets.push(TaskObject);
 	}
-	Ti.API.info('CACHED? --> ', in_cache? 'YES' : 'NO ' , ob.filename);
+	Ti.API.info('CACHED? --> ', in_cache , ob.filename);
+	if($.downprogress && !in_cache){
+		
+		show_activity();
+	}
 }
 
+function justShow(){
+	Ti.API.info('SHOULD.HAPPEN.ONLY.ONCE');
+	$.downprogress.applyProperties({message:'Downloading Assets...', opacity:1});
+}
 
 function isInCache(file){
 	var file = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'cached/'+file);
@@ -572,6 +561,7 @@ function prepareVideoOwl(data){
     var finish_view  = {type:'workout/finish',data:{title:'Well Done!', type:'static'}};
     // Ti.API.info('ADDING.FINISH:');
     owl_views.push(finish_view);
+    Ti.API.info('RETURNING.OWL.VIEWS');
     return owl_views;
 
     // addWorkoutElement('workout/finish',{title:'Well Done!', type:'static'});
@@ -625,7 +615,10 @@ function onSuccessWorkoutCallback(e){
 
 	// Ti.API.info('ATTEMPT.BEFORE.OWL');
 	Ti.API.info('ADDING.OWLED.TO.DOWNLOADS');
-	var owled = addOwlElements(owled);
+	var owledElements = addOwlElements(owled);
+	Ti.API.info( 'ADDING.OWLED.ELEMENTS', _.size(owledElements) );
+	var setted_views = $.scrollable.setViews(owledElements);
+	Ti.API.info('SETTED.VIEWS.IN.OWL', _.size(setted_views) );
 	// Ti.API.info('ATTEMPT.AFTER.OWL');
     
 
@@ -687,7 +680,8 @@ function addOwlElements(items){
 		var page = Alloy.createController(item.type,item.data);
 		owl_pages.push(page.getView());
 	});
-	$.scrollable.setViews(owl_pages);
+	
+	return owl_pages;
 }
 
 function addWorkoutElement(type, data){

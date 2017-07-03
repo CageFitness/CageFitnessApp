@@ -41,6 +41,11 @@ var items = [];
 var overview_duration = (args.first_slide ? args.config.acf.duration_first : args.config.acf.duration_break );
 var counter = overview_duration;
 
+// TIMER RELATED
+var preview_timer = overview_duration;
+var increment = -(1/preview_timer);
+
+
 $.overview.backgroundColor = '#fff';
 	$.title.text = title;
 	$.title_type.text = exercise_type.label;
@@ -54,18 +59,6 @@ $.overview.backgroundColor = '#fff';
 	
 
 
-
-
-
-
-
-
-Ti.App.addEventListener('cage/workout/video/play_pause',onPlayPause);
-
-
-
-
-
 function onPlayPause(e){
 	if(e.item===item_index){
 		Ti.API.info('PLAY.PAUSE.ON.OVERVIEW: ',e, item_index);
@@ -74,13 +67,9 @@ function onPlayPause(e){
 
 
 
-
-
-
-
 function onOwlSlideEntered(e) {
 
-	resetCounter();
+	// resetCounter();
     if (e.item === item_index) {
         Ti.API.info('PREVIEW.FINISHED.CALLED:' + e.item, item_index);
         animateOverviewSlide(e.item);
@@ -88,36 +77,29 @@ function onOwlSlideEntered(e) {
     }
 }
 
-Ti.App.addEventListener('cage/workout/slide/entered', onOwlSlideEntered);
 
 
 
 function animateOverviewSlide(key) {
-	var _key = key;
 	if(key == item_index){
-	    var title_anim = Ti.UI.createAnimation({
-	        duration: 400,
-	        opacity: 1,
-	        top: 4,
-	        // autoreverse: false,
-	        // repeat: 1
-	    });
-
-	    title_anim.addEventListener('complete', function(e) {
+		resetCounter();
+		$.counter_big.applyProperties({text:fancyTimeFormat(counter)});
+	    Animation.popIn($.counter_big,function(e){
 	        Ti.API.info('OVERVIEW.INTRO.ANIMATION.ENDED');
-	        // createVideoPlayer();
-	        resetCounter();
-	        clearInterval(Alloy.Globals.Timer);
-	        startCounter();
-	        // createGif();
-	    })
-
-
-	    $.title.animate(title_anim);
-
-
+	        
+	        startCounter();	    	
+	    });
 	}
+}
 
+
+
+
+function triggerFirstSlide(){
+	Ti.API.info('OVERVIEW.FIRST.SLIDE: ',args.first_slide);
+	if(args.first_slide){
+		startCounter();
+	}
 }
 
 
@@ -125,14 +107,6 @@ function animateOverviewSlide(key) {
 
 
 
-
-
-
-
-// var preview_timer = overview_duration;
-var preview_timer = overview_duration;
-
-var increment = -(1/preview_timer);
 
 function resetCounter(){
 	clearInterval(Alloy.Globals.Timer);
@@ -177,21 +151,6 @@ function startCounter() {
        	}
     }, 1000);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -260,10 +219,12 @@ function describeRound(){
 describeRound2();
 $.elementsList.sections[0].setItems(items);
 
-Ti.API.info('FIRST.SLIDE: ',args.first_slide);
-if(args.first_slide){
-	startCounter();
-}
+Ti.App.addEventListener('cage/workout/video/play_pause',onPlayPause);
+Ti.App.addEventListener('cage/workout/slide/entered', onOwlSlideEntered);
+
+
+
+triggerFirstSlide();
 
 
 

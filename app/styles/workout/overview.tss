@@ -83,6 +83,7 @@
 }
 
 "#counter_big":{
+	autoStyle:true,
 	top:10,
 	color:'#d9e254',
 	width:Ti.UI.FILL,

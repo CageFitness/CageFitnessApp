@@ -19,18 +19,18 @@
 						<!-- <Label id="edit_mode_label"> EDIT MODE</Label>	 -->
 			        	<!-- <Switch left="10" id="editSwitch" value="false" onChange="handleEnableEditing"/>		        	 -->
 						<TabbedBar left="10" id="insert_remove">
-<!-- 				    	    <Labels>
+							<!--<Labels>
 				    	        <Label ttid="276" slug="body-weight">Insert</Label>
 				    	        <Label ttid="277" slug="bags">Remove</Label>
 				    	    </Labels> -->
 				    	</TabbedBar>		        	
 			        </View>
 			        <ButtonBar id="customizer_btn_bar">
-			            <Labels>
+			            <!-- <Labels>
 			                <Label id="add" title="Add Round">Add Round</Label>
 			                <Label id="save" title="Save Workout">Save Workout</Label>
 			                <Label id="begin" title="Begin Workout">Begin Workout</Label>
-			            </Labels>
+			            </Labels> -->
 			        </ButtonBar>
 				</View>
 

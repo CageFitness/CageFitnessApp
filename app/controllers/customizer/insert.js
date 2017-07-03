@@ -71,7 +71,9 @@ function generateRound(e){
 function loadExercises(selection){
 	Ti.API.info('GETTING EXERCISES:', selection);
 	var filter_query = {}
-		filter_query.per_page=20;
+		filter_query.per_page=52;
+		filter_query.sortby='title';
+		filter_query.order='asc';
 		if(!selection.page){
 			filter_query.page=1;
 		}

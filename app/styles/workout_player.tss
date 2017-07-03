@@ -3,7 +3,7 @@
 	// top:100,
 top:0,
 right:0,
-width:390,
+width:300,
   layout:'vertical',
   // backgroundColor:'pink',
   height:Ti.UI.SIZE,
@@ -19,10 +19,15 @@ width:390,
     value: 0,
     style: Ti.UI.iOS.ProgressBarStyle.PLAIN,
     // top: 10,
-    message: 'Downloading Assets',
-    font: { fontSize: 11},
+    message: 'Building Workout',
+    font: { 
+    	fontSize: 12,
+    	fontWeight:'normal',
+    },
     color: '#000',
-    opacity:0.5,
+    opacity:0,
+    // backgroundColor:'#fff',
+    // borderRadius:8,
 }
 
 
@@ -32,6 +37,29 @@ width:390,
 	width:390,
 	// backgroundColor:'pink',
 }
+
+
+".bar_wrap_right":{
+	right:300,
+	width:100,
+	// backgroundColor:'pink',
+}
+
+"#customizer_btn_bar":{
+	top:9,
+    backgroundColor:'#000',
+    style:Titanium.UI.iOS.SystemButtonStyle.BORDERED,
+    height:40,
+    // width:Ti.UI.SIZE,
+    visible:true,
+    width: Ti.UI.SIZE,
+    left:10,
+    // opacity:0,
+    // borderWidth:1,
+    // borderColor:'red',
+    // top:0,
+}
+
 
 "#round_btn_bar":{
 	top:9,
@@ -162,7 +190,7 @@ width:390,
 	height:'83%',
 	pageIndicatorColor: '#cfcbca',
 	keepScreenOn:true,
-	visible:true,
+	visible:false,
 	// height:Ti.UI.FILL,
 }
 

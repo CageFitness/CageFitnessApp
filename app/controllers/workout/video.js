@@ -149,9 +149,11 @@ exports.sayHello = function() {
 
 
 function createGif(){
+
     if(next.ID){
 		var localgif = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'cached/'+next.acf.video_animated_thumbnail.filename);	
 		var gifurl = localgif || next.acf.video_animated_thumbnail.url;
+		Ti.API.info('CREATING.NEXT.GIF.WITH:', item_index, gifurl);
 		var gif = Ti.UI.createImageView({
 			top:0,
 			left:0,
@@ -272,11 +274,14 @@ function animateVideoSlide(key) {
 	    });
 
 	    title_anim.addEventListener('complete', function(e) {
-	        Ti.API.info('INTRO.ANIMATION.ENDED');
+	        Ti.API.info('VIDEO.INTRO.ANIMATION.ENDED');
+	        Ti.API.info('VIDEO.CREATING.PLAYER');
 	        createVideoPlayer();
+	        Ti.API.info('VIDEO.RESET.COUNTER');
 	        resetCounter();
-	        clearInterval(Alloy.Globals.Timer);
+	        Ti.API.info('VIDEO.CREATING.PLAYER');
 	        startCounter();
+	        Ti.API.info('VIDEO.CREATE.GIF');
 	        createGif();
 	    })
 

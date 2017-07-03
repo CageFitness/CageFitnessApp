@@ -21,6 +21,13 @@
             <View class="bar_wrap">
                 <ButtonBar id="round_btn_bar"></ButtonBar>
             </View>
+            <View class="bar_wrap_right">
+                <ButtonBar id="customizer_btn_bar">
+                	<Labels>
+                		<Label class="player_btn" id="c_customize">CUSTOMIZE</Label>
+                	</Labels>
+                </ButtonBar>
+            </View>            
             <View id="dlman">
                 <Label id="dlmanlabel"></Label>
                 <View id="activity_wrapper">
