@@ -108,7 +108,7 @@ function closeLogin(){
 
 }
 
-cageAuthenticate();
+// cageAuthenticate();
 
 
 
