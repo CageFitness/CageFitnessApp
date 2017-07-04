@@ -95,6 +95,7 @@ function onSuccessUserCallback(e){
 function showIndicator(e){
     $.activity_wrapper.show();
     $.activity_indicator.show();
+    // DEV
     Ti.App.fireEvent('cage/login/authenticate');
 }
 
@@ -107,7 +108,7 @@ function closeLogin(){
 
 }
 
-cageAuthenticate();	
+cageAuthenticate();
 
 
 

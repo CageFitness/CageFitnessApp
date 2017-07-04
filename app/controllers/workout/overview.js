@@ -41,6 +41,11 @@ var items = [];
 var overview_duration = (args.first_slide ? args.config.acf.duration_first : args.config.acf.duration_break );
 var counter = overview_duration;
 
+
+// var triggerFirstSlideOnce = _.once(triggerFirstSlide);
+
+var stopped_at;
+
 // TIMER RELATED
 var preview_timer = overview_duration;
 var increment = -(1/preview_timer);
@@ -92,15 +97,6 @@ function animateOverviewSlide(key) {
 	}
 }
 
-
-
-
-function triggerFirstSlide(){
-	Ti.API.info('OVERVIEW.FIRST.SLIDE: ',args.first_slide);
-	if(args.first_slide){
-		startCounter();
-	}
-}
 
 
 
@@ -162,10 +158,9 @@ function getIndex(n){
 }
 
 function getExerciseDuration(round_size){
-	Ti.API.info('======= >>>> ENSURE.CONFIG:',args.config.acf.duration_break);
-	var cfg = args.config;
-	var duration_ob = _.findWhere( cfg.acf.round_configs, {'config_round_num':round_size} );
-	return duration_ob;
+	Ti.API.info('======= >>>> ENSURE.CONFIG:',args.config.acf.duration_break, args.config.acf.round_configs.config_round_num, round_size );
+	var duration_ob = _.findWhere( args.config.acf.round_configs, {'config_round_num':round_size} );
+	return duration_ob||35;
 }
 
 function describeRound2(){
@@ -222,13 +217,28 @@ function describeRound(){
 describeRound2();
 $.elementsList.sections[0].setItems(items);
 
+
+
+function triggerFirstSlide(){
+	Ti.API.info('OVERVIEW.FIRST.SLIDE: ',args.first_slide);
+	if(args.first_slide){
+		startCounter();
+	}
+}
+
 Ti.App.addEventListener('cage/workout/video/play_pause',onPlayPause);
 Ti.App.addEventListener('cage/workout/slide/entered', onOwlSlideEntered);
+Ti.App.addEventListener('cage/workout/start', triggerFirstSlide);
 
 
-
-triggerFirstSlide();
-
-
-
+$.cleanup = function cleanup() {
+	Ti.API.info('OVERVIEW.PLAYER.PERFORMING.CLEANUP:');
+	Ti.App.removeEventListener('cage/workout/video/play_pause',onPlayPause);
+	Ti.App.removeEventListener('cage/workout/slide/entered', onOwlSlideEntered);
+	Ti.App.removeEventListener('cage/workout/start', triggerFirstSlide);	
+	$.destroy();
+	$.off();
+	// someController = null;
+};
+args.winref.addEventListener('close', $.cleanup);
 

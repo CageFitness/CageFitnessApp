@@ -16,6 +16,7 @@ var helpView 		= controls.getHelpView();
 var profileView 	= controls.getProfileView();
 // var workoutView 	= controls.getWorkoutView();
 var externalView 	= controls.getExternalView();
+var consoleView 	= controls.getConsoleView();
 // var customizerView 	= controls.getCustomizerView();
 
 
@@ -24,7 +25,7 @@ menuitems['menu_builder'] = {view:mainView};
 menuitems['menu_exercises']= {view:exerciseView};
 menuitems['menu_help']= {view:helpView};
 menuitems['menu_profile']= {view:profileView};
-menuitems['menu_external']= {view:externalView};
+menuitems['menu_console']= {view:consoleView};
 // menuitems['menu_customizer']= {view:customizerView};
 
 // menuitems['menu_workouts']= {view:workoutView};

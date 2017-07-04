@@ -3,7 +3,7 @@
     <View id="mainView" class="page_wrapper">
         <Require src="topbar" window_type="modal"></Require>
         <View id="pover_target"></View>
-        <Require type="view" src="header" customTitle="Customize your Workout" customImage="images/layout/workout_theme.png"></Require>
+        <Require id="cutomizer_header" type="view" src="header" customTitle="Customize your Workout" customImage="images/layout/workout_theme.png"></Require>
 
         <View class="customizer_list">
 
@@ -61,7 +61,7 @@
                 </Templates>
                 <FooterView>
                     <View id="addRoundBtn" onClick="createNewRound" backgroundColor="#DDD" height="Ti.UI.SIZE">
-                        <Label id="add_label">ADD ROUND</Label>
+                        <Label id="add_label"></Label>
                     </View>
                 </FooterView>
             </ListView>

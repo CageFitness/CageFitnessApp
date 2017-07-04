@@ -53,6 +53,23 @@ Alloy.Globals.DownloadProgress = 0;
 Alloy.Globals.WorkoutAssets = [];
 
 
+// Alloy.Globals.Status = {scroll_ready:false,downloader_ready:false};
+
+Alloy.Globals.checkStatus = function(){
+	// if(Alloy.Globals.Status.scroll_ready && Alloy.Globals.Status.downloader_ready){
+		Ti.App.fireEvent('/cage/workout/start');
+	// }
+}
+
+// After downloader and workout renderer hits this function the workout can start.
+Alloy.Globals.continueCageWorkout = _.after(2,Alloy.Globals.checkStatus);
+
+var startWorkoutAfterSomeDownloadsAreDone = _.once(checkDown);
+function checkDown(){
+	Alloy.Globals.NeedsToWait=false;
+	Ti.App.fireEvent('cage/workout/overview/can_continue');
+}
+
 // // // Monitor this event to receive updates on the progress of the download
 // Ti.App.iOS.addEventListener('downloadprogress', function(e) {
 //     // Update the progress indicator
@@ -87,6 +104,12 @@ Ti.App.iOS.addEventListener('downloadcompleted', function(e) {
 			Ti.API.info('ASSET.DOWNLOAD.COMPLETE:', completed, inqueue, completed/inqueue,  JSON.stringify(task_completed));
 			
 			Alloy.Globals.DownloadProgress=completed/inqueue;
+			
+			// if progress goes 25% continue
+			if(completed >= (0.25 * inqueue) ){
+					startWorkoutAfterSomeDownloadsAreDone();
+			}
+
 			if(Alloy.Globals.downprogress){
 				Alloy.Globals.downprogress.value=Alloy.Globals.DownloadProgress;
 			}
@@ -128,6 +151,7 @@ Ti.App.iOS.addEventListener('sessioncompleted', function(e) {
     	if(completed>0 && completed===total){
     		Ti.API.info('ONSESSIONCOMPLETED: ' + JSON.stringify(e));
     		Ti.API.info(' ========== ALL DOWNLOADS COMPLETE, GO WORKOUT!!!!');
+    		Alloy.Globals.continueCageWorkout();
     		// session.finishTasksAndInvalidate();
     		Alloy.Globals.downprogress.message='Downloads Complete';
     		Animation.fadeOut(Alloy.Globals.downprogress);

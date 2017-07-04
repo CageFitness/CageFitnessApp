@@ -20,7 +20,7 @@ else if(wtype=='customizer'){
 	$.main.add(Alloy.createController('customizer').getView());	
 }
 else{
-	$.main.add(Alloy.createController('workout_player').getView());
+	$.main.add(Alloy.createController('workout_player', {winref: $.win}).getView());
 }
 
 
@@ -45,8 +45,7 @@ Ti.App.addEventListener('cage/topbar/menu_button/close', onButtonClose);
 
 
 $.cleanup = function cleanup() {
-	Ti.API.info('PERFORMING.CLEANUP:');
-	// NappDownloadManager.cleanUp();
+	Ti.API.info('WINDOW.PERFORMING.CLEANUP:');
 	clearInterval(Alloy.Globals.Timer);
 	$.destroy();
 	$.off();

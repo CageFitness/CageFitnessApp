@@ -70,6 +70,9 @@ function onSuccessExercises3Callback(e){
 	    		title: exercise.title.rendered,
 	    	 	searchableText: exercise.title.rendered,
 	    	 	accessoryType: Titanium.UI.LIST_ACCESSORY_TYPE_DISCLOSURE,
+
+	    	 	// lithiumlab
+
 	    	 },
 	    	 pic:{image: exercise.acf.video_featured.url},
 	    	 info:{text: exercise.title.rendered, data:exercise},
@@ -133,6 +136,7 @@ $.pover.addEventListener("itemclick", function(e){
     section.updateItemAt(e.itemIndex, item);
     item.properties.cage_selected=true;
 
+    Ti.API.info('LIST.VALIDATED.STATICALLY');
     args.selection.equipment='bands';
     args.validate(args.selection);
     // listWindow(args.selection);

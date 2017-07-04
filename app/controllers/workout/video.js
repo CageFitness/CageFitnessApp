@@ -327,7 +327,6 @@ function onOwlSlideEntered(e) {
 }
 
 Ti.App.addEventListener('cage/workout/slide/entered', onOwlSlideEntered);
-
 Ti.App.addEventListener('cage/topbar/menu_button/close', function(e){
 	
 	if(_.size($.full_video_wrapper.children)){
@@ -339,11 +338,13 @@ Ti.App.addEventListener('cage/topbar/menu_button/close', function(e){
 });
 
 
-// LITHIUMLAB
-// function cage_dragStart(e) {
-//     Ti.API.info('cage/class_builder/dragstart' + e);
-// }
-// Ti.App.addEventListener('cage/class_builder/dragstart', cage_dragStart);
+$.cleanup = function cleanup() {
+	Ti.API.info('VIDEO.PLAYER.PERFORMING.CLEANUP:');
+	$.destroy();
+	$.off();
+	// someController = null;
+};
+args.winref.addEventListener('close', $.cleanup);
 
 
 

@@ -115,6 +115,16 @@ function onSuccessExercises3Callback(e){
 	    	 	searchableText: exercise.title.rendered,
 	    	 	accessoryType: Titanium.UI.LIST_ACCESSORY_TYPE_NONE,
 	    	 	launch_data:exercise,
+
+	    		// title: exercise.post_title,
+	    		// searchableText:exercise.post_title,
+	    		// launch_data:exercise,
+	    		
+	   //  		exercise_index:index,
+				// wo_exercise_number:round.wo_exercise_number,
+				// wo_equipment:round.wo_equipment,
+				// wo_round_type:round.wo_round_type,
+
 	    	 },
 	    	 pic:{image: exercise.acf.video_featured.url},
 	    	 info:{text: exercise.title.rendered, data:exercise},

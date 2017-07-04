@@ -19,7 +19,7 @@ width:300,
     value: 0,
     style: Ti.UI.iOS.ProgressBarStyle.PLAIN,
     // top: 10,
-    message: 'Building Workout',
+    message: 'Not Started',
     font: { 
     	fontSize: 12,
     	fontWeight:'normal',
@@ -195,7 +195,12 @@ width:300,
 }
 
 
-
+"#liner":{
+	height:20,
+	backgroundColor:'red',
+	top:0,
+	width:Ti.UI.SIZE,
+}
 
 "#toolbar_wrapper": {
 	top: 0,

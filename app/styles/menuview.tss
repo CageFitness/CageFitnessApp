@@ -1,3 +1,7 @@
+"#menu_console":{
+	backgroundColor:'pink',
+}
+
 "#menuView":{
 	layout: 'vertical',
 	backgroundColor: 'blue'
