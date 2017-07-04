@@ -214,7 +214,6 @@ function createRoundTypeRows(round_number){
 	for (var i = 0; i < round_number; i++) {
 		
 		var ob = {
-			// template:'roundType',
 			properties:{
 				top:0,
 				bottom:0,
@@ -253,7 +252,6 @@ function createNumberOfExercisesRows(round_number){
 				height:65,
 				autoStyle:true,
 				row_index:getIndex(i),
-				// height:Ti.UI.SIZE,
 				selectionStyle:Titanium.UI.iOS.ListViewCellSelectionStyle.NONE,
 				},
 			info: {text: "Round "+getIndex(i)},
@@ -410,10 +408,11 @@ $.listview_step4.addEventListener('itemclick', function(e){
 function ToggleMe(e){
 
 	Ti.API.info('GROUP.BUTTON.ITEM.CLICK: ', e.itemIndex, e.source.selectorValue)
-    e.source.getParent().children[0].backgroundColor = "#ffffff";
-    e.source.getParent().children[2].backgroundColor = "#ffffff";
-    e.source.getParent().children[4].backgroundColor = "#ffffff";
-    e.source.backgroundColor="#d9e153";
+    e.source.getParent().children[0].setBackgroundColor("#ffffff");
+    e.source.getParent().children[2].setBackgroundColor("#ffffff");
+    e.source.getParent().children[4].setBackgroundColor("#ffffff");
+    e.source.setBackgroundColor("#d9e153");
+
 
     updateStep_EXERCISES({'rowIndex':e.itemIndex, 'numexercises':e.source.selectorValue});
 

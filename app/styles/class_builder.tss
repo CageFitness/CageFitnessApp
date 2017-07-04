@@ -1,7 +1,7 @@
 "ListView":{
 	height:Ti.UI.FILL,
 	top:50,
-	bottom:0,
+	bottom:80,
 }
 
 ".list_wrapper":{
@@ -29,7 +29,7 @@
 	left:20,
 	right:20,
 	height:Ti.UI.FILL,
-	top:50,
+	top:30,
 
 
 	

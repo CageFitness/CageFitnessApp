@@ -166,7 +166,7 @@
 }
 
 ".step_btn":{
-	bottom:56,
+	bottom:20,
 	width:242,
 	height:46,
 	color:"#fff",
@@ -339,6 +339,8 @@
 	color:"#000",
 	width:100,
 	borderRadius:6,
+	height:40,
+
 	// height:30
 }
 ".listview":{

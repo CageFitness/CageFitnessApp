@@ -530,14 +530,9 @@ function getExerciseDuration(round_size){
 
 
 function prepareVideoOwl(data){
-    
 	// owl_views = [];
     for (var x=0;x<data.length;x++){
-
     	// if first Owl slide
-    	
-    	
-
         var sob = {
             title:data[x].title,
             type:data[x].type,
@@ -575,8 +570,6 @@ function prepareVideoOwl(data){
         	sob.file_index = data[x].file_index;
         	sob.exercise_number = data[x].exercise_number;
 		    sob.duration = getExerciseDuration(sob.exercise_number);
-
-		    // Ti.API.info('ADDING.VIDEO:');
 		    sob.winref=args.winref;
 		    var video_view = {type:'workout/video',data:sob}
 		    owl_views.push(video_view);
@@ -585,25 +578,14 @@ function prepareVideoOwl(data){
         
     };
 
-
-
     var finish_view  = {type:'workout/finish',data:{title:'Well Done!', type:'static', winref:args.winref}};
     // Ti.API.info('ADDING.FINISH:');
     owl_views.push(finish_view);
     Ti.API.info('RETURNING.OWL.VIEWS');
     return owl_views;
-
     // addWorkoutElement('workout/finish',{title:'Well Done!', type:'static'});
-
-    
-
-    
 };
 
-
-
-
-	
 	$.customizer_btn_bar.addEventListener('click',function(e){
 		Ti.API.info('LAUNCHING CUSTOMIZER:',e.source.labels[e.index]);
 		clearInterval(Alloy.Globals.Timer);

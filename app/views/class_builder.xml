@@ -23,7 +23,7 @@
             <View id="step2" class="step">
                 <Require type="view" src="header" customTitle="Number of Rounds" customImage="images/layout/workout_theme.png" />
                 <View class="list_wrapper">
-                    <View id="list2" class="list" top="0">
+                    <View id="list2" class="list">
                         <View top="20" id="button_matrix">
                             <Button _type="btn" id="btn1" left="16"   class="big_btn row1" title="1"></Button>
                             <Button _type="btn" id="btn2" left="116"  class="big_btn row1" title="2"></Button>
@@ -36,7 +36,6 @@
                             <Button _type="btn" id="btn9" left="316"  class="big_btn row2" title="9"></Button>
                             <Button _type="btn" id="btn10" left="416" class="big_btn row2" title="10"></Button>
                         </View>
-                        <Label text="Rounds" class="winTitle"></Label>
                         <Label top="24" text="SELECT NUMBER OF ROUNDS PER WORKOUT" class="winTitle center" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER"></Label>
                     </View>
 					<Button id="restart" title="Restart" onClick="init_class_builder">
@@ -47,9 +46,8 @@
             <View id="step3" class="step">
                 <Require type="view" src="header" customTitle="Choose Round Type" customImage="images/layout/round_type.png" />
                 <View class="list_wrapper">
-                    <View id="list3" class="list" top="0">
-                        <ListView id="listview_step3" defaultItemTemplate="roundType" top="50">
-                            
+                    <View id="list3" class="list">
+                        <ListView id="listview_step3" defaultItemTemplate="roundType">
                             <Templates>
                                 <ItemTemplate name="roundType">
                                     <View class="padder">
@@ -62,12 +60,9 @@
                                     </View>
                                 </ItemTemplate>
                             </Templates>
-                            
-                            <ListSection height="Ti.UI.SIZE">
-								<!-- <ListItem height="60" info:text="Round 1"></ListItem>-->
+                            <ListSection>
                             </ListSection>
                         </ListView>
-                        <!-- <Label text="5 Rounds" class="winTitle"></Label> -->
                         <Label top="0" text="ASSIGN A WORKOUT TYPE TO EACH ROUND" class="winTitle center" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER"></Label>
                     </View>
 					<Button id="restart" title="Restart" onClick="init_class_builder">
@@ -79,27 +74,26 @@
             </View>
             <View id="step4" class="step">
                 <Require type="view" src="header" customTitle="Number of Exercises" customImage="images/layout/number_exercises.png" />
-                <View class="list_wrapper">
-                    <View id="list4" class="list" top="0">
-                        <ListView id="listview_step4" defaultItemTemplate="numberOfExercises">
+                <View class="list_wrapper" height="Ti.UI.FILL">
+                    <View id="list4" class="list" height="Ti.UI.FILL">
+                        <ListView id="listview_step4" defaultItemTemplate="numberOfExercises" height="Ti.UI.FILL">
                             <Templates>
                                 <ItemTemplate name="numberOfExercises">
                                     <View class="padder">
                                         <View class="list_item_bg">
-                                            <Label bindId="info" id="title" height="Ti.UI.SIZE" />
-                                            <View id="btngroup" bindId="theparent" right="0" layout="horizontal" class="btn_item_wrapper" width="Ti.UI.SIZE" height="Ti.UI.SIZE">
-                                                <Button backgroundColor="#ffffff" onClick="ToggleMe" width="60" right="0" title="5" height="Ti.UI.SIZE" class="dropdown_btn"   selectorValue="5" bindId="select5" autoStyle="true"></Button>
-                                                <View class="btngroupSep" height="Ti.UI.SIZE" width="8"></View>                                            	
-                                                <Button backgroundColor="#ffffff" onClick="ToggleMe" width="60" right="0" title="7" height="Ti.UI.SIZE" class="dropdown_btn"   selectorValue="7" bindId="select7" autoStyle="true"></Button>
-                                                <View class="btngroupSep" height="Ti.UI.SIZE" width="8"></View>
-                                                <Button backgroundColor="#ffffff" width="60" right="10" onClick="ToggleMe" title="10" height="Ti.UI.SIZE" class="dropdown_btn" selectorValue="10" bindId="select10" autoStyle="true"></Button>
+                                            <Label bindId="info" id="title"  />
+                                            <View id="btngroup" bindId="theparent" right="0" layout="horizontal" class="btn_item_wrapper" width="Ti.UI.SIZE" >
+                                                <Button backgroundColor="#ffffff" onClick="ToggleMe" width="60" right="0" title="5"  class="dropdown_btn"   selectorValue="5" bindId="select5"></Button>
+                                                <View class="btngroupSep"  width="8"></View>                                            	
+                                                <Button backgroundColor="#ffffff" onClick="ToggleMe" width="60" right="0" title="7"  class="dropdown_btn"   selectorValue="7" bindId="select7"></Button>
+                                                <View class="btngroupSep"  width="8"></View>
+                                                <Button backgroundColor="#ffffff" width="60" right="10" onClick="ToggleMe" title="10"  class="dropdown_btn" selectorValue="10" bindId="select10"></Button>
                                             </View>
                                         </View>
                                     </View>
                                 </ItemTemplate>
                             </Templates>
-                            <ListSection height="Ti.UI.SIZE" top="80">
-								<!-- <ListItem info:text="Round 1"></ListItem> -->
+                            <ListSection>
                             </ListSection>
                         </ListView>
                         <Label text="DESCRIPTION" class="winTitle xleft" textAlign="Ti.UI.TEXT_ALIGNMENT_LEFT"></Label>
@@ -115,14 +109,13 @@
             <View id="step5" class="step">
                 <Require type="view" src="header" customTitle="Equipment" customImage="images/layout/equipment.png" />
                 <View class="list_wrapper">
-                    <View id="list5" class="list" top="0">
+                    <View id="list5" class="list">
                         <ListView id="listview_step5" defaultItemTemplate="template_equipment">
                             <Templates>
                                 <ItemTemplate name="template_equipment">
                                     <View class="listitem_wrapper">
                                         <ImageView bindId="pic" id="icon" />
                                         <Label left="60" bindId="info" id="title" />
-                                        <!-- <ImageView class="check" bindId="accesory" id="check"></ImageView> -->
                                     </View>
                                 </ItemTemplate>
                             </Templates>
@@ -134,8 +127,7 @@
                             </ListSection>
                         </ListView>
                     </View>
-                        <Label text="Select Equipment" class="winTitle"></Label>
-                        <!-- <Label top="24" text="ASSIGN A WORKOUT TYPE TO EACH ROUND" class="winTitle center" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER"></Label> -->
+                    <Label top="20" text="SELECT EQUIPMENT" class="winTitle center" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER"></Label>
 					<Button id="restart" title="Restart" onClick="init_class_builder">
 			            <ImageView class="icon" id="restart_icon"></ImageView>
 			        </Button>     
@@ -144,11 +136,24 @@
             <View id="step6" class="step">
                 <Require type="view" src="header" customTitle="Build Workout" customImage="images/layout/build_workout.png" />
                 <View class="list_wrapper">
-                    <View id="list6" class="list" top="0">
-                        <ListView id="listview_step6" onItemClick="handleClickBuildWorkout">
+                    <View id="list6" class="list">
+                        <ListView id="listview_step6" defaultItemTemplate="template_equipment" onItemClick="handleClickBuildWorkout">
+							
+							<Templates>
+                                <ItemTemplate name="template_equipment">
+                                    <View class="listitem_wrapper">
+                                        <ImageView bindId="pic" id="icon" />
+                                        <Label left="60" bindId="info" id="title" />
+                                    </View>
+                                </ItemTemplate>
+                            </Templates>                        	
+                            
+
                             <ListSection>
-                                <ListItem build="auto" height="70" class="checked" title="Auto-Generate (Workout is created for you)"></ListItem>
-                                <ListItem build="custom" height="70" class="checked" title="Customize (Create your own class)"></ListItem>
+
+                                <ListItem build="auto"    height="84" class="checked" info:text="Auto Generate (Workout is created for you)" pic:image="images/icons/auto.png"></ListItem>
+                                <ListItem build="custom"  height="84" class="checked" info:text="Customize (Create your own class)" pic:image="images/icons/settings.png"></ListItem>
+
                             </ListSection>
                         </ListView>
                     </View>
@@ -160,7 +165,7 @@
             <View id="step7" class="step">
                 <Require type="view" src="header" customTitle="Review" customImage="images/layout/review.png" />
                 <View class="list_wrapper">
-                    <View id="list7" class="list" top="0">
+                    <View id="list7" class="list">
                         <ListView id="listview_step7" defaultItemTemplate="template_begin_workout" onItemClick="handleClickBeginWorkout">
                             <Templates>
                                 <ItemTemplate name="template_begin_workout">
@@ -172,7 +177,6 @@
                                 </ItemTemplate>
                             </Templates>
                             <ListSection>
-                                <!-- <ListItem height="60" info:text="Workout Theme" sub:text="Strength and Toning"></ListItem> -->
                                 <ListItem _type="round" height="60" info:text="Number of Rounds" sub:text=""></ListItem>
                                 <ListItem _type="type" height="60" info:text="Round Types" sub:text=""></ListItem>
                                 <ListItem _type="exercises" height="60" info:text="Number of Exercises" sub:text=""></ListItem>
