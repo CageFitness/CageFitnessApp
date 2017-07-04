@@ -189,27 +189,39 @@
             </View>
         </ScrollableView>
 
-		<View top="-565" id="step_line" class="bar">
+		<View top="-603" id="step_line" class="bar">
 			<View class="step_wrap">
 	            <View class="step_track_line"></View>
 	            <View id="step_track">
 	                <View id="s2" left="0" onClick="stepClickHandler" autoStyle="true" class="step_ball">
-	                    <Label class="step_label" text="1" autoStyle="true"></Label>
+	                    <View class="ball_wrap">
+	                    	<Label class="step_label" text="1" autoStyle="true"></Label>
+	                    </View>
 	                </View>
-	                <View id="s3" left="79" onClick="stepClickHandler" autoStyle="true" class="step_ball">
-	                    <Label class="step_label" autoStyle="true" text="2"></Label>
+	                <View id="s3" onClick="stepClickHandler" autoStyle="true" class="step_ball">
+	                    <View class="ball_wrap">
+	                    	<Label class="step_label" autoStyle="true" text="2"></Label>
+	                    </View>
 	                </View>
-	                <View id="s4" left="182" onClick="stepClickHandler" autoStyle="true" class="step_ball">
-	                    <Label class="step_label" text="3" autoStyle="true"></Label>
+	                <View id="s4" onClick="stepClickHandler" autoStyle="true" class="step_ball">
+	                    <View class="ball_wrap">
+	                    	<Label class="step_label" text="3" autoStyle="true"></Label>
+	                    </View>
 	                </View>
-	                <View id="s5" left="285" onClick="stepClickHandler" autoStyle="true" class="step_ball">
-	                    <Label class="step_label" text="4" autoStyle="true"></Label>
+	                <View id="s5" onClick="stepClickHandler" autoStyle="true" class="step_ball">
+	                    <View class="ball_wrap">
+	                    	<Label class="step_label" text="4" autoStyle="true"></Label>
+	                    </View>
 	                </View>
-	                <View id="s6" left="388" onClick="stepClickHandler" autoStyle="true" class="step_ball">
-	                    <Label class="step_label" text="5" autoStyle="true"></Label>
+	                <View id="s6" onClick="stepClickHandler" autoStyle="true" class="step_ball">
+	                    <View class="ball_wrap">
+	                    	<Label class="step_label" text="5" autoStyle="true"></Label>
+	                    </View>
 	                </View>
-	                <View id="s7" left="490" onClick="stepClickHandler" autoStyle="true" class="step_ball">
-	                    <Label class="step_label" text="6" autoStyle="true"></Label>
+	                <View id="s7" onClick="stepClickHandler" autoStyle="true" class="step_ball">
+	                    <View class="ball_wrap">
+	                    	<Label class="step_label" text="6" autoStyle="true"></Label>
+	                    </View>
 	                </View>
 	            </View>				
 			</View>

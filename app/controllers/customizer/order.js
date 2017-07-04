@@ -2,6 +2,10 @@ var args = $.args;
 
 Ti.API.info("LIST.VIEW.AVAILABLE.REORDER:",args.customizer_list_view, $.pover);
 
+
+
+
+
 $.pover.addEventListener("itemclick", function(e){
     var section = $.pover.sections[e.sectionIndex];
     var item = section.getItemAt(e.itemIndex);
@@ -21,6 +25,14 @@ $.pover.addEventListener("itemclick", function(e){
     Ti.API.info("SELECTIONS.REORDER:",args.selection);
 
     args.validate(args.selection);
+    
     // args.exerciseWindow(args.selection);
     // popver.hide();
 });
+
+
+function finishOrderSelection(){
+	Ti.API.info('LAST.STEP.FINISHED');
+	args.validate(args.selection);
+	args.popover.hide();
+}

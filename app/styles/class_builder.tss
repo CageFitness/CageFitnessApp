@@ -1,3 +1,41 @@
+"ListView":{
+	height:Ti.UI.FILL,
+	top:50,
+	bottom:0,
+}
+
+".list_wrapper":{
+	width:"58%",
+	// backgroundColor:"pink",
+	backgroundColor:"#fff",
+	top:120,
+	bottom:0,
+	height:Ti.UI.FILL,
+	// height:460,
+	borderRadius:0,
+
+	
+}
+
+
+".list":{
+	width:Ti.UI.FILL,
+	// backgroundColor:"#ddd",
+	// backgroundColor:"#ddd",
+	// top:246,
+	// bottom:0,
+	// height:460,
+	// borderRadius:6,
+	left:20,
+	right:20,
+	height:Ti.UI.FILL,
+	top:50,
+
+
+	
+}
+
+
 // "#username": {
 // 	top: 130,
 // 	hintText: 'username',
@@ -157,7 +195,7 @@
 	// backgroundColor:"red",
 	// backgroundColor:"#f1f1f1",
 	height:54,
-	top:190,
+	top:0,
 	width:Ti.UI.SIZE,
 	
 }
@@ -187,18 +225,27 @@
 	// backgroundColor:"green",
 	// backgroundColor:"#f1f1f1",
 	height:54,
-	top:16,
+	top:12,
 	width:Ti.UI.FILL,
+	layout:'horizontal',
 
 }
+
+".ball_wrap":{
+	autoStyle:true,
+	width:30,
+	height:30,
+
+}
+
 ".step_ball":{
 	autoStyle:true,
-	width:24,
-	height:24,
+	width:34,
+	height:34,
 	backgroundColor:"#d9e153",
 	top:0,
-	borderRadius:12,
-
+	borderRadius:17,
+	left:62,
 	borderWidth:1,
 	borderColor:"#d9e153",	
 
@@ -206,11 +253,12 @@
 }
 ".step_label":{
     font:{
-    	fontSize:13,
+    	fontSize:16,
     	fontFamily:'Helvetica Neue',
     	fontWeight:'bold'
     },
-    color:"#7b7b3e",
+    color:"#000",
+    // color:"#7b7b3e",
 
 
 

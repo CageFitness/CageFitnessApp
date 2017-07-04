@@ -107,7 +107,9 @@ function finishExerciseListSelection(e){
 
 	Ti.API.info('EXERCISE.SELECTION.FINISHED',e);
 	Ti.API.info('EXERCISE.SELECTION.OBJECT',args.selection);
-	args.popover.hide();
+	args.orderWindow(args.selection);
+	
+
 }
 
 function onErrorExercises2Callback(e){
@@ -117,7 +119,7 @@ function onErrorExercises2Callback(e){
 
 function closePover(){
 	Ti.API.info('EXERCISE.LIST.DONE');
-	args.orderWindow(args.selection);
+	
 	// args.roundWin.close();
 
 }

@@ -103,7 +103,8 @@ function getIndex(n){
 
 
 function onSuccessCustomizer(e){
-
+	var beginlabel = sdata.build == 'auto' ? 'BEGIN WORKOUT...' : 'CUSTOMIZE!';
+	$.step7_btn.setTitle(beginlabel);
 	var wkt = Ti.App.Properties.getString('my_workout');
 	if(sdata.build=='auto'){
 		Ti.App.fireEvent('cage/launch/window',{key:'menu_workouts', workout_id:wkt });
@@ -335,6 +336,7 @@ function updateStepItem(parent,page){
     item.borderColor='#d9e153';
 
     Animation.shake(item,flashDelay);
+    // Animation.popIn(item);
 
 
 }
@@ -424,6 +426,7 @@ $.listview_step5.addEventListener('itemclick', function(e){
     clickAndFollow(section,e);
 });
 
+
 $.listview_step6.addEventListener('itemclick', function(e){
 	Ti.API.info('CLASS.BUILDER.CUSTOMIZER:', e);
 	// XXXX
@@ -439,7 +442,7 @@ $.listview_step6.addEventListener('itemclick', function(e){
 		
 	}
 	setTimeout(function(){
-		Animation.shake($.step7_btn);
+		Animation.popIn($.step7_btn);
 	}, 1000);
 
 
@@ -528,6 +531,8 @@ function doProgress(e) {
 function doWorkout(e) {
    // var wkt = Ti.App.Properties.getString('my_workout');
    // Ti.App.fireEvent('cage/launch/window',{key:'menu_workouts', workout_id:wkt });
+   Animation.popIn($.step7_btn);
+   $.step7_btn.setTitle('LOADING...');
    sendData(sdata.build);
 }
 

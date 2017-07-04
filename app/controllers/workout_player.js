@@ -417,8 +417,17 @@ function addAssetsToSessionDownloadManager(){
 	// 	return isInCache(item);
 	// })
 
+	Ti.API.info('===================== CAN CONTINUE ====================');
+	var can_continue = _.every(assets_queue,function(item,index){
+		return isInCache(item.filename);
+	});
+	Ti.API.info('ALL.FILES.IN.CACHE? ',can_continue);
+	Ti.API.info('=======================================================');
+
 	Ti.API.info('FILES.NOT.IN.CACHE.ARE.ONLY.THIS:', Array(to_download) );
 	// Ti.API.info('FILES.NOT.IN.CACHE.ARE.ONLY.THIS:', to_download);
+
+	
 
 	_.each(assets_queue, function(item){
 		// throttled(item);

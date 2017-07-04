@@ -1,7 +1,7 @@
 <Alloy>
     <Window id="exercisesWin" title="Select Exercises">
         <RightNavButton>
-        	<Button id="finishBtn" onClick="finishExerciseListSelection">Done</Button>
+        	<Button id="finishBtn" onClick="finishExerciseListSelection">Continue</Button>
         </RightNavButton>
         <!-- <Label>It's not easy being green.</Label> -->
         <ListView id="pover" top="0">
