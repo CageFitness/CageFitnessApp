@@ -17,6 +17,8 @@ var inited = 0;
 var show_activity = _.once(justShow);
 var scroll_ready=false;
 
+$.top_bar_required.winref = args.winref;
+
 $.round_btn_bar.addEventListener('postlayout',function(e){
 	Ti.API.info('POST.LAYOUT.TRIGGERED',e);
 	// $.round_btn_bar.visible=true;

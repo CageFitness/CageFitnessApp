@@ -2,6 +2,19 @@
 var args = $.args;
 
 $.popover_ob.contentView.height=Ti.UI.FILL;
+
+
+function typeWindow(selection_ob) {
+    var typeWin = Alloy.createController('customizer/type', {
+    	validate:args.validate,
+    	selection:selection_ob,
+    	equipmentWindow:equipmentWindow,
+    	roundWin:$.roundWin,
+    	}).getView();
+    $.navWin.openWindow(typeWin);
+}
+
+
 function equipmentWindow(selection_ob) {
     var equipmentWin = Alloy.createController('customizer/equipment', {
     	validate:args.validate,
@@ -12,25 +25,28 @@ function equipmentWindow(selection_ob) {
     $.navWin.openWindow(equipmentWin);
 }
 
-function typeWindow(selection_ob) {
-    var typeWin = Alloy.createController('customizer/type', {
-    	validate:args.validate,
-    	selection:selection_ob,
-    	equipmentWindow:equipmentWindow,
-    	}).getView();
-    $.navWin.openWindow(typeWin);
-}
 
 function exerciseWindow(selection_ob) {
     var exercisesWin = Alloy.createController('customizer/list', {
     	validate:args.validate,
     	selection:selection_ob,
+    	orderWindow:orderWindow,
     	roundWin:$.roundWin,
     	popover:$.popover_ob,
     	}).getView();
     $.navWin.openWindow(exercisesWin);
 }
 
+function orderWindow(selection_ob) {
+    var orderWindow = Alloy.createController('customizer/order', {
+    	validate:args.validate,
+    	selection:selection_ob,
+    	roundWin:$.roundWin,
+    	popover:$.popover_ob,
+    	customizer_list_view:args.customizer_list_view,
+    	}).getView();
+    $.navWin.openWindow(orderWindow);
+}
 
 function generateRound(e){
 	Ti.API.info('GENERATE.ROUND.HERE');

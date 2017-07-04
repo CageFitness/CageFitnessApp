@@ -1,0 +1,13 @@
+<Alloy>
+    <Window id="typeWind" title="Order">
+        <ListView id="pover" top="0">
+            <ListSection>
+                <ListItem ttid="0" class="checked" title="Round"></ListItem>
+                <ListItem ttid="1" class="checked" title="Round"></ListItem>
+                <ListItem ttid="2" class="checked" title="Round"></ListItem>
+                <ListItem ttid="3" class="checked" title="Round"></ListItem>
+                <ListItem ttid="4" class="checked" title="Round"></ListItem>
+            </ListSection>
+        </ListView>
+    </Window>
+</Alloy>

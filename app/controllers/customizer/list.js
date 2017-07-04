@@ -117,6 +117,7 @@ function onErrorExercises2Callback(e){
 
 function closePover(){
 	Ti.API.info('EXERCISE.LIST.DONE');
+	args.orderWindow(args.selection);
 	// args.roundWin.close();
 
 }

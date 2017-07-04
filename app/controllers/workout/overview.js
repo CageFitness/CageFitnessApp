@@ -45,7 +45,7 @@ var counter = overview_duration;
 // var triggerFirstSlideOnce = _.once(triggerFirstSlide);
 
 var stopped_at;
-
+var toggle=0;
 // TIMER RELATED
 var preview_timer = overview_duration;
 var increment = -(1/preview_timer);
@@ -67,6 +67,7 @@ $.overview.backgroundColor = '#fff';
 function onPlayPause(e){
 	if(e.item===item_index){
 		Ti.API.info('PLAY.PAUSE.ON.OVERVIEW: ',e, item_index);
+		// USE THE TOGGLE HERE
 	}
 }
 

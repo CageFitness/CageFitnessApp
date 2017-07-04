@@ -48,7 +48,7 @@ function enableFeature(e, mode){
 			var sec = $.customizer_list_view.sections[index];
 			var els = sec.getItems();
 			_.each(els,function(item){
-				Ti.API.info('==== ITEM:',item.properties.launch_data.ID);
+				// Ti.API.info('==== ITEM:',item.properties.launch_data.ID);
 				if(mode=='insert'){
 					item.properties.canEdit=false;
 					item.properties.canInsert=true;
@@ -385,7 +385,7 @@ function replaceExercise(e, insert_mode){
 }
 
 function createNewRound(e){
-    var round_popover = Alloy.createController('customizer/selection', {validate:addNewRound} ).getView();
+    var round_popover = Alloy.createController('customizer/selection', {validate:addNewRound, customizer_list_view:$.customizer_list_view} ).getView();
     round_popover.show({animated:true, view:$.pover_target});
 }
 
@@ -468,7 +468,7 @@ function onErrorCustomizerEdit(e){
 
 function onSuccessCustomizerEdit(e){
 	Ti.API.info('EDIT.REQUEST: ', e.status, e.data);
-
+	$.add_label.applyProperties({text:'LOADING WORKOUT...'});
 	Ti.API.info('SAVING.WORKOUT.PLEASE.WAIT', _.size($.customizer_list_view.sections));
 
 
@@ -479,7 +479,7 @@ function onSuccessCustomizerEdit(e){
 
 function send_updateCustomizer(selection_data){
 
-	 $.add_label.applyProperties({text:'LOADING WORKOUT...'});
+	 $.add_label.applyProperties({text:'SAVING WORKOUT...'});
 
 	_.each($.customizer_list_view.getSections(), function(section,index){
 		Ti.API.info('ATTEMPT TO REMOVE', section);
@@ -534,7 +534,7 @@ function gatherCurrentSelection(listview){
 		// };
 
 	var sel = {
-		  filter:'red',
+		  filter:'app',
 		  build: 'auto',
 		  update: 'true',
 		  rounds: _.map(listview.sections,function(round,roundIndex){
