@@ -345,12 +345,12 @@ function getCurrentMode(mode){
 	return;
 }
 
-function insertExercise(el,cli,validate_mode){
-	var exercise = el.launch_data;
+function insertExercise(newer,older,validate_mode){
+	var exercise = newer.launch_data;
 	// createRound(round,11);
-	Ti.API.info('INSERTING EXERCISE:', cli, cli.sectionIndex, cli.itemIndex);
-	Ti.API.info('HEADER:', cli);
-	var original_item = $.customizer_list_view.sections[cli.sectionIndex].getItemAt(cli.itemIndex);
+	Ti.API.info('INSERTING EXERCISE:', older, older.sectionIndex, older.itemIndex);
+	Ti.API.info('HEADER:', older);
+	var original_item = $.customizer_list_view.sections[older.sectionIndex].getItemAt(older.itemIndex);
 	Ti.API.info('INSERT.REQUIREMENT:',original_item.properties.title);
 
 
@@ -360,27 +360,27 @@ function insertExercise(el,cli,validate_mode){
 	    var ob = {
 	    	template:'RoundItemTemplate',
 	    	properties: { 
-	    	title: exercise.post_title,
-	    	searchableText:exercise.post_title,
+	    	title: exercise.title.rendered,
+	    	searchableText:exercise.title.rendered,
 	    	launch_data:exercise,
 	    	wo_round_type:original_item.properties.wo_round_type,
 	    	wo_equipment:original_item.properties.wo_equipment,
 	    	canMove:true, canInsert:true, canEdit:false, accessoryType:Titanium.UI.LIST_ACCESSORY_TYPE_DISCLOSURE},
 	    	
-	    	header_info:cli.header_info,
+	    	header_info:older.header_info,
 	    	
 	    	pic:{image: exercise.acf.video_featured.url},
-	    	main:{text:exercise.post_title},
+	    	main:{text:exercise.title.rendered},
 	    	sub:{text:'REPLACE'},
 	    }
 	    roundData.push(ob);
 
 	    var mode = validate_mode;
 	    if(mode=='insert'){
-	    	$.customizer_list_view.sections[cli.sectionIndex].insertItemsAt(cli.itemIndex,roundData,{animated:true});
+	    	$.customizer_list_view.sections[older.sectionIndex].insertItemsAt(older.itemIndex,roundData,{animated:true});
 	    }
 	    else if (mode=='replace'){
-	    	$.customizer_list_view.sections[cli.sectionIndex].replaceItemsAt(cli.itemIndex,1,roundData,{animated:true});	
+	    	$.customizer_list_view.sections[older.sectionIndex].replaceItemsAt(older.itemIndex,1,roundData,{animated:true});	
 	    }
 }
 

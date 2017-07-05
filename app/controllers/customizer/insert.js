@@ -184,8 +184,8 @@ function closePover(){
 $.pover.addEventListener("itemclick", function(e){
 	// Ti.API.info('DOES IT HAPPENS HERE?', args.launch_data.title);
     var section = $.pover.sections[e.sectionIndex];
-    var item = section.getItemAt(e.itemIndex);
-    Ti.API.warn('INSERT.TITLE.HERE',item.properties);
+    var newer = section.getItemAt(e.itemIndex);
+    Ti.API.warn('INSERT.TITLE.HERE',newer.properties);
 
     // item.properties.launch_data
 
@@ -197,16 +197,16 @@ $.pover.addEventListener("itemclick", function(e){
     //     item.properties.accessoryType = Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE;
     //     item.properties.color = 'black';
     // }
-    section.updateItemAt(e.itemIndex, item);
+    section.updateItemAt(e.itemIndex, newer);
 
-    item.properties.cage_selected=true;
-    item.properties.wo_round_type=args.selection.type;
-    item.properties.wo_equipment=args.selection.equipment;
-    // item.properties.launch_data=args.launch_data;
-    // item.properties.launch_data.title = 'HELLOWORLD!!!!';
+    newer.properties.cage_selected=true;
+    newer.properties.wo_round_type=args.selection.type;
+    newer.properties.wo_equipment=args.selection.equipment;
+    // newer.properties.launch_data=args.launch_data;
+    // newer.properties.launch_data.title = 'HELLOWORLD!!!!';
 
     // args.selection.equipment='bands';
-    args.insertExercise(item.properties, customizerListItem, args.validate_mode);
+    args.insertExercise(newer.properties, customizerListItem, args.validate_mode);
     // listWindow(args.selection);
 
 
