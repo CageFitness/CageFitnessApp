@@ -351,7 +351,7 @@ function insertExercise(el,cli,validate_mode){
 	Ti.API.info('INSERTING EXERCISE:', cli, cli.sectionIndex, cli.itemIndex);
 	Ti.API.info('HEADER:', cli);
 	var original_item = $.customizer_list_view.sections[cli.sectionIndex].getItemAt(cli.itemIndex);
-	Ti.API.info('INSERT.REQUIREMENT:',original_item.properties);
+	Ti.API.info('INSERT.REQUIREMENT:',original_item.properties.title);
 
 
 
@@ -360,7 +360,7 @@ function insertExercise(el,cli,validate_mode){
 	    var ob = {
 	    	template:'RoundItemTemplate',
 	    	properties: { 
-	    	title: exercise.title.rendered,
+	    	title: exercise.post_title,
 	    	searchableText:exercise.post_title,
 	    	launch_data:exercise,
 	    	wo_round_type:original_item.properties.wo_round_type,
@@ -370,7 +370,7 @@ function insertExercise(el,cli,validate_mode){
 	    	header_info:cli.header_info,
 	    	
 	    	pic:{image: exercise.acf.video_featured.url},
-	    	main:{text:exercise.title.rendered},
+	    	main:{text:exercise.post_title},
 	    	sub:{text:'REPLACE'},
 	    }
 	    roundData.push(ob);
@@ -590,7 +590,7 @@ function gatherCurrentSelection(listview){
 				roundType: type.slug,
 				equipment: equipment.slug,
 				customizer: _.map(round.getItems(),function(exercise,index){
-					return exercise.properties.launch_data.ID;
+					return exercise.properties.launch_data.id||exercise.properties.launch_data.ID;
 				})
 			};
 		})

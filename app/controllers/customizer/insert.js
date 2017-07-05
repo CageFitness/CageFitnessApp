@@ -62,7 +62,8 @@ function generateRound(e){
 
  function myLoader(e) {
  	Ti.API.info('LOADER: ',e);
-	loadExercises({page:pages < 5 ? pages++ : 5});
+	// loadExercises({page:pages < 5 ? pages++ : 5});
+	loadExercises(args.selection);
 
  }
 
@@ -181,8 +182,10 @@ function closePover(){
 }
 
 $.pover.addEventListener("itemclick", function(e){
+	// Ti.API.info('DOES IT HAPPENS HERE?', args.launch_data.title);
     var section = $.pover.sections[e.sectionIndex];
     var item = section.getItemAt(e.itemIndex);
+    Ti.API.warn('INSERT.TITLE.HERE',item.properties);
 
     // item.properties.launch_data
 
@@ -195,10 +198,12 @@ $.pover.addEventListener("itemclick", function(e){
     //     item.properties.color = 'black';
     // }
     section.updateItemAt(e.itemIndex, item);
+
     item.properties.cage_selected=true;
     item.properties.wo_round_type=args.selection.type;
     item.properties.wo_equipment=args.selection.equipment;
-    item.properties.launch_data=args.launch_data;
+    // item.properties.launch_data=args.launch_data;
+    // item.properties.launch_data.title = 'HELLOWORLD!!!!';
 
     // args.selection.equipment='bands';
     args.insertExercise(item.properties, customizerListItem, args.validate_mode);
