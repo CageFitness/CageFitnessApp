@@ -191,6 +191,7 @@ width:300,
 	pageIndicatorColor: '#cfcbca',
 	keepScreenOn:true,
 	visible:false,
+	touchEnabled:false,
 	// height:Ti.UI.FILL,
 }
 

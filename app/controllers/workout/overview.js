@@ -103,12 +103,13 @@ function animateOverviewSlide(key) {
 
 
 
-
+var _PROGRESS = 1;
+var _PROGRESS_TEXT;
 
 function resetCounter(){
 	clearInterval(Alloy.Globals.Timer);
-	$.progressbar.progress = 1;
-	$.progressbar.text = Math.round($.progressbar.progress * preview_timer);	
+	_PROGRESS = 1;
+	_PROGRESS_TEXT = Math.round(_PROGRESS * preview_timer);	
 }
 
 function pauseCounter(){
@@ -128,22 +129,23 @@ function stopCounter(){
 
 }
 
-
+// var REPLACEMENT1=0;
+// var REPLACEMENT2=0;
 
 function startCounter() {
     Alloy.Globals.Timer = setInterval(function() {
-        $.progressbar.progress += increment;
-        if ($.progressbar.text == 1) {
+        _PROGRESS += increment;
+        if (_PROGRESS_TEXT == 1) {
             clearInterval(Alloy.Globals.Timer);
             Ti.API.info('STOP.OVERVIEW!!!!');
-            Animation.fadeOut($.progressbar, 500, function() {
+            // Animation.fadeOut($.progressbar, 500, function() {
                 Ti.App.fireEvent('cage/video/progressbar/finished',{'index':item_index});
-            });
+            // });
         }
-        var pr = Math.abs(Math.round($.progressbar.progress * preview_timer));
+        var pr = Math.abs(Math.round(_PROGRESS * preview_timer));
         Ti.API.info('TIMER.GOING:',pr);
        	if(pr >= 0){
-       		$.progressbar.text = pr;
+       		_PROGRESS_TEXT = pr;
        		$.counter_big.text = fancyTimeFormat(pr);
        	}
     }, 1000);

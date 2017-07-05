@@ -31,10 +31,10 @@ function loadExercises(selection){
 			filter_query.page = selection.page;
 		}
 
-		Ti.API.info("SELECTIONS:",args.selection);
+		Ti.API.info("LIST.SELECTIONS:",args.selection);
 		var custom_query = _.defaults(filter_query, args.selection);
 
-		Ti.API.info("FINAL.SELECTION:",custom_query);
+		Ti.API.info("LIST.FINAL.SELECTION:",custom_query);
 
 	var querystring = Object.keys(custom_query).map(function(k) {
 	    return encodeURIComponent(k) + '=' + encodeURIComponent(custom_query[k])

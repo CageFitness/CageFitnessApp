@@ -75,18 +75,11 @@ function downloadAssets(){
 	});
 
 	Ti.API.info('PREPARED.COUNT:',_.size(prepared));
-	// _.each(prepared,function(item,index){
-		addToDownloadSession(prepared[0]);
-		addToDownloadSession(prepared[1]);
-		addToDownloadSession(prepared[2]);
-		addToDownloadSession(prepared[3]);
-		addToDownloadSession(prepared[4]);
-		addToDownloadSession(prepared[5]);
-		addToDownloadSession(prepared[6]);
-		addToDownloadSession(prepared[7]);
-		addToDownloadSession(prepared[8]);
-		addToDownloadSession(prepared[9]);
-	// });
+	_.each(prepared,function(item,index){
+		// addToDownloadSession(prepared);
+		_.defer(addToDownloadSession,prepared);
+		Ti.API.info('ADDING.DOWNLOAD');
+	});
 
 	// often = setDownloadInterval();
 

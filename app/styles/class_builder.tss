@@ -1,12 +1,12 @@
 "ListView":{
 	height:Ti.UI.FILL,
 	top:50,
-	bottom:80,
+	bottom:140,
 }
 
 ".list_wrapper":{
 	width:"58%",
-	// backgroundColor:"pink",
+	backgroundColor:"pink",
 	backgroundColor:"#fff",
 	top:120,
 	bottom:0,
@@ -30,9 +30,30 @@
 	right:20,
 	height:Ti.UI.FILL,
 	top:30,
+	bottom:0,
 
 
 	
+}
+
+
+".step_btn":{
+	bottom:30,
+	width:242,
+	height:46,
+	color:"#fff",
+	backgroundColor:"#c4c4c4",
+	borderColor:"#b4b4b4",
+	borderWidth:0,
+	borderRadius:6,
+	// backgroundSelectedColor:"green",
+	
+	backgroundSelectedColor:"#d9e153",
+	font:{
+		fontSize: 16,
+		fontWeight: 'bold',
+		fontFamily:'Helvetica Neue'
+	}
 }
 
 
@@ -166,7 +187,7 @@
 }
 
 "#restart":{
-	bottom:25,
+	bottom:30,
 	left:30,
 	// right:10,
 	height:34,

@@ -22,7 +22,8 @@
         // fontStyle: 'normal',
         // fontWeight: 'bold'
     },
-    text : ''
+    text : '',
+    visible:false,
 }
 
 

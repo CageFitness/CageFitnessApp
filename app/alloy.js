@@ -1,8 +1,3 @@
-var getURLSessionIdentifier = function(){
-	var prefix = 'com.cagefitness.app';
-	var sid = Utils.getRandomInt(0,1000000);
-	return prefix+'.'+sid;
-};
 
 
 // NappDownloadManager = require("dk.napp.downloadmanager");
@@ -23,6 +18,18 @@ Alloy.Globals.XHROptions = {
     parseJSON:true,
     debug:true,
 };
+
+
+var getRandomInt = function(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+var getURLSessionIdentifier = function(){
+	var prefix = 'com.cagefitness.app';
+	var sid = getRandomInt(0,1000000);
+	return prefix+'.'+sid;
+};
+
 
 var xhr = new XHR();
 Ti.API.info('XHR.CLEAN.TRIGGERED.ON.APP.START');

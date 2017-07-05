@@ -430,8 +430,10 @@ function addAssetsToSessionDownloadManager(){
 	
 
 	_.each(assets_queue, function(item){
-		// throttled(item);
-		addToDownloadSession(item);
+		if(!isInCache(item.file)){
+			_.defer(addToDownloadSession,item);
+			Ti.API.info('DOWNLOAD.DEFERED');
+		}
 	});
 }
 
@@ -671,13 +673,16 @@ function loadConfig(){
 	Ti.API.info('COnfig should be ready.');
 }
 
-
+function getRandomInt (min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 function loadWorkout(){
 	var wid = Ti.App.Properties.getString('my_workout');
-	var updatedCall = Alloy.Globals.updateWorkout ? '?rn='+Utils.getRandomInt(0,1000000) : '';
+	var updatedCall = Alloy.Globals.updateWorkout ? '?rn='+getRandomInt(0,1000000) : '';
 
-	var wurl = workout_final_url+wid+updatedCall;
+	// var wurl = workout_final_url+wid+updatedCall;
+	var wurl = workout_final_url+wid;
 	Ti.API.info('ATTEMPT.LOAD.WORKOUT_PLAYER.UPDATE?', updatedCall, wurl);
 	// Alloy.Globals.XHROptions.ttl=300;
 	xhr.GET(wurl, onSuccessWorkoutCallback, onErrorWorkoutCallback, Alloy.Globals.XHROptions);

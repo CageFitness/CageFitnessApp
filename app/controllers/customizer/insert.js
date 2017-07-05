@@ -82,6 +82,12 @@ function loadExercises(selection){
 		}
 
 
+	Ti.API.info("INSERT.SELECTIONS:",args.selection);
+	var custom_query = _.defaults(filter_query, args.selection);
+
+	Ti.API.info("INSERT.FINAL.SELECTION:",custom_query);
+
+
 	var querystring = Object.keys(filter_query).map(function(k) {
 	    return encodeURIComponent(k) + '=' + encodeURIComponent(filter_query[k])
 	}).join('&');
@@ -107,7 +113,8 @@ function onSuccessExercises3Callback(e){
 	exercises=[];
 	// Why JSON needed to be parsed?
     _.each(parsed, function(exercise){
-    	// Ti.API.info('TITLE: ',exercise.title.rendered);
+    	Ti.API.info('INSERT.TITLE.RENDERED: ',exercise.title.rendered);
+    	Ti.API.info('INSERT.TITLE.TITLE: ',exercise.title);
 	    var ob = {
 	    	template:'exerciseItem',
 	    	properties: { 
@@ -158,7 +165,7 @@ function onSuccessExercises3Callback(e){
 function finishExerciseListSelection(e){
 
 	Ti.API.info('EXERCISE.SELECTION.FINISHED',e);
-	Ti.API.info('EXERCISE.SELECTION.OBJECT',args.selection);
+	Ti.API.info('EXERCISE.SELECTION.OBJECT.UNO',args.selection);
 	$.popover_ob.hide();
 }
 
@@ -189,9 +196,12 @@ $.pover.addEventListener("itemclick", function(e){
     // }
     section.updateItemAt(e.itemIndex, item);
     item.properties.cage_selected=true;
+    item.properties.wo_round_type=args.selection.type;
+    item.properties.wo_equipment=args.selection.equipment;
+    item.properties.launch_data=args.launch_data;
 
-    args.selection.equipment='bands';
-    args.validate(item.properties, customizerListItem, args.validate_mode);
+    // args.selection.equipment='bands';
+    args.insertExercise(item.properties, customizerListItem, args.validate_mode);
     // listWindow(args.selection);
 
 

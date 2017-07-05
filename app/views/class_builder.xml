@@ -81,7 +81,7 @@
                                 <ItemTemplate name="numberOfExercises">
                                     <View class="padder">
                                         <View class="list_item_bg">
-                                            <Label bindId="info" id="title"  />
+                                            <Label bindId="info" id="title"></Label>
                                             <View id="btngroup" bindId="theparent" right="0" layout="horizontal" class="btn_item_wrapper" width="Ti.UI.SIZE" >
                                                 <Button backgroundColor="#ffffff" onClick="ToggleMe" width="60" right="0" title="5"  class="dropdown_btn"   selectorValue="5" bindId="select5"></Button>
                                                 <View class="btngroupSep"  width="8"></View>                                            	

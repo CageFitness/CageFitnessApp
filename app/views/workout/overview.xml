@@ -21,7 +21,7 @@
 	        <ListSection>
 	        </ListSection>
     	</ListView>
-    	<Module id="progressbar" module="br.com.arlsoft.progressbar" method="createCircularView" />   
+    	<!-- <Module id="progressbar" module="br.com.arlsoft.progressbar" method="createCircularView" />    -->
     </View>
    
 </Alloy>

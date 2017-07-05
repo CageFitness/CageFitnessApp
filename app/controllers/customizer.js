@@ -176,6 +176,7 @@ function onSuccessCustomizer(e){
    $.add_label.applyProperties({text:'ADD ROUND'});
    _.each(e.data.acf.round_selector,function(item,index){
    		var roundIndex = getIndex(index);
+
    		createRound(item,roundIndex);
    });
 
@@ -211,7 +212,11 @@ function createRound(round, roundIndex){
 		    	canEdit:true,
 		    	accessoryType:Titanium.UI.LIST_ACCESSORY_TYPE_DISCLOSURE
 	   		 },
-
+	   		header_info:{
+				wo_exercise_number:round.wo_exercise_number,
+				wo_equipment:round.wo_equipment,
+				wo_round_type:round.wo_round_type,	   			
+	   		},
 	    	pic:{image: exercise.acf.video_featured.url},
 	    	main:{text:exercise.post_title},
 	    	sub:{text:'REPLACE'},
@@ -288,7 +293,7 @@ function launchExercise(e){
 
 }
 
-
+// LITHIUMLAB
 
 function handleElementInsert(e){
 	Ti.API.info('ELEMENT.INSERT',e);
@@ -313,6 +318,8 @@ function handlesCheck(e){
     e.section.updateItemAt(e.itemIndex, item);	
 }
 
+var last={};
+
 function handleListViewClick(e){
     
     var sec = $.customizer_list_view.sections[e.sectionIndex];
@@ -320,6 +327,11 @@ function handleListViewClick(e){
     var exercise = row.properties.launch_data;
     Ti.API.info('ROW.DATA:',row.wo_exercise_number, row.wo_equipment, row.wo_round_type);
     Ti.API.info('REPLACE.INTENT:',e, e.sectionIndex, e.itemIndex, e.source, row.properties.launch_data.ID);
+    last = {
+    	wo_exercise_number:row.wo_exercise_number,
+    	wo_equipment:row.wo_equipment,
+    	wo_round_type:row.wo_round_type,
+    };
     // launchExercise({'url':exercise.acf.video.url, 'title':exercise.post_title});
     // Animation.shake(row);
     handlesCheck(e);
@@ -336,13 +348,27 @@ function getCurrentMode(mode){
 function insertExercise(el,cli,validate_mode){
 	var exercise = el.launch_data;
 	// createRound(round,11);
-	Ti.API.info('INSERTING EXERCISE:', cli);
+	Ti.API.info('INSERTING EXERCISE:', cli, cli.sectionIndex, cli.itemIndex);
+	Ti.API.info('HEADER:', cli);
+	var original_item = $.customizer_list_view.sections[cli.sectionIndex].getItemAt(cli.itemIndex);
+	Ti.API.info('INSERT.REQUIREMENT:',original_item.properties);
+
+
+
 	var roundData = [];
 
 	    var ob = {
 	    	template:'RoundItemTemplate',
-	    	properties: { title: exercise.title.rendered, searchableText:exercise.post_title, launch_data:exercise,
+	    	properties: { 
+	    	title: exercise.title.rendered,
+	    	searchableText:exercise.post_title,
+	    	launch_data:exercise,
+	    	wo_round_type:original_item.properties.wo_round_type,
+	    	wo_equipment:original_item.properties.wo_equipment,
 	    	canMove:true, canInsert:true, canEdit:false, accessoryType:Titanium.UI.LIST_ACCESSORY_TYPE_DISCLOSURE},
+	    	
+	    	header_info:cli.header_info,
+	    	
 	    	pic:{image: exercise.acf.video_featured.url},
 	    	main:{text:exercise.title.rendered},
 	    	sub:{text:'REPLACE'},
@@ -370,7 +396,7 @@ function replaceExercise(e, insert_mode){
     var row = sec.getItemAt(e.itemIndex);
     Ti.API.info('ROW.DATA',row.properties);
     var insert_popover = Alloy.createController('customizer/insert', {
-    	validate:insertExercise,
+    	insertExercise:insertExercise,
     	validate_mode:insert_mode,
     	include:'customizer/list',
     	selection:{
@@ -378,6 +404,7 @@ function replaceExercise(e, insert_mode){
     		type:row.properties.wo_round_type.value,
     		rounds:row.properties.wo_exercise_number,
     	},
+    	launch_data:row.properties.launch_data,
     	customizerListItem:e,
     }).getView();
 
@@ -535,13 +562,25 @@ function gatherCurrentSelection(listview){
 
 	var sel = {
 		  filter:'app',
-		  build: 'auto',
+		  // build: 'auto',
+		  build: 'custom',
 		  update: 'true',
-		  rounds: _.map(listview.sections,function(round,roundIndex){
-		  	var header = round.getItems()[0];
+		  rounds: _.map(listview.getSections(),function(round,roundIndex){
+		  	// var header = round.getItems()[0];
 
-		  	var type = Object(optType(header.properties.wo_round_type.value));
-		  	var equipment = Object(optEquipment(header.properties.wo_equipment.value));
+		  	// Ti.API.info('HEADER_INFO.ERROR', header.properties.header_info );
+		  	// Ti.API.info('BEFORE.ERROR', header.properties.launch_data.id );
+
+		  	// var type = Object(optType(first.properties.wo_round_type.value));
+		  	// var equipment = Object(optEquipment(first.properties.wo_equipment.value));
+
+		  	var first = $.customizer_list_view.sections[roundIndex].getItemAt(0);
+
+		  	Ti.API.info('OUR.ITEM.TYPE:',Object(optType(first.properties.wo_round_type.value)).slug);
+		  	Ti.API.info('OUR.ITEM.EQUIPMENT:',Object(optEquipment(first.properties.wo_equipment.value)).slug);
+
+		  	var type = Object(optType(first.properties.wo_round_type.value));
+		  	var equipment = Object(optEquipment(first.properties.wo_equipment.value));
 
 
 			return {

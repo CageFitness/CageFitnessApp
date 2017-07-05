@@ -67,7 +67,8 @@ function callOptions(tkn){
                 }
             ],
             debug: true,
-            ttl:604800,
+            // ttl:604800,
+            ttl:0,
         });
     // xhr.POST(validate_url);
     xhr.GET(config_url, onSuccessOptionsCallback, onErrorCallbackSilent);
