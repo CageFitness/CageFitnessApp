@@ -40,10 +40,10 @@
                 <false/>
                 <key>UIStatusBarStyle</key>
                 <string>UIStatusBarStyleDefault</string>
-				<!--<key>UIBackgroundModes</key>
+                <!--<key>UIBackgroundModes</key>
 	            <array>
 	                <string>fetch</string>
-	            </array>  -->             
+	            </array>  -->
             </dict>
         </plist>
     </ios>
@@ -69,10 +69,10 @@
     <deployment-targets>
         <target device="android">false</target>
         <target device="ipad">true</target>
-        <target device="iphone">true</target>
+        <target device="iphone">false</target>
         <target device="mobileweb">false</target>
     </deployment-targets>
-    <sdk-version>6.1.0.GA</sdk-version>
+    <sdk-version>6.1.1.GA</sdk-version>
     <plugins>
         <plugin version="1.0">ti.alloy</plugin>
         <!-- <plugin>hyperloop</plugin> -->
