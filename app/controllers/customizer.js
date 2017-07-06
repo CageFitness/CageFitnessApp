@@ -128,14 +128,13 @@ function loadWorkout(){
 
 $.dialog.addEventListener('click',function(e){
 	Ti.API.info('DIALOG.RETURNED:',e);
-
-	// $.activity_wrapper.show();
-	// $.activity_indicator.show();
-	// send_updateCustomizer();
-	gatherCurrentSelection($.customizer_list_view);
-
-	Alloy.Globals.updateWorkout=0;
-
+	if(e.index===0){
+		// $.activity_wrapper.show();
+		// $.activity_indicator.show();
+		// send_updateCustomizer();
+		gatherCurrentSelection($.customizer_list_view);
+		Alloy.Globals.updateWorkout=0;
+	}
 });
 
 
@@ -400,9 +399,9 @@ function replaceExercise(e, insert_mode){
     	validate_mode:insert_mode,
     	include:'customizer/list',
     	selection:{
-    		equipment:row.properties.wo_equipment.value,
-    		type:row.properties.wo_round_type.value,
-    		rounds:row.properties.wo_exercise_number,
+    		exercise_equipment:row.properties.wo_equipment.value,
+    		exercise_type:row.properties.wo_round_type.value,
+    		// rounds:row.properties.wo_exercise_number,
     	},
     	launch_data:row.properties.launch_data,
     	customizerListItem:e,

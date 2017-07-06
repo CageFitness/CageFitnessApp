@@ -43,7 +43,7 @@
 
 			</View>			
 
-			<OptionDialog id="dialog" title="Overwrite Workout?">
+			<OptionDialog id="dialog" destructive="0" title="Overwrite Workout?">
 	            <Options>
 	                <Option>Confirm</Option>
 	                <Option>Cancel</Option>

@@ -63,6 +63,7 @@ function generateRound(e){
  function myLoader(e) {
  	Ti.API.info('LOADER: ',e);
 	// loadExercises({page:pages < 5 ? pages++ : 5});
+	args.selection.page = pages < 5 ? pages++ : 5;
 	loadExercises(args.selection);
 
  }
@@ -83,8 +84,8 @@ function loadExercises(selection){
 		}
 
 
-	Ti.API.info("INSERT.SELECTIONS:",args.selection);
-	var custom_query = _.defaults(filter_query, args.selection);
+	Ti.API.info("INSERT.SELECTIONS:",selection);
+	var custom_query = _.defaults(filter_query, selection);
 
 	Ti.API.info("INSERT.FINAL.SELECTION:",custom_query);
 
@@ -213,7 +214,8 @@ $.pover.addEventListener("itemclick", function(e){
 
 });
 
-
-loadExercises({page:1});
+args.selection.page=1;
+// delete args.selection.rounds;
+loadExercises(args.selection);
 
 

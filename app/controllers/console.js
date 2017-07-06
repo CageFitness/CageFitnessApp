@@ -17,7 +17,7 @@ var counter=0;
 })();
 function justShow(){
 	Ti.API.info('SHOULD.HAPPEN.ONLY.ONCE');
-	$.downprogress.applyProperties({message:'Downloading Assets...', opacity:1});
+	$.downprogress.applyProperties({message:'Downloading Assets. Please Wait...', opacity:1});
 }
 function showLogs() {
     $.log.setText(log.history);
