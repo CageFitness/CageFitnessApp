@@ -1,7 +1,9 @@
 // Arguments passed into this controller can be accessed via the `$.args` object directly or:
 var args = $.args;
 
-
+var optType = args.optType;
+var optEquipment = args.optEquipment;
+var createRoundFromSelection = args.createRoundFromSelection;
 
 $.pover.addEventListener("itemclick", function(e){
     var section = $.pover.sections[e.sectionIndex];

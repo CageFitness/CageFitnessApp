@@ -42,7 +42,6 @@ var overview_duration = (args.first_slide ? args.config.acf.duration_first : arg
 var counter = overview_duration;
 
 
-// var triggerFirstSlideOnce = _.once(triggerFirstSlide);
 
 var stopped_at;
 var toggle=0;
@@ -62,6 +61,23 @@ $.overview.backgroundColor = '#fff';
 		$.counter_big.text = '';
 	}
 	
+
+var initialize = _.after(2,triggerFirstSlide);
+
+if(args.first_slide){
+	Ti.App.addEventListener('/cage/workout/start',initialize);
+}
+
+
+function triggerFirstSlide(){
+	Ti.API.info('OVERVIEW.FIRST.SLIDE: ',args.first_slide);
+	if(args.first_slide){
+		startCounter();
+		Ti.App.removeEventListener('/cage/workout/start',initialize);
+	}
+}
+
+
 
 
 function onPlayPause(e){
@@ -146,7 +162,8 @@ function startCounter() {
         Ti.API.info('TIMER.GOING:',pr);
        	if(pr >= 0){
        		_PROGRESS_TEXT = pr;
-       		$.counter_big.text = fancyTimeFormat(pr);
+  			$.counter_big.applyProperties({text:fancyTimeFormat(pr)}); 
+       		Animation.popIn($.counter_big);
        	}
     }, 1000);
 }
@@ -221,14 +238,6 @@ describeRound2();
 $.elementsList.sections[0].setItems(items);
 
 
-
-function triggerFirstSlide(){
-	Ti.API.info('OVERVIEW.FIRST.SLIDE: ',args.first_slide);
-	if(args.first_slide){
-		startCounter();
-	}
-}
-
 Ti.App.addEventListener('cage/workout/video/play_pause',onPlayPause);
 Ti.App.addEventListener('cage/workout/slide/entered', onOwlSlideEntered);
 Ti.App.addEventListener('cage/workout/start', triggerFirstSlide);
@@ -244,4 +253,6 @@ $.cleanup = function cleanup() {
 	// someController = null;
 };
 args.winref.addEventListener('close', $.cleanup);
+
+initialize();
 

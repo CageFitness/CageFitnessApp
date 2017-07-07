@@ -1,5 +1,82 @@
+".padder2":{
+	right:10,
+	// backgroundColor:'yellow',
+	height:Ti.UI.SIZE,
+
+}
+".list_item_bg2":{
+	backgroundColor:"#f5f5f5",
+	// backgroundColor:"pink",
+	font: {
+		fontSize: 12,
+		fontFamily:'Helvetica Neue'
+	},
+	borderRadius:6,
+	top:0,
+	bottom:0,
+	left:10,
+	height:Ti.UI.SIZE
+
+}
 
 
+"#listview_step4":{
+	height:Ti.UI.FILL,
+}
+
+".dropdown_btn2":{
+	backgroundColor:"#fff",
+	color:"#000",
+	width:60,
+	borderRadius:6,
+	height:40,
+	left:10,
+	bubbleParent:true,
+	textAlign:Ti.UI.TEXT_ALIGNMENT_CENTER,
+}
+
+
+".btn_item_wrapper2":{
+	top:6,
+	bottom:6,
+	height:Ti.UI.SIZE,
+	right:10,
+	width:Ti.UI.SIZE,
+	layout:"horizontal",
+	// borderWidth:1,
+	// borderColor:'red',	
+}
+
+
+
+
+".numberTitle":{
+	// backgroundColor:'blue',
+    color: 'black',
+    font: { fontFamily:'Arial', fontSize: '16', fontWeight:'bold' },
+    left: 10,
+    height:Ti.UI.SIZE,
+}
+
+
+".btn_item_wrapper":{
+	top:5,
+	bottom:5
+}
+".list_item_bg":{
+	backgroundColor:"#f5f5f5",
+	font: {
+		fontSize: 12,
+		fontFamily:'Helvetica Neue'
+	},
+	borderRadius:6,
+	top:0,
+	bottom:0,
+	left:10,
+	// height:Ti.UI.SIZE,
+	height:60
+
+}
 
 ".uniq":{
 	backgroundColor:"black"
@@ -50,7 +127,16 @@
 
 
 ".sub":{
-	font:{fontSize:15}
+	font:{fontSize:15},
+	left:10,
+	top:30,
+	color:'#7e7e7e',
+	height:Ti.UI.SIZE,
+	bottom:10,
+	editable:false,
+	right:20,
+	backgroundDisabledColor:'#f8f8f8',
+	backgroundColor:'#f8f8f8',
 }
 
 ".xright":{
@@ -178,16 +264,14 @@
 
 ".list_wrapper":{
 	width:"58%",
-	// backgroundColor:"pink",
 	backgroundColor:"#fff",
-	// top:254,
 	bottom:40,
-	// height:Ti.UI.SIZE,
-	height:460,
-	borderRadius:6,
-
-	
+	// height:460,
+	// borderRadius:6,
 }
+
+
+
 
 ".list":{
 	width:Ti.UI.FILL,
@@ -272,30 +356,21 @@
 		fontFamily:'Helvetica Neue'
 	}
 }
-".btn_item_wrapper":{
-	top:6,
-	bottom:6
-}
-".list_item_bg":{
-	backgroundColor:"#f5f5f5",
-	font: {
-		fontSize: 12,
-		fontFamily:'Helvetica Neue'
-	},
-	borderRadius:6,
-	top:0,
-	bottom:0,
-	left:10,
-	height:Ti.UI.SIZE
 
-}
+
 ".itemlist_with_icon_label":{
 	backgroundColor:undefined,
 
 }
 
-"#listview_step4":{
-	height:Ti.UI.SIZE,
+
+".listitem_wrapper3":{
+	// backgroundColor:"#fff",
+	backgroundColor:"#f8f8f8",
+	height:80,
+	top:10,
+	bottom:10,
+	// width:200
 }
 ".listitem_wrapper":{
 	backgroundColor:"#fff",
@@ -304,11 +379,11 @@
 	// width:200
 }
 ".padder":{
-	height:Ti.UI.SIZE,
+	// height:Ti.UI.SIZE,
 	// top:10,
 	// bottom:10,
 	right:10,
-	// height:70,	
+	height:70,	
 }
 // ListView Templates
 ".select":{
@@ -319,12 +394,13 @@
 	backgroundColor:"#d9e153",
 	right:6,
 	color:"#000",
-	width:100,
+	width:235,
 	borderRadius:6,
 	height:40,
-
-	// height:30
+	top:5,
 }
+
+
 ".listview":{
 	width:"90%"
 }
@@ -360,11 +436,6 @@
 	height:Ti.UI.SIZE,
 	backgroundColor:'red',
 }
-
-"#btngroup":{
-	height:Ti.UI.SIZE,
-}
-
 
 
 

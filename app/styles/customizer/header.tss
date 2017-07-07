@@ -1,6 +1,59 @@
 
+
 ".container" : {
   
+}
+
+"#options_wrapper":{
+	// top:0,
+	// bottom:0,
+	// backgroundColor:'pink',
+	height:40,
+	width:Ti.UI.SIZE,
+	right:46,
+}
+
+
+"#round_options":{
+	backgroundSelectedColor:'#fff',
+	image:'images/icons/options.png',
+	right:0,
+	height:20,
+	// bottom:0,
+	width:51,
+	font:{
+		fontSize:20,
+	},
+	color:'red',
+	tintColor:'green',
+	opacity:0.75,
+	touchFeedback:true,
+	touchFeedbackColor:'#000',
+
+}
+
+
+"#exercise_type":{
+	height:40,
+	width:Ti.UI.SIZE,
+	color:'#144794',
+	left:10,
+	visible:false,
+	font:{
+		fontSize:20,
+	}	
+}
+
+"#exercise_equipment":{
+	height:40,
+
+	width:Ti.UI.SIZE,
+	left:110,
+	// color:'#c4cb48',
+	color:'#2a751b',
+	font:{
+		fontSize:20,
+	}	
 }
 
 
@@ -14,38 +67,26 @@
 	color:'#000',
 	backgroundColor:"#f8f8f8",
 	
-	width:Ti.UI.SIZE,
+	// width:Ti.UI.SIZE,
 	autoStyle:true,
+	height:40,
 }
+
+
 ".list_header":{
 	backgroundColor:"#f8f8f8",
-	// height:50,
 	width:Ti.UI.FILL,
 	autoStyle:true,
-	layout:'horizontal',
+	// layout:'horizontal',
 
+}
+"#round_tools":{
+	right:10,
+	height:Ti.UI.SIZE,
 }
 
 
-"#exercise_type":{
-	height:40,
-	width:Ti.UI.SIZE,
-	color:'#144794',
-	left:10,
-	font:{
-		fontSize:20,
-	}	
-}
-"#exercise_equipment":{
-	height:40,
-	width:Ti.UI.SIZE,
-	left:10,
-	// color:'#c4cb48',
-	color:'#2a751b',
-	font:{
-		fontSize:20,
-	}	
-}
+
 "#exercise_number":{
 	height:40,
 	color:'green',

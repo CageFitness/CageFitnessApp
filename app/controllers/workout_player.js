@@ -16,6 +16,7 @@ var cage_cache_dir = Titanium.Filesystem.getFile(Titanium.Filesystem.application
 var inited = 0;
 var show_activity = _.once(justShow);
 var scroll_ready=false;
+var onView=false;
 
 $.top_bar_required.winref = args.winref;
 
@@ -26,8 +27,10 @@ $.round_btn_bar.addEventListener('postlayout',function(e){
 
 $.scrollable.addEventListener('postlayout',function(e){
 	Ti.API.info('POST.LAYOUT.TRIGGERED',e);
+	
 	$.scrollable.show();
-	Alloy.Globals.continueCageWorkout();
+	onView=1;
+
 });
 
 var round_tool=[];
@@ -149,13 +152,6 @@ function init(){
 	Ti.API.info('======== Cached Resources =======\n', cage_cache_dir, '\n', cage_cache_dir.getDirectoryListing(), '\n===============================');
 	Ti.API.info('=================================');	
 
-	// Remove Events?
-
-	// NappDownloadManager.addEventListener('progress', ReportProgress);
-	// NappDownloadManager.addEventListener('completed', ReportProgress);
-	// NappDownloadManager.stopDownloader();
-	// NappDownloadManager.cleanUp();
-
 	config = JSON.parse( Ti.App.Properties.getString('config') || loadConfig() );
 	Ti.API.info('LOADING.CONFIGURATION.WORKOUT:',config);
 	// showIndicator();
@@ -186,10 +182,6 @@ $.dlmanlabel.addEventListener('click',function(e){
 	Ti.API.info(old_cache);
 	Ti.API.info(current_cache);
 	Ti.API.info('==============================');
-	// NappDownloadManager.stopDownloader();
-	// NappDownloadManager.resumeAll();
-	// NappDownloadManager.restartDownloader();
-	// Ti.API.info(NappDownloadManager.getAllDownloadInfo());
 	Ti.API.info('==============================');
 })
 
@@ -218,69 +210,69 @@ function scrollNextFromVideo(e) {
 	$.scrollable.scrollToView(e.index + 1);
 }
 
-function ReportProgress(e) {
-	Ti.API.info('REPORT.PROGRESS.SHOULD.NOT.PLAY');
-	var p = calculateProgress();
+// function ReportProgress(e) {
+// 	Ti.API.info('REPORT.PROGRESS.SHOULD.NOT.PLAY');
+// 	var p = calculateProgress();
 
-	if(!p.remaining>=1){
-		$.activity_wrapper.hide();
-		$.activity_indicator.hide();		
-		$.dlmanlabel.hide();		
-	}else{
-		$.dlmanlabel.text = [p.total,p.remaining,p.downloaded].join(' | ');
-		$.dlmanlabel.text = 'Loading...'+p.remaining;
-		$.activity_wrapper.show();
-		$.activity_indicator.show();
-		$.dlmanlabel.show();
-	}
-	// 
-	// xxxx
-	// Ti.API.info('EVENT_TYPE: ',e.type);
-	var ob ={};
-	// var text = e.downloadedBytes+'/'+e.totalBytes+' '+Math.round(progress)+'% '+e.bps+' bps';
-	ob.progress 		= e.downloadedBytes*100.0/e.totalBytes;
-	ob.percent 			= e.downloadedBytes+'/'+e.totalBytes;
-	ob.percent_pretty 	= Math.round(ob.progress)+'%';
-	ob.bps 				= e.bps;
-	ob.bps_pretty 		= e.bps+' bps';
+// 	if(!p.remaining>=1){
+// 		$.activity_wrapper.hide();
+// 		$.activity_indicator.hide();		
+// 		$.dlmanlabel.hide();		
+// 	}else{
+// 		$.dlmanlabel.text = [p.total,p.remaining,p.downloaded].join(' | ');
+// 		$.dlmanlabel.text = 'Loading...'+p.remaining;
+// 		$.activity_wrapper.show();
+// 		$.activity_indicator.show();
+// 		$.dlmanlabel.show();
+// 	}
+// 	// 
+// 	// xxxx
+// 	// Ti.API.info('EVENT_TYPE: ',e.type);
+// 	var ob ={};
+// 	// var text = e.downloadedBytes+'/'+e.totalBytes+' '+Math.round(progress)+'% '+e.bps+' bps';
+// 	ob.progress 		= e.downloadedBytes*100.0/e.totalBytes;
+// 	ob.percent 			= e.downloadedBytes+'/'+e.totalBytes;
+// 	ob.percent_pretty 	= Math.round(ob.progress)+'%';
+// 	ob.bps 				= e.bps;
+// 	ob.bps_pretty 		= e.bps+' bps';
 
-	updateManagerProgress(ob);
-
-
-};
+// 	updateManagerProgress(ob);
 
 
+// };
 
 
-function updateManagerProgress(o){
+
+
+// function updateManagerProgress(o){
 	
-	Ti.App.fireEvent('cage/downloadmanager/progress', {
-		'progress': o.progress,
-		'percent': o.percent,
-		'percent_pretty': o.percent_pretty,
-		'bps': o.bps,
-		'bps_pretty': o.bps_pretty,
-		'overall': calculateProgress()
-	});
-}
+// 	Ti.App.fireEvent('cage/downloadmanager/progress', {
+// 		'progress': o.progress,
+// 		'percent': o.percent,
+// 		'percent_pretty': o.percent_pretty,
+// 		'bps': o.bps,
+// 		'bps_pretty': o.bps_pretty,
+// 		'overall': calculateProgress()
+// 	});
+// }
 
 
 
-function calculateProgress(){
+// function calculateProgress(){
 
-	var dlinfo = NappDownloadManager.getAllDownloadInfo();
-	var o = {}; 
-	if (_.size(dlinfo) > 0) {
-		var remaining = _.size(dlinfo)-1;
-		var o = {
-			'total': _.size(initial_dlinfo),
-			'remaining': remaining,
-			'downloaded': _.size(initial_dlinfo)  + ( -Math.abs(remaining) )
-		}	
-	}
+// 	var dlinfo = NappDownloadManager.getAllDownloadInfo();
+// 	var o = {}; 
+// 	if (_.size(dlinfo) > 0) {
+// 		var remaining = _.size(dlinfo)-1;
+// 		var o = {
+// 			'total': _.size(initial_dlinfo),
+// 			'remaining': remaining,
+// 			'downloaded': _.size(initial_dlinfo)  + ( -Math.abs(remaining) )
+// 		}	
+// 	}
 
-	return o;
-}
+// 	return o;
+// }
 
 
 
@@ -405,35 +397,36 @@ function proccessWorkout(n){
 
 function addAssetsToSessionDownloadManager(){
 
-	// _.every _.some
-	var to_download = _.difference(
-	Titanium.Filesystem.getFile(
-		Titanium.Filesystem.applicationDataDirectory,'cached'),
-		Array(_.pluck(assets_queue, 'filename'))
-	);
-
-	// var tester = _.pluck(assets_queue, 'filename');
-	// var reduced = _.map(tester,function(item){
-	// 	return isInCache(item);
-	// })
 
 	Ti.API.info('===================== CAN CONTINUE ====================');
 	var can_continue = _.every(assets_queue,function(item,index){
 		return isInCache(item.filename);
 	});
 	Ti.API.info('ALL.FILES.IN.CACHE? ',can_continue);
+	if(can_continue){
+		Ti.API.info('CAN.CONTINUE.TRIGGERED');
+		Ti.App.fireEvent('/cage/workout/start');
+	}
+	else{
+		$.downprogress.message="Adding Assets. Please wait...";
+		$.downprogress.show();
+	}
 	Ti.API.info('=======================================================');
 
-	Ti.API.info('FILES.NOT.IN.CACHE.ARE.ONLY.THIS:', Array(to_download) );
-	// Ti.API.info('FILES.NOT.IN.CACHE.ARE.ONLY.THIS:', to_download);
 
 	
 
 	_.each(assets_queue, function(item){
-		if(!isInCache(item.file)){
+
+		_.defer(function(){
+			Ti.API.info('ASKING.FOR.FILES...',item.filename);
+		});
+
+		if(!isInCache(item.filename)){
 			_.defer(addToDownloadSession,item);
-			Ti.API.info('DOWNLOAD.DEFERED');
-		}
+			Ti.API.info('DOWNLOAD.DEFERED:',item.filename);
+		};
+
 	});
 }
 
@@ -588,12 +581,11 @@ function prepareVideoOwl(data){
     // addWorkoutElement('workout/finish',{title:'Well Done!', type:'static'});
 };
 
-	$.customizer_btn_bar.addEventListener('click',function(e){
-		Ti.API.info('LAUNCHING CUSTOMIZER:',e.source.labels[e.index]);
-		clearInterval(Alloy.Globals.Timer);
-		
-		Ti.App.fireEvent('cage/launch/customizer',{menu_id:'menu_customizer'});
-	});
+$.customizer_btn_bar.addEventListener('click',function(e){
+	Ti.API.info('LAUNCHING CUSTOMIZER:',e.source.labels[e.index]);
+	clearInterval(Alloy.Globals.Timer);
+	Ti.App.fireEvent('cage/launch/customizer',{menu_id:'menu_customizer'});
+});
 
 
 
@@ -655,7 +647,7 @@ function onSuccessWorkoutCallback(e){
 	// addAssetsToSessionDownloadManager(assets_queue);
 	
 	Ti.API.info('DELAYING.DOWNLOAD.MANAGER.START');
-	_.delay(addAssetsToSessionDownloadManager,3000,'assets_queue');
+	_.delay(addAssetsToSessionDownloadManager,1000,'assets_queue');
 
 	// NappDownloadManager.restartDownloader();
 	// NappDownloadManager.resumeAll();

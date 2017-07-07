@@ -1,13 +1,15 @@
 <Alloy>
-    <Window id="exercisesWin" title="Select Exercises">
+    <Window id="exercisesWin" title="list.js SelectEx">
+
         <RightNavButton>
-        	<Button id="finishBtn" onClick="finishExerciseListSelection">Continue</Button>
+        	<Label id="how_many">Hello</Label>
+        	<Button id="finishBtn" onClick="finishExerciseListSelection">Done</Button>
+        	<!-- <Button id="finishBtn" onClick="finishOrderSelection">Done</Button> -->
         </RightNavButton>
+
         <!-- <Label>It's not easy being green.</Label> -->
         <ListView id="pover" top="0">
             <Templates>
-                <!-- Define your item templates within the Templates tags or use the
-        	                     Require tag to include a view that only contains an ItemTemplate -->
                 <ItemTemplate name="exerciseItem">
                     <ImageView bindId="pic" id="list_icon" />
                     <Label bindId="info" id="list_title" />
@@ -16,19 +18,7 @@
             </Templates>
             <SearchBar id="list_customizer_search" />
             <ListSection>
-            	
             </ListSection>
-			<!--             <FooterView>
-
-				            <PullView>
-				                <View backgroundColor="red" height="50">
-				                    <Label>Release to reload</Label>
-				                </View>
-				            </PullView>     
-			                
-						
-			            </FooterView>
-			 -->
  		<Widget id="is" src="nl.fokkezb.infiniteScroll" onEnd="myLoader" />
         </ListView>
     </Window>

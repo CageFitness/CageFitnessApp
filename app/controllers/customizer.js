@@ -5,6 +5,7 @@ var workout_final_url = Alloy.CFG.api_url + Alloy.CFG.workout_final_path;
 var config = JSON.parse( Ti.App.Properties.getString('config') );
 
 var tool_labels=[
+	{title:'BEGIN WORKOUT', cb:beginWorkout},
 	{title:'ADD ROUND', cb:createNewRound},
 	{title:'SAVE WORKOUT', cb:saveWorkout},
 ]
@@ -33,10 +34,12 @@ $.insert_remove.addEventListener('click',function(e){
 // $.customizer_list_view.addEventListener('click',function(e){
 // 	Ti.API.info('ELEMENT.CLICKED',e);
 // });
+// $.cutomizer_header.children['header_background'].setHeight(20);
 
 
+function beginWorkout(){
 
-
+}
 
 
 function enableFeature(e, mode){
@@ -111,6 +114,9 @@ function getIndex(n){
 
 
 // =========================================
+function getRandomInt (min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 
 function enableToolButtons(){
@@ -122,8 +128,10 @@ function enableToolButtons(){
 function loadWorkout(){
 	var wid = Ti.App.Properties.getString('my_workout');
 	var wurl = workout_final_url+wid;
+	var updatedCall = Alloy.Globals.updateWorkout ? '?rn='+getRandomInt(0,999999999) : '';
 	Ti.API.info('ATTEMPT.LOAD.WORKOUT_PLAYER', wurl);
-	xhr.GET(wurl, onSuccessCustomizer, onErrorWorkoutCallback, Alloy.Globals.XHROptions);
+	xhr.GET(wurl+updatedCall, onSuccessCustomizer, onErrorWorkoutCallback, Alloy.Globals.XHROptions);
+	Alloy.Globals.updateWorkout=0;
 }
 
 $.dialog.addEventListener('click',function(e){
@@ -186,7 +194,10 @@ function onErrorWorkoutCallback(e){
 }
 // =========================================
 
-
+function generateRound(selection, roundIndex){
+	Ti.API.info('GENERATE.ROUND.WITH.CUSTOMIZER:',selection);
+	// createRoundFromSelection(selection, roundIndex);
+}
 
 
 function createRound(round, roundIndex){
@@ -221,7 +232,7 @@ function createRound(round, roundIndex){
 	    	sub:{text:'REPLACE'},
 	    }
 	    roundData.push(ob);
-	})
+	});
 
 	var round_title = 'Round '+roundIndex+': ';
 	var hT = Alloy.createController('customizer/header',{
@@ -231,8 +242,12 @@ function createRound(round, roundIndex){
 			wo_round_type:round.wo_round_type,
 			wo_equipment:round.wo_equipment,
 			wo_exercise_number:round.wo_exercise_number,
-		});
-	var roundSection = Ti.UI.createListSection({ headerView: hT.getView()});
+			roundOptions:roundOptions,
+		}).getView();
+	// hT.addEventListener('click',roundOptions);
+	var roundSection = Ti.UI.createListSection({ headerView: hT});
+
+
 	roundSection.setItems(roundData);
 
 
@@ -240,6 +255,63 @@ function createRound(round, roundIndex){
 	$.customizer_list_view.appendSection(roundSection);
 }
 
+
+function createRoundFromSelection(round, roundIndex){
+	Ti.API.info('EXERCISES.IN.ROUND: ', _.size(round.customizer), roundIndex);
+	var roundData = [];
+	
+	_.each(round.customizer,function(exercise, index){
+		// Ti.API.info('EXERCISE.DATA:', exercise.ID, exercise.post_title);
+		var the_title = exercise.title||exercise.post_title||exercise.title.rendered;
+		Ti.API.info('IS.TITLE.VALID?');
+
+	    var ob = {
+	    	template:'RoundItemTemplate',
+	    	properties: { 
+	    		title: exercise.title.rendered,
+	    		searchableText:exercise.title.rendered,
+	    		launch_data:exercise,
+	    		exercise_index:index,
+				wo_exercise_number:round.wo_exercise_number,
+				wo_equipment:round.wo_equipment, 
+				wo_round_type:round.wo_round_type,
+		    	canMove:true,
+		    	canInsert:false,
+		    	canEdit:true,
+		    	accessoryType:Titanium.UI.LIST_ACCESSORY_TYPE_DISCLOSURE
+	   		 },
+	   		header_info:{
+				wo_exercise_number:round.wo_exercise_number,
+				wo_equipment:round.wo_equipment,
+				wo_round_type:round.wo_round_type,	   			
+	   		},
+	    	pic:{image: exercise.acf.video_featured.url},
+	    	main:{text:exercise.title.rendered},
+	    	sub:{text:'REPLACE'},
+	    }
+	    roundData.push(ob);
+	});
+
+	var round_title = 'Round '+roundIndex+': ';
+	var hT = Alloy.createController('customizer/header',{
+			htitle:round_title,
+			round_index:roundIndex,
+			onHeaderItemClick:onHeaderItemClick,
+			wo_round_type:round.wo_round_type,
+			wo_equipment:round.wo_equipment,
+			wo_exercise_number:round.wo_exercise_number,
+			roundOptions:roundOptions,
+		}).getView();
+	// hT.addEventListener('click',roundOptions);
+	var roundSection = Ti.UI.createListSection({ headerView: hT});
+
+
+	roundSection.setItems(roundData);
+
+
+
+	$.customizer_list_view.appendSection(roundSection);
+}
 
 
 
@@ -403,6 +475,8 @@ function replaceExercise(e, insert_mode){
     		exercise_type:row.properties.wo_round_type.value,
     		// rounds:row.properties.wo_exercise_number,
     	},
+    	optType:optType,
+		optEquipment:optEquipment,
     	launch_data:row.properties.launch_data,
     	customizerListItem:e,
     }).getView();
@@ -410,19 +484,81 @@ function replaceExercise(e, insert_mode){
     insert_popover.show({animated:true, view:$.insert_remove});
 }
 
+// var shared ={
+// 	optType:optType,
+
+// }
+
+function roundOptions(roundIndex){
+	Ti.API.info('CALLING.ROUND.OPTIONS.POPOVER', roundIndex );
+    var round_popover = Alloy.createController('customizer/round_options', {
+
+    	validate:addNewRoundValidate,
+    	createRoundFromSelection:createRoundFromSelection,
+    	optType:optType,
+		optEquipment:optEquipment,
+		round_index:roundIndex,
+
+    	customizer_list_view:$.customizer_list_view,
+    	removeRound:removeRound,
+    	
+
+    } ).getView();
+    round_popover.show({animated:true, view:$.pover_target});
+    // createNewRound(e);
+}
+
 function createNewRound(e){
-    var round_popover = Alloy.createController('customizer/selection', {validate:addNewRound, customizer_list_view:$.customizer_list_view} ).getView();
+    var round_popover = Alloy.createController('customizer/selection', {
+
+    		validate:addNewRoundValidate,
+    		generateRound:generateRound,
+    		createRoundFromSelection:createRoundFromSelection,
+    		optType:optType,
+			optEquipment:optEquipment,    		
+    		round_index:0,
+    		
+    		customizer_list_view:$.customizer_list_view
+    	}).getView();
     round_popover.show({animated:true, view:$.pover_target});
 }
 
 // function createNewRoundBelow(e){
-//     var round_popover = Alloy.createController('customizer/round', {validate:addNewRound} ).getView();
+//     var round_popover = Alloy.createController('customizer/round', {validate:addNewRoundValidate} ).getView();
 //     round_popover.show({animated:true, view:$.pover_target});
 // }
 
-function addNewRound(e){
-	Ti.API.info('ADD.ROUND.CALLBACK',e)
+function removeRound(roundIndex){
+		Ti.API.info('ATTEMPT.TO.REMOVE.ROUND:',roundIndex);
+		$.customizer_list_view.deleteSectionAt( roundIndex );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+function addNewRoundValidate(e,roundIndex){
+	Ti.API.info('ADD.ROUND.CALLBACK',e);
+	// if(e=='remove'){
+	// 	removeRound(0);
+	// }
+
+	// createRoundFromSelection(e,roundIndex);
+}
+
+
+
+
+
+
+
 
 // function handleClickPopOver(e) {
 //     Alloy.Globals.currentSelectButton = e.source;

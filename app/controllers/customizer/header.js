@@ -9,4 +9,14 @@ $.exercise_equipment.text 	= args.wo_equipment.label;
 
 var wo_round_type = args.wo_round_type;
 var wo_equipment = args.wo_equipment;
-var wo_exercise_number = args = wo_exercise_number;
+var wo_exercise_number = args.wo_exercise_number;
+
+var roundOptions = args.roundOptions;
+var round_index = args.round_index;
+
+function openOptions(e){
+	Ti.API.info('POPIN.OPTIONS.BUTTON.FROM.CUSTOMIZER.HEADER');
+	Animation.popIn($.round_options);
+	roundOptions(round_index);
+}
+$.clicker.addEventListener( 'click', openOptions );

@@ -1,8 +1,11 @@
 <Alloy>
-    <View class="list_header">
-    	<Label id="hTitle" class="htitle">ROUND 1</Label>
-    	<Label id="exercise_type" class="desc">Equipment</Label>
-    	<Label id="exercise_equipment" class="desc">Type</Label>
-<!--     	<Label id="exercise_number" class="desc">N Exercises</Label>
- -->    </View>
+    <View id="clicker" bubbleParent="true" bindId="headData" class="list_header">
+        <Label bubbleParent="true" id="hTitle" class="htitle" bindId="roundTitle">ROUND 1</Label>
+        <Label bubbleParent="true" id="exercise_type" class="desc">Equipment</Label>
+        <Label bubbleParent="true" id="exercise_equipment" class="desc">Type</Label>
+		<View  bubbleParent="true" id="options_wrapper">
+			<Button bubbleParent="true" id="round_options"></Button>
+		</View>
+    </View>
 </Alloy>
+

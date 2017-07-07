@@ -56,7 +56,7 @@
                     <ItemTemplate name="RoundItemTemplate">
                     	<ImageView bindId="pic" id="list_icon" />
                         <Label bindId="main" class="titleLabel" />
-                        <Label bindId="sub" class="detailLabel" />
+                        <Label bindId="sub" class="detailLabel" />                        
                     </ItemTemplate>
                 </Templates>
                 <FooterView>

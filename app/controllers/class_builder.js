@@ -1,15 +1,9 @@
 
-
-// Arguments passed into this controller can be accessed via the `$.args` object directly or:
 var args = $.args;
-// Ti.UI.orientation = Ti.UI.LANDSCAPE_LEFT;
-
-
-
-
-// =========================================
 var sdata;
 var flashDelay = 0;
+var numberSelection=null;
+
 Animation.fadeOut($.step_line,0);
 
 
@@ -22,7 +16,8 @@ function updateStep_REVIEW(row){
 	var item = sec.getItemAt(row.rowIndex);
 
 	Ti.API.info('DATA.UPDATE.REVIEW:',item, row.value);
-	item.sub.text = row.value;
+	item.sub.value = row.value;
+	item.properties.height=Ti.UI.SIZE;
 	sec.updateItemAt(row.rowIndex, item);
 
 }
@@ -292,51 +287,44 @@ function init_class_builder(e){
     // setNumberOfExerciseItems(config.acf.opt_rounds);	
     setRoundTypeItems(0);
     setNumberOfExerciseItems(0);
-}
+};
 
 function setNumberOfExerciseItems(ritems){
     var items = createNumberOfExercisesRows(ritems);
-	$.listview_step4.removeAllChildren();
-	$.listview_step4.sections[0].setItems(items);
-
-}
+    var sec = $.listview_step4.sections[0];
+	sec.deleteItemsAt( 0, _.size(sec.items), {animated:true} );
+	sec.setItems(items);
+};
 
 
 
 function setRoundTypeItems(nitems){
     var items = createRoundTypeRows(nitems);
-	// $.listview_step3.removeAllChildren();
 	var sec = $.listview_step3.sections[0];
-	sec.deleteItemsAt( 0, _.size(sec.items), {animated:true} )
+	sec.deleteItemsAt( 0, _.size(sec.items), {animated:true} );
 	sec.setItems(items);
-	// $.listview_step3.sections.replaceItemsAt(0,	_.size(items), items, {animated:false})
-}
+};
 
 
 
 $.listview_step3.addEventListener('itemclick',function(e){
-	Ti.API.info('LIST.3: ',e);
-	var row = $.listview_step3.sections[0].getItemAt(e.itemIndex);
-	Ti.API.info('LIST.3.ROW: ',row.selector);
-	// Ti.API.fireEvent('click')
-})
+
+	// Ti.API.info('LIST.3: ',e);
+	// var row = $.listview_step3.sections[0].getItemAt(e.itemIndex);
+	// Ti.API.info('LIST.3.ROW: ',row.selector);
+	// LITHIUMLAB
+    var section = $.listview_step3.sections[e.sectionIndex];
+    var item = section.getItemAt(e.itemIndex);
+	section.updateItemAt(e.itemIndex, item);
+
+});
 
 
 
 function updateStepItem(parent,page){
-
     var item = parent.children[page];
-
-    item.backgroundColor='#white';
-    // Ti.API.info(item.children[0]);
-    item.children[0].color="#000";
-    item.borderWidth=4;
-    item.borderColor='#d9e153';
-
+    item.applyProperties( {backgroundColor:'#fff', color:'#000', borderWidth:4, borderColor:'#d9e153'} );
     Animation.shake(item,flashDelay);
-    // Animation.popIn(item);
-
-
 }
 
 function updateSteps(page){
@@ -344,12 +332,10 @@ function updateSteps(page){
     var par = $.step_track;
 
     for(istep in $.step_track.children){
-        // Ti.API.info('ONUPDATESTEPS:' );
-        // Ti.API.info('ONUPDATESTEPS:', JSON.stringify(par.children[istep]) );
 
         var item = par.children[istep];
-        item.backgroundColor="#d9e153";
-        item.children[0].color = "#7b7b3e";
+        item.setBackgroundColor('#d9e153');
+        item.children[0].setColor('#7b7b3e');
 
     }
 
@@ -378,15 +364,10 @@ function updateSteps(page){
     if (page == 7) {
         updateStepItem(par,6);
     }
-    // if (page == 8) {
-    //    updateStepItem(par,7);
-    // }
+
 
 }
 
-// $.login_box.addEventListener('click',function(e){
-
-// })
 $.scrollableView.addEventListener('scrollend',function(e){
     updateSteps(e.currentPage)
 });
@@ -396,26 +377,32 @@ $.scrollableView.addEventListener('dragstart',function(e){
     Ti.API.info('DRAGSTART:', e);
 });
 
+// SHOULB BE SCROLLSTART!!!!
+// $.listview_step4.addEventListener('itemclick', function(e){
 
 
-$.listview_step4.addEventListener('itemclick', function(e){
 
+// });
+
+
+
+function handleNumberExercisesSelection(e){
+	Ti.API.info('GROUP.BUTTON.ITEM.CLICK: ', e.itemIndex, e.source.selectorValue);
     var section = $.listview_step4.sections[e.sectionIndex];
     var item = section.getItemAt(e.itemIndex);
+    item = {
+    	template:'numberOfExercises',
+    	properties:{title:'', top:0, bottom:0, height:65, autoStyle:true, rowIndex:getIndex(e.itemIndex)},
+    	info:{text:item.info.text},
+		select5:{backgroundColor:'#fff'},
+		select7:{backgroundColor:'#fff'},
+		select10:{backgroundColor:'#fff'},
+    }
 
-});
-
-function ToggleMe(e){
-
-	Ti.API.info('GROUP.BUTTON.ITEM.CLICK: ', e.itemIndex, e.source.selectorValue)
-    e.source.getParent().children[0].setBackgroundColor("#ffffff");
-    e.source.getParent().children[2].setBackgroundColor("#ffffff");
-    e.source.getParent().children[4].setBackgroundColor("#ffffff");
-    e.source.setBackgroundColor("#d9e153");
-
-
+   	item['select'+e.source.selectorValue].backgroundColor='#d9e153';
+    section.updateItemAt(e.itemIndex, item);
+    Ti.API.info('ON.ITEM.EVENT:',e.source.id, e.source.selectorValue);
     updateStep_EXERCISES({'rowIndex':e.itemIndex, 'numexercises':e.source.selectorValue});
-
 }
 
 $.listview_step5.addEventListener('itemclick', function(e){
@@ -453,19 +440,17 @@ function clickAndFollow(section,e){
     var item = section.getItemAt(e.itemIndex);
     if (item.properties.accessoryType == Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE) {
         item.properties.accessoryType = Ti.UI.LIST_ACCESSORY_TYPE_CHECKMARK;
-        item.properties.color = 'black';
+        item.properties.color='#000';
     }
     else {
         item.properties.accessoryType = Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE;
-        item.properties.color = 'black';
+        item.properties.color='black';
     }
     section.updateItemAt(e.itemIndex, item);
     getNext();
 }
 
-// Arguments passed into this controller can be accessed via the `$.args` object directly or:
-myTimer = setTimeout(decrease, 1000);
-var myCount = 30;
+
 
 function stepClickHandler(e){
     
@@ -495,18 +480,7 @@ function stopCounter() {
 
 }
 
-function decrease() {
 
-    // if(myCount<1){
-    //  stopCounter();
-    //  Ti.API.info('Call Next');
-    // }
-    // else{
-    //  Ti.API.info(myCount);
-    //  $.prog.setValue(myCount--);
-    //  $.step_8_title_right.text = '00:'+myCount--;
-    // }
-}
 
 function getNext(){
     $.scrollableView.scrollToView($.scrollableView.currentPage + 1);
@@ -519,12 +493,8 @@ function stepClick(e) {
 
 
 function doProgress(e) {
-   
-   // sendData();
-   
-		Ti.App.fireEvent('cage/launch/customizer',{menu_id:'menu_customizer'});
-	    
-
+	// sendData();
+	Ti.App.fireEvent('cage/launch/customizer',{menu_id:'menu_customizer'});
 }
 
 function doWorkout(e) {
@@ -534,17 +504,6 @@ function doWorkout(e) {
    $.step7_btn.setTitle('LOADING...');
    sendData(sdata.build);
 }
-
-
-function testMy(e){
-	Ti.API.info('This. Works??.... ',e);
-}
-
-// function openRoundPopover() {
-//     var round_popover = Alloy.createController('round_popover').getView();
-//     round_popover.show({view:$.step3_btn});
-//     Ti.API.info('Round PopOver Openend');
-// };
 
 function itemClickBuildWorkout(e){
     // Ti.API.info('TESTING...');
@@ -586,19 +545,13 @@ function handleClickNumberOfExercises(e) {
     section.updateItemAt(e.itemIndex, item);
 }
 
-
-
-
 function stepLineClick(){
     Ti.API.info('clicked...');
 }
 
-// $.steps.open();
-
 Alloy.Globals.parent = $.mainView;
 Alloy.Globals.scrollableView = $.scrollableView;
-// Alloy.createController('dialog', args).getView().open();
-// stepClickHandler();
+
 $.scrollableView.scrollToView(0);
 
 

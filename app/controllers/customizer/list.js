@@ -4,6 +4,22 @@ var workout_url = Alloy.CFG.api_url + Alloy.CFG.workout_test_path;
 var exercise_url = Alloy.CFG.api_url + Alloy.CFG.exercise_path;
 var pages = 1;
 var paging ={};
+var exercise_selection=[];
+var round_index = args.round_index;
+
+// Available functions from customizer
+var optType = args.optType;
+var optEquipment = args.optEquipment;
+var createRoundFromSelection = args.createRoundFromSelection;
+
+var defaults ={ 
+	per_page:52,
+	sortby:'title',
+	order:'asc',
+};
+
+
+
 $.is.init($.pover);
 $.is.load();
 
@@ -19,6 +35,8 @@ $.is.load();
 
 function loadExercises(selection){
 	Ti.API.info('GETTING EXERCISES. SHOULD USE _.defaults() HERE!!:', selection);
+	
+
 
 	var filter_query = {}
 		filter_query.per_page=52;
@@ -107,7 +125,13 @@ function finishExerciseListSelection(e){
 
 	Ti.API.info('EXERCISE.SELECTION.FINISHED',e);
 	Ti.API.info('EXERCISE.SELECTION.OBJECT',args.selection);
-	args.orderWindow(args.selection);
+	// args.orderWindow(args.selection);
+	// args.generateRound(args.selection);
+	args.validate(exercise_selection, args.round_index);
+
+	// Ti.API.info('createRoundFromSelection.FROM.LIST.JS',args.selection);
+	createRoundFromSelection(args.selection,args.round_index);
+	args.popover.hide();
 	
 
 }
@@ -124,6 +148,13 @@ function closePover(){
 
 }
 
+
+
+
+
+
+args.selection.customizer = [];
+
 $.pover.addEventListener("itemclick", function(e){
     var section = $.pover.sections[e.sectionIndex];
     var item = section.getItemAt(e.itemIndex);
@@ -139,12 +170,33 @@ $.pover.addEventListener("itemclick", function(e){
     section.updateItemAt(e.itemIndex, item);
     item.properties.cage_selected=true;
 
-    Ti.API.info('LIST.VALIDATED.STATICALLY');
-    args.selection.equipment='bands';
+  //   var round = {
+  //   	add:args.selection.add,
+		// wo_equipment:args.selection.wo_equipment,
+		// wo_round_type:args.selection.wo_round_type,
+	 //    customizer: []
+  //   };
+
+  	Ti.API.info('ARGS.SELECTION.AT.LIST.BEFORE.GRABBING.TTID:',args.selection);
+
+  	var type = Object( optType(args.selection.exercise_type));
+  	var equipment = Object( optEquipment(args.selection.exercise_equipment));
+
+  	args.selection.wo_round_type = type;
+  	args.selection.wo_equipment = equipment;
+
+    args.selection.customizer.push(item.info.data);
+    Ti.API.info('HOW.MANY?', _.size(args.selection.customizer) );
+    var size = _.size(args.selection.customizer);
+    $.how_many.setText( size +'/'+ args.selection.num_exercises);
+    Ti.API.info('CURRENT.SELECTION.AT.LIST.JS:',args.selection);
+
+    
+
+    // Ti.API.info('LIST.VALIDATED.STATICALLY');
+    // args.selection.equipment='bands';
     args.validate(args.selection);
     // listWindow(args.selection);
-
-
 
 });
 

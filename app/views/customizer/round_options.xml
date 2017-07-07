@@ -1,0 +1,18 @@
+<Alloy>
+    <Popover id="popover_ob" class="popover">
+        <ContentView>
+            <NavigationWindow id="navWin" height="Ti.UI.FILL" width="450">
+                <Window id="roundOptionsWin" title="Round Options" height="Ti.UI.FILL">
+                    <!-- <RightNavButton title="Robin" /> -->
+                    <!-- <Label>It's not easy being green.</Label> -->
+                    <ListView id="pover" top="0" >
+                        <ListSection>
+                            <ListItem slug="add" class="checked" title="Insert Round"></ListItem>
+                            <ListItem slug="remove" class="checked" title="Remove this Round?"></ListItem>
+                        </ListSection>                            
+                    </ListView>
+                </Window>
+            </NavigationWindow>
+        </ContentView>
+    </Popover>
+</Alloy>

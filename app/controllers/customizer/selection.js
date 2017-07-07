@@ -1,11 +1,24 @@
 // Arguments passed into this controller can be accessed via the `$.args` object directly or:
 var args = $.args;
+var exercise_selection=[];
+var round_index = _.last(args.customizer_list_view);
+
+var optType = args.optType;
+var optEquipment = args.optEquipment;
+var createRoundFromSelection = args.createRoundFromSelection;
+
 
 $.popover_ob.contentView.height=Ti.UI.FILL;
 
 
 function typeWindow(selection_ob) {
     var typeWin = Alloy.createController('customizer/type', {
+
+    	createRoundFromSelection:args.createRoundFromSelection,
+		optType:args.optType,
+		optEquipment:args.optEquipment,    	
+    	round_index:round_index,
+    	    	
     	validate:args.validate,
     	selection:selection_ob,
     	equipmentWindow:equipmentWindow,
@@ -17,6 +30,12 @@ function typeWindow(selection_ob) {
 
 function equipmentWindow(selection_ob) {
     var equipmentWin = Alloy.createController('customizer/equipment', {
+
+    	createRoundFromSelection:args.createRoundFromSelection,
+		optType:args.optType,
+		optEquipment:args.optEquipment,    	
+    	round_index:round_index,
+    	    	
     	validate:args.validate,
      	selection:selection_ob,
      	exerciseWindow:exerciseWindow,
@@ -26,8 +45,46 @@ function equipmentWindow(selection_ob) {
 }
 
 
+function roundOptionsWindow(selection_ob) {
+    var roundOptionsWin = Alloy.createController('customizer/round_options', {
+
+    	createRoundFromSelection:args.createRoundFromSelection,
+		optType:args.optType,
+		optEquipment:args.optEquipment,    	
+    	round_index:round_index,
+    	    	
+    	validate:args.validate,
+    	selection:selection_ob,
+    	roundWin:$.roundWin,
+    	popover:$.popover_ob,
+    	}).getView();
+    $.navWin.openWindow(roundOptionsWin);
+}
+
+function numExercisesWindow(selection_ob) {
+    var numExercisesWin = Alloy.createController('customizer/number', {
+
+    	createRoundFromSelection:args.createRoundFromSelection,
+		optType:args.optType,
+		optEquipment:args.optEquipment,    	
+    	round_index:round_index,
+    	    	
+    	validate:args.validate,
+    	selection:selection_ob,
+    	orderWindow:orderWindow,
+    	roundWin:$.roundWin,
+    	popover:$.popover_ob,
+    	}).getView();
+    $.navWin.openWindow(numExercisesWin);
+}
 function exerciseWindow(selection_ob) {
     var exercisesWin = Alloy.createController('customizer/list', {
+
+    	createRoundFromSelection:args.createRoundFromSelection,
+		optType:args.optType,
+		optEquipment:args.optEquipment,    	
+    	round_index:round_index,
+    	    	
     	validate:args.validate,
     	selection:selection_ob,
     	orderWindow:orderWindow,
@@ -39,6 +96,12 @@ function exerciseWindow(selection_ob) {
 
 function orderWindow(selection_ob) {
     var orderWindow = Alloy.createController('customizer/order', {
+
+    	createRoundFromSelection:args.createRoundFromSelection,
+		optType:args.optType,
+		optEquipment:args.optEquipment,    	
+    	round_index:round_index,
+    	    	
     	validate:args.validate,
     	selection:selection_ob,
     	roundWin:$.roundWin,
@@ -73,9 +136,13 @@ $.pover.addEventListener("itemclick", function(e){
     item.properties.cage_selected=true;
     var ob = {};
     ob.rounds=item.properties.slug;
-    args.validate(ob);
+
+    // exercise_selection.push(item.info.data);
+    // Ti.API.info('HOW.MANY?', _.size(exercise_selection) );
+
+    // args.validate(ob,round_index);
     // args.validate({'rounds':5, 'type':'warm-up', 'equipment':'bands'});
-    // args.validate(ob);
+    args.validate(ob);
     typeWindow(ob);
 
     // setTimeout(function(e){

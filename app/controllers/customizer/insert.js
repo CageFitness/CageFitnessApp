@@ -10,11 +10,6 @@ var customizerListItem = args.customizerListItem || {};
 
 Ti.API.info('EXERCISE.SELECTION.ITEM:',customizerListItem);
 
-
-
-
-
-
 // 	========================
 
 
@@ -115,8 +110,8 @@ function onSuccessExercises3Callback(e){
 	exercises=[];
 	// Why JSON needed to be parsed?
     _.each(parsed, function(exercise){
-    	Ti.API.info('INSERT.TITLE.RENDERED: ',exercise.title.rendered);
-    	Ti.API.info('INSERT.TITLE.TITLE: ',exercise.title);
+    	// Ti.API.info('INSERT.TITLE.RENDERED: ',exercise.title.rendered);
+    	// Ti.API.info('INSERT.TITLE.TITLE: ',exercise.title);
 	    var ob = {
 	    	template:'exerciseItem',
 	    	properties: { 
@@ -128,8 +123,7 @@ function onSuccessExercises3Callback(e){
 	    		// title: exercise.post_title,
 	    		// searchableText:exercise.post_title,
 	    		// launch_data:exercise,
-	    		
-	   //  		exercise_index:index,
+	   			// exercise_index:index,
 				// wo_exercise_number:round.wo_exercise_number,
 				// wo_equipment:round.wo_equipment,
 				// wo_round_type:round.wo_round_type,

@@ -101,8 +101,9 @@ function startCounter() {
         var pr = Math.abs(Math.round($.progressbar.progress * preview_timer));
         Ti.API.info('TIMER.GOING:',pr);
        	if(pr >= 0){
-       		$.progressbar.text = pr;
-       		$.counter.text = fancyTimeFormat(pr);
+       		$.progressbar.setText(pr);
+       		$.counter.setText(fancyTimeFormat(pr));
+       		// Animation.popIn($.progressbar);
        	}
 
     }, 1000);

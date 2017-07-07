@@ -2,7 +2,7 @@
     <Popover id="popover_ob" class="popover">
         <ContentView height="Ti.UI.FILL">
             <NavigationWindow id="navWin" height="Ti.UI.FILL" width="450">
-                <Window id="exercisesWin" title="Select Exercise">
+                <Window id="exercisesWin" title="insert.js SelectEx">
                     <RightNavButton>
                         <Button id="finishBtn" onClick="finishExerciseListSelection">Done</Button>
                     </RightNavButton>

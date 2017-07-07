@@ -2,10 +2,10 @@
     <Popover id="popover_ob" class="popover">
         <ContentView>
             <NavigationWindow height="350" width="250">
-                <Window title="Workout Type">
+                <Window title="Workout Type" class="pover_window">
                     <!-- <RightNavButton title="Robin" /> -->
                     <!-- <Label>It's not easy being green.</Label> -->
-                    <ListView id="pover" top="0" >
+                    <ListView id="pover" top="0">
                         <ListSection>
                             <ListItem slug="warm-up" class="checked" title="Warm Up"></ListItem>
                             <ListItem slug="upper-body" class="checked" title="Upper Body"></ListItem>

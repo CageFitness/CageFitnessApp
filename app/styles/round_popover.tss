@@ -2,3 +2,9 @@
 ".container" : {
   
 }
+"#pover":{
+	height:Ti.UI.FILL,
+}
+".pover_window":{
+	height:Ti.UI.FILL,
+}

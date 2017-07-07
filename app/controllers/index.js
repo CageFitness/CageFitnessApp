@@ -119,24 +119,24 @@ Ti.App.addEventListener('cage/external/link', handleExternal);
 
 
 
-Ti.App.addEventListener('cage/downloadmanager/progress', function(e){
+// Ti.App.addEventListener('cage/downloadmanager/progress', function(e){
 	
-	if(e.overall.total==null && e.overall.downloaded==null && e.overall.remaining==null){
-		$.dl_progress.opacity=0;
-	}
-	else{
+// 	if(e.overall.total==null && e.overall.downloaded==null && e.overall.remaining==null){
+// 		$.dl_progress.opacity=0;
+// 	}
+// 	else{
 
-		$.dl_progress_text.text = e.percent_pretty + ' | ' + e.bps_pretty;
-		$.dl_progress_bar.width = e.percent_pretty + '%';
-		// Ti.API.info('OVERALL: ', e.overall.total, e.overall.downloaded, e.overall.remaining);
-		$.pb.value = e.overall.downloaded;
-		$.pb.min = 0;
-		$.pb.max = e.overall.total;
-		progressHideShow($.pb.max,$.pb.value);
+// 		$.dl_progress_text.text = e.percent_pretty + ' | ' + e.bps_pretty;
+// 		$.dl_progress_bar.width = e.percent_pretty + '%';
+// 		// Ti.API.info('OVERALL: ', e.overall.total, e.overall.downloaded, e.overall.remaining);
+// 		$.pb.value = e.overall.downloaded;
+// 		$.pb.min = 0;
+// 		$.pb.max = e.overall.total;
+// 		progressHideShow($.pb.max,$.pb.value);
 
-	}
+// 	}
 
-});
+// });
 
 
 function handleExternal(e){

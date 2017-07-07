@@ -52,9 +52,9 @@
                                 <ItemTemplate name="roundType">
                                     <View class="padder">
                                         <View class="list_item_bg">
-                                            <Label bindId="info" id="title" height="Ti.UI.SIZE" />
-                                            <View class="btn_item_wrapper" height="Ti.UI.SIZE">
-                                                <Button width="140" height="Ti.UI.SIZE" class="dropdown_btn" bindId="selector" id="select" onClick="handleClickPopOver"></Button>
+                                            <Label bindId="info" class="numberTitle" />
+                                            <View class="btn_item_wrapper">
+                                                <Button class="dropdown_btn" bindId="selector" onClick="handleClickPopOver"></Button>
                                             </View>
                                         </View>
                                     </View>
@@ -76,18 +76,16 @@
                 <Require type="view" src="header" customTitle="Number of Exercises" customImage="images/layout/number_exercises.png" />
                 <View class="list_wrapper" height="Ti.UI.FILL">
                     <View id="list4" class="list" height="Ti.UI.FILL">
-                        <ListView id="listview_step4" defaultItemTemplate="numberOfExercises" height="Ti.UI.FILL">
+                        <ListView id="listview_step4" defaultItemTemplate="numberOfExercises">
                             <Templates>
                                 <ItemTemplate name="numberOfExercises">
-                                    <View class="padder">
-                                        <View class="list_item_bg">
-                                            <Label bindId="info" id="title"></Label>
-                                            <View id="btngroup" bindId="theparent" right="0" layout="horizontal" class="btn_item_wrapper" width="Ti.UI.SIZE" >
-                                                <Button backgroundColor="#ffffff" onClick="ToggleMe" width="60" right="0" title="5"  class="dropdown_btn"   selectorValue="5" bindId="select5"></Button>
-                                                <View class="btngroupSep"  width="8"></View>                                            	
-                                                <Button backgroundColor="#ffffff" onClick="ToggleMe" width="60" right="0" title="7"  class="dropdown_btn"   selectorValue="7" bindId="select7"></Button>
-                                                <View class="btngroupSep"  width="8"></View>
-                                                <Button backgroundColor="#ffffff" width="60" right="10" onClick="ToggleMe" title="10"  class="dropdown_btn" selectorValue="10" bindId="select10"></Button>
+                                    <View bubbleParent="true" class="padder2">
+                                        <View bubbleParent="true" class="list_item_bg2">
+                                            <Label bubbleParent="true" bindId="info" class="numberTitle"></Label>
+                                            <View bubbleParent="true" class="btn_item_wrapper2">
+                                                <Label onClick="handleNumberExercisesSelection" backgroundColor="#ffffff" text="5"  class="dropdown_btn2" selectorValue="5"  bindId="select5" id="select5"></Label>
+                                                <Label onClick="handleNumberExercisesSelection" backgroundColor="#ffffff" text="7"  class="dropdown_btn2" selectorValue="7"  bindId="select7" id="select7"></Label>
+                                                <Label onClick="handleNumberExercisesSelection" backgroundColor="#ffffff" text="10" class="dropdown_btn2" selectorValue="10" bindId="select10" id="select10"></Label>
                                             </View>
                                         </View>
                                     </View>
@@ -166,21 +164,21 @@
                 <Require type="view" src="header" customTitle="Review" customImage="images/layout/review.png" />
                 <View class="list_wrapper">
                     <View id="list7" class="list">
-                        <ListView id="listview_step7" defaultItemTemplate="template_begin_workout" onItemClick="handleClickBeginWorkout">
+                        <ListView top="20" id="listview_step7" defaultItemTemplate="template_begin_workout" onItemClick="handleClickBeginWorkout">
                             <Templates>
                                 <ItemTemplate name="template_begin_workout">
-                                    <View class="listitem_wrapper">
-                                        <Label left="10" top="10" bindId="info" id="title" layout="vertical" />
-                                        <Label class="sub" left="10" top="30" text="" color="#7e7e7e" bindId="sub"></Label>
-                                        <ImageView height="20" width="20" class="check" bindId="accesory" id="check" image="images/check.png"></ImageView>
+                                    <View class="listitem_wrapper3">
+                                        <Label left="10" top="10" bindId="info" id="title" />
+                                        <TextArea class="sub" bindId="sub" value=""></TextArea>
+                                        <ImageView right="10" height="20" width="20" class="check" bindId="accesory" id="check" image="images/check.png"></ImageView>
                                     </View>
                                 </ItemTemplate>
                             </Templates>
                             <ListSection>
-                                <ListItem _type="round" height="60" info:text="Number of Rounds" sub:text=""></ListItem>
-                                <ListItem _type="type" height="60" info:text="Round Types" sub:text=""></ListItem>
-                                <ListItem _type="exercises" height="60" info:text="Number of Exercises" sub:text=""></ListItem>
-                                <ListItem _type="equipment" height="60" info:text="Equipment" sub:text=""></ListItem>
+                                <ListItem height="Ti.UI.SIZE" _type="round" info:text="Number of Rounds" sub:text=""></ListItem>
+                                <ListItem height="Ti.UI.SIZE" _type="type" info:text="Round Types" sub:text=""></ListItem>
+                                <ListItem height="Ti.UI.SIZE" _type="exercises" info:text="Number of Exercises" sub:text=""></ListItem>
+                                <ListItem height="Ti.UI.SIZE" _type="equipment" info:text="Equipment" sub:text=""></ListItem>
                             </ListSection>
                         </ListView>
                     </View>
