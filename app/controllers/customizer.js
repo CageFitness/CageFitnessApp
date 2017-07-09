@@ -5,7 +5,7 @@ var workout_final_url = Alloy.CFG.api_url + Alloy.CFG.workout_final_path;
 var config = JSON.parse( Ti.App.Properties.getString('config') );
 
 var tool_labels=[
-	{title:'BEGIN WORKOUT', cb:beginWorkout},
+	// {title:'BEGIN WORKOUT', cb:beginWorkout},
 	{title:'ADD ROUND', cb:createNewRound},
 	{title:'SAVE WORKOUT', cb:saveWorkout},
 ]
@@ -128,8 +128,11 @@ function enableToolButtons(){
 function loadWorkout(){
 	var wid = Ti.App.Properties.getString('my_workout');
 	var wurl = workout_final_url+wid;
+
+	Alloy.Globals.updateWorkout=1;
 	var updatedCall = Alloy.Globals.updateWorkout ? '?rn='+getRandomInt(0,999999999) : '';
 	Ti.API.info('ATTEMPT.LOAD.WORKOUT_PLAYER', wurl);
+
 	xhr.GET(wurl+updatedCall, onSuccessCustomizer, onErrorWorkoutCallback, Alloy.Globals.XHROptions);
 	Alloy.Globals.updateWorkout=0;
 }
@@ -181,10 +184,11 @@ function showOptions(){
 function onSuccessCustomizer(e){
    var wkt = Ti.App.Properties.getString('my_workout');
    $.add_label.applyProperties({text:'ADD ROUND'});
-   _.each(e.data.acf.round_selector,function(item,index){
-   		var roundIndex = getIndex(index);
+   var copied = e.data.acf.round_selector[0];
+   Ti.API.warn('ROUND.DATA.NOT.CUSTOMIZER:');
 
-   		createRound(item,roundIndex);
+   _.each(e.data.acf.round_selector,function(item,index){
+   		createRound(item,index);
    });
 
 }
@@ -214,9 +218,11 @@ function createRound(round, roundIndex){
 	    		searchableText:exercise.post_title,
 	    		launch_data:exercise,
 	    		exercise_index:index,
+
 				wo_exercise_number:round.wo_exercise_number,
 				wo_equipment:round.wo_equipment,
 				wo_round_type:round.wo_round_type,
+
 		    	canMove:true,
 		    	canInsert:false,
 		    	canEdit:true,
@@ -234,15 +240,19 @@ function createRound(round, roundIndex){
 	    roundData.push(ob);
 	});
 
-	var round_title = 'Round '+roundIndex+': ';
+
 	var hT = Alloy.createController('customizer/header',{
-			htitle:round_title,
 			round_index:roundIndex,
 			onHeaderItemClick:onHeaderItemClick,
+
 			wo_round_type:round.wo_round_type,
 			wo_equipment:round.wo_equipment,
 			wo_exercise_number:round.wo_exercise_number,
+
 			roundOptions:roundOptions,
+    		optType:optType,
+			optEquipment:optEquipment,
+
 		}).getView();
 	// hT.addEventListener('click',roundOptions);
 	var roundSection = Ti.UI.createListSection({ headerView: hT});
@@ -259,11 +269,20 @@ function createRound(round, roundIndex){
 function createRoundFromSelection(round, roundIndex){
 	Ti.API.info('EXERCISES.IN.ROUND: ', _.size(round.customizer), roundIndex);
 	var roundData = [];
+
+	var type = Object(optType(round.exercise_type));
+  	var equipment = Object(optEquipment(round.exercise_equipment));
+
 	
 	_.each(round.customizer,function(exercise, index){
 		// Ti.API.info('EXERCISE.DATA:', exercise.ID, exercise.post_title);
 		var the_title = exercise.title||exercise.post_title||exercise.title.rendered;
 		Ti.API.info('IS.TITLE.VALID?');
+
+
+
+	  	// var num_exercises = round.num_exercises;		
+
 
 	    var ob = {
 	    	template:'RoundItemTemplate',
@@ -272,18 +291,29 @@ function createRoundFromSelection(round, roundIndex){
 	    		searchableText:exercise.title.rendered,
 	    		launch_data:exercise,
 	    		exercise_index:index,
-				wo_exercise_number:round.wo_exercise_number,
-				wo_equipment:round.wo_equipment, 
-				wo_round_type:round.wo_round_type,
+
+				// wo_exercise_number:round.wo_exercise_number,
+				// wo_equipment:round.wo_equipment, 
+				// wo_round_type:round.wo_round_type,
+
+				// wo_exercise_number:num_exercises,
+				wo_equipment:equipment,
+				wo_round_type:type,	
+
 		    	canMove:true,
 		    	canInsert:false,
 		    	canEdit:true,
 		    	accessoryType:Titanium.UI.LIST_ACCESSORY_TYPE_DISCLOSURE
 	   		 },
 	   		header_info:{
-				wo_exercise_number:round.wo_exercise_number,
-				wo_equipment:round.wo_equipment,
-				wo_round_type:round.wo_round_type,	   			
+
+				// wo_exercise_number:round.wo_exercise_number,
+				// wo_equipment:round.wo_equipment,
+				// wo_round_type:round.wo_round_type,	
+
+				// wo_exercise_number:num_exercises,
+				wo_equipment:equipment,
+				wo_round_type:type,				
 	   		},
 	    	pic:{image: exercise.acf.video_featured.url},
 	    	main:{text:exercise.title.rendered},
@@ -297,9 +327,16 @@ function createRoundFromSelection(round, roundIndex){
 			htitle:round_title,
 			round_index:roundIndex,
 			onHeaderItemClick:onHeaderItemClick,
-			wo_round_type:round.wo_round_type,
-			wo_equipment:round.wo_equipment,
-			wo_exercise_number:round.wo_exercise_number,
+			// wo_round_type:round.wo_round_type,
+			// wo_equipment:round.wo_equipment,
+			// wo_exercise_number:round.wo_exercise_number,
+    		optType:optType,
+			optEquipment:optEquipment,  
+
+			// wo_exercise_number:num_exercises,
+			wo_equipment:equipment,
+			wo_round_type:type,
+
 			roundOptions:roundOptions,
 		}).getView();
 	// hT.addEventListener('click',roundOptions);
@@ -307,10 +344,8 @@ function createRoundFromSelection(round, roundIndex){
 
 
 	roundSection.setItems(roundData);
-
-
-
 	$.customizer_list_view.appendSection(roundSection);
+
 }
 
 
@@ -516,7 +551,7 @@ function createNewRound(e){
     		createRoundFromSelection:createRoundFromSelection,
     		optType:optType,
 			optEquipment:optEquipment,    		
-    		round_index:0,
+    		round_index:_.last( $.customizer_list_view.getSections() ),
     		
     		customizer_list_view:$.customizer_list_view
     	}).getView();

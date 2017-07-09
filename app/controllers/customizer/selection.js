@@ -1,7 +1,8 @@
 // Arguments passed into this controller can be accessed via the `$.args` object directly or:
 var args = $.args;
 var exercise_selection=[];
-var round_index = _.last(args.customizer_list_view);
+var customizer_list_view = args.customizer_list_view;
+var round_index = _.last(customizer_list_view.sections);
 
 var optType = args.optType;
 var optEquipment = args.optEquipment;
@@ -18,7 +19,7 @@ function typeWindow(selection_ob) {
 		optType:args.optType,
 		optEquipment:args.optEquipment,    	
     	round_index:round_index,
-    	    	
+
     	validate:args.validate,
     	selection:selection_ob,
     	equipmentWindow:equipmentWindow,
@@ -35,7 +36,7 @@ function equipmentWindow(selection_ob) {
 		optType:args.optType,
 		optEquipment:args.optEquipment,    	
     	round_index:round_index,
-    	    	
+
     	validate:args.validate,
      	selection:selection_ob,
      	exerciseWindow:exerciseWindow,
@@ -52,7 +53,7 @@ function roundOptionsWindow(selection_ob) {
 		optType:args.optType,
 		optEquipment:args.optEquipment,    	
     	round_index:round_index,
-    	    	
+
     	validate:args.validate,
     	selection:selection_ob,
     	roundWin:$.roundWin,
@@ -68,7 +69,7 @@ function numExercisesWindow(selection_ob) {
 		optType:args.optType,
 		optEquipment:args.optEquipment,    	
     	round_index:round_index,
-    	    	
+
     	validate:args.validate,
     	selection:selection_ob,
     	orderWindow:orderWindow,
@@ -84,7 +85,7 @@ function exerciseWindow(selection_ob) {
 		optType:args.optType,
 		optEquipment:args.optEquipment,    	
     	round_index:round_index,
-    	    	
+
     	validate:args.validate,
     	selection:selection_ob,
     	orderWindow:orderWindow,
@@ -101,7 +102,7 @@ function orderWindow(selection_ob) {
 		optType:args.optType,
 		optEquipment:args.optEquipment,    	
     	round_index:round_index,
-    	    	
+
     	validate:args.validate,
     	selection:selection_ob,
     	roundWin:$.roundWin,

@@ -1,5 +1,5 @@
 <Alloy>
-    <Window id="exercisesWin" title="list.js SelectEx">
+    <Window id="exercisesWin" title="Select Exercises">
 
         <RightNavButton>
         	<Label id="how_many">Hello</Label>
