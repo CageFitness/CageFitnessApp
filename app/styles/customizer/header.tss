@@ -37,8 +37,8 @@
 	height:40,
 	width:Ti.UI.SIZE,
 	color:'#144794',
-	left:10,
-	visible:false,
+	left:260,
+	visible:true,
 	font:{
 		fontSize:20,
 	}	

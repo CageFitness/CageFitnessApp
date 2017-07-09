@@ -551,7 +551,7 @@ function createNewRound(e){
     		createRoundFromSelection:createRoundFromSelection,
     		optType:optType,
 			optEquipment:optEquipment,    		
-    		round_index:_.last( $.customizer_list_view.getSections() ),
+    		round_index: _.last( $.customizer_list_view.getSections() ),
     		
     		customizer_list_view:$.customizer_list_view
     	}).getView();

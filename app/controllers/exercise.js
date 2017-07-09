@@ -56,7 +56,7 @@ function loadExercises(e){
 
 	if(e.filter=='all'){
 		if(e.search){
-			filter_query.s=e.search;
+			filter_query.search=e.search;
 		}
 	}
 	else if(e.filter=='exercise_equipment'){

@@ -24,8 +24,8 @@ var round_title = 'Round '+getIndex(round_index)+':';
 $.hTitle.text =  round_title;
 
 Ti.API.warn('HEADER.INFORMATION:',wo_round_type.label||wo_round_type.name, wo_round_type);
-$.exercise_type.text 		= wo_round_type.label||wo_round_type.name;
-$.exercise_equipment.text 	= wo_equipment.label;
+$.exercise_type.text 		= wo_round_type.label||wo_round_type.name||'';
+$.exercise_equipment.text 	= wo_equipment.label||wo_equipment.name||'';
 // $.exercise_number.text 		= '('+args.wo_exercise_number+' Exercises)';
 
 

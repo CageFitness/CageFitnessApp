@@ -128,8 +128,9 @@ $.pover.addEventListener("itemclick", function(e){
     	numExercisesWindow(ob);
     }
     else if(item.properties.slug=='remove'){
-    	Ti.API.info('REMOVING.ROUND.FROM.ROUND.OPTIONS.REMOVE.CLICK:');
-    	args.removeRound(args.roundIndex);
+    	Ti.API.info('REMOVING.ROUND.FROM.ROUND.OPTIONS.REMOVE.CLICK.WITH.ROUND.INDEX:',round_index);
+    	// args.removeRound(args.roundIndex);
+    	args.removeRound(round_index);
 	    setTimeout(function(e){
 	    	$.popover_ob.hide();
 	    },100);
