@@ -174,16 +174,16 @@ function closeIndicator(){
 
 
 
-$.dlmanlabel.addEventListener('click',function(e){
-	Ti.API.info('====== DOWNLOAD.MANAGER ======');
-	var old_cache = cage_cache_dir;
-	var current_cache = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'cached');
-	Ti.API.info('==============================');
-	Ti.API.info(old_cache);
-	Ti.API.info(current_cache);
-	Ti.API.info('==============================');
-	Ti.API.info('==============================');
-})
+// $.dlmanlabel.addEventListener('click',function(e){
+// 	Ti.API.info('====== DOWNLOAD.MANAGER ======');
+// 	var old_cache = cage_cache_dir;
+// 	var current_cache = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'cached');
+// 	Ti.API.info('==============================');
+// 	Ti.API.info(old_cache);
+// 	Ti.API.info(current_cache);
+// 	Ti.API.info('==============================');
+// 	Ti.API.info('==============================');
+// })
 
 
 // ===========================================

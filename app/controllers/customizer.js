@@ -4,6 +4,16 @@ var sdata = {};
 var workout_final_url = Alloy.CFG.api_url + Alloy.CFG.workout_final_path;
 var config = JSON.parse( Ti.App.Properties.getString('config') );
 
+
+var title = args.customTitle || 'Customize your Workout';
+var image = args.customImage || 'images/layout/workout_theme.png';
+$.header_title.text = title.toUpperCase();
+$.header_background.backgroundImage = image;
+
+
+
+
+
 var tool_labels=[
 	// {title:'BEGIN WORKOUT', cb:beginWorkout},
 	{title:'ADD ROUND', cb:createNewRound},
@@ -34,7 +44,7 @@ $.insert_remove.addEventListener('click',function(e){
 // $.customizer_list_view.addEventListener('click',function(e){
 // 	Ti.API.info('ELEMENT.CLICKED',e);
 // });
-// $.cutomizer_header.children['header_background'].setHeight(20);
+// Ti.API.info('HEADER.CHILDREN:',$.cutomizer_header.children);
 
 
 function beginWorkout(){
@@ -516,7 +526,7 @@ function replaceExercise(e, insert_mode){
     	customizerListItem:e,
     }).getView();
 
-    insert_popover.show({animated:true, view:$.insert_remove});
+    insert_popover.show({animated:true, view:$.pover_target});
 }
 
 // var shared ={

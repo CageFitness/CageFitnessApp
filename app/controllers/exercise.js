@@ -132,14 +132,16 @@ function showGridItemInfo(e){
 function createSampleData(data){
     
     // items = [];
+    var fgW = $.fg.getItemWidth();
+    var fgH = fgW*0.5625;
     for (var x=0;x<data.length;x++){
     
         //CREATES A VIEW WITH OUR CUSTOM LAYOUT
         var view = Alloy.createController('item_gallery',{
             image:data[x].thumb,
             title:data[x].title,
-            width:$.fg.getItemWidth(),
-            height:$.fg.getItemHeight()
+            width:fgW,
+            height:fgH,
         }).getView();
         
         //THIS IS THE DATA THAT WE WANT AVAILABLE FOR THIS ITEM WHEN onItemClick OCCURS

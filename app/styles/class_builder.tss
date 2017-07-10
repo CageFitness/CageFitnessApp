@@ -20,7 +20,7 @@
 
 ".list":{
 	width:Ti.UI.FILL,
-	// backgroundColor:"#ddd",
+	// backgroundColor:"red",
 	// backgroundColor:"#ddd",
 	// top:246,
 	// bottom:0,

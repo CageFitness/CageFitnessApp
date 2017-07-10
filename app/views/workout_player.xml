@@ -29,12 +29,12 @@
                 	</Labels>
                 </ButtonBar>
             </View>            
-            <View id="dlman">
+            <!-- <View id="dlman">
                 <Label id="dlmanlabel"></Label>
                 <View id="activity_wrapper">
                     <ActivityIndicator id="activity_indicator" />
                 </View>
-            </View>
+            </View> -->
 
 
 

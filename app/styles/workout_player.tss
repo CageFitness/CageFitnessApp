@@ -152,31 +152,31 @@ width:300,
 }
 
 
-"#dlman":{
-	top:8,
-	// bottom:80,
-	// left:20,
-	right:20,
-	// backgroundColor:'pink',
-	height:34,
-	// height:Ti.UI.SIZE,
-	width:Ti.UI.SIZE,
-	// opacity:0.5,
-}
-"#dlmanlabel":{
-	color:"#9b9b9b",
-	right:74,
-	// backgroundColor:"#fdfdfd",
-	// borderColor:"#b4b4b4",
-	// borderWidth:2,
-	// borderRadius:12,
-	font:{
-		fontSize: 17,
-		fontFamily:'Helvetica Neue',
-		fontWeight:'normal'
-	},
-	autoStyle:true,
-}
+// "#dlman":{
+// 	top:8,
+// 	// bottom:80,
+// 	// left:20,
+// 	right:20,
+// 	// backgroundColor:'pink',
+// 	height:34,
+// 	// height:Ti.UI.SIZE,
+// 	width:Ti.UI.SIZE,
+// 	// opacity:0.5,
+// }
+// "#dlmanlabel":{
+// 	color:"#9b9b9b",
+// 	right:74,
+// 	// backgroundColor:"#fdfdfd",
+// 	// borderColor:"#b4b4b4",
+// 	// borderWidth:2,
+// 	// borderRadius:12,
+// 	font:{
+// 		fontSize: 17,
+// 		fontFamily:'Helvetica Neue',
+// 		fontWeight:'normal'
+// 	},
+// 	autoStyle:true,
+// }
 
 "#logo": {
 	layout:'absolute',
@@ -197,10 +197,10 @@ width:300,
 
 
 "#liner":{
-	height:20,
-	backgroundColor:'red',
+	height:1,
+	backgroundColor:'#d8d8d8',
 	top:0,
-	width:Ti.UI.SIZE,
+	width:Ti.UI.FILL,
 }
 
 "#toolbar_wrapper": {

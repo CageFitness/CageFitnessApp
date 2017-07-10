@@ -240,10 +240,15 @@
 		fontFamily:'Helvetica Neue'
 	}
 }
+
+
 "#button_matrix":{
 	height:Ti.UI.SIZE,
-	top:0
+	top:20,
+	// backgroundColor:'pink',
+	width:Ti.UI.SIZE,
 }
+
 ".blinder":{
 	bottom:70,
 	height:68,

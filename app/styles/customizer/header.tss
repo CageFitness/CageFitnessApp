@@ -65,7 +65,7 @@
 	left:15,
 	// rigth:15,
 	color:'#000',
-	backgroundColor:"#f8f8f8",
+	// backgroundColor:"#f8f8f8",
 	
 	// width:Ti.UI.SIZE,
 	autoStyle:true,
@@ -74,7 +74,8 @@
 
 
 ".list_header":{
-	backgroundColor:"#f8f8f8",
+	// backgroundColor:"#f8f8f8",
+	backgroundColor:"#ececec",
 	width:Ti.UI.FILL,
 	autoStyle:true,
 	// layout:'horizontal',

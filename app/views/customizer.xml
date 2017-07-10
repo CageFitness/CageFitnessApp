@@ -1,62 +1,28 @@
 <Alloy>
-
     <View id="mainView" class="page_wrapper">
         <Require src="topbar" window_type="modal"></Require>
         <View id="pover_target"></View>
-        <Require id="cutomizer_header" type="view" src="header" customTitle="Customize your Workout" customImage="images/layout/workout_theme.png"></Require>
-
+        <View id="header_background" class="header_bg">
+            <View id="header_overlay"></View>
+            <Label id="header_title"></Label>
+        </View>
         <View class="customizer_list">
-
-					
-
-
-			<View id="tools">
-
-
-
-				<View id="pane_right">
-			        <View id="editmode">
-						<!-- <Label id="edit_mode_label"> EDIT MODE</Label>	 -->
-			        	<!-- <Switch left="10" id="editSwitch" value="false" onChange="handleEnableEditing"/>		        	 -->
-						<TabbedBar left="10" id="insert_remove">
-							<!--<Labels>
-				    	        <Label ttid="276" slug="body-weight">Insert</Label>
-				    	        <Label ttid="277" slug="bags">Remove</Label>
-				    	    </Labels> -->
-				    	</TabbedBar>		        	
-			        </View>
-			        <ButtonBar id="customizer_btn_bar">
-			            <!-- <Labels>
-			                <Label id="add" title="Add Round">Add Round</Label>
-			                <Label id="save" title="Save Workout">Save Workout</Label>
-			                <Label id="begin" title="Begin Workout">Begin Workout</Label>
-			            </Labels> -->
-			        </ButtonBar>
-				</View>
-
-
-
-			<!-- <View id="activity_wrapper">
-                <ActivityIndicator id="activity_indicator" />
-            </View> -->	
-
-
-			</View>			
-
-			<OptionDialog id="dialog" destructive="0" title="Overwrite Workout?">
-	            <Options>
-	                <Option>Confirm</Option>
-	                <Option>Cancel</Option>
-	            </Options>
-	        </OptionDialog>
-
-
+            <View id="tools">
+                <View id="pane_right">
+                    <View id="editmode">
+                        <TabbedBar id="insert_remove">
+                        </TabbedBar>
+                    </View>
+                    <ButtonBar id="customizer_btn_bar">
+                    </ButtonBar>
+                </View>
+            </View>
             <ListView id="customizer_list_view" onItemclick="handleListViewClick">
                 <Templates>
                     <ItemTemplate name="RoundItemTemplate">
-                    	<ImageView bindId="pic" id="list_icon" />
+                        <ImageView bindId="pic" id="list_icon" />
                         <Label bindId="main" class="titleLabel" />
-                        <Label bindId="sub" class="detailLabel" />                        
+                        <Label bindId="sub" class="detailLabel" />
                     </ItemTemplate>
                 </Templates>
                 <FooterView>
@@ -65,10 +31,13 @@
                     </View>
                 </FooterView>
             </ListView>
-
-			
-
         </View>
     </View>
+    <OptionDialog id="dialog" destructive="0" title="Overwrite Workout?">
+        <Options>
+            <Option>Confirm</Option>
+            <Option>Cancel</Option>
+        </Options>
+    </OptionDialog>
 </Alloy>
 
