@@ -16,7 +16,7 @@ $.header_background.backgroundImage = image;
 
 var tool_labels=[
 	// {title:'BEGIN WORKOUT', cb:beginWorkout},
-	{title:'ADD ROUND', cb:createNewRound},
+	{title:'ADD ROUND', cb:addRound},
 	{title:'SAVE WORKOUT', cb:saveWorkout},
 ]
 $.customizer_btn_bar.labels = tool_labels;
@@ -195,7 +195,7 @@ function onSuccessCustomizer(e){
    var wkt = Ti.App.Properties.getString('my_workout');
    $.add_label.applyProperties({text:'ADD ROUND'});
    var copied = e.data.acf.round_selector[0];
-   Ti.API.warn('ROUND.DATA.NOT.CUSTOMIZER:');
+   Ti.API.info('ROUND.DATA.NOT.CUSTOMIZER:');
 
    _.each(e.data.acf.round_selector,function(item,index){
    		createRound(item,index);
@@ -250,8 +250,10 @@ function createRound(round, roundIndex){
 	    roundData.push(ob);
 	});
 
-
+	var round_title = 'Round.createRound '+getIndex(roundIndex)+': ';
+	Ti.API.info('HEADER.TITLE.OUT',round_title);
 	var hT = Alloy.createController('customizer/header',{
+			htitle:round_title,
 			round_index:roundIndex,
 			onHeaderItemClick:onHeaderItemClick,
 
@@ -287,7 +289,7 @@ function createRoundFromSelection(round, roundIndex){
 	_.each(round.customizer,function(exercise, index){
 		// Ti.API.info('EXERCISE.DATA:', exercise.ID, exercise.post_title);
 		var the_title = exercise.title||exercise.post_title||exercise.title.rendered;
-		Ti.API.info('IS.TITLE.VALID?');
+		Ti.API.info('IS.TITLE.VALID?', the_title);
 
 
 
@@ -332,7 +334,7 @@ function createRoundFromSelection(round, roundIndex){
 	    roundData.push(ob);
 	});
 
-	var round_title = 'Round '+roundIndex+': ';
+	var round_title = 'Round.createRoundFromSelection '+getIndex(roundIndex)+': ';
 	var hT = Alloy.createController('customizer/header',{
 			htitle:round_title,
 			round_index:roundIndex,
@@ -354,7 +356,9 @@ function createRoundFromSelection(round, roundIndex){
 
 
 	roundSection.setItems(roundData);
-	$.customizer_list_view.appendSection(roundSection);
+	// $.customizer_list_view.appendSection(roundSection);
+	$.customizer_list_view.insertSectionAt( roundIndex, roundSection, {animated:true} )
+
 
 }
 
@@ -553,6 +557,12 @@ function roundOptions(roundIndex){
     // createNewRound(e);
 }
 
+
+function addRound(e){
+	scrollToLast(e);
+	createNewRound(e);
+}
+
 function createNewRound(e){
     var round_popover = Alloy.createController('customizer/selection', {
 
@@ -561,7 +571,7 @@ function createNewRound(e){
     		createRoundFromSelection:createRoundFromSelection,
     		optType:optType,
 			optEquipment:optEquipment,    		
-    		round_index: _.last( $.customizer_list_view.getSections() ),
+    		round_index: $.customizer_list_view.getSections().length,
     		
     		customizer_list_view:$.customizer_list_view
     	}).getView();
@@ -710,6 +720,13 @@ function optEquipment(ttid){
 	return _.findWhere( config.acf.opt_equipment, {'term_taxonomy_id':Number(ttid)} );
 }
 
+function scrollToLast(e){
+	var sections = $.customizer_list_view.getSections();
+	var last_section_index = sections.length-1;
+	var last_items = $.customizer_list_view.sections[last_section_index].getItems();
+	var last_item_index = last_items.length-1;
+	$.customizer_list_view.scrollToItem(last_section_index,last_item_index,{animated:true});
+}
 
 function gatherCurrentSelection(listview){
 	// round.properties.launch_data
@@ -739,32 +756,23 @@ function gatherCurrentSelection(listview){
 		//     }
 		//   ]
 		// };
+	var sections = $.customizer_list_view.getSections();
 
 	var sel = {
 		  filter:'app',
 		  // build: 'auto',
 		  build: 'custom',
 		  update: 'true',
-		  rounds: _.map(listview.getSections(),function(round,roundIndex){
-		  	// var header = round.getItems()[0];
+		  rounds: _.map(listview.getSections(),function(round,sectionIndex){
 
-		  	// Ti.API.info('HEADER_INFO.ERROR', header.properties.header_info );
-		  	// Ti.API.info('BEFORE.ERROR', header.properties.launch_data.id );
+		  	var first = $.customizer_list_view.sections[sectionIndex].getItemAt(0);
+		  	var type = Object(optType(first.properties.wo_round_type.value||first.properties.wo_round_type.term_taxonomy_id));
+		  	var equipment = Object(optEquipment(first.properties.wo_equipment.value||first.properties.wo_equipment.term_taxonomy_id));
 
-		  	// var type = Object(optType(first.properties.wo_round_type.value));
-		  	// var equipment = Object(optEquipment(first.properties.wo_equipment.value));
-
-		  	var first = $.customizer_list_view.sections[roundIndex].getItemAt(0);
-
-		  	Ti.API.info('OUR.ITEM.TYPE:',Object(optType(first.properties.wo_round_type.value)).slug);
-		  	Ti.API.info('OUR.ITEM.EQUIPMENT:',Object(optEquipment(first.properties.wo_equipment.value)).slug);
-
-		  	var type = Object(optType(first.properties.wo_round_type.value));
-		  	var equipment = Object(optEquipment(first.properties.wo_equipment.value));
-
+		  	Ti.API.info('GRABBING.ROUND.INFO:', first.properties['wo_round_type']);
 
 			return {
-				round: getIndex(roundIndex),
+				round: getIndex(sectionIndex),
 				roundTitle: type.name,
 				numexercises: _.size(round.getItems()),
 				roundType: type.slug,

@@ -137,7 +137,7 @@ function setValue(_value){
     value = _value;
     updateUi();
   } else {
-    Ti.API.error("[circularprogress]: value (was "+_value+") must be a number between 0 and 100");
+    Ti.API.info("[circularprogress]: value (was "+_value+") must be a number between 0 and 100");
   }
 }
 

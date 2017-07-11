@@ -180,7 +180,7 @@ $.pover.addEventListener("itemclick", function(e){
 	// Ti.API.info('DOES IT HAPPENS HERE?', args.launch_data.title);
     var section = $.pover.sections[e.sectionIndex];
     var newer = section.getItemAt(e.itemIndex);
-    Ti.API.warn('INSERT.TITLE.HERE',newer.properties);
+    Ti.API.info('INSERT.TITLE.HERE',newer.properties);
 
     // item.properties.launch_data
 

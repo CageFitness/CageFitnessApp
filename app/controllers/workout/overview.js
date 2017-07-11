@@ -1,5 +1,6 @@
 
 var args = $.args;
+var scrollable = args.scrollableref;
 
 function fancyTimeFormat(time){   
     // Hours, minutes and seconds
@@ -34,6 +35,7 @@ var exercise_type = args.exercise_type || 'combo';
 var duration = args.duration || 30;
 // $.overview.backgroundColor = getRandomColor();
 var items = [];
+var PLAYING=0;
 // Ti.API.info('CONFIG.OVERVIEW.DURATION.FIRST', args.first_slide);
 
 
@@ -84,6 +86,14 @@ function onPlayPause(e){
 	if(e.item===item_index){
 		Ti.API.info('PLAY.PAUSE.ON.OVERVIEW: ',e, item_index);
 		// USE THE TOGGLE HERE
+		if(e.action=='pause'){
+			pauseCounter();
+		}
+		else if (e.action=='resume'){
+			resumeCounter();
+		}
+		
+
 	}
 }
 
@@ -128,6 +138,9 @@ function resetCounter(){
 	_PROGRESS_TEXT = Math.round(_PROGRESS * preview_timer);	
 }
 
+
+
+
 function pauseCounter(){
 	stopped_at = Alloy.Globals.Timer;
 	Ti.API.info('STOPPING.AT: ',stopped_at );
@@ -140,6 +153,28 @@ function resumeCounter(){
 	startCounter();
 }
 
+
+// Ti.App.addEventListener('resume', onPlayPause);
+// Ti.App.addEventListener('pause', function(e){
+// 		pauseCounter();
+// });
+
+// Ti.App.addEventListener('resume', function(e){
+//  		resumeCounter();
+// });
+
+
+Ti.App.addEventListener('pause', function(){
+	onPlayPause({item:scrollable.currentPage, action:'pause'});
+});
+
+
+Ti.App.addEventListener('resume', function(){
+	onPlayPause({item:scrollable.currentPage, action:'resume'});
+});
+
+
+
 function stopCounter(){
 	// stops and reset the counter;
 
@@ -149,23 +184,26 @@ function stopCounter(){
 // var REPLACEMENT2=0;
 
 function startCounter() {
-    Alloy.Globals.Timer = setInterval(function() {
-        _PROGRESS += increment;
-        if (_PROGRESS_TEXT == 1) {
-            clearInterval(Alloy.Globals.Timer);
-            Ti.API.info('STOP.OVERVIEW!!!!');
-            // Animation.fadeOut($.progressbar, 500, function() {
-                Ti.App.fireEvent('cage/video/progressbar/finished',{'index':item_index});
-            // });
-        }
-        var pr = Math.abs(Math.round(_PROGRESS * preview_timer));
-        Ti.API.info('TIMER.GOING:',pr);
-       	if(pr >= 0){
-       		_PROGRESS_TEXT = pr;
-  			$.counter_big.applyProperties({text:fancyTimeFormat(pr)}); 
-       		Animation.popIn($.counter_big);
-       	}
-    }, 1000);
+	if(scrollable.currentPage === item_index){
+	    Alloy.Globals.Timer = setInterval(function() {
+	        _PROGRESS += increment;
+	        if (_PROGRESS_TEXT == 1) {
+	            clearInterval(Alloy.Globals.Timer);
+	            Ti.API.info('STOP.OVERVIEW!!!!');
+	            // Animation.fadeOut($.progressbar, 500, function() {
+	                Ti.App.fireEvent('cage/video/progressbar/finished',{'index':item_index});
+	            // });
+	        }
+	        var pr = Math.abs(Math.round(_PROGRESS * preview_timer));
+	        Ti.API.info('TIMER.GOING:',pr);
+	       	if(pr >= 0){
+	       		_PROGRESS_TEXT = pr;
+	  			$.counter_big.applyProperties({text:fancyTimeFormat(pr)}); 
+	       		Animation.popIn($.counter_big);
+	       	}
+	    }, 1000);
+	}
+
 }
 
 

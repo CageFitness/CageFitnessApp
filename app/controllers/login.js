@@ -5,11 +5,10 @@ var args = $.args;
 
 
 var data = {
-    username:'pabloliz_member',
-    password:'caInterno#1',
-    // username:'testmember',
-    // password:'testmember'    
+    // username:'',
+    // password:''
 }
+
 var opts = {
     // shouldAuthenticate:false,
     parseJSON:true,
@@ -109,7 +108,7 @@ function closeLogin(){
 
 }
 
-cageAuthenticate();
+// cageAuthenticate();
 
 
 

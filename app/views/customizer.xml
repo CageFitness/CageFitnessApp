@@ -26,7 +26,7 @@
                     </ItemTemplate>
                 </Templates>
                 <FooterView>
-                    <View id="addRoundBtn" onClick="createNewRound" backgroundColor="#DDD" height="Ti.UI.SIZE">
+                    <View id="addRoundBtn" onClick="addRound" backgroundColor="#DDD" height="Ti.UI.SIZE">
                         <Label id="add_label"></Label>
                     </View>
                 </FooterView>

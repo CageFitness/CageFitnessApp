@@ -1,5 +1,6 @@
 var animation = require('alloy/animation');
 var args = $.args;
+var scrollable = args.scrollableref;
 
 var id = args.id || 'v565989';
 var title = args.title || 'Video Title One';
@@ -11,7 +12,7 @@ var video = localvid || args.video || null;
 var next = args.next || null;
 
 
-function fancyTimeFormat(time){   
+var fancyTimeFormat = function(time){   
     // Hours, minutes and seconds
     var hrs = ~~(time / 3600);
     var mins = ~~((time % 3600) / 60);
@@ -55,59 +56,71 @@ var preview_timer = timer_duration;
 // var Alloy.Globals.Timer;
 var increment = -(1/preview_timer);
 
-function resetCounter(){
+var resetCounter = function(){
 	clearInterval(Alloy.Globals.Timer);
 	$.progressbar.progress = 1;
 	$.progressbar.text = Math.round($.progressbar.progress * preview_timer);	
 }
 
-function pauseCounter(){
+
+
+var pauseCounter = function(){
 	stopped_at = Alloy.Globals.Timer;
 	Ti.API.info('STOPPING.AT: ',stopped_at );
 	clearInterval(Alloy.Globals.Timer);
 }
 
 
-function resumeCounter(){
+var resumeCounter = function(){
 	Alloy.Globals.Timer = stopped_at;
 	startCounter();
 }
 
-function stopCounter(){
+
+var stopCounter = function(){
 	// stops and reset the counter;
 
 }
 
+// Ti.App.addEventListener('resume', resumeCounter);
+Ti.App.addEventListener('resume', function(){
+	onPlayPause({item:scrollable.currentPage, action:'resume'});
+});
+// Ti.App.addEventListener('resume', resumeCounter);
+Ti.App.addEventListener('pause', function(){
+	onPlayPause({item:scrollable.currentPage, action:'pause'});
+});
 
 
-function startCounter() {
 
-    Alloy.Globals.Timer = setInterval(function() {
+var startCounter = function() {
+	if(scrollable.currentPage === item_index){
+	    Alloy.Globals.Timer = setInterval(function() {
 
-        $.progressbar.progress += increment;
+	        $.progressbar.progress += increment;
 
-        if ($.progressbar.text == 1) {
-            //this clear Interval needs to be removed when closing the progress window.
-            clearInterval(Alloy.Globals.Timer);
-            Ti.API.info('STOP.VIDEO!!!!');
-            animation.fadeOut($.progressbar, 500, function() {
-                // $.gifImage.stop();
-                // Ti.App.fireEvent('cagefitness_app_preview_finished', { 'video': args.data_title });
-                
-                Ti.App.fireEvent('cage/video/progressbar/finished',{'index':item_index});
+	        if ($.progressbar.text == 1) {
+	            //this clear Interval needs to be removed when closing the progress window.
+	            clearInterval(Alloy.Globals.Timer);
+	            Ti.API.info('STOP.VIDEO!!!!');
+	            animation.fadeOut($.progressbar, 500, function() {
+	                // $.gifImage.stop();
+	                // Ti.App.fireEvent('cagefitness_app_preview_finished', { 'video': args.data_title });
+	                
+	                Ti.App.fireEvent('cage/video/progressbar/finished',{'index':item_index});
 
-            });
-        }
-        var pr = Math.abs(Math.round($.progressbar.progress * preview_timer));
-        Ti.API.info('TIMER.GOING:',pr);
-       	if(pr >= 0){
-       		$.progressbar.setText(pr);
-       		$.counter.setText(fancyTimeFormat(pr));
-       		// Animation.popIn($.progressbar);
-       	}
+	            });
+	        }
+	        var pr = Math.abs(Math.round($.progressbar.progress * preview_timer));
+	        Ti.API.info('TIMER.GOING:',pr);
+	       	if(pr >= 0){
+	       		$.progressbar.setText(pr);
+	       		$.counter.setText(fancyTimeFormat(pr));
+	       		// Animation.popIn($.progressbar);
+	       	}
 
-    }, 1000);
-
+	    }, 1000);
+	}
 }
 
 
@@ -149,7 +162,7 @@ exports.sayHello = function() {
 }
 
 
-function createGif(){
+var createGif = function(){
 
     if(next.ID){
 		var localgif = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'cached/'+next.acf.video_animated_thumbnail.filename);	
@@ -170,7 +183,8 @@ function createGif(){
 }
 
 
-function onPlayPause(e){
+
+var onPlayPause = function(e){
 	if (e.item == item_index) {
 		Ti.API.info('You need to Pause this: ', e.item, $.full_video_wrapper.children);
 
@@ -185,21 +199,11 @@ function onPlayPause(e){
 				resumeCounter();
 			}
 		}
-
-
-
-		// if($.full_video.getPlaying()){
-		// 	$.full_video.pause();
-		// 	clearInterval(Alloy.Globals.Timer);
-		// }
-		// else{
-		// 	$.full_video.play();
-		// }
 	}
 }
 Ti.App.addEventListener('cage/workout/video/play_pause',onPlayPause);
 
-function createVideoPlayer() {
+var createVideoPlayer = function() {
 
 
     if (video != null) {
@@ -227,7 +231,7 @@ function createVideoPlayer() {
 
 }
 
-function onPlayBackState(e){
+var onPlayBackState = function(e){
     if (e.playbackState == 1) {
         var vDuration = $.full_video.getDuration();
         var vCurrentPBT = $.full_video.getCurrentPlaybackTime();
@@ -236,21 +240,21 @@ function onPlayBackState(e){
     }	
 }
 
-function stopAllVideoAssets(e){
+var stopAllVideoAssets = function(e){
             // Ti.API.info('DURATION.AVAILABLE: ', e);
             // checkDuration(e);
             // $.full_video.play();
             Ti.API.info('stopAllVideoAssets on video.js');
 }
 
-function onDurationAvailable(e){
+var onDurationAvailable = function(e){
             // Ti.API.info('DURATION.AVAILABLE: ', e.duration);
              $.full_video.removeEventListener('durationavailable', onDurationAvailable);
             checkDuration(e);
             
 }
 
-function checkDuration(e) {
+var checkDuration = function(e) {
 	
 	    videoDuration = e.duration / 1000;
 	    Ti.API.info('GETTING.VIDEO.DURATION: ' + videoDuration);
@@ -263,7 +267,7 @@ function checkDuration(e) {
 	
 }
 
-function animateVideoSlide(key) {
+var animateVideoSlide = function(key) {
 	var _key = key;
 	if(key == item_index){
 	    var title_anim = Ti.UI.createAnimation({
@@ -295,11 +299,11 @@ function animateVideoSlide(key) {
 }
 
 
-function pauseALlVideoAssets(){
+var pauseALlVideoAssets = function(){
 
 }
 
-function onOwlSlideEntered(e) {
+var onOwlSlideEntered = function(e) {
 
 	resetCounter();
 	if( _.size($.full_video_wrapper.children) > 0 ){

@@ -61,9 +61,6 @@ Alloy.Globals.WorkoutAssets = [];
 
 
 
-
-
-
 // After downloader and workout renderer hits this function the workout can start.
 
 

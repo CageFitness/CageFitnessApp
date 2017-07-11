@@ -51,6 +51,7 @@
 	left:110,
 	// color:'#c4cb48',
 	color:'#2a751b',
+	visible:true,
 	font:{
 		fontSize:20,
 	}	

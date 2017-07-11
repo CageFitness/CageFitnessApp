@@ -2,7 +2,8 @@
 var args = $.args;
 var exercise_selection=[];
 var customizer_list_view = args.customizer_list_view;
-var round_index = _.last(customizer_list_view.sections);
+// var round_index = _.last(customizer_list_view.sections);
+var round_index = args.round_index;
 
 var optType = args.optType;
 var optEquipment = args.optEquipment;

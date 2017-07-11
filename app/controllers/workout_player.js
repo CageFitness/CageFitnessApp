@@ -1,4 +1,5 @@
 var args = $.args;
+var winref = args.winref;
 var log = require('log');
 // var xhr = new XHR();
 var workout_url = Alloy.CFG.api_url + Alloy.CFG.workout_test_path;
@@ -38,7 +39,7 @@ var round_tool=[];
 Alloy.Globals.downprogress = $.downprogress;
 
 
-
+enablePlayerButtons(false);
 
 
 function showActivity(){
@@ -550,6 +551,7 @@ function prepareVideoOwl(data){
 
         	// Ti.API.info('ADDING.OVERVIEW:');
         	sob.winref=args.winref;
+        	sob.scrollableref=$.scrollable;
         	var overview_view = {type:'workout/overview',data:sob};
         	owl_views.push(overview_view);
         	// addWorkoutElement('workout/overview',sob);
@@ -566,14 +568,15 @@ function prepareVideoOwl(data){
         	sob.exercise_number = data[x].exercise_number;
 		    sob.duration = getExerciseDuration(sob.exercise_number);
 		    sob.winref=args.winref;
-		    var video_view = {type:'workout/video',data:sob}
+		    sob.scrollableref=$.scrollable;
+		    var video_view = {type:'workout/video',data:sob};
 		    owl_views.push(video_view);
         	// addWorkoutElement('workout/video',sob);
         }
         
     };
 
-    var finish_view  = {type:'workout/finish',data:{title:'Well Done!', type:'static', winref:args.winref}};
+    var finish_view  = {type:'workout/finish',data:{title:'Well Done!', type:'static', winref:args.winref, scrollableref:$.scrollable}};
     // Ti.API.info('ADDING.FINISH:');
     owl_views.push(finish_view);
     Ti.API.info('RETURNING.OWL.VIEWS');
@@ -583,12 +586,17 @@ function prepareVideoOwl(data){
 
 $.customizer_btn_bar.addEventListener('click',function(e){
 	Ti.API.info('LAUNCHING CUSTOMIZER:',e.source.labels[e.index]);
-	clearInterval(Alloy.Globals.Timer);
+	// clearInterval(Alloy.Globals.Timer);
+	winref.close({animated:true});
 	Ti.App.fireEvent('cage/launch/customizer',{menu_id:'menu_customizer'});
 });
 
 
-
+function enablePlayerButtons(bol){
+	_.each($.workout_player_buttons.getLabels(),function(label,index){
+		label.enabled=bol;
+	});
+}
 
 
 
@@ -685,18 +693,18 @@ function startOverviewClock(){
 	Ti.API.info('STARTING.CLOCK');
 }
 
-function addOverviewSlide(data){
-	data.cb=startOverviewClock;
-	data.winref = args.winref;
-	var overview = Alloy.createController('workout/overview', data);
-	$.scrollable.addView(overview.getView());	
-}
+// function addOverviewSlide(data){
+// 	data.cb=startOverviewClock;
+// 	data.winref = args.winref;
+// 	var overview = Alloy.createController('workout/overview', data);
+// 	$.scrollable.addView(overview.getView());	
+// }
 
-function addVideoSlide(data){
-	data.winref = args.winref;
-	var slide = Alloy.createController('workout/video', data);
-	$.scrollable.addView(slide.getView());	
-}
+// function addVideoSlide(data){
+// 	data.winref = args.winref;
+// 	var slide = Alloy.createController('workout/video', data);
+// 	$.scrollable.addView(slide.getView());	
+// }
 
 function addOwlElements(items){
 	var owl_pages = [];
