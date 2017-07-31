@@ -28,7 +28,6 @@ function updateStep_UPDATE(row){
 
 function updateStep_BUILD(row, mode){
 	Ti.API.info('DATA.UPDATE.BUILD:',row, mode);
-
 	sdata.build='auto';
 }
 
@@ -419,13 +418,10 @@ $.listview_step6.addEventListener('itemclick', function(e){
 	if(e.itemIndex===1){
 		sdata.build='custom';
 		$.step7_btn.setTitle('CUSTOMIZE!');
-		
-		
 	}
 	else{
 		sdata.build='auto';
 		$.step7_btn.setTitle('BEGIN WORKOUT!');
-		
 	}
 	setTimeout(function(){
 		Animation.popIn($.step7_btn);
@@ -496,6 +492,30 @@ function doProgress(e) {
 	// sendData();
 	Ti.App.fireEvent('cage/launch/customizer',{menu_id:'menu_customizer'});
 }
+
+
+function showWorkoutDialog(){
+	$.dialog_workout.show();
+}
+
+
+
+$.dialog_workout.addEventListener('click',function(e){
+	Ti.API.info('DIALOG.RETURNED:',e);
+	if(e.index===0){
+		Ti.API.info('CREATE.NEW');
+		sdata.update = false.toString();
+		doWorkout();
+	}
+	else if(e.index===1){
+		sdata.update = true.toString();
+		doWorkout();
+	}
+	else{
+		Ti.API.info('CANCELS');
+	}
+});
+
 
 function doWorkout(e) {
    // var wkt = Ti.App.Properties.getString('my_workout');

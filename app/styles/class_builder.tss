@@ -1,3 +1,8 @@
+"#dialog_workout":{
+	opaquebackground:true,
+}
+
+
 "ListView":{
 	height:Ti.UI.FILL,
 	top:50,

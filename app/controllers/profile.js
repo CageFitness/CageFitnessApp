@@ -6,7 +6,10 @@ Ti.API.info('USER:',user.name, user.slug);
 
 function handleListViewClick(e){
 	Ti.API.info(e);
+	var item = e.section.getItemAt(e.itemIndex);
+	Ti.API.warn('MY.WORKOUTS.ITEMS: ', item.properties);
 	var wkt = Ti.App.Properties.getString('my_workout');
+
 	Ti.App.fireEvent('cage/launch/window',{key:'menu_workouts', 'workout_id':wkt});
 }
 
@@ -36,8 +39,8 @@ function getMyWorkout(usr){
 		'per_page':1,
 	}
    var my_workout_url = Alloy.CFG.api_url + Alloy.CFG.user_workout_path;
-   Ti.API.info('MY.WORKOUT.CALLED: ',usr.id, my_workout_url+'?author='+usr.id+ '&per_page=1');
-   xhr.GET(my_workout_url+'?author='+usr.id+ '&per_page=1', onSuccessMyWorkout, onErrorCallbackSilent, Alloy.Globals.XHROptions);
+   Ti.API.info('MY.WORKOUT.CALLED: ',usr.id, my_workout_url+'?author='+usr.id+ '&per_page=20');
+   xhr.GET(my_workout_url+'?author='+usr.id+ '&per_page=20', onSuccessMyWorkout, onErrorCallbackSilent, Alloy.Globals.XHROptions);
    // xhr.GET(my_workout_url+'?author='+usr.id+ '&per_page=1', onSuccessMyWorkout, onErrorCallbackSilent);
 }
 
@@ -59,14 +62,17 @@ function onSuccessMyWorkout(e){
 
 
 
-		var items = _.map(my, function(element) {
+		var items = _.map(my, function(item) {
 			return {
 				properties: {
-					title: element.title.rendered
+					title: item.title.rendered,
+					id: item.id,
+					slug:item.slug,
+					modified:item.modified,
 				}
 			};
 		});
-		$.wlist.sections[0].setItem(items);
+		$.wlist.sections[0].setItems(items);
 		Ti.API.info('WKT.ITEMS:', my_wkt , items)
 
 		// var section = $.wlist.sections[0];
