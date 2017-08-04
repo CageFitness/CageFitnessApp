@@ -8,6 +8,10 @@ function handleListViewClick(e){
 	Ti.API.info(e);
 	var item = e.section.getItemAt(e.itemIndex);
 	Ti.API.warn('MY.WORKOUTS.ITEMS: ', item.properties);
+	var newID = item.properties.id;
+	if(newID > 0){
+		Ti.App.Properties.setString('my_workout',newID);
+	}
 	var wkt = Ti.App.Properties.getString('my_workout');
 
 	Ti.App.fireEvent('cage/launch/window',{key:'menu_workouts', 'workout_id':wkt});

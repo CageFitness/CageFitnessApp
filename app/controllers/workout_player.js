@@ -154,7 +154,7 @@ function init(){
 	Ti.API.info('=================================');	
 
 	config = JSON.parse( Ti.App.Properties.getString('config') || loadConfig() );
-	Ti.API.info('LOADING.CONFIGURATION.WORKOUT:',config);
+	Ti.API.info('LOADING.CONFIGURATION.WORKOUT:',config.acf.duration_break);
 	// showIndicator();
 	loadWorkout();
 

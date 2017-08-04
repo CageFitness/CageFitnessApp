@@ -21,7 +21,15 @@
 
 	
 }
+".numberTitle":{
+	width:100,
+	left:15,
+}
 
+".numberSubTitle":{
+	width:100,
+	left:100,
+}
 
 ".list":{
 	width:Ti.UI.FILL,

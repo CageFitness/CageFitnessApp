@@ -142,7 +142,44 @@
         	        <View id="blinder_4" class="blinder"></View>
         	        <Button id="step4_btn" class="step_btn" onClick="stepClick" title="NEXT"></Button>
         	    </View>
-        	    <View id="step5" class="step">
+
+
+				<View id="step5" class="step">
+        	        <Require type="view" src="header" customTitle="Equipment" customImage="images/layout/equipment.png" />
+        	        <View class="list_wrapper" height="Ti.UI.FILL">
+        	            <View id="list5" class="list" height="Ti.UI.FILL">
+        	                <ListView id="listview_step5" defaultItemTemplate="equipmentItem">
+        	                    <Templates>
+        	                        <ItemTemplate name="equipmentItem">
+        	                            <View bubbleParent="true" class="padder2">
+        	                                <View bubbleParent="true" class="list_item_bg2">
+        	                                    <Label bubbleParent="true" bindId="info" class="numberTitle"></Label>
+        	                                    <Label bubbleParent="true" bindId="info_subtitle" class="numberSubTitle">Body Weight</Label>
+        	                                    <View bubbleParent="true" class="btn_item_wrapper2">
+        	                                        <ImageView slug="body-weight" slug_title="Body Weight"         image="images/icons/equipment/body-weight.png"      onClick="handleEquipmentSelection" backgroundColor="#ffffff" text="5"  class="dropdown_btn3" selectorValue="5"  bindId="select5" id="select5"></ImageView>
+        	                                        <ImageView slug="bags" 		  slug_title="Bags"                image="images/icons/equipment/bags.png"             onClick="handleEquipmentSelection" backgroundColor="#ffffff" text="7"  class="dropdown_btn3" selectorValue="7"  bindId="select7" id="select7"></ImageView>
+        	                                        <ImageView slug="bands"       slug_title="Bands"               image="images/icons/equipment/bands.png"            onClick="handleEquipmentSelection" backgroundColor="#ffffff" text="10" class="dropdown_btn3" selectorValue="10" bindId="select10" id="select10"></ImageView>
+        	                                        <ImageView slug="med-ball"    slug_title="Med Balls"      image="images/icons/equipment/med-balls.png"        onClick="handleEquipmentSelection" backgroundColor="#ffffff" text="15" class="dropdown_btn3" selectorValue="15" bindId="select15" id="select15"></ImageView>
+        	                                    </View>
+        	                                </View>
+        	                            </View>
+        	                        </ItemTemplate>
+        	                    </Templates>
+        	                    <ListSection>
+        	                    </ListSection>
+        	                </ListView>
+        	                <Label text="DESCRIPTION" class="winTitle xleft" textAlign="Ti.UI.TEXT_ALIGNMENT_LEFT"></Label>
+        	                <Label text="EQUIPMENT" class="winTitle xright" textAlign="Ti.UI.TEXT_ALIGNMENT_RIGHT"></Label>
+        	            </View>
+        						<Button id="restart" title="Restart" onClick="init_class_builder">
+        				            <ImageView class="icon" id="restart_icon"></ImageView>
+        				        </Button>                         
+        	        </View>
+        	        <View id="blinder_4" class="blinder"></View>
+        	        <Button id="step4_btn" class="step_btn" onClick="stepClick" title="NEXT"></Button>
+        	    </View>
+
+        	    <!-- <View id="step5" class="step">
         	        <Require type="view" src="header" customTitle="Equipment" customImage="images/layout/equipment.png" />
         	        <View class="list_wrapper">
         	            <View id="list5" class="list">
@@ -168,7 +205,8 @@
         				            <ImageView class="icon" id="restart_icon"></ImageView>
         				        </Button>     
         	        </View>
-        	    </View>
+        	    </View> -->
+
         	    <View id="step6" class="step">
         	        <Require type="view" src="header" customTitle="Build Workout" customImage="images/layout/build_workout.png" />
         	        <View class="list_wrapper">
@@ -227,7 +265,7 @@
         	        <View id="blinder_6" class="blinder"></View>
         	        <Button id="step7_btn" class="step_btn" onClick="showWorkoutDialog" title="BEGIN WORKOUT"></Button>
 
-					<OptionDialog id="dialog_workout" destructive="0" title="Create New?">
+					<OptionDialog id="dialog_workout" destructive="1" title="Create New?">
 					        <Options>
 					            <Option>Create New Workout</Option>
 					            <Option>Overwrite Recent</Option>

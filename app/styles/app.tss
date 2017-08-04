@@ -35,6 +35,17 @@
 	textAlign:Ti.UI.TEXT_ALIGNMENT_CENTER,
 }
 
+".dropdown_btn3":{
+	backgroundColor:"#fff",
+	color:"#000",
+	width:53,
+	borderRadius:6,
+	height:40,
+	left:10,
+	bubbleParent:true,
+	textAlign:Ti.UI.TEXT_ALIGNMENT_CENTER,
+}
+
 
 ".btn_item_wrapper2":{
 	top:6,

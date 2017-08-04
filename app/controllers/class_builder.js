@@ -32,12 +32,19 @@ function updateStep_BUILD(row, mode){
 }
 
 function updateStep_EQUIPMENT(row){
-	Ti.API.info('DATA.UPDATE.EQUIPMENT');
-	_.each(sdata.rounds, function(prop){
-		prop.equipment = row.slug;
-	})
-	updateStep_REVIEW({rowIndex:3,value:row.title});
+	Ti.API.info('DATA.UPDATE.EQUIPMENT', row.rowIndex);
+	// _.each(sdata.rounds, function(prop){
+	// 	prop.equipment = row.slug;
+	// });
+	// updateStep_REVIEW({rowIndex:3,value:row.title});
+	// LogSDATA();
+
+
+	sdata.rounds[row.rowIndex].equipment = row.slug;
+	var res = _.map(sdata.rounds, function(prop){ return prop.equipment});
+	updateStep_REVIEW({rowIndex:3, value:res.join(', ')});
 	LogSDATA();
+
 }
 
 function updateStep_EXERCISES(row){
@@ -98,7 +105,23 @@ function getIndex(n){
 
 function onSuccessCustomizer(e){
 	var beginlabel = sdata.build == 'auto' ? 'BEGIN WORKOUT...' : 'CUSTOMIZE!';
+
 	$.step7_btn.setTitle(beginlabel);
+
+	
+	Ti.API.warn('ON.SUCCESS.CUSTOMIZER.SET.WY_WORKOUT', e, e.workout_modified, e.status);
+	var data = JSON.parse(e.data);
+	var workout_modified = data.workout_modified;
+	Ti.API.warn('WORKOUT.MODIFIED:', workout_modified, '\n\n\n\n');
+	if (workout_modified >0){
+		Ti.App.Properties.setString('my_workout',workout_modified);
+	}
+	// var newID = Number(_data.workout_modified);
+	// if(newID > 0){
+	// 	Ti.App.Properties.setString('my_workout',newID);
+	// 	Ti.API.info('DEFAULT.WORKOUT.CHANGED.TO:', Ti.App.properties.getString('my_workout'));
+	// }
+
 	var wkt = Ti.App.Properties.getString('my_workout');
 	if(sdata.build=='auto'){
 		Ti.App.fireEvent('cage/launch/window',{key:'menu_workouts', workout_id:wkt });
@@ -107,7 +130,7 @@ function onSuccessCustomizer(e){
 		Ti.App.fireEvent('cage/launch/customizer',{menu_id:'menu_customizer'});
 	}
 	
-	Ti.API.info('SUCCESS.CUSTOMIZER: ',e.data);
+	Ti.API.info('SUCCESS.CUSTOMIZER: ',e);
 
 }
 
@@ -198,6 +221,7 @@ $.button_matrix.addEventListener('click', function(e){
 
 		setRoundTypeItems(Number(num));
 		setNumberOfExerciseItems(Number(num));
+		setEquipmentItems(Number(num));
 		stepClick(e);
 	}
 });
@@ -225,6 +249,8 @@ function createRoundTypeRows(round_number){
 	return items;
 
 }
+
+
 
 function createNumberOfExercisesRows(round_number){
     
@@ -286,6 +312,14 @@ function init_class_builder(e){
     // setNumberOfExerciseItems(config.acf.opt_rounds);	
     setRoundTypeItems(0);
     setNumberOfExerciseItems(0);
+    setEquipmentItems(0);
+};
+
+function setEquipmentItems(ritems){
+    var items = createEquipmeItemsRows(ritems);
+    var sec = $.listview_step5.sections[0];
+	sec.deleteItemsAt( 0, _.size(sec.items), {animated:true} );
+	sec.setItems(items);
 };
 
 function setNumberOfExerciseItems(ritems){
@@ -383,7 +417,75 @@ $.scrollableView.addEventListener('dragstart',function(e){
 
 // });
 
+// $.listview_step5.addEventListener('itemclick', function(e){
+//     var section = $.listview_step5.sections[e.sectionIndex];
+//     var item = section.getItemAt(e.itemIndex);
+//     updateStep_EQUIPMENT({'rowIndex':e.itemIndex, 'slug':item.properties.slug, 'title':item.info.text});
+//     clickAndFollow(section,e);
+// });
 
+
+
+function createEquipmeItemsRows(round_number){
+    
+    var config = JSON.parse( Ti.App.Properties.getString('config') );
+    Ti.API.info('CREATIG.EQUIPMENT.ROWS:');
+    // Ti.API.info('ROUND.CONFIGS:',config.acf.round_configs);
+   
+
+
+	var numbers = config.acf.round_configs;
+	var items = [];
+	for (var i = 0; i < round_number; i++) {
+		
+		var ob = {
+			// template: 'numberOfExercises',
+			properties:{
+				top:0,
+				bottom:0,
+				height:65,
+				autoStyle:true,
+				row_index:getIndex(i),
+				selectionStyle:Titanium.UI.iOS.ListViewCellSelectionStyle.NONE,
+				},
+			info: {text: "Round "+getIndex(i)},
+			info_subtitle: {text: " "},
+	    }
+
+	    items.push(ob);		
+	}
+
+	return items;
+
+}
+
+
+
+function handleEquipmentSelection(e){
+	Ti.API.info('GROUP.BUTTON.ITEM.CLICK: ', e.itemIndex, e.source.selectorValue);
+    var section = $.listview_step5.sections[e.sectionIndex];
+    var item = section.getItemAt(e.itemIndex);
+    // item.properties.slug = e.source.selectorValue;
+    // item.info_subtitle.text = e.source.slug_title;
+    item.properties.slug = e.source.slug;
+    Ti.API.info('EQUIPMENT.ITEM.PROPERTIES:',item.properties)
+    item = {
+    	template:'equipmentItem',
+    	properties:{title:'', top:0, bottom:0, height:65, autoStyle:true, rowIndex:getIndex(e.itemIndex)},
+    	info:{text:item.info.text},
+    	info_subtitle:{text:e.source.slug_title},
+		select5:{backgroundColor:'#fff'},
+		select7:{backgroundColor:'#fff'},
+		select10:{backgroundColor:'#fff'},
+		select15:{backgroundColor:'#fff'},
+    }
+
+   	item['select'+e.source.selectorValue].backgroundColor='#d9e153';
+    section.updateItemAt(e.itemIndex, item);
+    Ti.API.info('ON.ITEM.EVENT:',e.source.id, e.source.selectorValue);
+    // updateStep_EQUIPMENT({'rowIndex':e.itemIndex, 'slug':e.source.selectorValue, 'title':item.info_subtitle.text});
+    updateStep_EQUIPMENT({'rowIndex':e.itemIndex, 'slug':e.source.slug, 'title':item.info_subtitle.text});
+}
 
 function handleNumberExercisesSelection(e){
 	Ti.API.info('GROUP.BUTTON.ITEM.CLICK: ', e.itemIndex, e.source.selectorValue);
@@ -404,12 +506,7 @@ function handleNumberExercisesSelection(e){
     updateStep_EXERCISES({'rowIndex':e.itemIndex, 'numexercises':e.source.selectorValue});
 }
 
-$.listview_step5.addEventListener('itemclick', function(e){
-    var section = $.listview_step5.sections[e.sectionIndex];
-    var item = section.getItemAt(e.itemIndex);
-    updateStep_EQUIPMENT({'rowIndex':e.itemIndex, 'slug':item.properties.slug, 'title':item.info.text});
-    clickAndFollow(section,e);
-});
+
 
 
 $.listview_step6.addEventListener('itemclick', function(e){
