@@ -1,0 +1,54 @@
+
+".container" : {
+  
+}
+".nw_cnt_wrapper":{
+	left:20,
+	right:20,
+	layout:'vertical',
+	height:Ti.UI.FILL,
+}
+
+"#instructions":{
+	top:20,
+}
+
+
+"#done":{
+	top:20,
+	font: {
+	    fontSize: 20,
+	    // fontFamily: 'MuseoSans-700',
+	    fontWeight: 'bold',
+	}	
+}
+
+"#nav_window":{
+	height:250,
+	width:500,
+}
+
+"#workout_name": {
+	top: 20,
+
+	width:Ti.UI.FILL,
+	// paddingLeft:20,
+	padding:{
+		left:20,
+		right:20,
+	},
+
+	// right:80,
+	height:50,
+	borderRadius:0,
+	hintText: 'Workout Title',
+	returnKeyType: Ti.UI.RETURNKEY_NEXT,
+	autocapitalization: false,
+	autocorrect: false,
+	backgroundColor:'#efefef',
+	font: {
+	    fontSize: 20,
+	    // fontFamily: 'MuseoSans-700',
+	    fontWeight: 'normal',
+	}
+}

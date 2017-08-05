@@ -150,7 +150,7 @@ function init(){
 		Ti.API.info('SKIPPING.CACHE.FOLDER.CREATION');
 	}
 
-	Ti.API.info('======== Cached Resources =======\n', cage_cache_dir, '\n', cage_cache_dir.getDirectoryListing(), '\n===============================');
+	Ti.API.info('======== Cached Resources =======\n', cage_cache_dir, '\n', _.size(cage_cache_dir.getDirectoryListing()), '\n===============================');
 	Ti.API.info('=================================');	
 
 	config = JSON.parse( Ti.App.Properties.getString('config') || loadConfig() );

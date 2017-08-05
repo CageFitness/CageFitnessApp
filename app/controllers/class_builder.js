@@ -79,6 +79,16 @@ function updateStep_ROUND(nrounds){
 	LogSDATA();
 }
 
+function handleNewWorkoutPopover(e) {
+    // Alloy.Globals.currentSelectButton = e.source;
+    // Ti.API.info(e.itemIndex)
+    Ti.API.info('BEFORE.POPOVER');
+    var new_workout_popover = Alloy.createController('builder/create', {follow:doWorkout, data:sdata, row:e.itemIndex} ).getView();
+    Ti.API.info('AFTER.POPOVER');
+    new_workout_popover.show({animated:true,view:$.step7_btn});
+
+}
+
 function handleClickPopOver(e) {
     Alloy.Globals.currentSelectButton = e.source;
     // Ti.API.info(e.itemIndex)
@@ -602,10 +612,14 @@ $.dialog_workout.addEventListener('click',function(e){
 	if(e.index===0){
 		Ti.API.info('CREATE.NEW');
 		sdata.update = false.toString();
-		doWorkout();
+		sdata.create = true.toString();
+		// sdata.title = 'My Awesome Workout!';
+		handleNewWorkoutPopover(e);
+		// doWorkout();
 	}
 	else if(e.index===1){
 		sdata.update = true.toString();
+		sdata.create = false.toString();
 		doWorkout();
 	}
 	else{

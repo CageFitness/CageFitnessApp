@@ -1,0 +1,17 @@
+<Alloy>
+    <Popover id="new_workout_popover_ob" backgroundColor='white'>
+        <ContentView>
+            <NavigationWindow id="nav_window">
+                <Window title='Workout Name'>
+                	<RightNavButton id="cancelBtn" title="Cancel" />
+                	<View class="nw_cnt_wrapper">
+	                    
+	                    <Label id="instructions">Pick a name for your new workout.</Label>
+	                    <TextField id="workout_name" value="" />
+	                    <Button id="done" title="Done!"></Button>                		
+                	</View>
+                </Window>
+            </NavigationWindow>
+        </ContentView>
+    </Popover>
+</Alloy>
