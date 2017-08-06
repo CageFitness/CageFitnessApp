@@ -6,6 +6,13 @@
 // NappDownloadManager.stopDownloader();
 // NappDownloadManager.cleanUp();
 
+
+// Global T helper to load internal Trimethyl libraries
+var T = function (name) { return require('T/' + name); }
+
+// Bootstrap Trimethyl
+T('trimethyl');
+
 Timer = require('countdowntimer');
 Animation = require('alloy/animation');
 XHR = require('xhr');

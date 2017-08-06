@@ -1,0 +1,29 @@
+{
+  "libs": [
+    "trimethyl",
+    "uifactory",
+    "uifactory/actionbutton",
+    "uifactory/backgroundview",
+    "uifactory/button",
+    "uifactory/dateselect",
+    "uifactory/label",
+    "uifactory/listview",
+    "uifactory/multiselect",
+    "uifactory/navigationwindow",
+    "uifactory/select",
+    "uifactory/soundcloudclassicwebview",
+    "uifactory/tabbedbar",
+    "uifactory/textarea",
+    "uifactory/textfield",
+    "uifactory/timeselect",
+    "uifactory/view",
+    "uifactory/window",
+    "uifactory/youtubevideowebview",
+    "uifactory/zoomimageview",
+    "uiutil",
+    "util",
+    "validator"
+  ],
+  "version": "9.2.1",
+  "install_date": 1502055523048
+}
