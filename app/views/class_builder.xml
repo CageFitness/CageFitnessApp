@@ -263,12 +263,12 @@
         				        </Button>                         
         	        </View>
         	        <View id="blinder_6" class="blinder"></View>
-        	        <Button id="step7_btn" class="step_btn" onClick="showWorkoutDialog" title="BEGIN WORKOUT"></Button>
+        	        <Button id="step7_btn" class="step_btn" onClick="showWorkoutDialog" title="CREATE WORKOUT"></Button>
 
 					<OptionDialog id="dialog_workout" destructive="1" title="Create New?">
 					        <Options>
 					            <Option>Create New Workout</Option>
-					            <Option>Overwrite Recent</Option>
+					            <Option>Overwrite</Option>
 					            <Option>Cancel</Option>
 					        </Options>
 					</OptionDialog>

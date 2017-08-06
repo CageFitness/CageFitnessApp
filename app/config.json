@@ -33,6 +33,7 @@
     "com.caffeinalab.titanium.loader": "*",
     "com.prodz.tiflexigrid": "*",
     "com.alcoapps.drawermenu": "*",
-    "nl.fokkezb.infiniteScroll": "*"
+    "nl.fokkezb.infiniteScroll": "*",
+    "nl.fokkezb.pullToRefresh": "*"
   }
 }

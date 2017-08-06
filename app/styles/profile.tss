@@ -54,6 +54,7 @@
 	// right:10,
 	// left:10,
 	bottom:10,
+	pruneSectionsOnEdit:false,
 	// backgroundColor:"#efefef",
 }
 
@@ -93,17 +94,47 @@
 
 ".titleLabel": {
 	left: 15,
-	color: "red",
+	// color: "red",
 	top:5,
 	bottom:5,
-	right:15,
-}
-
-".detailLabel": {
-	right: 5,
-	color: "green",
+	right:75,
+	// backgroundColor:'pink',
+	height:Ti.UI.FILL,
 	font: {
+		fontSize:17,
 		fontWeight: "bold"	
 	}
 }
+
+".beginLabel": {
+	right: 15,
+	height:Ti.UI.FILL,
+	color: "gray",
+	font: {
+		fontSize:11,
+		fontWeight: "bold"	
+	}
+}
+".customizeLabel": {
+	right: 85,
+	height:Ti.UI.FILL,
+	color: 'gray',
+	// backgroundColor:'pink',
+	font: {
+		fontSize:11,
+		fontWeight: "bold"	
+	}
+}
+"#refresher":{
+	right:15,
+}
+
+".workout_info":{
+right:15,
+	font:{
+		fontSize:14,
+	}
+}
+
+
 

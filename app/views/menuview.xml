@@ -13,7 +13,7 @@
 			<TableViewRow class="tableRow" id="menu_workouts">
 				<View id="rowContainer">
 					<View id="rowWorkouts" class="rowIcon"/>
-					<Label id="rowLabel" class="rowLabel">My Workout</Label>
+					<Label id="rowLabel" class="rowLabel">My Workouts</Label>
 				</View>
 			</TableViewRow> 
 

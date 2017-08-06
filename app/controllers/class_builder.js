@@ -114,7 +114,7 @@ function getIndex(n){
 
 
 function onSuccessCustomizer(e){
-	var beginlabel = sdata.build == 'auto' ? 'BEGIN WORKOUT...' : 'CUSTOMIZE!';
+	var beginlabel = sdata.build == 'auto' ? 'CREATE WORKOUT...' : 'CUSTOMIZE!';
 
 	$.step7_btn.setTitle(beginlabel);
 
@@ -139,6 +139,7 @@ function onSuccessCustomizer(e){
 	else{
 		Ti.App.fireEvent('cage/launch/customizer',{menu_id:'menu_customizer'});
 	}
+	Ti.App.fireEvent('cage/profile/reload');
 	
 	Ti.API.info('SUCCESS.CUSTOMIZER: ',e);
 
@@ -528,7 +529,7 @@ $.listview_step6.addEventListener('itemclick', function(e){
 	}
 	else{
 		sdata.build='auto';
-		$.step7_btn.setTitle('BEGIN WORKOUT!');
+		$.step7_btn.setTitle('CREATE WORKOUT!');
 	}
 	setTimeout(function(){
 		Animation.popIn($.step7_btn);
@@ -650,7 +651,7 @@ function handleClickSelectEquipment (e) {
 
 
 function handleClickBeginWorkout (e) {
-     Ti.API.info('BEGIN WORKOUT...');
+     Ti.API.info('CREATE WORKOUT...');
 }
 
 
