@@ -10,40 +10,31 @@
         </View>
 
         <View class="workout_list">
-            <ListView id="wlist" onItemclick="handleListViewClick">
-                <!-- Enable Pull-to-Refresh -->
-                <!-- <RefreshControl id="refresh" onRefreshstart="fetchData" platform="ios" /> -->
-                <!-- Add custom item templates -->
-                <Templates>
-                    <ItemTemplate name="ProfileListItem">
-                    	<!-- <Label module="xp.ui" html="Upperbody &#8211; WHOOHOOO!" /> -->
-                        <Label bindId="title" class="titleLabel" />
-                        <Label bubbleParent="true" bindId="customize" class="customizeLabel" />
-                        <Label bindId="begin" class="beginLabel" />
-                    </ItemTemplate>
-                </Templates>
+        	<!-- <Widget id="ptr" src="nl.fokkezb.pullToRefresh" onRelease="myRefresher"> -->
+	            <ListView id="wlist" onItemclick="handleListViewClick">
+	                <!-- Enable Pull-to-Refresh -->
+	                <RefreshControl id="refresh" onRefreshstart="fetchData" platform="ios" />
+	                <!-- Add custom item templates -->
+	                <Templates>
+	                    <ItemTemplate name="ProfileListItem">
+	                    	<!-- <Label module="xp.ui" html="Upperbody &#8211; WHOOHOOO!" /> -->
+	                        <Label bindId="title" class="titleLabel" />
+	                        <Label bubbleParent="true" bindId="customize" class="customizeLabel" />
+	                        <Label bindId="begin" class="beginLabel" />
+	                    </ItemTemplate>
+	                </Templates>
 
-                <ListSection>
-			        <HeaderView>
-			            <View class="list_header">
-			            	<Label class="htitle">My Workouts</Label>
-			            	<Label class="workout_info">Swipe left for more actions.</Label>
-			            	<!-- <Button id="refresher">REMOVE</Button> -->
-			            </View>
-			        </HeaderView> 
-
-                    <!-- <ListItem id="my_wkt" title="My Workout" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE" /> -->
-                    <!-- <ListItem title="" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE" /> -->
-                    <!-- <ListItem title="" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE" /> -->
-<!--                     <ListItem title="Workout #2" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE" />
-                    <ListItem title="Workout #3" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE" />
- -->                    
-<!--                     <ListItem title="Workout" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE" />
-                    <ListItem title="Detail Accessory" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE" />
-                    <ListItem title="Disclosure Accessory" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE" />
-                    <ListItem title="Checkmark Accessory" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_CHECKMARK" />
- -->                </ListSection>
-            </ListView>
+	                <ListSection>
+				        <HeaderView>
+				            <View class="list_header">
+				            	<Label class="htitle">My Workouts</Label>
+				            	<Label class="workout_info">Swipe left for more actions.</Label>
+				            	<!-- <Button id="refresher">REMOVE</Button> -->
+				            </View>
+				        </HeaderView> 
+		            </ListSection>
+	            </ListView>
+        	<!-- </Widget> -->
         </View>
     </View>
 </Alloy>

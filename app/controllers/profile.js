@@ -27,9 +27,6 @@ function handleListViewClick(e){
 
 }
 
-function fetchData(){
-
-}
 
 function init_profile(){
 	user = JSON.parse( Ti.App.Properties.getString('user') ) || {};
@@ -161,7 +158,7 @@ $.wlist.addEventListener('editaction',function(e){
 
 
 function onSuccessMyWorkout(e){
-	
+	$.refresh.endRefreshing();
 	if(_.size(e.data) > 0){
 
 
@@ -206,7 +203,7 @@ function onSuccessMyWorkout(e){
 						}						
 					]
 				},
-				title:{text: item.title.rendered},
+				title:{text: TUtil.decodeHtmlEntity(item.title.rendered)},
 				customize:{text:'CUSTOMIZE'},
 				begin:{text:'BEGIN'},
 
@@ -224,7 +221,8 @@ function onSuccessMyWorkout(e){
 	}
 }
 
-function myRefresher(){
+function fetchData(e){
+	Ti.API.info('PULL.TO.REFRESH.CALLED:',e);
 	init_profile();
 }
 
