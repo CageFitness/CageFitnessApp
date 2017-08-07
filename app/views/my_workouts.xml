@@ -1,0 +1,43 @@
+<Alloy>
+    <View id="mainView">
+        <Require src="topbar"></Require>
+		
+		<Require id="head_my_workout" type="view" src="header" customTitle="My Workouts" customImage="images/layout/workout_theme.png" />
+
+        <View id="head_profile" class="profile_picture">
+			<ImageView id="pimage" class="pic"></ImageView>
+			<Label id="user_complete_name">John Doe</Label>
+			<Label id="user_username">Username</Label>
+			<!-- <Label module="xp.ui" html="<font size=17>Upperbody &#8211; 2 Rounds Hello <b>Bold</b> <font color=#FF0000>World!</font></font>" /> -->
+        </View>
+
+        <View class="workout_list">
+        	<!-- <Widget id="ptr" src="nl.fokkezb.pullToRefresh" onRelease="myRefresher"> -->
+	            <ListView id="wlist" onItemclick="handleListViewClick">
+	                <!-- Enable Pull-to-Refresh -->
+	                <RefreshControl id="refresh" onRefreshstart="fetchData" platform="ios" />
+	                <!-- Add custom item templates -->
+	                <Templates>
+	                    <ItemTemplate name="ProfileListItem">
+	                    	<!-- <Label module="xp.ui" html="Upperbody &#8211; WHOOHOOO!" /> -->
+	                        <Label bindId="title" class="titleLabel" />
+	                        <Label bubbleParent="true" bindId="customize" class="customizeLabel" />
+	                        <Label bindId="begin" class="beginLabel" />
+	                    </ItemTemplate>
+	                </Templates>
+
+	                <ListSection>
+				        <HeaderView>
+				            <View class="list_header">
+				            	<Label class="htitle">My Workouts</Label>
+				            	<Label class="workout_info">Swipe left for more actions.</Label>
+				            	<!-- <Button id="refresher">REMOVE</Button> -->
+				            </View>
+				        </HeaderView> 
+		            </ListSection>
+	            </ListView>
+        	<!-- </Widget> -->
+        </View>
+    </View>
+</Alloy>
+

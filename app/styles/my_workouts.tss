@@ -1,0 +1,150 @@
+"#head_profile":{
+	visible:true,
+	hiddenBehavior: Titanium.UI.HIDDEN_BEHAVIOR_GONE,
+}
+
+"#head_my_workout":{
+	visible:false,
+	hiddenBehavior: Titanium.UI.HIDDEN_BEHAVIOR_GONE,
+}
+
+"#user_complete_name":{
+	top:20,
+	font:{
+		fontWeight:'bold',
+		fontSize:24,
+	},
+	color:'#000',
+	height:Ti.UI.SIZE,
+}
+
+"#user_username":{
+	top:0,
+	font:{
+		fontWeight:'bold',
+		fontSize:14,
+	},
+	color:"gray",
+	height:Ti.UI.SIZE,
+}
+"#pimage":{
+	top:20,
+	width:120,
+	height:120,
+	backgroundColor:'gray',
+	borderRadius:60,
+	borderWidth:4,
+	borderColor:Alloy.CFG.styles.brandColor,
+}
+
+
+".htitle":{
+	font:{
+		fontWeight:'bold',
+		fontSize:24,
+	},
+	left:10,
+	rigth:10,
+	color:'#000',
+	backgroundColor:"#f8f8f8",
+	height:50,
+	width:Ti.UI.FILL,
+}
+".list_header":{
+	backgroundColor:"#f8f8f8",
+	height:Ti.UI.SIZE,
+	width:Ti.UI.FILL,
+}
+"#mainView":{
+	backgroundColor:"#f8f8f8",
+}
+
+"#wlist":{
+	top:30,
+	// right:10,
+	// left:10,
+	bottom:10,
+	pruneSectionsOnEdit:false,
+	// backgroundColor:"#efefef",
+}
+
+
+".profile_picture":{
+	backgroundColor:'#fff',
+	height:'35%',
+	left:'20%',
+	right:'20%',
+	width:Ti.UI.FILL,
+	layout:'vertical',
+	// backgroundImage:'images/layout/login.png',
+	borderWidth:1,
+	borderColor:'#d0cbca'
+}
+
+".profile_picture":{
+	backgroundColor:'#fff',
+	height:'35%',
+	left:'20%',
+	right:'20%',
+	width:Ti.UI.FILL,
+	layout:'vertical',
+	image:'images/layout/login.png',
+	borderWidth:1,
+	borderColor:'#d0cbca'
+}
+".workout_list":{
+	// backgroundColor:'#efefef',
+	left:'20%',
+	right:'20%',
+	width:Ti.UI.FILL,
+	top:0,
+	height:Ti.UI.FILL,	
+}
+
+
+".titleLabel": {
+	left: 15,
+	// color: "red",
+	top:5,
+	bottom:5,
+	right:75,
+	// backgroundColor:'pink',
+	height:Ti.UI.FILL,
+	font: {
+		fontSize:17,
+		fontWeight: "bold"	
+	}
+}
+
+".beginLabel": {
+	right: 15,
+	height:Ti.UI.FILL,
+	color: "gray",
+	font: {
+		fontSize:13,
+		fontWeight: "bold"	
+	}
+}
+".customizeLabel": {
+	right: 85,
+	height:Ti.UI.FILL,
+	color: 'gray',
+	// backgroundColor:'pink',
+	font: {
+		fontSize:13,
+		fontWeight: "bold"	
+	}
+}
+"#refresher":{
+	right:15,
+}
+
+".workout_info":{
+right:15,
+	font:{
+		fontSize:14,
+	}
+}
+
+
+
