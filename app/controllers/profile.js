@@ -242,5 +242,3 @@ function onErrorCallbackSilent(e){
     Ti.API.info('ERROR.PROFILE: ',e);
     // Animation.shake($.login_panel);
 }
-
-
