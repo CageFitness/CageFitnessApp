@@ -6,9 +6,9 @@
                 	<RightNavButton id="cancelBtn" title="Cancel" />
                 	<View class="nw_cnt_wrapper">
 	                    
-	                    <Label id="instructions">Pick a name for your new workout.</Label>
+	                    <Label id="instructions">Enter a name for your workout.</Label>
 	                    <TextField id="workout_name" value="" />
-	                    <Button id="done" title="Done!"></Button>                		
+	                    <Button id="done" title="Done!"></Button>           		
                 	</View>
                 </Window>
             </NavigationWindow>

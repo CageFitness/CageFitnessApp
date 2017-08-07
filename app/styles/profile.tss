@@ -111,7 +111,7 @@
 	height:Ti.UI.FILL,
 	color: "gray",
 	font: {
-		fontSize:11,
+		fontSize:13,
 		fontWeight: "bold"	
 	}
 }
@@ -121,7 +121,7 @@
 	color: 'gray',
 	// backgroundColor:'pink',
 	font: {
-		fontSize:11,
+		fontSize:13,
 		fontWeight: "bold"	
 	}
 }

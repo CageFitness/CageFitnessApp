@@ -22,7 +22,8 @@
 },
 
 ".tableRow":{
-	height: '50dp'
+	height: '50dp',
+	backgroundFocusedColor:'pink',
 },
 "#rowContainer":{
 	height: '30dp',

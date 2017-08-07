@@ -1,6 +1,6 @@
 var args = $.args;
 var user = JSON.parse( Ti.App.Properties.getString('user') ) || {};
-
+var to_rename = {};
 Ti.API.info('USER:',user.name, user.slug);
 
 
@@ -111,7 +111,14 @@ function onWorkoutTrashSuccess(e){
 
 }
 
-
+function renameWorkout(){
+		// var prepared = { id:item.properties.id, title:'Testing DYNAMIC Renaming of Workout'};
+		var data = JSON.stringify(to_rename);
+		var my_workout_url = Alloy.CFG.api_url + Alloy.CFG.user_workout_path + '/' + to_rename.id;
+		Ti.API.warn('UPDATE.WITH.ID:',to_rename.id, to_rename.title);
+		$.refresh.beginRefreshing();
+		xhr.POST('https://cagefitness.com/wp-json/app/v1/workout/rename', data, onWorkoutRenameSuccess, onErrorCallbackSilent);
+}
 
 $.wlist.canEdit=true;
 $.wlist.addEventListener('editaction',function(e){
@@ -121,12 +128,17 @@ $.wlist.addEventListener('editaction',function(e){
 	var item = e.section.getItemAt(e.itemIndex);
 
 	if(e.identifier == 'rename_workout'){
-		Ti.API.warn('UPDATE.WITH.ID:',item.properties.id);
-		var prepared = { itle:'Testing DYNAMIC Renaming of Workout'};
-		var data = JSON.stringify(prepared);
-		var my_workout_url = Alloy.CFG.api_url + Alloy.CFG.user_workout_path + '/' + item.properties.id;
+		
 
-		xhr.POST(my_workout_url, data, onWorkoutRenameSuccess, onErrorCallbackSilent);
+	    Ti.API.info('BEFORE.POPOVER.WORKOUT.RENAME');
+	    to_rename = { id:item.properties.id, title:'Default Workout'};
+	    var new_workout_name_popover = Alloy.createController('builder/create', {follow:renameWorkout, data:to_rename, row:e.itemIndex} ).getView();
+	    Ti.API.info('AFTER.POPOVER.WORKOUT.RENAME');
+	    new_workout_name_popover.show({animated:true,view:e.source});
+
+
+
+
 	}
 	else if(e.identifier == 'trash_workout'){
 		Ti.API.warn('DELETING.WITH.ID:',item.properties.id, e.section);
