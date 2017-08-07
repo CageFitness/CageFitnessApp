@@ -19,7 +19,7 @@ Animation = require('alloy/animation');
 XHR = require('xhr');
 Utils = require('utils');
 
-html2as = require('nl.fokkezb.html2as');
+// html2as = require('nl.fokkezb.html2as');
 
 Alloy.Globals.updateWorkout = false;
 Alloy.Globals.Timer = 0;
