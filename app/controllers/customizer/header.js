@@ -13,14 +13,19 @@ var optEquipment = args.optEquipment;
 
 
 function getIndex(n){
-	r = Number(n)+1; 
+	r = Number(n)+1;
 	return r;
 }
 
 
+function updateRoundTitle(index){
+	round_index = index;
+	var title = 'Round '+getIndex(index)+':';
+	$.hTitle.text =  title;
+	Ti.API.info('ROUND.TITLE.UPDATED:',index);
+}
+
 var round_title = 'Round '+getIndex(round_index)+':';
-
-
 $.hTitle.text =  round_title;
 
 Ti.API.warn('HEADER.INFORMATION:',wo_round_type.label||wo_round_type.name, wo_round_type);

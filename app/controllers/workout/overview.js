@@ -190,6 +190,9 @@ function startCounter() {
 	        if (_PROGRESS_TEXT == 1) {
 	            clearInterval(Alloy.Globals.Timer);
 	            Ti.API.info('STOP.OVERVIEW!!!!');
+
+
+	            	Alloy.Globals.playBuzz();
 	            // Animation.fadeOut($.progressbar, 500, function() {
 	                Ti.App.fireEvent('cage/video/progressbar/finished',{'index':item_index});
 	            // });

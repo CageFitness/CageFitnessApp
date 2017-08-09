@@ -31,6 +31,15 @@ Alloy.Globals.XHROptions = {
 };
 
 
+
+Alloy.Globals.buzz = Ti.Media.createSound({url:"media/alarm.mp3"});
+
+function playBuzz(){
+	Alloy.Globals.buzz.play();
+}
+
+
+
 var getRandomInt = function(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
