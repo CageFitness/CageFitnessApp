@@ -536,6 +536,7 @@ function prepareVideoOwl(data){
             thumb:data[x].thumb,
             item_index:x,
             index:$,
+            // round_number:data[x].round_number,
         }
         sob.first_slide = (x===0) ? true : false;
 
@@ -561,6 +562,13 @@ function prepareVideoOwl(data){
 			round_tool.push({slideIndex:x, title:sob.round_number, cb:handleRoundNavigator, mode:'navigate'});        	
         }
         else{
+
+
+
+        	sob.round_number = data[x].round_number;
+        	
+
+
         	sob.last = data[x].last;
         	sob.filename = data[x].filename;
         	sob.next = data[x].next;

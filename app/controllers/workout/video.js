@@ -3,13 +3,14 @@ var args = $.args;
 var scrollable = args.scrollableref;
 
 var id = args.id || 'v565989';
-var title = args.title || 'Video Title One';
+var title = args.title || 'Video Title';
 var subtitle = args.subtitle || 'END';
 var counter = args.counter || '00:00'+' |-| '+args.duration+' > '+args.last+' > ';
 var item_index = args.item_index || null;
 var localvid = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'cached/'+args.filename);
 var video = localvid || args.video || null;
 var next = args.next || null;
+
 
 
 var fancyTimeFormat = function(time){   
@@ -125,7 +126,9 @@ var startCounter = function() {
 
 
 
-
+function getVideoTitle(){
+	return args.round_number+ '.' +args.file_index + ' ' +title;
+}
 
 
 
@@ -133,7 +136,12 @@ var startCounter = function() {
 
 
 $.vid.backgroundColor = Utils.getRandomColor();
-$.title.text = title;
+
+// Ti.API.warn('ITEM.VIDEO.CHAPTERS:', args.data);
+
+Ti.API.warn('THIS.VIDEO.DATA: ', args.round_number, args.file_index);
+
+$.title.text = getVideoTitle();
 $.subtitle.text = subtitle;
 $.counter.text = fancyTimeFormat(timer_duration);
 // $.video_player_thumb.image = args.thumb;
@@ -148,7 +156,7 @@ if (next.ID){
 	
 // THIS NEEDS TO BE ADDED WHILE ENTERING THE SLIDE
 var localgif = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'cached/'+next.acf.video_animated_thumbnail.filename);	
-	var gifurl = localgif || next.acf.video_animated_thumbnail.url;
+var gifurl = localgif || next.acf.video_animated_thumbnail.url;
 	// $.gifImage.image(gifurl);
 	// Ti.API.info('NEXT.GIF.ASSIGNED:', next.acf.video_animated_thumbnail.filename);
 }
