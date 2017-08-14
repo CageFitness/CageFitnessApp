@@ -7,6 +7,9 @@ var config = JSON.parse(Ti.App.Properties.getString('config'));
 
 var title = args.customTitle || 'Customize your Workout';
 var image = args.customImage || 'images/layout/workout_theme.png';
+var rebuilder = [];
+
+
 $.header_title.text = title.toUpperCase();
 $.header_background.backgroundImage = image;
 
@@ -219,6 +222,7 @@ function createRound(round, roundIndex) {
         // Ti.API.info('EXERCISE.DATA:', exercise.ID, exercise.post_title);
 
         var ob = {
+        	// type:'remote',
             template: 'RoundItemTemplate',
             properties: {
                 title: exercise.post_title,
@@ -294,6 +298,7 @@ function createRoundFromSelection(round, roundIndex) {
 
 
         var ob = {
+        	// type:'local',
             template: 'RoundItemTemplate',
             properties: {
                 title: exercise.title.rendered,
@@ -475,6 +480,7 @@ function insertExercise(newer, older, validate_mode) {
     var roundData = [];
 
     var ob = {
+    	// type:'local'
         template: 'RoundItemTemplate',
         properties: {
             title: exercise.title.rendered,
@@ -586,6 +592,7 @@ function createNewRound(e) {
 function removeRound(roundIndex) {
     Ti.API.info('ATTEMPT.TO.REMOVE.ROUND:', roundIndex);
     $.customizer_list_view.deleteSectionAt(roundIndex);
+    updateCustomizerListHeaders();
 }
 
 
@@ -720,11 +727,14 @@ function optEquipment(ttid) {
 }
 
 function scrollToLast(e) {
-    var sections = $.customizer_list_view.getSections();
-    var last_section_index = sections.length - 1;
-    var last_items = $.customizer_list_view.sections[last_section_index].getItems();
-    var last_item_index = last_items.length - 1;
-    $.customizer_list_view.scrollToItem(last_section_index, last_item_index, { animated: true });
+
+	if($.customizer_list_view.getSections() > 0){
+	    var sections = $.customizer_list_view.getSections();
+	    var last_section_index = sections.length - 1;
+	    var last_items = $.customizer_list_view.sections[last_section_index].getItems();
+	    var last_item_index = last_items.length - 1;
+	    $.customizer_list_view.scrollToItem(last_section_index, last_item_index, { animated: true });
+    }
 }
 
 function gatherCurrentSelection(listview) {
@@ -794,8 +804,21 @@ function gatherCurrentSelection(listview) {
 
 
 function updateCustomizerListHeaders(){
-	_.each($.customizer_list_view.sections, function(round, index){
-		Ti.API.info('ROUND: ',round, index);
-	})
+	// rebuilder = [];
+	// _.each($.customizer_list_view.sections, function(section, index){
+	// 	var items = section.getItems();
+	// 	rebuilder.push(items);
+
+	// 	// Ti.API.warn('ROUND: ',section, index);
+	// 	// var headView = section.getHeaderView();
+	// 	// // headView.round_index = index;
+	// 	// // headView.updateRoundTitle(index);
+	// 	// Ti.API.info(headView);
+
+	// });
+	// Ti.API.warn('REBUILDER:', rebuilder );
+	// _.each(rebuilder,function(section, index){
+	// 	$.customizer_list_view.sections[index].setItems(section);
+	// });
 }
 

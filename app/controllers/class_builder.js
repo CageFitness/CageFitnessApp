@@ -600,8 +600,11 @@ function doProgress(e) {
 }
 
 
-function showWorkoutDialog() {
-    $.dialog_workout.show();
+function showWorkoutDialog(e) {
+    // $.dialog_workout.show();
+    sdata.update = false.toString();
+    sdata.create = true.toString();
+    handleNewWorkoutPopover(e);
 }
 
 

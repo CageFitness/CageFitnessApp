@@ -10,9 +10,9 @@
 // Global T helper to load internal Trimethyl libraries
 var T = function (name) { return require('T/' + name); }
 
-// Bootstrap Trimethyl
-T('trimethyl');
-var TUtil = T('util');
+// // Bootstrap Trimethyl
+// T('trimethyl');
+// var TUtil = T('util');
 
 Timer = require('countdowntimer');
 Animation = require('alloy/animation');
@@ -191,6 +191,14 @@ Ti.App.iOS.addEventListener('sessioncompleted', function(e) {
 
 Ti.API.info('===============');
 
+
+
+
+
+
+// Bootstrap Trimethyl
+T('trimethyl');
+var TUtil = T('util');
 
 
 

@@ -22,7 +22,8 @@
     "uifactory/zoomimageview",
     "uiutil",
     "util",
-    "validator"
+    "validator",
+    "ga"
   ],
   "version": "9.2.1",
   "install_date": 1502055523048
