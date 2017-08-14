@@ -106,7 +106,7 @@ var startCounter = function() {
 	            animation.fadeOut($.progressbar, 500, function() {
 	                // $.gifImage.stop();
 	                // Ti.App.fireEvent('cagefitness_app_preview_finished', { 'video': args.data_title });
-	                
+	                Alloy.Globals.playBuzz();
 	                Ti.App.fireEvent('cage/video/progressbar/finished',{'index':item_index});
 
 	            });

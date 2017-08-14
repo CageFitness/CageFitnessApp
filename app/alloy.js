@@ -34,7 +34,7 @@ Alloy.Globals.XHROptions = {
 
 Alloy.Globals.buzz = Ti.Media.createSound({url:"media/alarm.mp3"});
 
-function playBuzz(){
+Alloy.Globals.playBuzz = function(){
 	Alloy.Globals.buzz.play();
 }
 
