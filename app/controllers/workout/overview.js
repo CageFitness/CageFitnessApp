@@ -37,7 +37,7 @@ var duration = args.duration || 30;
 var items = [];
 var PLAYING=0;
 // Ti.API.info('CONFIG.OVERVIEW.DURATION.FIRST', args.first_slide);
-
+var _WKT = args.workout_window;
 
 // gets first slide duration or normal oversion duration from configuration
 var overview_duration = (args.first_slide ? args.config.acf.duration_first : args.config.acf.duration_break );
@@ -73,9 +73,17 @@ if(args.first_slide){
 
 function triggerFirstSlide(){
 	Ti.API.info('OVERVIEW.FIRST.SLIDE: ',args.first_slide);
-	if(args.first_slide){
+	Ti.API.info('************************************************************************************');
+	Ti.API.warn('OVERVIEW.FIRST.SLIDE.WORKOUT.WINDOW.AWARE:', _WKT);
+	Ti.API.info('************************************************************************************');
+
+	if(args.first_slide ){
+
 		startCounter();
 		Ti.App.removeEventListener('/cage/workout/start',initialize);
+		
+
+
 	}
 }
 
@@ -191,11 +199,9 @@ function startCounter() {
 	            clearInterval(Alloy.Globals.Timer);
 	            Ti.API.info('STOP.OVERVIEW!!!!');
 
-
 	            	Alloy.Globals.playBuzz();
-	            // Animation.fadeOut($.progressbar, 500, function() {
 	                Ti.App.fireEvent('cage/video/progressbar/finished',{'index':item_index});
-	            // });
+	            
 	        }
 	        var pr = Math.abs(Math.round(_PROGRESS * preview_timer));
 	        Ti.API.info('TIMER.GOING:',pr);

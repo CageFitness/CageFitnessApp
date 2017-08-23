@@ -86,6 +86,12 @@ function onSuccessOptionsCallback(e){
 function onSuccessUserCallback(e){
    Ti.API.info('USER.SUCESS.CB: ', e.data);
    Ti.App.Properties.setString('user', e.data );
+
+   
+   GA.trackEvent('user', 'login');
+   
+   Ti.API.warn('TRIMETHYL.USER.LOGIN.ACTION.CALLED: ');
+
    Ti.App.fireEvent('cage/login/authenticated');
    closeLogin();
 }

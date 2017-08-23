@@ -222,7 +222,7 @@ function onSuccessMyWorkout(e){
 			};
 		});
 		$.wlist.sections[0].setItems(items);
-		Ti.API.info('WKT.ITEMS:', my_wkt , items)
+		// Ti.API.info('WKT.ITEMS:', my_wkt , items)
 
 		// var section = $.wlist.sections[0];
 		// var item = section.getItemAt(0);

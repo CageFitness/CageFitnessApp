@@ -2,7 +2,7 @@
 <ti:app xmlns:ti="http://ti.appcelerator.org">
     <id>com.cagefitness.pro</id>
     <name>Cage Fitness Pro</name>
-    <version>1.6.12</version>
+    <version>1.6.14</version>
     <publisher>Cage Fitness Inc.</publisher>
     <url>http://lithiumlab.com</url>
     <description>not specified</description>
@@ -49,6 +49,7 @@
                 
                 
                 
+                
                 <!--<key>UIBackgroundModes</key>
 	            <array>
 	                <string>fetch</string>
@@ -71,6 +72,7 @@
         <module platform="iphone">br.com.arlsoft.progressbar</module>
         <module platform="iphone">de.marcelpociot.imagefromgif</module>
         <module platform="iphone">com.appcelerator.urlSession</module>
+        <module platform="iphone">ti.ga</module>
     </modules>
     <deployment-targets>
         <target device="android">false</target>

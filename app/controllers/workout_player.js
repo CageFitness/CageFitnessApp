@@ -83,14 +83,7 @@ function onDownloadComplete(e){
 	}
 
 }
-// Ti.App.iOS.addEventListener('downloadcompleted', onDownloadComplete);
 
-
-
-// 	{title:'Restart', cb:handleRoundNavigator, mode:'restart'},
-// 	{title:'Previous Round', cb:handleRoundNavigator, mode:'prev'},
-// 	{title:'Next Round', cb:handleRoundNavigator, mode:'next'},
-// ];
 
 
 	$.workout_player_buttons.addEventListener('click',function(e){
@@ -175,23 +168,6 @@ function closeIndicator(){
 
 
 
-// $.dlmanlabel.addEventListener('click',function(e){
-// 	Ti.API.info('====== DOWNLOAD.MANAGER ======');
-// 	var old_cache = cage_cache_dir;
-// 	var current_cache = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'cached');
-// 	Ti.API.info('==============================');
-// 	Ti.API.info(old_cache);
-// 	Ti.API.info(current_cache);
-// 	Ti.API.info('==============================');
-// 	Ti.API.info('==============================');
-// })
-
-
-// ===========================================
-
-
-
-
 // ===========================================
 
 function onVideoProgressBarFinished(e){
@@ -211,69 +187,7 @@ function scrollNextFromVideo(e) {
 	$.scrollable.scrollToView(e.index + 1);
 }
 
-// function ReportProgress(e) {
-// 	Ti.API.info('REPORT.PROGRESS.SHOULD.NOT.PLAY');
-// 	var p = calculateProgress();
 
-// 	if(!p.remaining>=1){
-// 		$.activity_wrapper.hide();
-// 		$.activity_indicator.hide();		
-// 		$.dlmanlabel.hide();		
-// 	}else{
-// 		$.dlmanlabel.text = [p.total,p.remaining,p.downloaded].join(' | ');
-// 		$.dlmanlabel.text = 'Loading...'+p.remaining;
-// 		$.activity_wrapper.show();
-// 		$.activity_indicator.show();
-// 		$.dlmanlabel.show();
-// 	}
-// 	// 
-// 	// xxxx
-// 	// Ti.API.info('EVENT_TYPE: ',e.type);
-// 	var ob ={};
-// 	// var text = e.downloadedBytes+'/'+e.totalBytes+' '+Math.round(progress)+'% '+e.bps+' bps';
-// 	ob.progress 		= e.downloadedBytes*100.0/e.totalBytes;
-// 	ob.percent 			= e.downloadedBytes+'/'+e.totalBytes;
-// 	ob.percent_pretty 	= Math.round(ob.progress)+'%';
-// 	ob.bps 				= e.bps;
-// 	ob.bps_pretty 		= e.bps+' bps';
-
-// 	updateManagerProgress(ob);
-
-
-// };
-
-
-
-
-// function updateManagerProgress(o){
-	
-// 	Ti.App.fireEvent('cage/downloadmanager/progress', {
-// 		'progress': o.progress,
-// 		'percent': o.percent,
-// 		'percent_pretty': o.percent_pretty,
-// 		'bps': o.bps,
-// 		'bps_pretty': o.bps_pretty,
-// 		'overall': calculateProgress()
-// 	});
-// }
-
-
-
-// function calculateProgress(){
-
-// 	var dlinfo = NappDownloadManager.getAllDownloadInfo();
-// 	var o = {}; 
-// 	if (_.size(dlinfo) > 0) {
-// 		var remaining = _.size(dlinfo)-1;
-// 		var o = {
-// 			'total': _.size(initial_dlinfo),
-// 			'remaining': remaining,
-// 			'downloaded': _.size(initial_dlinfo)  + ( -Math.abs(remaining) )
-// 		}	
-// 	}
-
-// 	return o;
-// }
 
 
 
@@ -351,31 +265,7 @@ function proccessWorkout(n){
 			if(i < _.size(iterator)-1){
 				rob.next = iterator[Number(i)+1];
 			}
-			// Ti.API.info( 'ITERATOR LEN: ' + _.size(iterator), (i < _.size(iterator)-1) );
 
-			
-			// addToDownloadSession({url:rob.video, filename:rob.filename});
-			// addToDownloadSession({url:rob.thumb, filename:rob.thumb_filename});
-			
-
-			// var vidtask = Alloy.Globals.SessionDownloader.downloadTask({url:rob.video, filename:rob.filename});
-			// var giftask = Alloy.Globals.SessionDownloader.downloadTask({url:rob.thumb, filename:rob.thumb_filename});
-			
-			// var ob = {};
-			// ob.task=vidtask;
-			// ob.url=rob.video;
-			// ob.filename=rob.filename;
-			// Alloy.Globals.WorkoutAssets.push(ob);
-
-			// var ob = {};
-			// ob.task=giftask;
-			// ob.url=rob.thumb;
-			// ob.filename=rob.thumb_filename;
-			// Alloy.Globals.WorkoutAssets.push(ob);			
-
-
-			// addFileToDownloadQueue(rob.filename, rob.video);
-			// addFileToDownloadQueue(rob.thumb_filename, rob.thumb);
 
 			addFileToDownloadQueue2(rob.filename, rob.video);
 			addFileToDownloadQueue2(rob.thumb_filename, rob.thumb);
@@ -406,7 +296,9 @@ function addAssetsToSessionDownloadManager(){
 	Ti.API.info('ALL.FILES.IN.CACHE? ',can_continue);
 	if(can_continue){
 		Ti.API.info('CAN.CONTINUE.TRIGGERED');
+
 		Ti.App.fireEvent('/cage/workout/start');
+
 	}
 	else{
 		$.downprogress.message="Adding Assets. Please wait...";
@@ -553,7 +445,7 @@ function prepareVideoOwl(data){
         	// Ti.API.info('ADDING.OVERVIEW:');
         	sob.winref=args.winref;
         	sob.scrollableref=$.scrollable;
-        	var overview_view = {type:'workout/overview',data:sob};
+        	var overview_view = {type:'workout/overview',data:sob, workout_window:$.mainView};
         	owl_views.push(overview_view);
         	// addWorkoutElement('workout/overview',sob);
 			// Adds Slide Information to Round Navigator
@@ -641,6 +533,10 @@ function onSuccessWorkoutCallback(e){
 	// proccessWorkout(data);
 	// prepareVideoOwl(exercises);
 	// addOwlElements(owl_views);
+	Ti.API.warn('BEFORE.GETTING.PROCESSED: ');
+	
+
+
 	Ti.API.info('GETTING.PROCESSED');
 	var processed = proccessWorkout(data);
 	Ti.API.info('GETTING.OWLED');
@@ -701,18 +597,7 @@ function startOverviewClock(){
 	Ti.API.info('STARTING.CLOCK');
 }
 
-// function addOverviewSlide(data){
-// 	data.cb=startOverviewClock;
-// 	data.winref = args.winref;
-// 	var overview = Alloy.createController('workout/overview', data);
-// 	$.scrollable.addView(overview.getView());	
-// }
 
-// function addVideoSlide(data){
-// 	data.winref = args.winref;
-// 	var slide = Alloy.createController('workout/video', data);
-// 	$.scrollable.addView(slide.getView());	
-// }
 
 function addOwlElements(items){
 	var owl_pages = [];
@@ -784,11 +669,7 @@ function scrollableViewDidScroll(e) {
     log.args('Ti.UI.ScrollableView did scroll to index ' + e.currentPage);
     var curr = $.scrollable.views[e.currentPage]
     Ti.App.fireEvent('cage/workout/slide/entered', { 'item': e.currentPage });
-    // lithiumlab
-    // startSlide(curr);
-    // cancelAllTimers();
-    // removeVideoFromLastSlide();
-    // startTimerAt(e.currentPage);
+
 }
 
 function validateButtons() {

@@ -35,11 +35,6 @@
                     <ActivityIndicator id="activity_indicator" />
                 </View>
             </View> -->
-
-
-
-
-
         </View>
     </View>
 </Alloy>

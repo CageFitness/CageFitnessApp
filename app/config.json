@@ -35,5 +35,8 @@
     "com.alcoapps.drawermenu": "*",
     "nl.fokkezb.infiniteScroll": "*",
     "nl.fokkezb.pullToRefresh": "*"
+  },
+  "T":{
+	"ga": {"ua":"UA-103322412-3", "log":true}
   }
 }

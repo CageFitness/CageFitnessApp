@@ -34,6 +34,7 @@ Alloy.Globals.XHROptions = {
 
 Alloy.Globals.buzz = Ti.Media.createSound({url:"media/alarm.mp3"});
 
+
 Alloy.Globals.playBuzz = function(){
 	Alloy.Globals.buzz.play();
 }
@@ -108,7 +109,7 @@ Ti.App.iOS.addEventListener('downloadcompleted', function(e) {
 
     if( task_completed && task_completed.filename ) {
 
-    	Ti.API.info('AFTER.ASKING:');
+    	Ti.API.info('AFTER.ASKING.101:');
 
     	var completed = _.size(_.where(Alloy.Globals.WorkoutAssets, {complete: true}));
 	    var file = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'cached/'+task_completed.filename);
@@ -163,6 +164,14 @@ Ti.App.iOS.addEventListener('sessioncompleted', function(e) {
     	if(completed>0 && completed===total){
     		Ti.API.info('ONSESSIONCOMPLETED: ' + JSON.stringify(e));
     		Ti.API.info(' ========== ALL DOWNLOADS COMPLETE, GO WORKOUT!!!!');
+    		
+    		
+
+    		// Re-enable workout player window close button here.
+
+
+
+
     		// Alloy.Globals.continueCageWorkout();
     		Ti.App.fireEvent('/cage/workout/start');
     		// session.finishTasksAndInvalidate();
@@ -199,6 +208,12 @@ Ti.API.info('===============');
 // Bootstrap Trimethyl
 T('trimethyl');
 var TUtil = T('util');
+var GA = T('ga');
+GA.setTrackerUA('UA-103322412-3');
+
+
+
+
 
 
 
