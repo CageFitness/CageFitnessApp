@@ -209,7 +209,7 @@ Ti.API.info('===============');
 T('trimethyl');
 var TUtil = T('util');
 var GA = T('ga');
-GA.setTrackerUA('UA-103322412-3');
+// GA.setTrackerUA('UA-103322412-3');
 
 
 

@@ -37,6 +37,6 @@
     "nl.fokkezb.pullToRefresh": "*"
   },
   "T":{
-	"ga": {"ua":"UA-103322412-3", "log":true}
+	"ga": {"ua":"UA-103322412-3"}
   }
 }

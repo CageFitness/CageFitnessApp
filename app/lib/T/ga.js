@@ -11,7 +11,7 @@
  */
 exports.config = _.extend({
 	ua: null,
-	log: false
+	log: true
 }, Alloy.CFG.T ? Alloy.CFG.T.ga : {});
 
 var Util = require('T/util');

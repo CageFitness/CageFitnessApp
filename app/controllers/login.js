@@ -88,8 +88,8 @@ function onSuccessUserCallback(e){
    Ti.App.Properties.setString('user', e.data );
 
    
-   GA.trackEvent('user', 'login');
-   
+   GA.trackEvent('user', 'login', 'uid', e.data.id);
+
    Ti.API.warn('TRIMETHYL.USER.LOGIN.ACTION.CALLED: ');
 
    Ti.App.fireEvent('cage/login/authenticated');
