@@ -41,16 +41,9 @@
                 <key>UIStatusBarStyle</key>
                 <string>UIStatusBarStyleDefault</string>
                 <key>NSPhotoLibraryUsageDescription</key>
-                <string>Stores Workout assets files for offline use</string>1
-                
-                
-                
-                
-                
-                
-                
-                
-                
+                <string>Stores Workout assets files for offline use</string>
+<!-- 				<key>NSAppleMusicUsageDescription</key>
+				<string>Stores Workout assets files for offline use</string> -->
                 
                 <!--<key>UIBackgroundModes</key>
 	            <array>
