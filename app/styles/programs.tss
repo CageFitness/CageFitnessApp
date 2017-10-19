@@ -26,6 +26,7 @@
 	// height:621,
 }
 "#butt_guts":{
+	// top:-200,
 	image:'images/programs/butt_guts.png',
 	// height:621,
 }
@@ -40,27 +41,48 @@
 	// height:621,
 }
 
+".action_btn":{
+	bottom:20,
+	width:"80%",
+	backgroundColor:"#000",
+	font: {
+		fontSize: 20,
+		fontFamily:'Helvetica Neue',
+	},
+	color:"#fff",
+
+}
+
 ".btn_container":{
 	// backgroundColor:'green',
 	width:'25%',
 	height:Ti.UI.SIZE,
+	// height:'143%',
 
 	
 	// left:10,
 	// right:10,
 	// layout:'horizontal',
 }
+".ratio":{
+	image:'images/programs/ratio.png',
+	right:10,
+}
 
 ".icon":{
 	// width:269,
 	// height:300,
-	// image:'images/icons/play.png?v=3242',
+	
 	backgroundColor:'#000',
+	backgroundImage:'images/programs/item_bg.jpg',
+	backgroundRepeat:true,
 	borderColor:'#000',
 	borderWidth:2,
 	borderRadius:4,	
+
 	// borderColor:'green',
 	// borderWidth:4,
+	top:0,
 	
 	right:10,
 }

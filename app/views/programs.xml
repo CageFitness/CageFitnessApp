@@ -4,17 +4,22 @@
         <Require type="view" src="header" customTitle="Programs" customImage="images/layout/programs.png" />
 
         <View class="help_list">
-            <View class="btn_container">
+            <View class="btn_container" onClick="programItemClick">
+            	<ImageView class="ratio"></ImageView>
             	<ImageView class="icon" id="butt_guts"></ImageView>
+            	<Button class="action_btn">SELECT EQUIPMENT</Button>
             </View>
-            <View class="btn_container">
+            <View class="btn_container" onClick="programItemClick">
             	<ImageView class="icon" id="next_level_athlete"></ImageView>
+            	<Button class="action_btn">COMING SOON</Button>
             </View>
-            <View class="btn_container">
+            <View class="btn_container" onClick="programItemClick">
             	<ImageView class="icon" id="endurance"></ImageView>
+            	<Button class="action_btn">COMING SOON</Button>
             </View>
-            <View class="btn_container">
+            <View class="btn_container" onClick="programItemClick">
             	<ImageView class="icon" id="strength_toning"></ImageView>
+            	<Button class="action_btn">COMING SOON</Button>
             </View>
         </View>
 
