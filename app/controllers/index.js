@@ -17,6 +17,7 @@ var profileView 	= controls.getProfileView();
 // var workoutView 	= controls.getWorkoutView();
 var externalView 	= controls.getExternalView();
 var consoleView 	= controls.getConsoleView();
+var programsView 	= controls.getProgramsView();
 // var customizerView 	= controls.getCustomizerView();
 
 
@@ -26,6 +27,7 @@ menuitems['menu_exercises']= {view:exerciseView};
 menuitems['menu_help']= {view:helpView};
 menuitems['menu_profile']= {view:profileView};
 menuitems['menu_console']= {view:consoleView};
+menuitems['menu_programs']= {view:programsView};
 // menuitems['menu_customizer']= {view:customizerView};
 
 // menuitems['menu_workouts']= {view:workoutView};

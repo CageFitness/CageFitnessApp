@@ -47,6 +47,9 @@
 "#rowProfile":{
 	backgroundImage: 'images/icons/profile.png'
 },
+"#rowPrograms":{
+	backgroundImage: 'images/icons/calendar.png'
+},
 "#rowExercises":{
 	backgroundImage: 'images/icons/exercises.png'
 },

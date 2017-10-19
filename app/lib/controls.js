@@ -12,6 +12,10 @@ exports.getMenuView =function(){
 //     return Alloy.createController('customizer');
 // };
 
+exports.getProgramsView =function(){
+    return Alloy.createController('programs');
+};
+
 exports.getConsoleView =function(){
     return Alloy.createController('console');
 };

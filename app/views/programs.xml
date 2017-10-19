@@ -1,0 +1,33 @@
+<Alloy>
+    <View id="mainView" class="page_wrapper">
+        <Require src="topbar"></Require>
+        <Require type="view" src="header" customTitle="Programs" customImage="images/layout/programs.png" />
+
+        <View class="help_list">
+            <View class="btn_container">
+            	<ImageView class="icon" id="butt_guts"></ImageView>
+            </View>
+            <View class="btn_container">
+            	<ImageView class="icon" id="next_level_athlete"></ImageView>
+            </View>
+            <View class="btn_container">
+            	<ImageView class="icon" id="endurance"></ImageView>
+            </View>
+            <View class="btn_container">
+            	<ImageView class="icon" id="strength_toning"></ImageView>
+            </View>
+        </View>
+
+    <!-- <View layout="vertical" top="10%" left="10%" right="10%">
+      <View layout="horizontal" height="150">
+        <View class=""  width="25%" left="0" backgroundColor="red" />
+        <View class=""  width="25%" left="0" backgroundColor="green" />
+        <View class=""  width="25%" left="0" backgroundColor="blue" />
+        <View class=""  width="25%" left="0" backgroundColor="yellow" />        
+      </View>
+    </View> -->
+
+
+    </View>
+</Alloy>
+

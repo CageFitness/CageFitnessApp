@@ -88,7 +88,7 @@ function onSuccessUserCallback(e){
    Ti.App.Properties.setString('user', e.data );
 
    
-   GA.trackEvent('user', 'login', 'uid', e.data.id);
+   GA.trackEvent('user', 'login');
 
    Ti.API.warn('TRIMETHYL.USER.LOGIN.ACTION.CALLED: ');
 

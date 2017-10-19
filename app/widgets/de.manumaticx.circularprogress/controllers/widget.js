@@ -9,6 +9,7 @@ var defaults = {
   backgroundColor: '#fff',
   progressColor: '#000',
   progressBackgroundColor: '#666',
+  progressBackgroundGradient: undefined,
   formatValue: function(v){return v;},
   showText: false
 };
@@ -67,9 +68,13 @@ function createView(_args){
 
   // layer colors
   $.progresslayer.backgroundColor = options.progressColor;
+  $.progresslayer.backgroundGradient = options.progressGradient;
   $.leftlayer.backgroundColor = options.progressBackgroundColor || options.backgroundColor;
+  $.leftlayer.backgroundGradient = options.progressBackgroundGradient;
   $.innerrotationlayer.backgroundColor = options.progressBackgroundColor || options.backgroundColor;
+  $.innerrotationlayer.backgroundGradient = options.progressBackgroundGradient;
   $.rightlayer.backgroundColor = options.progressColor;
+  $.rightlayer.backgroundGradient = options.progressGradient;
   $.centerlayer.backgroundColor = options.backgroundColor;
 
   // squares become circles like
@@ -137,7 +142,7 @@ function setValue(_value){
     value = _value;
     updateUi();
   } else {
-    Ti.API.info("[circularprogress]: value (was "+_value+") must be a number between 0 and 100");
+    Ti.API.error("[circularprogress]: value (was "+_value+") must be a number between 0 and 100");
   }
 }
 

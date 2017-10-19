@@ -37,6 +37,14 @@
 			</TableViewRow>
 
 
+			<TableViewRow class="tableRow" id="menu_programs">
+				<View id="rowContainer">
+					<View id="rowPrograms" class="rowIcon"/>
+					<Label id="rowLabel" class="rowLabel">Programs</Label>
+				</View>
+			</TableViewRow>
+
+
 
 			<TableViewRow class="tableRow" id="menu_help">
 				<View id="rowContainer">

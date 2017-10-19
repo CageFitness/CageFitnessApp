@@ -1,0 +1,100 @@
+// ".list_view_item":{
+// 	accessoryType:Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE,
+// }
+
+"#mainView":{
+	backgroundColor:"#f8f8f8",
+}
+
+".page_wrapper" : {
+  backgroundColor:'#f4f4f4'
+}
+".help_list":{
+	// backgroundColor:'red',
+	// backgroundColor:'#f8f8f8',
+	left:'10%',
+	right:'10%',
+	width:Ti.UI.FILL,
+	top:10,
+	height:Ti.UI.FILL,
+	layout:'horizontal'
+}
+
+
+"#next_level_athlete":{
+	image:'images/programs/next_level_athlete.png',
+	// height:621,
+}
+"#butt_guts":{
+	image:'images/programs/butt_guts.png',
+	// height:621,
+}
+"#endurance":{
+	image:'images/programs/endurance.png',
+	// height:621,
+}
+"#strength_toning":{
+	image:'images/programs/strength_toning.png',
+	// right:0,
+	// top:10,
+	// height:621,
+}
+
+".btn_container":{
+	// backgroundColor:'green',
+	width:'25%',
+	height:Ti.UI.SIZE,
+
+	
+	// left:10,
+	// right:10,
+	// layout:'horizontal',
+}
+
+".icon":{
+	// width:269,
+	// height:300,
+	// image:'images/icons/play.png?v=3242',
+	backgroundColor:'#000',
+	borderColor:'#000',
+	borderWidth:2,
+	borderRadius:4,	
+	// borderColor:'green',
+	// borderWidth:4,
+	
+	right:10,
+}
+// ".titleLabel": {
+// 	left: 15,
+// 	color: "red",
+// 	top:5,
+// 	bottom:5,
+// 	right:15,
+// }
+
+// ".detailLabel": {
+// 	right: 5,
+// 	color: "green",
+// 	font: {
+// 		fontWeight: "bold"	
+// 	}
+// }
+
+
+// ".htitle":{
+// 	font:{
+// 		fontWeight:'bold',
+// 		fontSize:20,
+// 	},
+// 	left:10,
+// 	rigth:10,
+// 	color:'#000',
+// 	backgroundColor:"#f8f8f8",
+// 	height:50,
+// 	width:Ti.UI.FILL,
+// }
+// ".list_header":{
+// 	backgroundColor:"#f8f8f8",
+// 	height:Ti.UI.SIZE,
+// 	width:Ti.UI.FILL,
+// }

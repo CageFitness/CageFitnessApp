@@ -2,7 +2,7 @@
 <ti:app xmlns:ti="http://ti.appcelerator.org">
     <id>com.cagefitness.pro</id>
     <name>Cage Fitness Pro</name>
-    <version>1.6.14</version>
+    <version>1.6.20</version>
     <publisher>Cage Fitness Inc.</publisher>
     <url>http://lithiumlab.com</url>
     <description>not specified</description>
@@ -50,6 +50,8 @@
                 
                 
                 
+                
+                
                 <!--<key>UIBackgroundModes</key>
 	            <array>
 	                <string>fetch</string>
@@ -80,7 +82,7 @@
         <target device="iphone">false</target>
         <target device="mobileweb">false</target>
     </deployment-targets>
-    <sdk-version>6.1.2.GA</sdk-version>
+    <sdk-version>6.2.2.GA</sdk-version>
     <plugins>
         <plugin version="1.0">ti.alloy</plugin>
         <!-- <plugin>hyperloop</plugin> -->
