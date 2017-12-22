@@ -194,6 +194,8 @@ function onSuccessMyWorkout(e){
 			return {
 				template:'ProfileListItem',
 				properties: {
+					height:60,
+					// backgroundColor:'red',
 					title: item.title.rendered,
 					id: item.id,
 					slug:item.slug,

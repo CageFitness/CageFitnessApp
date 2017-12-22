@@ -13,12 +13,19 @@ Ti.API.info('CAGE_URL:',cage_url, wtype);
 if(wtype=='exercise'){
 	$.main.add(Alloy.createController('exercise/full',{'video_data':video_data}).getView());
 }
+
 else if(wtype=='external'){
 	$.main.add(Alloy.createController('external',{'url':cage_url}).getView());
 }
+
+else if(wtype=='program'){
+	$.main.add(Alloy.createController('program/program').getView());	
+}
+
 else if(wtype=='customizer'){
 	$.main.add(Alloy.createController('customizer').getView());	
 }
+
 else{
 	$.main.add(Alloy.createController('workout_player', {winref: $.win}).getView());
 }

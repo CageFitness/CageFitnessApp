@@ -1,0 +1,34 @@
+<Alloy>
+	<View id="mainView" class="page_wrapper">
+        <Require src="topbar" window_type="modal"></Require>
+        <View id="pover_target"></View>
+        <View id="header_background" class="header_bg">
+            <View id="header_overlay"></View>
+            <Label id="header_title"></Label>
+        </View>
+        <View class="program_list">
+
+            <ListView id="program_list_view" onItemclick="handleListViewClick">
+                <Templates>
+                    <ItemTemplate name="WeekItemTemplate">
+                        <!-- <ImageView bindId="pic" id="list_icon" /> -->
+                        <Label bindId="main" class="titleLabel" />
+                        <Label bindId="sub" class="detailLabel" />
+                    </ItemTemplate>
+                </Templates>
+                <FooterView>
+                    <View id="addRoundBtn" backgroundColor="#DDD" height="Ti.UI.SIZE">
+                        <Label id="add_label"></Label>
+                    </View>
+                </FooterView>
+            </ListView>
+            
+        </View>
+	<OptionDialog id="dialog" destructive="0" title="Overwrite Workout?">
+        <Options>
+            <Option>Confirm</Option>
+            <Option>Cancel</Option>
+        </Options>
+    </OptionDialog>        
+    </View>
+</Alloy>

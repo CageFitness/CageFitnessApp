@@ -46,7 +46,7 @@
 	width:"80%",
 	backgroundColor:"#000",
 	font: {
-		fontSize: 20,
+		fontSize: 16,
 		fontFamily:'Helvetica Neue',
 	},
 	color:"#fff",

@@ -246,6 +246,7 @@ Ti.App.addEventListener('cage/goto/customizer',function(e){
 
 $.index.open();
 
+// DISABLE LOGIN WHILE TESTING
 Ti.App.fireEvent('cage/launch/login');
 
 

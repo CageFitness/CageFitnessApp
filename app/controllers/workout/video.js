@@ -215,6 +215,7 @@ var createVideoPlayer = function() {
 
 
     if (video != null) {
+    	Ti.API.info('VIDEO.TO.BE.CREATED:',video);
         $.full_video = Titanium.Media.createVideoPlayer({
             media: video,
             opacity: 0,

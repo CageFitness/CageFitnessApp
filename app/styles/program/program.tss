@@ -1,0 +1,261 @@
+
+".container" : {
+  
+}
+
+".header_bg":{
+	top:0,
+	width: Ti.UI.FILL,
+	// height: Ti.UI.FILL,
+	height: 60,
+	// backgroundColor:"#f5f5f5",
+	backgroundColor:"red"
+}
+"#header_overlay":{
+	width: Ti.UI.FILL,
+	height: Ti.UI.FILL,
+	// backgroundColor:"red",
+	opacity:0.5,
+    backgroundGradient: {
+            type: "linear",
+            startPoint: { x: "0%", y:"0%"},
+            endPoint:   { x: "0%", y:"100%"},
+            colors: [
+                { color: "#3C3C3C", offset: 0.0 },//302E2E
+                { color: "#696969", offset: 1.0 }
+            ]
+        }	
+}
+"#header_title":{
+	color:"white",
+    font: {
+        fontWeight: "normal",
+        fontSize:20
+    },
+
+}
+"#line":{
+	top:0,
+	width:Ti.UI.FILL,
+	height:8,
+	backgroundColor:'#d9e153'
+}
+
+
+
+
+
+
+
+"#activity_wrapper":{
+  height:100,
+  width:100,
+  backgroundColor: Alloy.CFG.styles.brandColor,
+  borderRadius:10,
+  borderWidth:0,
+  borderColor:'#787b40',
+  visible:true,
+  opacity:0,
+  // right:20,
+  top:'20%',
+  zIndex:1,
+  layout:'horizontal',
+
+}
+
+"#activity_indicator":{
+  color: Alloy.CFG.styles.brandColor,
+  font: {
+  	fontFamily:'Helvetica Neue',
+  	fontSize:26,
+  	fontWeight:'bold'
+  },
+  // message: 'Loading...',
+  style: Ti.UI.ActivityIndicatorStyle.BIG,
+  // top:0,
+  // left:0,
+  // height:Ti.UI.SIZE,
+  width:100,
+  height:100,
+  // indicatorDiameter:100,
+  indicatorColor:'#000',
+  autoStyle:true,
+  borderRadius:10,
+}
+
+
+
+
+
+
+
+
+"#editmode":{
+	left:0,
+	layout:'horizontal',
+	height:Ti.UI.SIZE,
+	width:Ti.UI.SIZE,
+	borderRadius:'50%',
+	// backgroundColor:'blue',
+}
+"#edit_mode_label":{
+	font:{
+		fontWeight:'bold',
+	},
+}
+
+"#insert_remove" : {
+	top:0,
+	width:200,
+    height:30,
+    left:0,
+    backgroundColor:'#000',
+    index:0,
+    // opacity:0,
+}
+
+"#program_btn_bar":{
+    backgroundColor:'#000',
+    style:Titanium.UI.iOS.SystemButtonStyle.BORDERED,
+    height:30,
+    // width:200,
+    right:0,
+    top:0,
+    // borderWidth:1,
+    // borderColor:'red',
+}
+
+"#pover_target" : {
+	top:0,
+	width:Ti.UI.FILL,
+    height:1,
+    backgroundColor:'#000',
+}
+
+"#list_icon" : {
+    width: 80,
+    height: 40,
+    left: 2,
+    borderColor:'#f8f8f8',
+    borderWidth:1,
+}
+
+
+
+".program_tool_btn":{
+	left:10,
+	backgroundColor:Alloy.CFG.styles.brandColor,
+	borderRadius:10,
+	height:Ti.UI.SIZE,
+	color:'#000'
+}
+
+"#addRoundBtn":{
+	top:10,
+	bottom:10,
+	left:10,
+	right:10,
+	backgroundColor:'#ddd',
+}
+
+"#add_label":{
+	// backgroundColor:Alloy.CFG.styles.brandColor,
+	top:15,
+	bottom:15,
+	// left:15,
+	// right:15,
+	borderRadius:10,
+	font:{
+		fontWeight:'bold',
+		fontSize:16,
+	},
+	height:Ti.UI.SIZE,
+
+}
+
+
+
+"#tools":{
+	width:Ti.UI.FILL,
+	backgroundColor:'white',
+	height:Ti.UI.SIZE,
+}
+
+"#pane_right":{
+	top:10,
+	bottom:10,
+	left:10,
+	right:10,	
+	height:Ti.UI.SIZE,
+	width:Ti.UI.FILL,
+
+}
+
+"#pane_left":{
+	width:'50%',
+	// backgroundColor:'blue',
+	layout:'horizontal',
+	height:Ti.UI.SIZE,
+}
+
+"#program_search":{
+	barColor:'#ddd',
+	borderColor:'#ddd',
+}
+
+"#program_list_view":{
+	pruneSectionsOnEdit:true,
+	height:Ti.UI.FILL,
+	top:0,
+	bottom:0,
+
+}
+
+".list_view_item":{
+	// accessoryType:Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE,
+}
+
+"#mainView":{
+	backgroundColor:"#f8f8f8",
+	// backgroundColor:"red",
+	layout:'vertical',
+}
+
+".page_wrapper" : {
+  backgroundColor:'#f4f4f4'
+}
+
+".program_list":{
+
+	// zIndex:1,
+	backgroundColor:'#f8f8f8',
+	// backgroundColor:'green',
+	left:'20%',
+	right:'20%',
+	width:Ti.UI.FILL,
+	top:0,
+	height:Ti.UI.FILL,
+	// layout:'vertical'
+    // clipMode:Titanium.UI.iOS.CLIP_MODE_DISABLED,
+	layout:'vertical',
+}
+
+".titleLabel": {
+	left: 10,
+	// color: "red",
+	// top:5,
+	// bottom:5,
+	height:40,
+	right:50,
+}
+
+".detailLabel": {
+	// top:5,
+	height:40,
+	right: 10,
+	color: "gray",
+	font: {
+		fontWeight: "bold",
+		fontSize:12,	
+	}
+}

@@ -1,0 +1,15 @@
+
+".container" : {
+	width:Ti.UI.FILL,
+	height:Ti.UI.SIZE,
+	backgrounColor:'yellow',
+}
+".programHeader":{
+	top: 0,
+	left: 10,
+	width: Ti.UI.FILL,
+	color: '#d9e153',
+	font: {fontSize:18, fontWeight:'bold'},
+	backgrounColor: 'pink',
+	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
+}
