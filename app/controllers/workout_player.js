@@ -257,6 +257,7 @@ function proccessWorkout(n){
 			rob.video = iterator[i].acf.video.url;
 			rob.filename = iterator[i].acf.video.filename;
 
+
 			rob.thumb = iterator[i].acf.video_animated_thumbnail.url;
 			rob.thumb_filename = iterator[i].acf.video_animated_thumbnail.filename;
 
@@ -527,13 +528,18 @@ function onSuccessWorkoutCallback(e){
 	// var parsed = JSON.parse(e);
 	// Ti.API.info(e);
 	var data = e.data.acf.round_selector;
+	var program_allowed = e.data.acf.program_allowed;
+
+
 
 	
 
 	// proccessWorkout(data);
 	// prepareVideoOwl(exercises);
 	// addOwlElements(owl_views);
-	Ti.API.warn('BEFORE.GETTING.PROCESSED: ');
+	var can_customize = program_allowed ? false : true;
+	$.customizer_btn_bar.visible = can_customize;
+	Ti.API.warn('BEFORE.GETTING.PROCESSED.PROGRAM.ALLOWED: ',can_customize);
 	
 
 

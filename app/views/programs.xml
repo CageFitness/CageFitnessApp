@@ -3,24 +3,63 @@
         <Require src="topbar"></Require>
         <Require type="view" src="header" customTitle="Programs" customImage="images/layout/programs.png" />
         <View class="help_list">
-            <View class="btn_container" onClick="programItemClick">
+
+            <View class="btn_container">
                 <ImageView class="ratio"></ImageView>
-                <ImageView class="icon" id="butt_guts"></ImageView>
-                <Button class="action_btn">SELECT EQUIPMENT</Button>
+                <View class="icon">
+                	<ImageView id="butt_guts"></ImageView>
+                </View>
+                <View class="btns_container">
+					<Button id="bg_1" programId="13742" term="body-weight" onClick="programItemClick" class="action_btn">BODY WEIGHT</Button>
+                	<Button id="bg_2" programId="14382" term="bands" onClick="programItemClick" class="action_btn">BANDS</Button>
+                	<Button id="bg_3" programId="14421" term="bags" onClick="programItemClick" class="action_btn">BAGS</Button>
+                	<Button id="bg_4" programId="14458" term="med-ball" onClick="programItemClick" class="action_btn">MEDICINE BALL</Button>                	
+                </View>
             </View>
-            <View class="btn_container" onClick="programItemClick">
-                <ImageView class="icon" id="next_level_athlete"></ImageView>
-                <Button class="action_btn">SELECT EQUIPMENT</Button>
+
+            <View class="btn_container">
+                <ImageView class="ratio"></ImageView>
+                <View class="icon">
+                	<ImageView id="strength_toning"></ImageView>
+                </View>            	
+                <View class="btns_container">
+					<Button id="st_1" programId="14497" term="body-weight" onClick="programItemClick" class="action_btn">BODY WEIGHT</Button>
+                	<Button id="st_2" programId="14572" term="bands" onClick="programItemClick" class="action_btn">BANDS</Button>
+                	<Button id="st_3" programId="14596" term="bags" onClick="programItemClick" class="action_btn">BAGS</Button>
+                	<Button id="st_4" programId="14573" term="med-ball" onClick="programItemClick" class="action_btn">MEDICINE BALL</Button>                	
+                </View>
             </View>
-            <View class="btn_container" onClick="programItemClick">
-                <ImageView class="icon" id="endurance"></ImageView>
-                <Button class="action_btn">SELECT EQUIPMENT</Button>
+
+            <View class="btn_container">
+	            <ImageView class="ratio"></ImageView>
+	            <View class="icon">
+	            	<ImageView id="next_level_athlete"></ImageView>
+	            </View>            	
+                <View class="btns_container">
+					<Button id="nla_1" programId="300" term="body-weight" class="action_btn">COMING SOON...</Button>
+					<!-- <Button id="nla_1" programId="300" term="body-weight" onClick="programItemClick" class="action_btn">BODY WEIGHT</Button> -->
+                	<!-- <Button id="nla_2" programId="400" term="bands" onClick="programItemClick" class="action_btn">BANDS</Button> -->
+                	<!-- <Button id="nla_3" programId="500" term="bags" onClick="programItemClick" class="action_btn">BAGS</Button> -->
+                	<!-- <Button id="nla_4" programId="600" term="med-ball" onClick="programItemClick" class="action_btn">MEDICINE BALL</Button>                	 -->
+                </View>          
             </View>
-            <View class="btn_container" onClick="programItemClick">
-                <ImageView class="icon" id="strength_toning"></ImageView>
-                <Button class="action_btn">SELECT EQUIPMENT</Button>
+
+            <View class="btn_container">
+	            <ImageView class="ratio"></ImageView>
+	            <View class="icon">
+	            	<ImageView id="endurance"></ImageView>
+	            </View>                	
+                <View class="btns_container">
+					<Button id="end_1" programId="300" term="body-weight" class="action_btn">COMING SOON...</Button>
+					<!-- <Button id="end_1" programId="300" term="body-weight" onClick="programItemClick" class="action_btn">BODY WEIGHT</Button> -->
+                	<!-- <Button id="end_2" programId="400" term="bands" onClick="programItemClick" class="action_btn">BANDS</Button> -->
+                	<!-- <Button id="end_3" programId="500" term="bags" onClick="programItemClick" class="action_btn">BAGS</Button> -->
+                	<!-- <Button id="end_4" programId="600" term="med-ball" onClick="programItemClick" class="action_btn">MEDICINE BALL</Button>                	 -->
+                </View>      
             </View>
+
         </View>
+
         <!-- <View layout="vertical" top="10%" left="10%" right="10%">
           <View layout="horizontal" height="150">
             <View class=""  width="25%" left="0" backgroundColor="red" />
@@ -29,5 +68,6 @@
             <View class=""  width="25%" left="0" backgroundColor="yellow" />        
           </View>
         </View> -->
+        
     </View>
 </Alloy>

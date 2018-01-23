@@ -6,7 +6,7 @@
     "validate_path": "/wp-json/jwt-auth/v1/token/validate",
     "workout_path": "/wp-json/wp/v2/workout",
     "program_path": "/wp-json/wp/v2/program",
-    "program_path_test": "/wp-json/wp/v2/program/13742",
+    "program_path_test": "/wp-json/wp/v2/program/",
     "exercise_path": "/wp-json/wp/v2/exercise",
     "workout_test_path": "/wp-json/acf/v3/workout/13217",
     "workout_final_path": "/wp-json/acf/v3/workout/",

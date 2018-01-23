@@ -10,6 +10,6 @@
 	width: Ti.UI.FILL,
 	color: '#d9e153',
 	font: {fontSize:18, fontWeight:'bold'},
-	backgrounColor: 'pink',
+	backgrounColor: 'blue',
 	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
 }

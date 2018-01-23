@@ -42,7 +42,8 @@
 }
 
 ".action_btn":{
-	bottom:20,
+	top:20,
+	height:30,
 	width:"80%",
 	backgroundColor:"#000",
 	font: {
@@ -52,13 +53,19 @@
 	color:"#fff",
 
 }
-
+".btns_container":{
+	layout: 'vertical',
+	// backgroundColor: 'red',
+	height: Ti.UI.SIZE,
+	right:10,
+	bottom: 10,
+}
 ".btn_container":{
 	// backgroundColor:'green',
 	width:'25%',
-	height:Ti.UI.SIZE,
-	// height:'143%',
-
+	// height:Ti.UI.SIZE,
+	height:450,
+	clipMode: Ti.UI.iOS.CLIP_MODE_ENABLED,
 	
 	// left:10,
 	// right:10,
@@ -79,10 +86,10 @@
 	borderColor:'#000',
 	borderWidth:2,
 	borderRadius:4,	
-
+	clipMode: Ti.UI.iOS.CLIP_MODE_ENABLED,
 	// borderColor:'green',
 	// borderWidth:4,
-	top:0,
+	top:-230,
 	
 	right:10,
 }

@@ -23,7 +23,7 @@
                 <ButtonBar id="round_btn_bar"></ButtonBar>
             </View>
             <View class="bar_wrap_right">
-                <ButtonBar id="customizer_btn_bar">
+                <ButtonBar visible="false" id="customizer_btn_bar">
                 	<Labels>
                 		<Label class="player_btn" id="c_customize">CUSTOMIZE</Label>
                 	</Labels>

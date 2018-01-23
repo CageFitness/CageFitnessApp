@@ -94,7 +94,7 @@ function loadProgram() {
     var updatedCall = Alloy.Globals.updateWorkout ? '?rn=' + getRandomInt(0, 999999999) : '';
     Ti.API.info('ATTEMPT.LOAD.PROGRAM', wurl);
 
-    xhr.GET(wurl + updatedCall, onSuccessProgram, onErrorProgramCallback, Alloy.Globals.XHROptions);
+    xhr.GET(wurl + args.programId + updatedCall, onSuccessProgram, onErrorProgramCallback, Alloy.Globals.XHROptions);
     Alloy.Globals.updateWorkout = 0;
 }
 
@@ -106,7 +106,7 @@ function onErrorProgramCallback(e) {
 
 function onSuccessProgram(e) {
     var wkt = Ti.App.Properties.getString('my_workout');
-    $.add_label.applyProperties({ text: 'LOADED' });
+    $.add_label.applyProperties({ text: '' });
     var copied = e.data.acf.week[0];
     Ti.API.info('ROUND.DATA.NOT.CUSTOMIZER:');
 
@@ -299,10 +299,11 @@ function handlesCheck(e) {
 var last = {};
 
 function handleListViewClick(e) {
-Ti.API.info('HANDLE.LIST.VIEW.CLICK', e);
-    // var sec = $.program_list_view.sections[e.sectionIndex];
-    // var row = sec.getItemAt(e.itemIndex);
-    // var exercise = row.properties.launch_data;
+Ti.API.info('HANDLE.LIST.VIEW.CLICK.FROM.PROGRAMxxx', e);
+    var sec = $.program_list_view.sections[e.sectionIndex];
+    var row = sec.getItemAt(e.itemIndex);
+    var workout = row.properties.launch_data;
+    Ti.API.warn('WORKOUT.CLICK:', workout.ID);
     // Ti.API.info('ROW.DATA:', row.wo_exercise_number, row.wo_equipment, row.wo_round_type);
     // Ti.API.info('REPLACE.INTENT:', e, e.sectionIndex, e.itemIndex, e.source, row.properties.launch_data.ID);
     // last = {
@@ -316,6 +317,12 @@ Ti.API.info('HANDLE.LIST.VIEW.CLICK', e);
 
 
     // replaceExercise(e, 'replace');
+
+	Ti.App.Properties.setString('my_workout', workout.ID);
+	var wkt = Ti.App.Properties.getString('my_workout');
+	Ti.App.fireEvent('cage/launch/window',{key:'menu_workouts', 'workout_id':wkt});		
+
+
 }
 
 function getCurrentMode(mode) {

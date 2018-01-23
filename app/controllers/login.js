@@ -24,7 +24,7 @@ function cageAuthenticate(e){
 		username: $.username.value,
 		password: $.password.value,
 	}
-	Ti.API.info('HELO', $.username.value,  $.password.value);
+	// Ti.API.info('HELO', $.username.value,  $.password.value);
 	showIndicator(e);
     var request = xhr.POST(Alloy.CFG.api_url +'/wp-json/jwt-auth/v1/token', login_data, onSuccessCallback, onErrorCallback,opts);
     // Ti.API.info('REQUEST.INFO',request);

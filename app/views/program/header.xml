@@ -1,5 +1,5 @@
 <Alloy>
 	<View class="container">
-		<Label class="programHeader">WEEK #1</Label>
+		<Label id="header_title" class="programHeader">WEEK #1</Label>
 	</View>
 </Alloy>

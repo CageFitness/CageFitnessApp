@@ -19,7 +19,7 @@ else if(wtype=='external'){
 }
 
 else if(wtype=='program'){
-	$.main.add(Alloy.createController('program/program').getView());	
+	$.main.add(Alloy.createController('program/program', {'programId':args.programId}).getView());	
 }
 
 else if(wtype=='customizer'){
