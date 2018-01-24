@@ -4,8 +4,8 @@ var args = $.args;
 var a = Ti.UI.createAnimation({duration: 700, top:-200});
 var b = Ti.UI.createAnimation({duration: 300, top:0});
 
-var config = JSON.parse( Ti.App.Properties.getString('config') );
-Ti.API.warn('ROUND.CONFIGS.PROGRAMS:',config.acf.programs);
+// var config = JSON.parse( Ti.App.Properties.getString('config') );
+// Ti.API.warn('ROUND.CONFIGS.PROGRAMS:',config);
 
 
 var newtop = Ti.Platform.displayCaps.platformHeight + 20;

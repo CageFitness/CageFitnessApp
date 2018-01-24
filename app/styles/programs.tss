@@ -14,7 +14,7 @@
 	// backgroundColor:'#f8f8f8',
 	left:'10%',
 	right:'10%',
-	width:Ti.UI.FILL,
+	width:'80%',
 	top:10,
 	height:Ti.UI.FILL,
 	layout:'horizontal'
@@ -62,7 +62,7 @@
 }
 ".btn_container":{
 	// backgroundColor:'green',
-	width:'25%',
+	width:'24%',
 	// height:Ti.UI.SIZE,
 	height:450,
 	clipMode: Ti.UI.iOS.CLIP_MODE_ENABLED,
