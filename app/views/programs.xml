@@ -33,29 +33,29 @@
             <View class="btn_container">
 	            <ImageView class="ratio"></ImageView>
 	            <View class="icon">
-	            	<ImageView id="next_level_athlete"></ImageView>
-	            </View>            	
+	            	<ImageView id="endurance"></ImageView>
+	            </View>                	
                 <View class="btns_container">
-					<Button id="nla_1" programId="300" term="body-weight" class="action_btn">COMING SOON...</Button>
-					<!-- <Button id="nla_1" programId="300" term="body-weight" onClick="programItemClick" class="action_btn">BODY WEIGHT</Button> -->
-                	<!-- <Button id="nla_2" programId="400" term="bands" onClick="programItemClick" class="action_btn">BANDS</Button> -->
-                	<!-- <Button id="nla_3" programId="500" term="bags" onClick="programItemClick" class="action_btn">BAGS</Button> -->
-                	<!-- <Button id="nla_4" programId="600" term="med-ball" onClick="programItemClick" class="action_btn">MEDICINE BALL</Button>                	 -->
-                </View>          
+					<!-- <Button id="end_1" programId="300" term="body-weight" class="action_btn">COMING SOON...</Button> -->
+					<Button id="end_1" programId="15139" term="body-weight" onClick="programItemClick" class="action_btn">BODY WEIGHT</Button>
+                	<Button id="end_2" programId="13746" term="bands" onClick="programItemClick" class="action_btn">BANDS</Button>
+                	<Button id="end_3" programId="15140" term="bags" onClick="programItemClick" class="action_btn">BAGS</Button>
+                	<Button id="end_4" programId="15141" term="med-ball" onClick="programItemClick" class="action_btn">MEDICINE BALL</Button>                	
+                </View>      
             </View>
 
             <View class="btn_container">
 	            <ImageView class="ratio"></ImageView>
 	            <View class="icon">
-	            	<ImageView id="endurance"></ImageView>
-	            </View>                	
+	            	<ImageView id="next_level_athlete"></ImageView>
+	            </View>            	
                 <View class="btns_container">
-					<Button id="end_1" programId="300" term="body-weight" class="action_btn">COMING SOON...</Button>
-					<!-- <Button id="end_1" programId="300" term="body-weight" onClick="programItemClick" class="action_btn">BODY WEIGHT</Button> -->
-                	<!-- <Button id="end_2" programId="400" term="bands" onClick="programItemClick" class="action_btn">BANDS</Button> -->
-                	<!-- <Button id="end_3" programId="500" term="bags" onClick="programItemClick" class="action_btn">BAGS</Button> -->
-                	<!-- <Button id="end_4" programId="600" term="med-ball" onClick="programItemClick" class="action_btn">MEDICINE BALL</Button>                	 -->
-                </View>      
+					<Button id="nla_1" programId="300" term="body-weight" class="action_btn">COMING SOON...</Button>
+					<!-- <Button id="nla_1" programId="15139" term="body-weight" onClick="programItemClick" class="action_btn">BODY WEIGHT</Button> -->
+                	<!-- <Button id="nla_2" programId="13746" term="bands" onClick="programItemClick" class="action_btn">BANDS</Button> -->
+                	<!-- <Button id="nla_3" programId="15140" term="bags" onClick="programItemClick" class="action_btn">BAGS</Button> -->
+                	<!-- <Button id="nla_4" programId="15141" term="med-ball" onClick="programItemClick" class="action_btn">MEDICINE BALL</Button>                	 -->
+                </View>          
             </View>
 
         </View>
