@@ -2,9 +2,12 @@
     <View id="mainView">
         <Require src="topbar" window_type="modal"></Require>
         <View id="title_wrapper">
-        	<Label id="title">Hello World</Label>
+        	<Label id="title">Cage Fitness Video</Label>
+        </View>
+        <View id="full_video_wrapper">
+        	<!-- <VideoPlayer id="videoPlayer" ns="Ti.Media" />	 -->
         </View>        
-        <VideoPlayer id="videoPlayer" ns="Ti.Media" />
+        
     </View>
 </Alloy>
 
