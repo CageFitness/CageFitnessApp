@@ -67,7 +67,7 @@ var resetCounter = function(){
 
 var pauseCounter = function(){
 	stopped_at = Alloy.Globals.Timer;
-	Ti.API.info('STOPPING.AT: ',stopped_at );
+	Ti.API.info('STOPPING.AT.PAUSE.COUNTER: ',stopped_at );
 	clearInterval(Alloy.Globals.Timer);
 }
 

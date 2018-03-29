@@ -113,8 +113,9 @@ function closeLogin(){
         $.login.close();
 
 }
-
-// cageAuthenticate();
+$.username.value = 'app';
+$.password.value = 'op.';
+cageAuthenticate();
 
 
 

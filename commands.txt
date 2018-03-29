@@ -1,0 +1,3 @@
+#TN recipe for liveview debuggin development on device ipad
+tn save lithium --lithium-s-ipad --deploy-type development --log-level debug --skip-js-minify --pp-uuid fac31be7-114d-43ac-8d05-e777df767f19 --liveview
+

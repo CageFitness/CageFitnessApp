@@ -554,6 +554,10 @@ function onSuccessWorkoutCallback(e){
 	Ti.API.info('ADDING.OWLED.TO.DOWNLOADS');
 	var owledElements = addOwlElements(owled);
 	Ti.API.info( 'ADDING.OWLED.ELEMENTS', _.size(owledElements) );
+
+	// Cache Size Update
+	$.scrollable.cacheSize = _.size(owledElements);
+
 	var setted_views = $.scrollable.setViews(owledElements);
 	Ti.API.info('SETTED.VIEWS.IN.OWL', _.size(setted_views) );
 	// Ti.API.info('ATTEMPT.AFTER.OWL');
