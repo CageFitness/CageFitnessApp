@@ -217,7 +217,7 @@ var createVideoPlayer = function() {
     if (video != null) {
     	Ti.API.info('VIDEO.TO.BE.CREATED:',video);
         $.full_video = Titanium.Media.createVideoPlayer({
-            media: video,
+            url: video,
             opacity: 0,
             autoplay: false,
             backgroundColor: '#fff',
@@ -228,7 +228,8 @@ var createVideoPlayer = function() {
             mediaControlStyle: Titanium.Media.VIDEO_CONTROL_NONE,
             repeatMode: Titanium.Media.VIDEO_REPEAT_MODE_ONE,
             width:Ti.UI.FILL,
-            sourceType:Ti.Media.VIDEO_SOURCE_TYPE_FILE,
+            // sourceType:Ti.Media.VIDEO_SOURCE_TYPE_FILE,
+            showsControls:false,
 
         });
 
