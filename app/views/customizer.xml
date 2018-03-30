@@ -36,6 +36,7 @@
     <OptionDialog id="dialog" destructive="0" title="Overwrite Workout?">
         <Options>
             <Option>Confirm</Option>
+            <Option>Save As...</Option>
             <Option>Cancel</Option>
         </Options>
     </OptionDialog>

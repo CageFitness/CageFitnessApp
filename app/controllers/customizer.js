@@ -147,6 +147,12 @@ function loadWorkout() {
     Alloy.Globals.updateWorkout = 0;
 }
 
+
+function SaveAsWorkout(){
+	Ti.API.info('SAVE.AS.WORKOUT');
+	gatherCurrentSelectionClone($.customizer_list_view, to_clone.title);
+}
+
 $.dialog.addEventListener('click', function(e) {
     Ti.API.info('DIALOG.RETURNED:', e);
     if (e.index === 0) {
@@ -156,6 +162,15 @@ $.dialog.addEventListener('click', function(e) {
         gatherCurrentSelection($.customizer_list_view);
         Alloy.Globals.updateWorkout = 0;
     }
+
+    else if (e.index === 1){
+	    
+	    Ti.API.info('BEFORE.POPOVER.WORKOUT.CLONE');
+	    to_clone = { id:null, title:'Duplicated Workout'};
+	    var new_workout_name_popover = Alloy.createController('builder/create', {follow:SaveAsWorkout, data:to_clone} ).getView();
+	    new_workout_name_popover.show({ animated:true, view:$.pover_target});
+    }
+
 });
 
 
@@ -167,7 +182,7 @@ function saveWorkout(e) {
     var result = '';
     _.each($.customizer_list_view.sections, function(section, index) {
         var experRound = _.size(section.getItems());
-        result
+        // result
         Ti.API.info('THIS.SECTION.HAS:', experRound);
         result += '\nROUND ' + getIndex(index) + ': ' + experRound + ' exercises.';
         review.push(experRound);
@@ -736,6 +751,93 @@ function scrollToLast(e) {
 	    $.customizer_list_view.scrollToItem(last_section_index, last_item_index, { animated: true });
     }
 }
+
+
+
+
+function onSuccessClone(e) {
+    Ti.API.info('CLONING.SUCEEDED: ', e.status, e.data);
+    Ti.App.fireEvent('cage/topbar/menu_button/close', {window_type:'modal'});
+    Ti.App.fireEvent('cage/profile/reload');
+}
+
+
+
+
+
+
+function send_updateCustomizerClone(selection_data) {
+
+    $.add_label.applyProperties({ text: 'SAVING WORKOUT...' });
+
+    _.each($.customizer_list_view.getSections(), function(section, index) {
+        Ti.API.info('ATTEMPT TO REMOVE', section);
+        $.customizer_list_view.deleteSectionAt(_.last($.customizer_list_view.getSections()));
+    });
+
+    xhr.POST('https://cagefitness.com/wp-json/app/v1/my-workout', JSON.stringify(selection_data), onSuccessClone, onErrorCustomizerEdit);
+
+}
+
+
+
+function gatherCurrentSelectionClone(listview, newtitle) {
+
+    var sections = $.customizer_list_view.getSections();
+
+    var sel = {
+        filter: 'red',
+        // build: 'auto',
+        title: newtitle,
+        create:'true',
+        build: 'custom',
+        update: 'false',
+        rounds: _.map(listview.getSections(), function(round, sectionIndex) {
+
+            var first = $.customizer_list_view.sections[sectionIndex].getItemAt(0);
+            var type = Object(optType(first.properties.wo_round_type.value || first.properties.wo_round_type.term_taxonomy_id));
+            var equipment = Object(optEquipment(first.properties.wo_equipment.value || first.properties.wo_equipment.term_taxonomy_id));
+
+            // Ti.API.info('GRABBING.ROUND.INFO:', first.properties['wo_round_type']);
+
+            return {
+                round: getIndex(sectionIndex),
+                roundTitle: type.name,
+                numexercises: _.size(round.getItems()),
+                roundType: type.slug,
+                equipment: equipment.slug,
+                customizer: _.map(round.getItems(), function(exercise, index) {
+                    return exercise.properties.launch_data.id || exercise.properties.launch_data.ID;
+                })
+            };
+        })
+    }
+
+    Ti.API.warn('SELECTION.DATA.DYNAMIC.CLONE', sel);
+    send_updateCustomizerClone(sel);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function gatherCurrentSelection(listview) {
     // round.properties.launch_data

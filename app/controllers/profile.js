@@ -29,6 +29,7 @@ function handleListViewClick(e){
 
 
 function init_profile(){
+
 	user = JSON.parse( Ti.App.Properties.getString('user') ) || {};
 	$.user_complete_name.text = user.name;
 	$.user_username.text = user.slug;
@@ -59,38 +60,6 @@ function getMyWorkouts(usr){
 }
 
 
-
-
-
-// $.refresher.addEventListener('click',function(e){
-// 	Ti.API.info('ENABLE.FEATURE',e, e.source);
-// 		var mode = 'edit';
-// 		_.each($.wlist.sections,function(section,index){
-// 			var sec = $.wlist.sections[index];
-// 			var els = sec.getItems();
-// 			_.each(els,function(item){
-// 				// Ti.API.info('==== ITEM:',item.properties.launch_data.ID);
-				
-// 				if(mode=='insert'){
-// 					item.properties.canEdit=false;
-// 					item.properties.canInsert=true;
-// 				}
-// 				else if(mode=='edit'){
-// 					item.properties.canEdit=true;
-// 					item.properties.canInsert=false;
-// 				}
-// 				else if(mode=='replace'){
-// 					item.properties.canEdit=false;
-// 					item.properties.canInsert=false;
-// 				}
-// 			});
-// 			sec.replaceItemsAt(0,_.size(els),els);
-// 		});
-
-// 		$.wlist.canEdit=true;
-// 		// $.wlist.setEditing(true);
-
-// });
 
 
 
@@ -157,16 +126,7 @@ $.wlist.addEventListener('editaction',function(e){
 
 });
 
-// $.wlist.addEventListener('editactions',function(e){
-// 	Ti.API.info('MY.WORKOUTS.TRASH.TRIGGERED',e);
-// 	var item = e.section.getItemAt(e.itemIndex);
-// 	if(item){
-// 		Ti.API.warn('DELETING.WITH.ID:',item.properties.id);
-// 		var prepared = { id:item.properties.id};
-// 		var data = JSON.stringify(prepared);
-// 		xhr.POST('https://cagefitness.com/wp-json/app/v1/workout/trash', data, onWorkoutTrashSuccess, onErrorCallbackSilent);
-// 	}
-// });
+
 
 
 function onSuccessMyWorkout(e){
@@ -224,13 +184,7 @@ function onSuccessMyWorkout(e){
 			};
 		});
 		$.wlist.sections[0].setItems(items);
-		// Ti.API.info('WKT.ITEMS:', my_wkt , items)
 
-		// var section = $.wlist.sections[0];
-		// var item = section.getItemAt(0);
-		// Ti.API.info('LITEM',item);
-		// item.title = my.title.rendered+ '-->'+my.date;
-		// Ti.API.info('LITEM',item.title);
 
 	}
 }
