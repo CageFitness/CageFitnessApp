@@ -446,7 +446,7 @@ function prepareVideoOwl(data){
         	// Ti.API.info('ADDING.OVERVIEW:');
         	sob.winref=args.winref;
         	sob.scrollableref=$.scrollable;
-        	var overview_view = {type:'workout/overview',data:sob, workout_window:$.mainView};
+        	var overview_view = {type:'workout/overview',data:sob, winref:args.winref};
         	owl_views.push(overview_view);
         	// addWorkoutElement('workout/overview',sob);
 			// Adds Slide Information to Round Navigator
@@ -470,7 +470,7 @@ function prepareVideoOwl(data){
 		    sob.duration = getExerciseDuration(sob.exercise_number);
 		    sob.winref=args.winref;
 		    sob.scrollableref=$.scrollable;
-		    var video_view = {type:'workout/video',data:sob};
+		    var video_view = {type:'workout/video',data:sob, winref:args.winref};
 		    owl_views.push(video_view);
         	// addWorkoutElement('workout/video',sob);
         }
@@ -554,6 +554,10 @@ function onSuccessWorkoutCallback(e){
 	Ti.API.info('ADDING.OWLED.TO.DOWNLOADS');
 	var owledElements = addOwlElements(owled);
 	Ti.API.info( 'ADDING.OWLED.ELEMENTS', _.size(owledElements) );
+
+	// Cache Size Update
+	$.scrollable.cacheSize = _.size(owledElements);
+
 	var setted_views = $.scrollable.setViews(owledElements);
 	Ti.API.info('SETTED.VIEWS.IN.OWL', _.size(setted_views) );
 	// Ti.API.info('ATTEMPT.AFTER.OWL');

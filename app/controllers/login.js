@@ -114,6 +114,8 @@ function closeLogin(){
 
 }
 
+// $.username.value = '';
+// $.password.value = '';
 // cageAuthenticate();
 
 

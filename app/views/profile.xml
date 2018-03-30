@@ -27,7 +27,7 @@
 	                <ListSection>
 				        <HeaderView>
 				            <View class="list_header">
-				            	<Label class="htitle">My Workouts</Label>
+				            	<Label class="htitle">My Workouts...</Label>
 				            	<Label class="workout_info">Swipe left for more actions.</Label>
 				            	<!-- <Button id="refresher">REMOVE</Button> -->
 				            </View>

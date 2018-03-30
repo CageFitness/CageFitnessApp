@@ -37,7 +37,8 @@ var duration = args.duration || 30;
 var items = [];
 var PLAYING=0;
 // Ti.API.info('CONFIG.OVERVIEW.DURATION.FIRST', args.first_slide);
-var _WKT = args.workout_window;
+// var _WKT = args.workout_window;
+var _WKT = args.winref;
 
 // gets first slide duration or normal oversion duration from configuration
 var overview_duration = (args.first_slide ? args.config.acf.duration_first : args.config.acf.duration_break );

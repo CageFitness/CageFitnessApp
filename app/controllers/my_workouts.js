@@ -29,6 +29,7 @@ function handleListViewClick(e){
 
 
 function init_profile(){
+	$.refresh.beginRefreshing();
 	user = JSON.parse( Ti.App.Properties.getString('user') ) || {};
 	$.user_complete_name.text = user.name;
 	$.user_username.text = user.slug;

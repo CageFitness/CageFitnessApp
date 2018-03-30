@@ -8,19 +8,19 @@
   
 }
 
-"#videoPlayer" : {
-    top : 0,
-    autoplay : false,
-    backgroundColor : '#fff',
-    height : Ti.UI.FILL,
-    width : Ti.UI.FILL,
-    mediaControlStyle : Titanium.Media.VIDEO_CONTROL_NONE,
-    scalingMode : Titanium.Media.VIDEO_SCALING_ASPECT_FIT,
-    // visible:false,
-    sourceType:Ti.Media.VIDEO_SOURCE_TYPE_FILE,
-    repeatMode: Titanium.Media.VIDEO_REPEAT_MODE_ONE,
-    opacity:0.01
-}
+// "#videoPlayer" : {
+//     top : 0,
+//     autoplay : false,
+//     backgroundColor : '#fff',
+//     height : Ti.UI.FILL,
+//     width : Ti.UI.FILL,
+//     mediaControlStyle : Titanium.Media.VIDEO_CONTROL_NONE,
+//     scalingMode : Titanium.Media.VIDEO_SCALING_ASPECT_FIT,
+//     // visible:false,
+//     sourceType:Ti.Media.VIDEO_SOURCE_TYPE_FILE,
+//     repeatMode: Titanium.Media.VIDEO_REPEAT_MODE_ONE,
+//     opacity:0.01
+// }
 
 "#title_wrapper":{
 	top:0,
