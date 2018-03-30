@@ -29,7 +29,6 @@ function handleListViewClick(e){
 
 
 function init_profile(){
-
 	user = JSON.parse( Ti.App.Properties.getString('user') ) || {};
 	$.user_complete_name.text = user.name;
 	$.user_username.text = user.slug;
@@ -39,7 +38,12 @@ function init_profile(){
 }
 
 
+function refresh_profile(){
+	$.refresh.beginRefreshing();
+}
+
 Ti.App.addEventListener('cage/profile/reload',init_profile);
+Ti.App.addEventListener('cage/profile/refresh',refresh_profile);
 
 Ti.App.addEventListener('cage/login/authenticated',init_profile);
 

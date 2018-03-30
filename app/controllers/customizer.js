@@ -758,7 +758,7 @@ function scrollToLast(e) {
 function onSuccessClone(e) {
     Ti.API.info('CLONING.SUCEEDED: ', e.status, e.data);
     Ti.App.fireEvent('cage/topbar/menu_button/close', {window_type:'modal'});
-    Ti.App.fireEvent('cage/profile/reload');
+    Ti.App.fireEvent('cage/profile/refresh');
 }
 
 
