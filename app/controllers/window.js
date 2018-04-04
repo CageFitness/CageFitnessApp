@@ -27,6 +27,7 @@ else if(wtype=='customizer'){
 }
 
 else{
+	Alloy.Globals.WorkoutWindowActive = true;
 	$.main.add(Alloy.createController('workout_player', {winref: $.win}).getView());
 }
 
@@ -53,6 +54,7 @@ Ti.App.addEventListener('cage/topbar/menu_button/close', onButtonClose);
 
 $.cleanup = function cleanup() {
 	Ti.API.info('WINDOW.PERFORMING.CLEANUP:');
+	Alloy.Globals.WorkoutWindowActive = false;
 	clearInterval(Alloy.Globals.Timer);
 	$.destroy();
 	$.off();
