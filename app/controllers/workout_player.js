@@ -624,10 +624,10 @@ function addOwlElements(items){
 	return owl_pages;
 }
 
-function addWorkoutElement(type, data){
-	var item = Alloy.createController(type,data);
-	$.scrollable.addView(item.getView());
-}
+// function addWorkoutElement(type, data){
+// 	var item = Alloy.createController(type,data);
+// 	$.scrollable.addView(item.getView());
+// }
 
 function PlayPause(){
 	Ti.App.fireEvent('cage/workout/video/play_pause', { 'item': $.scrollable.currentPage });
