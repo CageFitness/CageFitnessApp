@@ -612,8 +612,13 @@ function startOverviewClock(){
 function addOwlElements(items){
 	var owl_pages = [];
 	_.each(items,function(item,index){
-		var page = Alloy.createController(item.type,item.data);
-		owl_pages.push(page.getView());
+
+		// var page = Alloy.createController(item.type,item.data);
+		// owl_pages.push(page.getView());
+		
+		// performance update
+		owl_pages.push( Alloy.createController(item.type,item.data).getView() );
+
 	});
 	
 	return owl_pages;

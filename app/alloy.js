@@ -18,6 +18,7 @@ Animation = require('alloy/animation');
 XHR = require('xhr');
 Utils = require('utils');
 
+Ti.API.warn('TI.PLATFORM.AVAILABLE.MEMORY:',Ti.Platform.availableMemory);
 // html2as = require('nl.fokkezb.html2as');
 
 Alloy.Globals.updateWorkout = false;

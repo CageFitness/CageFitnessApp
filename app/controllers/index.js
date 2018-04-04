@@ -105,10 +105,14 @@ Ti.App.addEventListener('cage/launch/window', LaunchWindow);
 Ti.App.addEventListener('cage/topbar/menu_button/close', function(e){
 	Ti.API.info('WTYPE: ', e.window_type);
 	if(e.window_type == 'modal'){
-		// var w = Alloy.Globals.modalWindow;
-		// w.close();
-		// w.remove(w.loaded_view);
-		// w.loaded_view = null;	
+		// If workout is active run the cleanup in modal.
+		if(Alloy.Globals.WorkoutWindowActive){
+			var w = Alloy.Globals.modalWindow;
+			w.close();
+			w.remove(w.loaded_view);
+			w.loaded_view = null;
+		}
+
 	}
 	else{
 		$.drawermenu.showhidemenu();
