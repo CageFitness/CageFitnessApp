@@ -29,13 +29,18 @@ Alloy.Globals.XHROptions = {
     debug:true,
 };
 
+Alloy.Globals.WorkoutWindowActive = false;
 
 
-Alloy.Globals.buzz = Ti.Media.createSound({url:"media/alarm.mp3"});
+Ti.Media.audioSessionCategory = Ti.Media.AUDIO_SESSION_CATEGORY_AMBIENT;
+
+Alloy.Globals.buzz = Ti.Media.createSound({url:"media/alarm.mp3",allowBackground:true});
 
 
 Alloy.Globals.playBuzz = function(){
-	Alloy.Globals.buzz.play();
+	if (Alloy.Globals.WorkoutWindowActive === true) {
+		Alloy.Globals.buzz.play();
+	}
 }
 
 
@@ -160,9 +165,10 @@ Ti.App.iOS.addEventListener('sessioncompleted', function(e) {
         var completed = _.size(_.where(Alloy.Globals.WorkoutAssets, {complete: true}));
         var total = _.size(Alloy.Globals.WorkoutAssets);
 
-    	if(completed>0 && completed===total){
+    	if(completed>0 && completed===total && Alloy.Globals.WorkoutWindowActive === true){
     		Ti.API.info('ONSESSIONCOMPLETED: ' + JSON.stringify(e));
     		Ti.API.info(' ========== ALL DOWNLOADS COMPLETE, GO WORKOUT!!!!');
+    		Ti.API.info(' ========== WORKOUT.WINDOW.ACTIVE:', Alloy.Globals.WorkoutWindowActive);
     		
     		
 

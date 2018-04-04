@@ -1,6 +1,4 @@
 #!/bin/bash
-# --target dist-adhoc \
-# --ios-version 10.3.1 \
 appc run \
 --platform ios \
 --project-dir /Users/pabloliz/Projects/iquariusmedia.com/cagefitness.com/titanium/CageFitnessApp \
