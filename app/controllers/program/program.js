@@ -276,12 +276,6 @@ function launchExercise(e) {
 
 // LITHIUMLAB
 
-function handleElementInsert(e) {
-    Ti.API.info('ELEMENT.INSERT', e);
-    replaceExercise(e, 'insert');
-    // exercise_data must be here
-    // insertItemsAt
-}
 
 function handlesCheck(e) {
     var item = e.section.getItemAt(e.itemIndex);
@@ -324,7 +318,7 @@ Ti.API.info('HANDLE.LIST.VIEW.CLICK.FROM.PROGRAMxxx', e);
 	var wkt = Ti.App.Properties.getString('my_workout');
 
 	Ti.App.fireEvent('cage/topbar/menu_button/close', {window_type:'modal'});
-	
+
 	Ti.App.fireEvent('cage/launch/window',{key:'menu_workouts', 'workout_id':wkt});		
 
 
@@ -379,38 +373,6 @@ function insertExercise(newer, older, validate_mode) {
 }
 
 
-
-// selection:selection_ob,
-// roundWin:$.roundWin,
-// popover:$.popover_ob,
-
-function replaceExercise(e, insert_mode) {
-    // Ti.API.info('\n\nBUILD.QUERY');
-    // var sec = $.program_list_view.sections[e.sectionIndex];
-    // var row = sec.getItemAt(e.itemIndex);
-    // Ti.API.info('ROW.DATA', row.properties);
-    // var insert_popover = Alloy.createController('customizer/insert', {
-    //     insertExercise: insertExercise,
-    //     validate_mode: insert_mode,
-    //     include: 'customizer/list',
-    //     selection: {
-    //         exercise_equipment: row.properties.wo_equipment.value,
-    //         exercise_type: row.properties.wo_round_type.value,
-    //         // rounds:row.properties.wo_exercise_number,
-    //     },
-    //     optType: optType,
-    //     optEquipment: optEquipment,
-    //     launch_data: row.properties.launch_data,
-    //     customizerListItem: e,
-    // }).getView();
-
-    // insert_popover.show({ animated: true, view: $.pover_target });
-}
-
-// var shared ={
-// 	optType:optType,
-
-// }
 
 function roundOptions(roundIndex) {
     Ti.API.info('CALLING.ROUND.OPTIONS.POPOVER', roundIndex);
@@ -485,18 +447,6 @@ function addNewRoundValidate(e, roundIndex) {
 
 
 
-
-
-
-
-
-// function handleClickPopOver(e) {
-//     Alloy.Globals.currentSelectButton = e.source;
-//     // Ti.API.info(e.itemIndex)
-//     var round_popover = Alloy.createController('customizer/add_round', {validate:updateStep_TYPE, row:e.itemIndex} ).getView();
-//     round_popover.show({animated:true,view:e.source});
-// }
-
 function ToggleMe() {
 
 }
@@ -511,7 +461,7 @@ function handleEnableInserting(e) {
 
 }
 
-$.program_list_view.addEventListener('insert', handleElementInsert)
+// $.program_list_view.addEventListener('insert', handleElementInsert)
 
 function hideReplace(bol) {
     if (bol) {
@@ -557,32 +507,8 @@ function onErrorCustomizerEdit(e) {
     Ti.API.info('EDIT.REQUEST: ', e);
 }
 
-function onSuccessCustomizerEdit(e) {
-    // Ti.API.info('EDIT.REQUEST: ', e.status, e.data);
-    // $.add_label.applyProperties({ text: 'LOADING WORKOUT...' });
-    // Ti.API.info('SAVING.WORKOUT.PLEASE.WAIT', _.size($.program_list_view.sections));
 
 
-    // loadProgram();
-
-}
-
-
-function send_updateCustomizer(selection_data) {
-
-    // $.add_label.applyProperties({ text: 'SAVING WORKOUT...' });
-
-    // _.each($.program_list_view.getSections(), function(section, index) {
-    //     Ti.API.info('ATTEMPT TO REMOVE', section);
-    //     $.program_list_view.deleteSectionAt(_.last($.program_list_view.getSections()));
-    // });
-
-
-
-    // xhr.POST('https://cagefitness.com/wp-json/app/v1/customize', JSON.stringify(selection_data), onSuccessCustomizerEdit, onErrorCustomizerEdit);
-
-
-}
 
 
 
@@ -605,42 +531,5 @@ function scrollToLast(e) {
     }
 }
 
-function gatherCurrentSelection(listview) {
 
-    var sections = $.program_list_view.getSections();
-
-    var sel = {
-        filter: 'app',
-        // build: 'auto',
-        build: 'custom',
-        update: 'true',
-        rounds: _.map(listview.getSections(), function(round, sectionIndex) {
-
-            var first = $.program_list_view.sections[sectionIndex].getItemAt(0);
-            var type = Object(optType(first.properties.wo_round_type.value || first.properties.wo_round_type.term_taxonomy_id));
-            var equipment = Object(optEquipment(first.properties.wo_equipment.value || first.properties.wo_equipment.term_taxonomy_id));
-
-            Ti.API.info('GRABBING.ROUND.INFO:', first.properties['wo_round_type']);
-
-            return {
-                round: getIndex(sectionIndex),
-                roundTitle: type.name,
-                numexercises: _.size(round.getItems()),
-                roundType: type.slug,
-                equipment: equipment.slug,
-                customizer: _.map(round.getItems(), function(exercise, index) {
-                    return exercise.properties.launch_data.id || exercise.properties.launch_data.ID;
-                })
-            };
-        })
-    }
-
-    // Ti.API.info('SELECTION.DATA.STATIC',selection);
-    Ti.API.info('SELECTION.DATA.DYNAMIC', sel);
-
-
-    send_updateCustomizer(sel);
-
-
-}
 
