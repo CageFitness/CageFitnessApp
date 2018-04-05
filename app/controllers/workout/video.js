@@ -139,7 +139,7 @@ $.vid.backgroundColor = Utils.getRandomColor();
 
 // Ti.API.warn('ITEM.VIDEO.CHAPTERS:', args.data);
 
-Ti.API.warn('THIS.VIDEO.DATA: ', args.round_number, args.file_index);
+// Ti.API.warn('THIS.VIDEO.DATA: ', args.round_number, args.file_index);
 
 $.title.text = getVideoTitle();
 $.subtitle.text = subtitle;
@@ -176,17 +176,14 @@ var createGif = function(){
 		var localgif = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'cached/'+next.acf.video_animated_thumbnail.filename);	
 		var gifurl = localgif || next.acf.video_animated_thumbnail.url;
 		Ti.API.info('CREATING.NEXT.GIF.WITH:', item_index, gifurl);
-		var gif = Ti.UI.createImageView({
+
+		$.preview_holder.add( Ti.UI.createImageView({
 			top:0,
 			left:0,
-			height: Ti.UI.FILL,
-			// backgroundColor:'pink',
-			// borderWidth:1,
-			// borderColor:"#d9e153",  			
+			height: Ti.UI.FILL,		
 			layout: "horizontal",
 				gif: gifurl,
-			});
-		$.preview_holder.add( gif );    	
+			}) );    	
     }	
 }
 
@@ -357,6 +354,11 @@ $.cleanup = function cleanup() {
 	Ti.API.info('VIDEO.PLAYER.PERFORMING.CLEANUP:');
 	$.destroy();
 	$.off();
+	$.preview_holder = null;
+	$.full_video = null;
+
+
+	args.winref = null;
 	// someController = null;
 };
 args.winref.addEventListener('close', $.cleanup);

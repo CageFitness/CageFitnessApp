@@ -312,13 +312,13 @@ function addAssetsToSessionDownloadManager(){
 
 	_.each(assets_queue, function(item){
 
-		_.defer(function(){
-			Ti.API.info('ASKING.FOR.FILES...',item.filename);
-		});
+		// _.defer(function(){
+		// 	Ti.API.info('ASKING.FOR.FILES...',item.filename);
+		// });
 
 		if(!isInCache(item.filename)){
 			_.defer(addToDownloadSession,item);
-			Ti.API.info('DOWNLOAD.DEFERED:',item.filename);
+			// Ti.API.info('DOWNLOAD.DEFERED:',item.filename);
 		};
 
 	});
@@ -558,8 +558,13 @@ function onSuccessWorkoutCallback(e){
 	// Cache Size Update
 	$.scrollable.cacheSize = _.size(owledElements);
 
-	var setted_views = $.scrollable.setViews(owledElements);
-	Ti.API.info('SETTED.VIEWS.IN.OWL', _.size(setted_views) );
+	// var setted_views = $.scrollable.setViews(owledElements);
+
+	$.scrollable.applyProperties({
+		views:owledElements
+	});
+
+	Ti.API.info('SETTED.VIEWS.IN.OWL:', _.size(owledElements) );
 	// Ti.API.info('ATTEMPT.AFTER.OWL');
     
 
@@ -707,10 +712,11 @@ exports.hello = function(){
 
 
 $.cleanup = function cleanup() {
-	Ti.API.info('WORKOUT.PLAYER.PERFORMING.CLEANUP:');
+	Ti.API.warn('-------- ======= ||||||| WORKOUT.PLAYER.PERFORMING.CLEANUP:');
 	// clearInterval(Alloy.Globals.Timer);
 	$.destroy();
 	$.off();
+	$.scrollable = null;
 };
 args.winref.addEventListener('close', $.cleanup);
 

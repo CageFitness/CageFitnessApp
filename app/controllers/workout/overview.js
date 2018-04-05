@@ -295,7 +295,8 @@ $.cleanup = function cleanup() {
 	Ti.API.info('OVERVIEW.PLAYER.PERFORMING.CLEANUP:');
 	Ti.App.removeEventListener('cage/workout/video/play_pause',onPlayPause);
 	Ti.App.removeEventListener('cage/workout/slide/entered', onOwlSlideEntered);
-	Ti.App.removeEventListener('cage/workout/start', triggerFirstSlide);	
+	Ti.App.removeEventListener('cage/workout/start', triggerFirstSlide);
+	$.elementsList = null;	
 	$.destroy();
 	$.off();
 	// someController = null;

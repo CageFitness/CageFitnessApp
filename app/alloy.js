@@ -120,10 +120,11 @@ Ti.App.iOS.addEventListener('downloadcompleted', function(e) {
 	    var file = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'cached/'+task_completed.filename);
 		file.write(e.data);
 		if(file.exists()) {
-			Ti.API.info('[SAVE.FILE: YES ] (' + file.nativePath + ')');
+			// Ti.API.info('[SAVE.FILE: YES ] (' + file.nativePath + ')');
 			// Ti.API.info('ASSET.DOWNLOAD.COMPLETE:', completed, _.size(Alloy.Globals.WorkoutAssets), file.exists(), JSON.stringify(task_completed));
 			var inqueue = _.size(Alloy.Globals.WorkoutAssets);
-			Ti.API.info('ASSET.DOWNLOAD.COMPLETE:', completed, inqueue, completed/inqueue,  JSON.stringify(task_completed));
+			// Ti.API.info('ASSET.DOWNLOAD.COMPLETE:', completed, inqueue, completed/inqueue,  JSON.stringify(task_completed));
+			Ti.API.info('ASSET.DOWNLOAD.COMPLETE:', completed, inqueue, completed/inqueue);
 			
 			Alloy.Globals.DownloadProgress=completed/inqueue;
 			
