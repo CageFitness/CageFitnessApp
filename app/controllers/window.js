@@ -45,6 +45,7 @@ function onButtonClose(e){
 		// $.main = null;
 		$.win.close({animated:true});
 
+
 	}
 	if(wtype=='customizer'){
 		Ti.API.info('REMOVING.BUTTON.CLOSE.LISTENER');
@@ -57,11 +58,10 @@ Ti.App.addEventListener('cage/topbar/menu_button/close', onButtonClose);
 
 $.cleanup = function cleanup() {
 	Ti.API.info('WINDOW.PERFORMING.CLEANUP:');
-	
-
 	clearInterval(Alloy.Globals.Timer);
 	$.destroy();
 	$.off();
+
 	// someController = null;
 };
 $.win.addEventListener('close', $.cleanup);

@@ -622,12 +622,17 @@ function removeRound(roundIndex) {
 
 
 function addNewRoundValidate(e, roundIndex) {
-    Ti.API.info('ADD.ROUND.CALLBACK', e);
+    // Ti.API.info('ADD.ROUND.CALLBACK', e);
+    Ti.API.info('ADD.ROUND.CALLBACK');
+
+
+
     // if(e=='remove'){
     // 	removeRound(0);
     // }
-
     // createRoundFromSelection(e,roundIndex);
+
+    
 }
 
 

@@ -114,7 +114,7 @@ Ti.App.iOS.addEventListener('downloadcompleted', function(e) {
 
     if( task_completed && task_completed.filename ) {
 
-    	Ti.API.info('AFTER.ASKING.101:');
+    	// Ti.API.info('AFTER.ASKING.101:');
 
     	var completed = _.size(_.where(Alloy.Globals.WorkoutAssets, {complete: true}));
 	    var file = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'cached/'+task_completed.filename);

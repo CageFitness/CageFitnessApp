@@ -226,7 +226,7 @@ function getIndex(n){
 }
 
 function getExerciseDuration(round_size){
-	Ti.API.info('======= >>>> ENSURE.CONFIG:',args.config.acf.duration_break, args.config.acf.round_configs.config_round_num, round_size );
+	// Ti.API.info('======= >>>> ENSURE.CONFIG:', 'MINS:', args.config.acf.duration_break, 'ROUND.SIZE:', round_size );
 	var duration_ob = _.findWhere( args.config.acf.round_configs, {'config_round_num':round_size} );
 	return duration_ob||35;
 }
@@ -237,8 +237,7 @@ function describeRound2(){
 		var duration;
 		if(_.size(round)-1 === index){
 			// Ti.API.info('this is last', index, exercise_number, getExerciseDuration(exercise_number));
-			Ti.API.info('EXERCISE.DURATION.FIX:',exercise_number);
-
+			Ti.API.info('LAST.EXERCISE.DURATION.FIX:',exercise_number);
 			duration = getExerciseDuration(exercise_number).config_round_duration_last;
 		}
 		else{

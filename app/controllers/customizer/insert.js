@@ -177,32 +177,22 @@ function closePover(){
 }
 
 $.pover.addEventListener("itemclick", function(e){
-	// Ti.API.info('DOES IT HAPPENS HERE?', args.launch_data.title);
+
     var section = $.pover.sections[e.sectionIndex];
     var newer = section.getItemAt(e.itemIndex);
-    Ti.API.info('INSERT.TITLE.HERE',newer.properties);
 
-    // item.properties.launch_data
+    // Ti.API.info('INSERT.TITLE.HERE.EXERCISE.DATA',newer.properties);
+    Ti.API.info('INSERT.TITLE.HERE.EXERCISE.DATA');
 
-    // if (item.properties.accessoryType == Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE) {
-    //     item.properties.accessoryType = Ti.UI.LIST_ACCESSORY_TYPE_CHECKMARK;
-    //     item.properties.color = 'blue';
-    // }
-    // else {
-    //     item.properties.accessoryType = Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE;
-    //     item.properties.color = 'black';
-    // }
+
     section.updateItemAt(e.itemIndex, newer);
 
     newer.properties.cage_selected=true;
     newer.properties.wo_round_type=args.selection.type;
     newer.properties.wo_equipment=args.selection.equipment;
-    // newer.properties.launch_data=args.launch_data;
-    // newer.properties.launch_data.title = 'HELLOWORLD!!!!';
 
-    // args.selection.equipment='bands';
     args.insertExercise(newer.properties, customizerListItem, args.validate_mode);
-    // listWindow(args.selection);
+
 
 
 

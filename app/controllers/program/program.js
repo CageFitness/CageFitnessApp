@@ -144,7 +144,9 @@ $.dialog.addEventListener('click', function(e) {
         // $.activity_wrapper.show();
         // $.activity_indicator.show();
         // send_updateCustomizer();
-        gatherCurrentSelection($.program_list_view);
+
+        // gatherCurrentSelection($.program_list_view);
+
         Alloy.Globals.updateWorkout = 0;
     }
 });
@@ -320,6 +322,9 @@ Ti.API.info('HANDLE.LIST.VIEW.CLICK.FROM.PROGRAMxxx', e);
 
 	Ti.App.Properties.setString('my_workout', workout.ID);
 	var wkt = Ti.App.Properties.getString('my_workout');
+
+	Ti.App.fireEvent('cage/topbar/menu_button/close', {window_type:'modal'});
+	
 	Ti.App.fireEvent('cage/launch/window',{key:'menu_workouts', 'workout_id':wkt});		
 
 

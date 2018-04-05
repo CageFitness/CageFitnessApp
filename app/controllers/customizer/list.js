@@ -124,7 +124,11 @@ function onSuccessExercises3Callback(e){
 function finishExerciseListSelection(e){
 
 	Ti.API.info('EXERCISE.SELECTION.FINISHED',e);
-	Ti.API.info('EXERCISE.SELECTION.OBJECT',args.selection);
+	
+	// Ti.API.info('EXERCISE.SELECTION.OBJECT',args.selection);
+	Ti.API.info('EXERCISE.SELECTION.OBJECT');
+
+
 	// args.orderWindow(args.selection);
 	// args.generateRound(args.selection);
 	args.validate(exercise_selection, args.round_index);
@@ -189,7 +193,9 @@ $.pover.addEventListener("itemclick", function(e){
     Ti.API.info('HOW.MANY?', _.size(args.selection.customizer) );
     var size = _.size(args.selection.customizer);
     $.how_many.setText( size +'/'+ args.selection.num_exercises);
-    Ti.API.info('CURRENT.SELECTION.AT.LIST.JS:',args.selection);
+
+    // Ti.API.info('CURRENT.SELECTION.AT.LIST.JS:',args.selection);
+    Ti.API.info('CURRENT.SELECTION.AT.LIST.JS:');
 
     
 

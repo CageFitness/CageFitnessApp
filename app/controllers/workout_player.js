@@ -22,12 +22,12 @@ var onView=false;
 $.top_bar_required.winref = args.winref;
 
 $.round_btn_bar.addEventListener('postlayout',function(e){
-	Ti.API.info('POST.LAYOUT.TRIGGERED',e);
+	Ti.API.info('POST.LAYOUT.TRIGGERED.BTN.BAR',e);
 	// $.round_btn_bar.visible=true;
 });
 
 $.scrollable.addEventListener('postlayout',function(e){
-	Ti.API.info('POST.LAYOUT.TRIGGERED',e);
+	Ti.API.info('POST.LAYOUT.TRIGGERED.SCROLLABLE',e);
 	
 	$.scrollable.show();
 	onView=1;
@@ -69,14 +69,13 @@ function onDownloadComplete(e){
     var task_completed = _.findWhere(Alloy.Globals.WorkoutAssets,{task:e.taskIdentifier});
     if( task_completed && task_completed.filename ) {
     	var completed = _.size(_.where(Alloy.Globals.WorkoutAssets, {complete: true}));
-	    var file = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'cached/'+task_completed.filename);
-		if(file.exists()) {
+
+		if(Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'cached/'+task_completed.filename).exists()) {
 	    	Ti.API.info('AFTER.ASKING:', task_completed.task, e.taskIdentifier);
 			var inqueue = _.size(Alloy.Globals.WorkoutAssets);
 			Ti.API.info('ASSET.DOWNLOAD.COMPLETE:', completed, inqueue, JSON.stringify(task_completed));
 			Ti.API.info('CALCULATE:', completed, inqueue, completed/inqueue );
-			// $.downprogress.value=Alloy.Globals.DownloadProgress;
-			// xxxxx
+
 		} else {
 
 		}
@@ -346,27 +345,28 @@ function addAssetsToDownloadManager(){
 }
 
 
-function addFileToDownloadQueue(filename, file_url){
-	if (filename && file_url) {
-		var file = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'cached/'+ filename);
-		var ob = {};
-		ob.filename = filename;
-		ob.url = file_url;
-		ob.native_path = file.nativePath;
-		videos_queue.push(ob);
-	}
-}
+// function addFileToDownloadQueue(filename, file_url){
+// 	if (filename && file_url) {
+// 		var file = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'cached/'+ filename);
+// 		var ob = {};
+// 		ob.filename = filename;
+// 		ob.url = file_url;
+// 		ob.native_path = file.nativePath;
+// 		videos_queue.push(ob);
+// 	}
+// }
 
 
 
 
 function addFileToDownloadQueue2(filename, file_url){
 	if (filename && file_url) {
-		var file = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'cached/'+ filename);
+		// var file = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'cached/'+ filename);
 		var ob = {};
 		ob.filename = filename;
 		ob.url = file_url;
-		ob.native_path = file.nativePath;
+		// ob.native_path = file.nativePath;
+		ob.native_path = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'cached/'+ filename).nativePath;
 		assets_queue.push(ob);
 	}
 }
@@ -396,8 +396,9 @@ function justShow(){
 }
 
 function isInCache(file){
-	var file = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'cached/'+file);
-	return file.exists();
+	// var file = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'cached/'+file);
+	// return file.exists();
+	return Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'cached/'+file).exists();
 }
 
 
@@ -558,13 +559,13 @@ function onSuccessWorkoutCallback(e){
 	// Cache Size Update
 	$.scrollable.cacheSize = _.size(owledElements);
 
-	// var setted_views = $.scrollable.setViews(owledElements);
+	var setted_views = $.scrollable.setViews(owledElements);
 
-	$.scrollable.applyProperties({
-		views:owledElements
-	});
+	// $.scrollable.applyProperties({
+	// 	views:owledElements
+	// });
 
-	Ti.API.info('SETTED.VIEWS.IN.OWL:', _.size(owledElements) );
+	Ti.API.info('SETTED.VIEWS.IN.OWL:', setted_views );
 	// Ti.API.info('ATTEMPT.AFTER.OWL');
     
 
@@ -713,6 +714,9 @@ exports.hello = function(){
 
 $.cleanup = function cleanup() {
 	Ti.API.warn('-------- ======= ||||||| WORKOUT.PLAYER.PERFORMING.CLEANUP:');
+	videos_queue = null;
+	assets_queue = null;
+	owl_views = null;	
 	// clearInterval(Alloy.Globals.Timer);
 	$.destroy();
 	$.off();
