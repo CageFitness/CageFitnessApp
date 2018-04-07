@@ -113,7 +113,7 @@ var startCounter = function() {
 	            });
 	        }
 	        var pr = Math.abs(Math.round($.progressbar.progress * preview_timer));
-	        Ti.API.info('TIMER.GOING:',pr);
+	        Ti.API.info('TIMER.GOING.VIDEO:',pr);
 	       	if(pr >= 0){
 	       		$.progressbar.setText(pr);
 	       		$.counter.setText(fancyTimeFormat(pr));

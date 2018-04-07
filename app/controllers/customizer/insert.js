@@ -16,6 +16,39 @@ Ti.API.info('EXERCISE.SELECTION.ITEM:',customizerListItem);
 
 $.popover_ob.contentView.height=Ti.UI.FILL;
 
+
+
+/*
+ * parse_link_header()
+ *
+ * Parse the Github Link HTTP header used for pageination
+ * http://developer.github.com/v3/#pagination
+ */
+function parse_link_header(header) {
+  if (header.length == 0) {
+    throw new Error("input must not be of zero length");
+  }
+
+  // Split parts by comma
+  var parts = header.split(',');
+  var links = {};
+  // Parse each part into a named link
+  _.each(parts, function(p) {
+    var section = p.split(';');
+    if (section.length != 2) {
+      throw new Error("section could not be split on ';'");
+    }
+    var url = section[0].replace(/<(.*)>/, '$1').trim();
+    var name = section[1].replace(/rel="(.*)"/, '$1').trim();
+    links[name] = url;
+  });
+
+  return links;
+}
+
+
+
+
 function exerciseWindow(selection_ob) {
     var exercisesWin = Alloy.createController('customizer/list', {
     	validate:args.validate,
@@ -77,10 +110,26 @@ function onSuccessExercises3Callback(e){
 	$.is.state($.is.SUCCESS);
 
 	
+	// if( e.headers != 'cache' ){
+	// 	Ti.API.info('HEADERS.SHOW:',e.headers);
+	// 	Ti.API.info('HEADERS.SHOW:',e.headers['X-WP-TotalPages']);
+	// }
+
 	if( e.headers != 'cache' ){
 		Ti.API.info('HEADERS.SHOW:',e.headers);
-		Ti.API.info('HEADERS.SHOW:',e.headers['X-WP-TotalPages']);
-	
+		// Ti.API.info('HEADERS.SHOW:',e.headers['X-WP-TotalPages']);
+
+		var parsed_links = parse_link_header(e.headers['Link']);
+
+		Ti.API.warn('PARSED.LINKS:', parsed_links);
+
+		if('next' in parsed_links){
+			Ti.API.warn('NEXT:',parsed_links['next'])
+		}
+		else{
+			$.is.detach();
+		}
+
 	}
 
 	var parsed = JSON.parse(e.data);
@@ -175,12 +224,13 @@ $.pover.addEventListener("itemclick", function(e){
 
 });
 
+$.is.setOptions({msgDone:'...'});
 $.is.init($.pover);
 $.is.load();
 
+// This was in place before adjusting infinite scroll.
+// args.selection.page=1;
+// loadExercises(args.selection);
 
-args.selection.page=1;
 // delete args.selection.rounds;
-loadExercises(args.selection);
-
 

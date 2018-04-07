@@ -205,7 +205,7 @@ function startCounter() {
 	            
 	        }
 	        var pr = Math.abs(Math.round(_PROGRESS * preview_timer));
-	        Ti.API.info('TIMER.GOING:',pr);
+	        Ti.API.info('TIMER.GOING.OVERVIEW:',pr);
 	       	if(pr >= 0){
 	       		_PROGRESS_TEXT = pr;
 	  			$.counter_big.applyProperties({text:fancyTimeFormat(pr)}); 

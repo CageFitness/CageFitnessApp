@@ -20,8 +20,8 @@ var defaults ={
 
 
 
-$.is.init($.pover);
-// $.is.load();
+
+
 
 
  function myLoader(e) {
@@ -111,7 +111,10 @@ function onSuccessExercises3Callback(e){
 		Ti.API.warn('PARSED.LINKS:', parsed_links);
 
 		if('next' in parsed_links){
-			Ti.API.info('NEXT:',parsed_links['next'])
+			Ti.API.warn('NEXT:',parsed_links['next'])
+		}
+		else{
+			$.is.detach();
 		}
 
 		// paging.total_items = e.headers['X-WP-Total'];
@@ -250,6 +253,25 @@ $.pover.addEventListener("itemclick", function(e){
 });
 
 
-loadExercises({page:1});
+$.is.setOptions({msgDone:'...'});
+$.is.init($.pover);
+$.is.load();
 
+// This was in place before adjusting infite scroll
+// loadExercises({page:1});
+
+
+
+
+
+
+// function cleanupList(){
+// 	Ti.API.info('CLOSING.LIST.POPOVER');
+// 	$.is.cleanup();
+// 	$.destroy();
+// 	$.off();
+// 	$.exercisesWin = null;
+
+// }
+// $.exercisesWin.addEventListener('close', cleanupList)
 
