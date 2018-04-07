@@ -6,7 +6,7 @@ var pages = 1;
 var paging ={};
 var exercise_selection=[];
 var round_index = args.round_index;
-
+var next_page;
 // Available functions from customizer
 var optType = args.optType;
 var optEquipment = args.optEquipment;
@@ -21,7 +21,7 @@ var defaults ={
 
 
 $.is.init($.pover);
-$.is.load();
+// $.is.load();
 
 
  function myLoader(e) {
@@ -62,6 +62,40 @@ function loadExercises(selection){
 	xhr.GET(exercise_url+'?'+querystring, onSuccessExercises3Callback, onErrorExercises2Callback);
 }
 
+
+
+
+
+/*
+ * parse_link_header()
+ *
+ * Parse the Github Link HTTP header used for pageination
+ * http://developer.github.com/v3/#pagination
+ */
+function parse_link_header(header) {
+  if (header.length == 0) {
+    throw new Error("input must not be of zero length");
+  }
+
+  // Split parts by comma
+  var parts = header.split(',');
+  var links = {};
+  // Parse each part into a named link
+  _.each(parts, function(p) {
+    var section = p.split(';');
+    if (section.length != 2) {
+      throw new Error("section could not be split on ';'");
+    }
+    var url = section[0].replace(/<(.*)>/, '$1').trim();
+    var name = section[1].replace(/rel="(.*)"/, '$1').trim();
+    links[name] = url;
+  });
+
+  return links;
+}
+
+
+
 function onSuccessExercises3Callback(e){
 
 	// hidePreloader();
@@ -70,7 +104,15 @@ function onSuccessExercises3Callback(e){
 	
 	if( e.headers != 'cache' ){
 		Ti.API.info('HEADERS.SHOW:',e.headers);
-		Ti.API.info('HEADERS.SHOW:',e.headers['X-WP-TotalPages']);
+		// Ti.API.info('HEADERS.SHOW:',e.headers['X-WP-TotalPages']);
+
+		var parsed_links = parse_link_header(e.headers['Link']);
+
+		Ti.API.warn('PARSED.LINKS:', parsed_links);
+
+		if('next' in parsed_links){
+			Ti.API.info('NEXT:',parsed_links['next'])
+		}
 
 		// paging.total_items = e.headers['X-WP-Total'];
 		// paging.total_pages = e.headers['X-WP-TotalPages'];		
@@ -181,7 +223,8 @@ $.pover.addEventListener("itemclick", function(e){
 	 //    customizer: []
   //   };
 
-  	Ti.API.info('ARGS.SELECTION.AT.LIST.BEFORE.GRABBING.TTID:',args.selection);
+  	// Ti.API.info('ARGS.SELECTION.AT.LIST.BEFORE.GRABBING.TTID:',args.selection);
+  	Ti.API.info('ARGS.SELECTION.AT.LIST.BEFORE.GRABBING.TTID:');
 
   	var type = Object( optType(args.selection.exercise_type));
   	var equipment = Object( optEquipment(args.selection.exercise_equipment));

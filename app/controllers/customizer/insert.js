@@ -4,13 +4,13 @@ var workout_url = Alloy.CFG.api_url + Alloy.CFG.workout_test_path;
 var exercise_url = Alloy.CFG.api_url + Alloy.CFG.exercise_path;
 var pages = 1;
 var paging ={};
-$.is.init($.pover);
-$.is.load();
+
+
 var customizerListItem = args.customizerListItem || {};
 
 Ti.API.info('EXERCISE.SELECTION.ITEM:',customizerListItem);
 
-// 	========================
+
 
 
 
@@ -32,31 +32,9 @@ function generateRound(e){
 
 }
 
-// $.roundWin.open();
 
-
-
-
-
-
-
-// 	========================
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- function myLoader(e) {
- 	Ti.API.info('LOADER: ',e);
+function myLoader(e) {
+ 	Ti.API.warn('LOADER.CALLED: ',e);
 	// loadExercises({page:pages < 5 ? pages++ : 5});
 	args.selection.page = pages < 5 ? pages++ : 5;
 	loadExercises(args.selection);
@@ -160,13 +138,16 @@ function onSuccessExercises3Callback(e){
 
 function finishExerciseListSelection(e){
 
-	Ti.API.info('EXERCISE.SELECTION.FINISHED',e);
-	Ti.API.info('EXERCISE.SELECTION.OBJECT.UNO',args.selection);
+	// Ti.API.info('EXERCISE.SELECTION.FINISHED',e);
+	// Ti.API.info('EXERCISE.SELECTION.OBJECT.UNO',args.selection);
+	Ti.API.info('FINISH.EXERCISE.SELECTION');
 	$.popover_ob.hide();
+
+
 }
 
 function onErrorExercises2Callback(e){
-	Ti.API.info(e.data);
+	Ti.API.info('onExercise2Callback.popover',e.data);
 	$.is.state($.is.ERROR);
 }
 
@@ -184,19 +165,19 @@ $.pover.addEventListener("itemclick", function(e){
     // Ti.API.info('INSERT.TITLE.HERE.EXERCISE.DATA',newer.properties);
     Ti.API.info('INSERT.TITLE.HERE.EXERCISE.DATA');
 
-
-    section.updateItemAt(e.itemIndex, newer);
-
     newer.properties.cage_selected=true;
     newer.properties.wo_round_type=args.selection.type;
     newer.properties.wo_equipment=args.selection.equipment;
 
+    section.updateItemAt(e.itemIndex, newer);
+
     args.insertExercise(newer.properties, customizerListItem, args.validate_mode);
 
-
-
-
 });
+
+$.is.init($.pover);
+$.is.load();
+
 
 args.selection.page=1;
 // delete args.selection.rounds;
