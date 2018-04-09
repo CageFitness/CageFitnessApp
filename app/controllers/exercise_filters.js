@@ -16,7 +16,11 @@ function tabEquipment(e) {
 	var slug = e.source.labels[e.index].slug;
 	var ttid = e.source.labels[e.index].ttid;
 	log.args('Filter Equipment: ', e.source.labels[e.index]);
-	Ti.App.fireEvent('cage/exercise/filter',{'filter':'exercise_equipment','ttid':ttid});
+
+	Alloy.Globals.ExerciseFilter = {'filter':'exercise_equipment','ttid':ttid};
+
+	
+	Ti.App.fireEvent('cage/exercise/filter',Alloy.Globals.ExerciseFilter);
 }
 
 function tabExerciseType(e) {
@@ -24,7 +28,10 @@ function tabExerciseType(e) {
 	var slug = e.source.labels[e.index].slug;
 	var ttid = e.source.labels[e.index].ttid;
 	log.args('Filter Types: ', e.source.labels[e.index]);
-	Ti.App.fireEvent('cage/exercise/filter',{'filter':'exercise_type','ttid':ttid});
+
+	Alloy.Globals.ExerciseFilter = {'filter':'exercise_type','ttid':ttid};
+
+	Ti.App.fireEvent('cage/exercise/filter',Alloy.Globals.ExerciseFilter);
 }
 
 function tabAll(e) {
@@ -32,6 +39,8 @@ function tabAll(e) {
 	var slug = e.source.labels[e.index].slug;
 	var ttid = e.source.labels[e.index].ttid;
 	log.args('Filter All: ', e.source.labels[e.index]);
+
+
 	Ti.App.fireEvent('cage/exercise/filter',{'filter':'all','ttid':ttid});
 }
 
