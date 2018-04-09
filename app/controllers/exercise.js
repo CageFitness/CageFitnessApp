@@ -47,7 +47,7 @@ function loadExercises(e){
 			filter_query.page=++pagesss;
 		}
 		else{
-			Ti.API.info('EXERCISE.QUERY.CLEAN.CALL');
+			Ti.API.warn('EXERCISE.QUERY.CLEAN.CALL');
 			items = [];
 			filter_query.page=1;
 			$.fg.clearGrid();
@@ -159,26 +159,6 @@ function createSampleData(data){
     };
 
 
-	// var loadMoreView = Alloy.createController('exercise/load',{
-	// 	type:'action',
- //        image:null,
- //        title:null,
- //        width:Ti.UI.FILL,
- //        height:30,
- //    }).getView();
-
- //    //THIS IS THE DATA THAT WE WANT AVAILABLE FOR THIS ITEM WHEN onItemClick OCCURS
- //    var loadMoreValues = {
- //        title: null,
- //        image: null,
- //        video: null,
- //        type: 'action',
- //    };        
-
- //    items.push({
- //        view: loadMoreView,
- //        data: loadMoreValues,
- //    });    
 
     //ADD ALL THE ITEMS TO THE GRID
     Ti.API.info('BEFORE.FG');

@@ -197,7 +197,7 @@ var setOnItemClick = function(fnt){
 // }
 
 $.lmore.addEventListener('click',function(e){
-	Ti.API.info('BUTTON.CLICKED.NOW.WHAT');
+	Ti.API.warn('BUTTON.CLICKED.NOW.WHAT');
 	Ti.App.fireEvent('exercise/grid/load',{page:1});
 })
 

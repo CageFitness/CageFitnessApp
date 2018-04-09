@@ -212,7 +212,7 @@ $.pover.addEventListener("itemclick", function(e){
     var newer = section.getItemAt(e.itemIndex);
 
     // Ti.API.info('INSERT.TITLE.HERE.EXERCISE.DATA',newer.properties);
-    Ti.API.info('INSERT.TITLE.HERE.EXERCISE.DATA');
+    Ti.API.warn('INSERT.TITLE.HERE.EXERCISE.DATA', args.selection);
 
     newer.properties.cage_selected=true;
     newer.properties.wo_round_type=args.selection.type;
@@ -224,7 +224,7 @@ $.pover.addEventListener("itemclick", function(e){
 
 });
 
-$.is.setOptions({msgDone:'...'});
+$.is.setOptions({msgDone:''});
 $.is.init($.pover);
 $.is.load();
 

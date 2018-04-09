@@ -33,7 +33,8 @@ Alloy.Globals.XHROptions = {
 };
 
 Alloy.Globals.WorkoutWindowActive = false;
-
+Alloy.Globals.ExerciseFilter = {};
+Alloy.Globals.ExerciseFilter.pages = 1;
 
 Ti.Media.audioSessionCategory = Ti.Media.AUDIO_SESSION_CATEGORY_AMBIENT;
 

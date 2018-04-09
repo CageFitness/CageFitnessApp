@@ -227,7 +227,7 @@ $.pover.addEventListener("itemclick", function(e){
   //   };
 
   	// Ti.API.info('ARGS.SELECTION.AT.LIST.BEFORE.GRABBING.TTID:',args.selection);
-  	Ti.API.info('ARGS.SELECTION.AT.LIST.BEFORE.GRABBING.TTID:');
+  	Ti.API.warn('ARGS.SELECTION.AT.LIST.BEFORE.GRABBING.TTID:');
 
   	var type = Object( optType(args.selection.exercise_type));
   	var equipment = Object( optEquipment(args.selection.exercise_equipment));
@@ -253,7 +253,7 @@ $.pover.addEventListener("itemclick", function(e){
 });
 
 
-$.is.setOptions({msgDone:'...'});
+$.is.setOptions({msgDone:''});
 $.is.init($.pover);
 $.is.load();
 
