@@ -36,7 +36,7 @@ function onButtonClose(e){
 
 	
 	if(e.window_type == 'modal'){
-		
+		// Ti.App.removeEventListener('cage/topbar/menu_button/close', onButtonClose);
 		Alloy.Globals.WorkoutWindowActive = false;
 		Ti.API.warn('WORKOUT.WINDOW.ACTIVE.SET.TO.FALSE');
 
@@ -56,8 +56,11 @@ function onButtonClose(e){
 Ti.App.addEventListener('cage/topbar/menu_button/close', onButtonClose);
 
 
-$.cleanup = function cleanup() {
+$.cleanup = function cleanup(e) {
 	Ti.API.info('WINDOW.PERFORMING.CLEANUP:');
+
+	$.win.removeEventListener('close', $.cleanup);
+
 	clearInterval(Alloy.Globals.Timer);
 	$.destroy();
 	$.off();

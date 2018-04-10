@@ -375,15 +375,26 @@ function addToDownloadSession(ob){
 	// add to download task if video does not exist in cached app directoy
 	var in_cache = isInCache(ob.filename);
 	if( !in_cache ){
-		var task = Alloy.Globals.SessionDownloader.downloadTask({url:ob.url, filename:ob.filename});
-		var TaskObject = {
-			task:task,
+		
+		// var task = Alloy.Globals.SessionDownloader.downloadTask({url:ob.url, filename:ob.filename});
+		// var TaskObject = {
+		// 	task:Alloy.Globals.SessionDownloader.downloadTask({url:ob.url, filename:ob.filename}),
+		// 	url:ob.url,
+		// 	filename:ob.filename,
+		// }
+
+		// Alloy.Globals.WorkoutAssets.push(TaskObject);
+
+		Alloy.Globals.WorkoutAssets.push({
+			task:Alloy.Globals.SessionDownloader.downloadTask({url:ob.url, filename:ob.filename}),
 			url:ob.url,
 			filename:ob.filename,
-		}
-		Alloy.Globals.WorkoutAssets.push(TaskObject);
+		});
+		
 	}
-	Ti.API.info('CACHED? --> ', in_cache , ob.filename);
+
+	Ti.API.info('CACHED?');
+	// Ti.API.info('CACHED? --> ', in_cache , ob.filename);
 	if($.downprogress && !in_cache){
 
 		show_activity();
@@ -714,6 +725,9 @@ exports.hello = function(){
 
 $.cleanup = function cleanup() {
 	Ti.API.warn('-------- ======= ||||||| WORKOUT.PLAYER.PERFORMING.CLEANUP:');
+
+	args.winref.removeEventListener('close', $.cleanup);
+	
 	videos_queue = null;
 	assets_queue = null;
 	owl_views = null;	

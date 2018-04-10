@@ -361,8 +361,10 @@ $.cleanup = function cleanup() {
 	$.full_video = null;
 
 
+
 	args.winref = null;
 	createVideoPlayer = null;
+	$.vid = null;
 	// someController = null;
 };
 args.winref.addEventListener('close', $.cleanup);

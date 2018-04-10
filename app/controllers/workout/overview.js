@@ -38,7 +38,7 @@ var items = [];
 var PLAYING=0;
 // Ti.API.info('CONFIG.OVERVIEW.DURATION.FIRST', args.first_slide);
 // var _WKT = args.workout_window;
-var _WKT = args.winref;
+// var _WKT = args.winref;
 
 // gets first slide duration or normal oversion duration from configuration
 var overview_duration = (args.first_slide ? args.config.acf.duration_first : args.config.acf.duration_break );
@@ -75,7 +75,7 @@ if(args.first_slide){
 function triggerFirstSlide(){
 	Ti.API.info('OVERVIEW.FIRST.SLIDE: ',args.first_slide);
 	Ti.API.info('************************************************************************************');
-	Ti.API.warn('OVERVIEW.FIRST.SLIDE.WORKOUT.WINDOW.AWARE:', _WKT);
+	Ti.API.warn('OVERVIEW.FIRST.SLIDE.WORKOUT.WINDOW.AWARE');
 	Ti.API.info('************************************************************************************');
 
 	if(args.first_slide ){
