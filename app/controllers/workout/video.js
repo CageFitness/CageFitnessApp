@@ -351,7 +351,10 @@ Ti.App.addEventListener('cage/topbar/menu_button/close', function(e){
 
 
 $.cleanup = function cleanup() {
-	Ti.API.info('VIDEO.PLAYER.PERFORMING.CLEANUP:');
+	Ti.API.info('VIDEO.JS.CLEANUP:');
+	
+	args.winref.removeEventListener('close', $.cleanup);
+
 	$.destroy();
 	$.off();
 	$.preview_holder = null;
@@ -359,6 +362,7 @@ $.cleanup = function cleanup() {
 
 
 	args.winref = null;
+	createVideoPlayer = null;
 	// someController = null;
 };
 args.winref.addEventListener('close', $.cleanup);

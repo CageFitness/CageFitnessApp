@@ -5,7 +5,7 @@
 // NappDownloadManager.maximumSimultaneousDownloads = 2;
 // NappDownloadManager.stopDownloader();
 // NappDownloadManager.cleanUp();
-
+require('alloyXL');
 // Global T helper to load internal Trimethyl libraries
 var T = function (name) { return require('T/' + name); }
 
