@@ -792,6 +792,7 @@ function gatherCurrentSelectionClone(listview, newtitle) {
 
     var sel = {
         filter: 'red',
+        id: Ti.App.Properties.getString('my_workout'),
         // build: 'auto',
         title: newtitle,
         create:'true',
@@ -874,8 +875,14 @@ function gatherCurrentSelection(listview) {
     // };
     var sections = $.customizer_list_view.getSections();
 
+
+    // iqdev
+
+
+
     var sel = {
         filter: 'app',
+        id: Ti.App.Properties.getString('my_workout'),
         // build: 'auto',
         build: 'custom',
         update: 'true',
@@ -932,7 +939,10 @@ function updateCustomizerListHeaders(){
 
 	_.each($.customizer_list_view.sections, function(section, index){
 		var header_view = section.getHeaderView();
-		Ti.API.warn('UPDATE.CUSTOMIZER.LIST.HEADERS:', header_view, header_view.properties );
+		Ti.API.warn('UPDATE.CUSTOMIZER.LIST.HEADERS:', header_view, header_view.round_index );
+		header_view.round_index = index;
+		header_view.updateRoundTitle(index);
+		Ti.API.warn('UPDATE.CUSTOMIZER.LIST.HEADERS.AFTER:', header_view, header_view.round_index );
 	});
 
 
