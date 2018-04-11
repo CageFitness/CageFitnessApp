@@ -351,7 +351,7 @@ Ti.App.addEventListener('cage/topbar/menu_button/close', function(e){
 
 
 $.cleanup = function cleanup() {
-	Ti.API.info('VIDEO.JS.CLEANUP:');
+	// Ti.API.info('VIDEO.JS.CLEANUP:');
 	
 	args.winref.removeEventListener('close', $.cleanup);
 

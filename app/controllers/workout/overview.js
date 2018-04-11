@@ -291,14 +291,17 @@ Ti.App.addEventListener('cage/workout/start', triggerFirstSlide);
 
 
 $.cleanup = function cleanup() {
-	Ti.API.info('OVERVIEW.CLEANUP:');
+	// Ti.API.info('OVERVIEW.CLEANUP:');
 
 	args.winref.removeEventListener('close', $.cleanup);
 
 	Ti.App.removeEventListener('cage/workout/video/play_pause',onPlayPause);
 	Ti.App.removeEventListener('cage/workout/slide/entered', onOwlSlideEntered);
 	Ti.App.removeEventListener('cage/workout/start', triggerFirstSlide);
+
+	$.elementsList.removeAllChildren();
 	$.elementsList = null;	
+
 	$.destroy();
 	$.off();
 	args.winref = null;

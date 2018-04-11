@@ -17,21 +17,19 @@ var cage_cache_dir = Titanium.Filesystem.getFile(Titanium.Filesystem.application
 var inited = 0;
 var show_activity = _.once(justShow);
 var scroll_ready=false;
-var onView=false;
+// var onView=false;
 
 $.top_bar_required.winref = args.winref;
 
-$.round_btn_bar.addEventListener('postlayout',function(e){
-	Ti.API.info('POST.LAYOUT.TRIGGERED.BTN.BAR',e);
-	// $.round_btn_bar.visible=true;
-});
+// $.round_btn_bar.addEventListener('postlayout',function(e){
+// 	// Ti.API.info('POST.LAYOUT.TRIGGERED.BTN.BAR',e);
+// 	// $.round_btn_bar.visible=true;
+// });
 
 $.scrollable.addEventListener('postlayout',function(e){
 	Ti.API.info('POST.LAYOUT.TRIGGERED.SCROLLABLE',e);
-	
 	$.scrollable.show();
-	onView=1;
-
+	// onView=1;
 });
 
 var round_tool=[];
@@ -734,6 +732,8 @@ $.cleanup = function cleanup() {
 	// clearInterval(Alloy.Globals.Timer);
 	$.destroy();
 	$.off();
+
+	// Dont do this.
 	// $.scrollable = null;
 };
 args.winref.addEventListener('close', $.cleanup);

@@ -234,3 +234,25 @@ $.is.load();
 
 // delete args.selection.rounds;
 
+
+
+function cleanupList(){
+	Ti.API.info('CLOSING.INSERT.POPOVER');
+	$.exercisesWin.removeEventListener('close', cleanupList);
+
+		if ($.pover.sections) {
+			$.pover.deleteSectionAt(0, {animated:false});
+		}
+		$.exercisesWin.removeAllChildren();
+
+
+
+
+	$.is.cleanup();
+	$.destroy();
+	$.off();
+	$.exercisesWin = null;
+
+}
+$.exercisesWin.addEventListener('close', cleanupList);
+

@@ -265,13 +265,23 @@ $.is.load();
 
 
 
-// function cleanupList(){
-// 	Ti.API.info('CLOSING.LIST.POPOVER');
-// 	$.is.cleanup();
-// 	$.destroy();
-// 	$.off();
-// 	$.exercisesWin = null;
+function cleanupList(){
+	Ti.API.info('CLOSING.LIST.POPOVER');
+	$.exercisesWin.removeEventListener('close', cleanupList);
 
-// }
-// $.exercisesWin.addEventListener('close', cleanupList)
+		if ($.pover.sections) {
+			$.pover.deleteSectionAt(0, {animated:false});
+		}
+		$.exercisesWin.removeAllChildren();
+
+
+
+
+	$.is.cleanup();
+	$.destroy();
+	$.off();
+	$.exercisesWin = null;
+
+}
+$.exercisesWin.addEventListener('close', cleanupList);
 
