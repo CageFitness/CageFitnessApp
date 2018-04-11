@@ -13,9 +13,9 @@
             </View>
             <View id="controls_wrapper">
                 <View id="controls">
-                    <View  width="35%" class="control_element">
+                    <View id="prog_wrap"  width="35%" class="control_element">
                         <!-- <Label>[COUNTER]</Label> -->
-                        <Module id="progressbar" module="br.com.arlsoft.progressbar" method="createCircularView" />
+                        <!-- <Module id="progressbar" module="br.com.arlsoft.progressbar" method="createCircularView" /> -->
                     </View>
                     <View  width="30%"  class="control_element">
 						<View id="coming_wrap">

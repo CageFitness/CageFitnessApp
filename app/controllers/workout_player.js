@@ -391,10 +391,9 @@ function addToDownloadSession(ob){
 		
 	}
 
-	Ti.API.info('CACHED?');
+	// Ti.API.info('CACHED?');
 	// Ti.API.info('CACHED? --> ', in_cache , ob.filename);
 	if($.downprogress && !in_cache){
-
 		show_activity();
 	}
 }

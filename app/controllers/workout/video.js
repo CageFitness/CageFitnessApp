@@ -1,4 +1,6 @@
 var animation = require('alloy/animation');
+var progbar = require('br.com.arlsoft.progressbar');
+
 var args = $.args;
 var scrollable = args.scrollableref;
 
@@ -10,6 +12,74 @@ var item_index = args.item_index || null;
 var localvid = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'cached/'+args.filename);
 var video = localvid || args.video || null;
 var next = args.next || null;
+
+
+
+
+
+
+
+
+
+
+
+var progressView = progbar.createCircularView({
+	right:10,
+	top:10,
+    height: 110,
+    width: 110,
+    progressTintColor: '#d9e153',
+    trackTintColor: '#f5f5f5',
+    progressOpacity: 1,
+    trackOpacity: 0.8,
+    roundedCorners: true,
+    animatedProgress: true,
+    thicknessRatio: 0.15,
+    progress: 1,
+    textColor: '#d9e153',
+    textOpacity: 1,
+    textFont: {
+        fontFamily: 'Helvetica',
+        fontSize: 60,
+        // fontStyle: 'normal',
+        // fontWeight: 'bold'
+    },
+    text : ''
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -59,8 +129,8 @@ var increment = -(1/preview_timer);
 
 var resetCounter = function(){
 	clearInterval(Alloy.Globals.Timer);
-	$.progressbar.progress = 1;
-	$.progressbar.text = Math.round($.progressbar.progress * preview_timer);	
+	progressView.progress = 1;
+	progressView.text = Math.round(progressView.progress * preview_timer);	
 }
 
 
@@ -98,13 +168,13 @@ var startCounter = function() {
 	if(scrollable.currentPage === item_index){
 	    Alloy.Globals.Timer = setInterval(function() {
 
-	        $.progressbar.progress += increment;
+	        progressView.progress += increment;
 
-	        if ($.progressbar.text == 1) {
+	        if (progressView.text == 1) {
 	            //this clear Interval needs to be removed when closing the progress window.
 	            clearInterval(Alloy.Globals.Timer);
 	            Ti.API.info('STOP.VIDEO!!!!');
-	            animation.fadeOut($.progressbar, 500, function() {
+	            animation.fadeOut(progressView, 500, function() {
 	                // $.gifImage.stop();
 	                // Ti.App.fireEvent('cagefitness_app_preview_finished', { 'video': args.data_title });
 	                Alloy.Globals.playBuzz();
@@ -112,12 +182,12 @@ var startCounter = function() {
 
 	            });
 	        }
-	        var pr = Math.abs(Math.round($.progressbar.progress * preview_timer));
+	        var pr = Math.abs(Math.round(progressView.progress * preview_timer));
 	        Ti.API.info('TIMER.GOING.VIDEO:',pr);
 	       	if(pr >= 0){
-	       		$.progressbar.setText(pr);
+	       		progressView.setText(pr);
 	       		$.counter.setText(fancyTimeFormat(pr));
-	       		// Animation.popIn($.progressbar);
+	       		// Animation.popIn(progressView);
 	       	}
 
 	    }, 1000);
@@ -371,6 +441,8 @@ args.winref.addEventListener('close', $.cleanup);
 
 
 
+
+$.prog_wrap.add(progressView);
 
 
 
