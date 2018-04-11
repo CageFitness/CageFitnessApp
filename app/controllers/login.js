@@ -116,12 +116,9 @@ function closeLogin(){
 
 
 // During development
-
-// $.username.value = '';
-// $.password.value = '';
-// cageAuthenticate();
-
-
-
-
-
+if(ENV_DEV){
+	Ti.API.info('only.during.dev');
+	$.username.value = 'app';
+	$.password.value = 'op.';
+	cageAuthenticate();
+}

@@ -734,7 +734,7 @@ $.cleanup = function cleanup() {
 	// clearInterval(Alloy.Globals.Timer);
 	$.destroy();
 	$.off();
-	$.scrollable = null;
+	// $.scrollable = null;
 };
 args.winref.addEventListener('close', $.cleanup);
 
