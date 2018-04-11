@@ -236,12 +236,10 @@ $.pover.addEventListener("itemclick", function(e){
   	args.selection.wo_equipment = equipment;
 
     args.selection.customizer.push(item.info.data);
-    Ti.API.info('HOW.MANY?', _.size(args.selection.customizer) );
-    var size = _.size(args.selection.customizer);
-    $.how_many.setText( size +'/'+ args.selection.num_exercises);
-
+    
+    // var size = _.size(args.selection.customizer);
     // Ti.API.info('CURRENT.SELECTION.AT.LIST.JS:',args.selection);
-    Ti.API.info('CURRENT.SELECTION.AT.LIST.JS:');
+    // Ti.API.info('CURRENT.SELECTION.AT.LIST.JS:',size +'/'+ args.selection.num_exercises);
 
     
 
@@ -284,4 +282,6 @@ function cleanupList(){
 
 }
 $.exercisesWin.addEventListener('close', cleanupList);
+
+
 
