@@ -17,7 +17,7 @@ function tabEquipment(e) {
 	var ttid = e.source.labels[e.index].ttid;
 	log.args('Filter Equipment: ', e.source.labels[e.index]);
 
-	Alloy.Globals.ExerciseFilter = {'filter':'exercise_equipment','ttid':ttid};
+	Alloy.Globals.ExerciseFilter = {'filter':'exercise_equipment','ttid':ttid, 'page':1};
 
 	
 	Ti.App.fireEvent('cage/exercise/filter',Alloy.Globals.ExerciseFilter);
@@ -29,24 +29,26 @@ function tabExerciseType(e) {
 	var ttid = e.source.labels[e.index].ttid;
 	log.args('Filter Types: ', e.source.labels[e.index]);
 
-	Alloy.Globals.ExerciseFilter = {'filter':'exercise_type','ttid':ttid};
+	Alloy.Globals.ExerciseFilter = {'filter':'exercise_type','ttid':ttid, 'page':1};
 
 	Ti.App.fireEvent('cage/exercise/filter',Alloy.Globals.ExerciseFilter);
 }
 
-function tabAll(e) {
+// function tabAll(e) {
 
-	var slug = e.source.labels[e.index].slug;
-	var ttid = e.source.labels[e.index].ttid;
-	log.args('Filter All: ', e.source.labels[e.index]);
+// 	var slug = e.source.labels[e.index].slug;
+// 	var ttid = e.source.labels[e.index].ttid;
+// 	log.args('Filter All: ', e.source.labels[e.index]);
 
+// 	Alloy.Globals.ExerciseFilter = {'filter':'all','ttid':ttid};
 
-	Ti.App.fireEvent('cage/exercise/filter',{'filter':'all','ttid':ttid});
-}
+// 	Ti.App.fireEvent('cage/exercise/filter',{'filter':'all','ttid':ttid});
+// }
 
 function performSearch(e){
 	Ti.API.info('SEARCH.TRIGGERED', e);
-	Ti.App.fireEvent('cage/exercise/filter',{'filter':'all', 'search':e.value});
+	Alloy.Globals.ExerciseFilter = {'filter':'all', 'search':e.value, 'page':1};
+	Ti.App.fireEvent('cage/exercise/filter',Alloy.Globals.ExerciseFilter);
 }
 
 function tabTaxonomy(e) {
@@ -57,7 +59,8 @@ function tabTaxonomy(e) {
 
 
 	if(e.index === 0){
-		Ti.App.fireEvent('cage/exercise/filter',{'filter':'all'});
+		Alloy.Globals.ExerciseFilter = {'filter':'all', 'page':1};
+		Ti.App.fireEvent('cage/exercise/filter',Alloy.Globals.ExerciseFilter);
 	}
 	if(e.index === 1){
 		$.filter_equipment.show();

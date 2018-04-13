@@ -427,14 +427,17 @@ $.cleanup = function cleanup() {
 
 	$.destroy();
 	$.off();
-	$.preview_holder = null;
-	$.full_video = null;
+
+	// $.preview_holder = null;
+	// $.full_video = null;
 
 
 
-	args.winref = null;
-	createVideoPlayer = null;
-	$.vid = null;
+	// args.winref = null;
+
+	// createVideoPlayer = null;
+	// $.vid = null;
+	
 	// someController = null;
 };
 args.winref.addEventListener('close', $.cleanup);
