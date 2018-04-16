@@ -47,6 +47,10 @@ function tabExerciseType(e) {
 
 function performSearch(e){
 	Ti.API.info('SEARCH.TRIGGERED', e);
+
+	$.filter_equipment.hide();
+	$.filter_type.hide();
+
 	Alloy.Globals.ExerciseFilter = {'filter':'all', 'search':e.value, 'page':1};
 	Ti.App.fireEvent('cage/exercise/filter',Alloy.Globals.ExerciseFilter);
 }
