@@ -17,21 +17,19 @@ var cage_cache_dir = Titanium.Filesystem.getFile(Titanium.Filesystem.application
 var inited = 0;
 var show_activity = _.once(justShow);
 var scroll_ready=false;
-var onView=false;
+// var onView=false;
 
 $.top_bar_required.winref = args.winref;
 
-$.round_btn_bar.addEventListener('postlayout',function(e){
-	Ti.API.info('POST.LAYOUT.TRIGGERED',e);
-	// $.round_btn_bar.visible=true;
-});
+// $.round_btn_bar.addEventListener('postlayout',function(e){
+// 	// Ti.API.info('POST.LAYOUT.TRIGGERED.BTN.BAR',e);
+// 	// $.round_btn_bar.visible=true;
+// });
 
 $.scrollable.addEventListener('postlayout',function(e){
-	Ti.API.info('POST.LAYOUT.TRIGGERED',e);
-	
+	Ti.API.info('POST.LAYOUT.TRIGGERED.SCROLLABLE',e);
 	$.scrollable.show();
-	onView=1;
-
+	// onView=1;
 });
 
 var round_tool=[];
@@ -69,14 +67,13 @@ function onDownloadComplete(e){
     var task_completed = _.findWhere(Alloy.Globals.WorkoutAssets,{task:e.taskIdentifier});
     if( task_completed && task_completed.filename ) {
     	var completed = _.size(_.where(Alloy.Globals.WorkoutAssets, {complete: true}));
-	    var file = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'cached/'+task_completed.filename);
-		if(file.exists()) {
+
+		if(Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'cached/'+task_completed.filename).exists()) {
 	    	Ti.API.info('AFTER.ASKING:', task_completed.task, e.taskIdentifier);
 			var inqueue = _.size(Alloy.Globals.WorkoutAssets);
 			Ti.API.info('ASSET.DOWNLOAD.COMPLETE:', completed, inqueue, JSON.stringify(task_completed));
 			Ti.API.info('CALCULATE:', completed, inqueue, completed/inqueue );
-			// $.downprogress.value=Alloy.Globals.DownloadProgress;
-			// xxxxx
+
 		} else {
 
 		}
@@ -312,13 +309,13 @@ function addAssetsToSessionDownloadManager(){
 
 	_.each(assets_queue, function(item){
 
-		_.defer(function(){
-			Ti.API.info('ASKING.FOR.FILES...',item.filename);
-		});
+		// _.defer(function(){
+		// 	Ti.API.info('ASKING.FOR.FILES...',item.filename);
+		// });
 
 		if(!isInCache(item.filename)){
 			_.defer(addToDownloadSession,item);
-			Ti.API.info('DOWNLOAD.DEFERED:',item.filename);
+			// Ti.API.info('DOWNLOAD.DEFERED:',item.filename);
 		};
 
 	});
@@ -346,27 +343,28 @@ function addAssetsToDownloadManager(){
 }
 
 
-function addFileToDownloadQueue(filename, file_url){
-	if (filename && file_url) {
-		var file = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'cached/'+ filename);
-		var ob = {};
-		ob.filename = filename;
-		ob.url = file_url;
-		ob.native_path = file.nativePath;
-		videos_queue.push(ob);
-	}
-}
+// function addFileToDownloadQueue(filename, file_url){
+// 	if (filename && file_url) {
+// 		var file = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'cached/'+ filename);
+// 		var ob = {};
+// 		ob.filename = filename;
+// 		ob.url = file_url;
+// 		ob.native_path = file.nativePath;
+// 		videos_queue.push(ob);
+// 	}
+// }
 
 
 
 
 function addFileToDownloadQueue2(filename, file_url){
 	if (filename && file_url) {
-		var file = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'cached/'+ filename);
+		// var file = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'cached/'+ filename);
 		var ob = {};
 		ob.filename = filename;
 		ob.url = file_url;
-		ob.native_path = file.nativePath;
+		// ob.native_path = file.nativePath;
+		ob.native_path = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'cached/'+ filename).nativePath;
 		assets_queue.push(ob);
 	}
 }
@@ -375,17 +373,27 @@ function addToDownloadSession(ob){
 	// add to download task if video does not exist in cached app directoy
 	var in_cache = isInCache(ob.filename);
 	if( !in_cache ){
-		var task = Alloy.Globals.SessionDownloader.downloadTask({url:ob.url, filename:ob.filename});
-		var TaskObject = {
-			task:task,
+		
+		// var task = Alloy.Globals.SessionDownloader.downloadTask({url:ob.url, filename:ob.filename});
+		// var TaskObject = {
+		// 	task:Alloy.Globals.SessionDownloader.downloadTask({url:ob.url, filename:ob.filename}),
+		// 	url:ob.url,
+		// 	filename:ob.filename,
+		// }
+
+		// Alloy.Globals.WorkoutAssets.push(TaskObject);
+
+		Alloy.Globals.WorkoutAssets.push({
+			task:Alloy.Globals.SessionDownloader.downloadTask({url:ob.url, filename:ob.filename}),
 			url:ob.url,
 			filename:ob.filename,
-		}
-		Alloy.Globals.WorkoutAssets.push(TaskObject);
+		});
+		
 	}
-	Ti.API.info('CACHED? --> ', in_cache , ob.filename);
-	if($.downprogress && !in_cache){
 
+	// Ti.API.info('CACHED?');
+	// Ti.API.info('CACHED? --> ', in_cache , ob.filename);
+	if($.downprogress && !in_cache){
 		show_activity();
 	}
 }
@@ -396,8 +404,9 @@ function justShow(){
 }
 
 function isInCache(file){
-	var file = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'cached/'+file);
-	return file.exists();
+	// var file = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'cached/'+file);
+	// return file.exists();
+	return Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'cached/'+file).exists();
 }
 
 
@@ -559,7 +568,12 @@ function onSuccessWorkoutCallback(e){
 	$.scrollable.cacheSize = _.size(owledElements);
 
 	var setted_views = $.scrollable.setViews(owledElements);
-	Ti.API.info('SETTED.VIEWS.IN.OWL', _.size(setted_views) );
+
+	// $.scrollable.applyProperties({
+	// 	views:owledElements
+	// });
+
+	Ti.API.info('SETTED.VIEWS.IN.OWL:', setted_views );
 	// Ti.API.info('ATTEMPT.AFTER.OWL');
     
 
@@ -612,17 +626,22 @@ function startOverviewClock(){
 function addOwlElements(items){
 	var owl_pages = [];
 	_.each(items,function(item,index){
-		var page = Alloy.createController(item.type,item.data);
-		owl_pages.push(page.getView());
+
+		// var page = Alloy.createController(item.type,item.data);
+		// owl_pages.push(page.getView());
+		
+		// performance update
+		owl_pages.push( Alloy.createController(item.type,item.data).getView() );
+
 	});
 	
 	return owl_pages;
 }
 
-function addWorkoutElement(type, data){
-	var item = Alloy.createController(type,data);
-	$.scrollable.addView(item.getView());
-}
+// function addWorkoutElement(type, data){
+// 	var item = Alloy.createController(type,data);
+// 	$.scrollable.addView(item.getView());
+// }
 
 function PlayPause(){
 	Ti.App.fireEvent('cage/workout/video/play_pause', { 'item': $.scrollable.currentPage });
@@ -702,10 +721,19 @@ exports.hello = function(){
 
 
 $.cleanup = function cleanup() {
-	Ti.API.info('WORKOUT.PLAYER.PERFORMING.CLEANUP:');
+	Ti.API.warn('-------- ======= ||||||| WORKOUT.PLAYER.PERFORMING.CLEANUP:');
+
+	args.winref.removeEventListener('close', $.cleanup);
+	
+	videos_queue = null;
+	assets_queue = null;
+	owl_views = null;	
 	// clearInterval(Alloy.Globals.Timer);
 	$.destroy();
 	$.off();
+
+	// Dont do this.
+	// $.scrollable = null;
 };
 args.winref.addEventListener('close', $.cleanup);
 

@@ -24,6 +24,46 @@ var pagesss=1;
 })();
 
 
+
+
+
+/*
+ * parse_link_header()
+ *
+ * Parse the Github Link HTTP header used for pageination
+ * http://developer.github.com/v3/#pagination
+ */
+function parse_link_header(header) {
+  if (header.length == 0) {
+    throw new Error("input must not be of zero length");
+  }
+
+  // Split parts by comma
+  var parts = header.split(',');
+  var links = {};
+  // Parse each part into a named link
+  _.each(parts, function(p) {
+    var section = p.split(';');
+    if (section.length != 2) {
+      throw new Error("section could not be split on ';'");
+    }
+    var url = section[0].replace(/<(.*)>/, '$1').trim();
+    var name = section[1].replace(/rel="(.*)"/, '$1').trim();
+    links[name] = url;
+  });
+
+  return links;
+}
+
+
+
+
+
+
+
+
+
+
 function showPreloader(){
 	Animation.fadeIn($.activity_wrapper);
 	$.activity_indicator.show();	
@@ -43,14 +83,17 @@ function loadExercises(e){
 		filter_query.per_page=52;
 		filter_query.sortby='title';
 		filter_query.order='asc';
-		if(e.page){
-			filter_query.page=++pagesss;
+		if(e.page >1){
+			// filter_query.page=++pagesss;
+			Ti.API.warn('EXERCISE.QUERY.PAGINATION.CALL', Alloy.Globals.ExerciseFilter );
+			filter_query.page=Alloy.Globals.ExerciseFilter.page++;
 		}
 		else{
-			Ti.API.info('EXERCISE.QUERY.CLEAN.CALL');
+			Ti.API.warn('EXERCISE.QUERY.CLEAN.CALL');
 			items = [];
 			filter_query.page=1;
 			$.fg.clearGrid();
+			filter_query.page=Alloy.Globals.ExerciseFilter.page++;
 		}
 
 
@@ -87,6 +130,30 @@ function onSuccessExercises2Callback(e){
 	var parsed = JSON.parse(e.data);
 	Ti.API.info('GET.EXERCISE.REST.API.COUNT.RESULTS: ',_.size(parsed));
 	// Ti.API.info('GET.EXERCISE.REST.API.HEADERS: ',e.headers);
+
+
+
+
+		// PAGINATION
+		var parsed_links = parse_link_header(e.headers['Link']);
+
+		// Ti.API.warn('PARSED.LINKS:', parsed_links);
+		Ti.API.info('LOAD.MORE.SHOULD.BE.REMOVED.HERE', $.fg.lmore.visible);
+
+		if('next' in parsed_links){
+				Ti.API.warn('NEXT:',parsed_links['next']);
+				$.fg.lmore.visible=true;
+		}
+		else{
+				$.fg.lmore.visible=false;
+		}
+
+
+
+
+
+
+
 	exercises=[];
 	// Why JSON needed to be parsed?
     _.each(parsed, function(item){
@@ -119,6 +186,7 @@ function onErrorExercisesCallback(e){
 function showGridItemInfo(e){
 	if(e.source.data.type=='action'){
 		Ti.API.info('LOAD.MORE.TRIGGERED',e);
+		// iqdev
 		loadExercises({page:1});
 	}
 	else{
@@ -159,26 +227,6 @@ function createSampleData(data){
     };
 
 
-	// var loadMoreView = Alloy.createController('exercise/load',{
-	// 	type:'action',
- //        image:null,
- //        title:null,
- //        width:Ti.UI.FILL,
- //        height:30,
- //    }).getView();
-
- //    //THIS IS THE DATA THAT WE WANT AVAILABLE FOR THIS ITEM WHEN onItemClick OCCURS
- //    var loadMoreValues = {
- //        title: null,
- //        image: null,
- //        video: null,
- //        type: 'action',
- //    };        
-
- //    items.push({
- //        view: loadMoreView,
- //        data: loadMoreValues,
- //    });    
 
     //ADD ALL THE ITEMS TO THE GRID
     Ti.API.info('BEFORE.FG');

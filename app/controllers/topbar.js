@@ -33,6 +33,9 @@ $.cleanup = function cleanup() {
 	Ti.API.info('TOPBAR.WINDOW.PERFORMING.CLEANUP:');
 	// clearInterval(Alloy.Globals.Timer);
 	Ti.App.removeEventListener('cage/topbar/menu_button/close', onCloseButtonClick);
+
+	$.button_wrapper.removeEventListener('click',onCloseButtonClick);
+	$.button_wrapper = null;
 	$.destroy();
 	$.off();
 };

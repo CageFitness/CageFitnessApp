@@ -6,7 +6,7 @@ var pages = 1;
 var paging ={};
 var exercise_selection=[];
 var round_index = args.round_index;
-
+var next_page;
 // Available functions from customizer
 var optType = args.optType;
 var optEquipment = args.optEquipment;
@@ -20,8 +20,8 @@ var defaults ={
 
 
 
-$.is.init($.pover);
-$.is.load();
+
+
 
 
  function myLoader(e) {
@@ -62,6 +62,40 @@ function loadExercises(selection){
 	xhr.GET(exercise_url+'?'+querystring, onSuccessExercises3Callback, onErrorExercises2Callback);
 }
 
+
+
+
+
+/*
+ * parse_link_header()
+ *
+ * Parse the Github Link HTTP header used for pageination
+ * http://developer.github.com/v3/#pagination
+ */
+function parse_link_header(header) {
+  if (header.length == 0) {
+    throw new Error("input must not be of zero length");
+  }
+
+  // Split parts by comma
+  var parts = header.split(',');
+  var links = {};
+  // Parse each part into a named link
+  _.each(parts, function(p) {
+    var section = p.split(';');
+    if (section.length != 2) {
+      throw new Error("section could not be split on ';'");
+    }
+    var url = section[0].replace(/<(.*)>/, '$1').trim();
+    var name = section[1].replace(/rel="(.*)"/, '$1').trim();
+    links[name] = url;
+  });
+
+  return links;
+}
+
+
+
 function onSuccessExercises3Callback(e){
 
 	// hidePreloader();
@@ -70,7 +104,18 @@ function onSuccessExercises3Callback(e){
 	
 	if( e.headers != 'cache' ){
 		Ti.API.info('HEADERS.SHOW:',e.headers);
-		Ti.API.info('HEADERS.SHOW:',e.headers['X-WP-TotalPages']);
+		// Ti.API.info('HEADERS.SHOW:',e.headers['X-WP-TotalPages']);
+
+		var parsed_links = parse_link_header(e.headers['Link']);
+
+		Ti.API.warn('PARSED.LINKS:', parsed_links);
+
+		if('next' in parsed_links){
+			Ti.API.warn('NEXT:',parsed_links['next'])
+		}
+		else{
+			$.is.detach();
+		}
 
 		// paging.total_items = e.headers['X-WP-Total'];
 		// paging.total_pages = e.headers['X-WP-TotalPages'];		
@@ -124,7 +169,11 @@ function onSuccessExercises3Callback(e){
 function finishExerciseListSelection(e){
 
 	Ti.API.info('EXERCISE.SELECTION.FINISHED',e);
-	Ti.API.info('EXERCISE.SELECTION.OBJECT',args.selection);
+	
+	// Ti.API.info('EXERCISE.SELECTION.OBJECT',args.selection);
+	Ti.API.info('EXERCISE.SELECTION.OBJECT');
+
+
 	// args.orderWindow(args.selection);
 	// args.generateRound(args.selection);
 	args.validate(exercise_selection, args.round_index);
@@ -177,7 +226,8 @@ $.pover.addEventListener("itemclick", function(e){
 	 //    customizer: []
   //   };
 
-  	Ti.API.info('ARGS.SELECTION.AT.LIST.BEFORE.GRABBING.TTID:',args.selection);
+  	// Ti.API.info('ARGS.SELECTION.AT.LIST.BEFORE.GRABBING.TTID:',args.selection);
+  	Ti.API.warn('ARGS.SELECTION.AT.LIST.BEFORE.GRABBING.TTID:');
 
   	var type = Object( optType(args.selection.exercise_type));
   	var equipment = Object( optEquipment(args.selection.exercise_equipment));
@@ -186,10 +236,10 @@ $.pover.addEventListener("itemclick", function(e){
   	args.selection.wo_equipment = equipment;
 
     args.selection.customizer.push(item.info.data);
-    Ti.API.info('HOW.MANY?', _.size(args.selection.customizer) );
-    var size = _.size(args.selection.customizer);
-    $.how_many.setText( size +'/'+ args.selection.num_exercises);
-    Ti.API.info('CURRENT.SELECTION.AT.LIST.JS:',args.selection);
+    
+    // var size = _.size(args.selection.customizer);
+    // Ti.API.info('CURRENT.SELECTION.AT.LIST.JS:',args.selection);
+    // Ti.API.info('CURRENT.SELECTION.AT.LIST.JS:',size +'/'+ args.selection.num_exercises);
 
     
 
@@ -201,6 +251,37 @@ $.pover.addEventListener("itemclick", function(e){
 });
 
 
-loadExercises({page:1});
+$.is.setOptions({msgDone:''});
+$.is.init($.pover);
+$.is.load();
+
+// This was in place before adjusting infite scroll
+// loadExercises({page:1});
+
+
+
+
+
+
+function cleanupList(){
+	Ti.API.info('CLOSING.LIST.POPOVER');
+	$.exercisesWin.removeEventListener('close', cleanupList);
+
+		if ($.pover.sections) {
+			$.pover.deleteSectionAt(0, {animated:false});
+		}
+		$.exercisesWin.removeAllChildren();
+
+
+
+
+	$.is.cleanup();
+	$.destroy();
+	$.off();
+	$.exercisesWin = null;
+
+}
+$.exercisesWin.addEventListener('close', cleanupList);
+
 
 

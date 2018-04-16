@@ -462,8 +462,8 @@ function handleListViewClick(e) {
     var sec = $.customizer_list_view.sections[e.sectionIndex];
     var row = sec.getItemAt(e.itemIndex);
     var exercise = row.properties.launch_data;
-    Ti.API.info('ROW.DATA:', row.wo_exercise_number, row.wo_equipment, row.wo_round_type);
-    Ti.API.info('REPLACE.INTENT:', e, e.sectionIndex, e.itemIndex, e.source, row.properties.launch_data.ID);
+    Ti.API.info('ROW.DATA.CUSTOMIZER:', row.wo_exercise_number, row.wo_equipment, row.wo_round_type);
+    Ti.API.info('REPLACE.INTENT.CUSTOMIZER:', e, e.sectionIndex, e.itemIndex, e.source, row.properties.launch_data.ID);
     last = {
         wo_exercise_number: row.wo_exercise_number,
         wo_equipment: row.wo_equipment,
@@ -535,14 +535,14 @@ function replaceExercise(e, insert_mode) {
     Ti.API.info('\n\nBUILD.QUERY');
     var sec = $.customizer_list_view.sections[e.sectionIndex];
     var row = sec.getItemAt(e.itemIndex);
-    Ti.API.info('ROW.DATA', row.properties);
+    // Ti.API.warn('ROW.DATA.REPLACE.INTENT', row.properties);
     var insert_popover = Alloy.createController('customizer/insert', {
         insertExercise: insertExercise,
         validate_mode: insert_mode,
         include: 'customizer/list',
         selection: {
-            exercise_equipment: row.properties.wo_equipment.value,
-            exercise_type: row.properties.wo_round_type.value,
+            exercise_equipment: row.properties.wo_equipment.value | row.properties.wo_equipment.term_id,
+            exercise_type: row.properties.wo_round_type.value | row.properties.wo_round_type.term_id
             // rounds:row.properties.wo_exercise_number,
         },
         optType: optType,
@@ -622,12 +622,17 @@ function removeRound(roundIndex) {
 
 
 function addNewRoundValidate(e, roundIndex) {
-    Ti.API.info('ADD.ROUND.CALLBACK', e);
+    // Ti.API.info('ADD.ROUND.CALLBACK', e);
+    Ti.API.info('ADD.ROUND.CALLBACK');
+
+
+
     // if(e=='remove'){
     // 	removeRound(0);
     // }
-
     // createRoundFromSelection(e,roundIndex);
+
+    
 }
 
 
@@ -787,6 +792,7 @@ function gatherCurrentSelectionClone(listview, newtitle) {
 
     var sel = {
         filter: 'red',
+        id: Ti.App.Properties.getString('my_workout'),
         // build: 'auto',
         title: newtitle,
         create:'true',
@@ -869,8 +875,14 @@ function gatherCurrentSelection(listview) {
     // };
     var sections = $.customizer_list_view.getSections();
 
+
+    // iqdev
+
+
+
     var sel = {
         filter: 'app',
+        id: Ti.App.Properties.getString('my_workout'),
         // build: 'auto',
         build: 'custom',
         update: 'true',
@@ -922,5 +934,17 @@ function updateCustomizerListHeaders(){
 	// _.each(rebuilder,function(section, index){
 	// 	$.customizer_list_view.sections[index].setItems(section);
 	// });
+
+
+
+	_.each($.customizer_list_view.sections, function(section, index){
+		var header_view = section.getHeaderView();
+		Ti.API.warn('UPDATE.CUSTOMIZER.LIST.HEADERS:', header_view, header_view.round_index );
+		header_view.round_index = index;
+		header_view.updateRoundTitle(index);
+		Ti.API.warn('UPDATE.CUSTOMIZER.LIST.HEADERS.AFTER:', header_view, header_view.round_index );
+	});
+
+
 }
 

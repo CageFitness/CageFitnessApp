@@ -197,8 +197,8 @@ var setOnItemClick = function(fnt){
 // }
 
 $.lmore.addEventListener('click',function(e){
-	Ti.API.info('BUTTON.CLICKED.NOW.WHAT');
-	Ti.App.fireEvent('exercise/grid/load',{page:1});
+	Ti.API.warn('UPDATED.LOAD.MORE.CURRENT.FILTER: ',Alloy.Globals.ExerciseFilter); 
+	Ti.App.fireEvent('exercise/grid/load',Alloy.Globals.ExerciseFilter);
 })
 
 exports.init=init;

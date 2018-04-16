@@ -2,7 +2,7 @@
 <ti:app xmlns:ti="http://ti.appcelerator.org">
     <id>com.cagefitness.pro</id>
     <name>Cage Fitness Pro</name>
-    <version>1.6.51.1</version>
+    <version>1.9.1.4</version>
     <publisher>Cage Fitness Inc.</publisher>
     <url>http://lithiumlab.com</url>
     <description>not specified</description>
@@ -44,18 +44,20 @@
                 <string>Stores Workout assets files for offline use</string>
                 <key>NSAppleMusicUsageDescription</key>
                 <string>Stores Workout assets files for offline use</string>
+                <key>UIBackgroundModes</key>
+                <array>
+                    <string>audio</string>
+                </array>
                 <!--<key>UIBackgroundModes</key><array><string>fetch</string></array>  -->
             </dict>
         </plist>
     </ios>
     <android xmlns:android="http://schemas.android.com/apk/res/android"/>
     <modules>
-        <module platform="iphone">de.marcelpociot.circularprogress</module>
         <module platform="iphone">br.com.arlsoft.progressbar</module>
         <module platform="iphone">de.marcelpociot.imagefromgif</module>
         <module platform="iphone">com.appcelerator.urlSession</module>
         <module platform="iphone">ti.ga</module>
-        <!-- <module platform="iphone">hyperloop</module> -->
     </modules>
     <deployment-targets>
         <target device="mobileweb">false</target>

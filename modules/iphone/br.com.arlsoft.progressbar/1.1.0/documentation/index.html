@@ -1,0 +1,64 @@
+<h1>ProgressBar IOS Module</h1>
+<h2>Description</h2>
+<p>Simple progress bar module for iOS based on TiCircularProgress from Marcel Pociot</p>
+<h2>Accessing the ProgressBar Module</h2>
+<p>To access this module from JavaScript, you would do the following:</p>
+<pre><code>var progressbar = require("br.com.arlsoft.progressbar").createCircularView();
+</code></pre>
+<p>The progressbar variable is a reference to the ProgressBar View object.</p>
+<h2>Accessing the ProgressBar Module with Alloy</h2>
+<p>Include the module tag in your view as following:</p>
+<pre><code>&lt;Module id="progressbar" module="br.com.arlsoft.progressbar" method="createCircularView" /&gt;
+</code></pre>
+<p>The $.progressbar variable is a reference to the ProgressBar View object.</p>
+<h3>Customization options</h3>
+<p>//Color indicating the progress
+//Required
+progressTintColor (color)</p>
+<p>//Color indicating the progress left
+//Required
+trackTintColor (color)</p>
+<p>//Opacity index to the progress color
+//Options : (transparent) 0.0 to 1.0 (solid)
+//Default : 1.0
+progressOpacity (float)</p>
+<p>//Opacity index to the progress left color
+//Options : (transparent) 0.0 to 1.0 (solid)
+//Default : 1.0
+trackOpacity (float)</p>
+<p>//Use rounded corners for the progress indicator
+//Default : false
+roundedCorners (bool)</p>
+<p>//Animate the progress updates
+//Default : false
+animatedProgress (bool)</p>
+<p>//Progress indicator thickness
+//Options : (none) 0.0 to 1.0 (full circle)
+//Default : 0.3
+thicknessRatio (float)</p>
+<p>//Progress to display
+//Options : (empty) 0.0 to 1.0 (full)
+//Default : 0.0
+progress (float)</p>
+<p>//Inner text font color
+//Default : 'white'
+textColor (color)</p>
+<p>//Inner text font color opacity
+//Default : 1.0
+textOpacity (float)</p>
+<p>//Inner text font definition
+//Default : system font, 12, bold
+textFont (font)</p>
+<p>//Inner text to display
+//Default : empty
+text (string)</p>
+<h2>Usage</h2>
+<p>See example.</p>
+<h2>Author</h2>
+<p>ArlSoft Tecnologia
+contato@arlsoft.com.br</p>
+<h2>License</h2>
+<p>Commercial : Copyright (c) 2014</p>
+<p>All rights reserved.
+This is proprietary software.
+No warranty, explicit or implicit, provided.</p>

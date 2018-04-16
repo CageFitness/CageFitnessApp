@@ -38,7 +38,7 @@ var items = [];
 var PLAYING=0;
 // Ti.API.info('CONFIG.OVERVIEW.DURATION.FIRST', args.first_slide);
 // var _WKT = args.workout_window;
-var _WKT = args.winref;
+// var _WKT = args.winref;
 
 // gets first slide duration or normal oversion duration from configuration
 var overview_duration = (args.first_slide ? args.config.acf.duration_first : args.config.acf.duration_break );
@@ -75,7 +75,7 @@ if(args.first_slide){
 function triggerFirstSlide(){
 	Ti.API.info('OVERVIEW.FIRST.SLIDE: ',args.first_slide);
 	Ti.API.info('************************************************************************************');
-	Ti.API.warn('OVERVIEW.FIRST.SLIDE.WORKOUT.WINDOW.AWARE:', _WKT);
+	Ti.API.warn('OVERVIEW.FIRST.SLIDE.WORKOUT.WINDOW.AWARE');
 	Ti.API.info('************************************************************************************');
 
 	if(args.first_slide ){
@@ -205,7 +205,7 @@ function startCounter() {
 	            
 	        }
 	        var pr = Math.abs(Math.round(_PROGRESS * preview_timer));
-	        Ti.API.info('TIMER.GOING:',pr);
+	        Ti.API.info('TIMER.GOING.OVERVIEW:',pr);
 	       	if(pr >= 0){
 	       		_PROGRESS_TEXT = pr;
 	  			$.counter_big.applyProperties({text:fancyTimeFormat(pr)}); 
@@ -226,7 +226,7 @@ function getIndex(n){
 }
 
 function getExerciseDuration(round_size){
-	Ti.API.info('======= >>>> ENSURE.CONFIG:',args.config.acf.duration_break, args.config.acf.round_configs.config_round_num, round_size );
+	// Ti.API.info('======= >>>> ENSURE.CONFIG:', 'MINS:', args.config.acf.duration_break, 'ROUND.SIZE:', round_size );
 	var duration_ob = _.findWhere( args.config.acf.round_configs, {'config_round_num':round_size} );
 	return duration_ob||35;
 }
@@ -237,8 +237,7 @@ function describeRound2(){
 		var duration;
 		if(_.size(round)-1 === index){
 			// Ti.API.info('this is last', index, exercise_number, getExerciseDuration(exercise_number));
-			Ti.API.info('EXERCISE.DURATION.FIX:',exercise_number);
-
+			Ti.API.info('LAST.EXERCISE.DURATION.FIX:',exercise_number);
 			duration = getExerciseDuration(exercise_number).config_round_duration_last;
 		}
 		else{
@@ -292,13 +291,21 @@ Ti.App.addEventListener('cage/workout/start', triggerFirstSlide);
 
 
 $.cleanup = function cleanup() {
-	Ti.API.info('OVERVIEW.PLAYER.PERFORMING.CLEANUP:');
+	// Ti.API.info('OVERVIEW.CLEANUP:');
+
+	args.winref.removeEventListener('close', $.cleanup);
+
 	Ti.App.removeEventListener('cage/workout/video/play_pause',onPlayPause);
 	Ti.App.removeEventListener('cage/workout/slide/entered', onOwlSlideEntered);
-	Ti.App.removeEventListener('cage/workout/start', triggerFirstSlide);	
+	Ti.App.removeEventListener('cage/workout/start', triggerFirstSlide);
+
+	$.elementsList.removeAllChildren();
+	$.elementsList = null;	
+
 	$.destroy();
 	$.off();
-	// someController = null;
+	args.winref = null;
+	scrollable = null;
 };
 args.winref.addEventListener('close', $.cleanup);
 

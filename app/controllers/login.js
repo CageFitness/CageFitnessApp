@@ -114,11 +114,11 @@ function closeLogin(){
 
 }
 
-// $.username.value = '';
-// $.password.value = '';
-// cageAuthenticate();
 
-
-
-
-
+// During development
+if(ENV_DEV){
+	Ti.API.info('only.during.dev');
+	$.username.value = 'app';
+	$.password.value = 'op.';
+	cageAuthenticate();
+}

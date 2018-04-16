@@ -18,7 +18,7 @@ function getIndex(n){
 }
 
 
-function updateRoundTitle(index){
+$.clicker.updateRoundTitle = function(index){
 	round_index = index;
 	var title = 'Round '+getIndex(index)+':';
 	$.hTitle.text =  title;
