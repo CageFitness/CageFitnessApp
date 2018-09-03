@@ -5,13 +5,13 @@
     <version>1.9.1.5</version>
     <publisher>Cage Fitness Inc.</publisher>
     <url>http://lithiumlab.com</url>
-    <description>not specified</description>
+    <description>not specified  </description>
     <copyright>Cage Fitness, 2017</copyright>
     <icon>appicon.png</icon>
     <fullscreen>false</fullscreen>
     <navbar-hidden>false</navbar-hidden>
     <analytics>true</analytics>
-    <guid>3ae5896e-cbd9-4329-9222-05fc2aa82d12</guid>
+    <guid>75c9086b-27f4-4d6b-9000-05fc2aa82d12</guid>
     <property name="ti.ui.defaultunit" type="string">dp</property>
     <property name="run-on-main-thread" type="bool">true</property>
     <ios>
@@ -65,11 +65,11 @@
         <target device="ipad">true</target>
         <target device="iphone">false</target>
     </deployment-targets>
-    <sdk-version>7.1.0.GA</sdk-version>
+    <sdk-version>7.3.1.GA</sdk-version>
     <plugins>
         <plugin version="1.0">ti.alloy</plugin>
     </plugins>
-    <property name="appc-app-id" type="string">5944247a41ad64138e53867b</property>
+    <property name="appc-app-id" type="string">5b8d968ec8ca560601c25aef</property>
     <property name="acs-authbase-url-development" type="string">https://secure-identity.cloud.appcelerator.com</property>
     <property name="acs-base-url-development" type="string">https://api.cloud.appcelerator.com</property>
     <property name="acs-oauth-secret-development" type="string">5OabD8btOuZNNiGv1wvoaJ9Yi9R55aUF</property>
